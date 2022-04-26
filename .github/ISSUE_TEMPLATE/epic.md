@@ -1,7 +1,7 @@
 ---
 name: Epic
 about: " A large piece of functionality to be addressed later."
-title: "[EPIC]"
+title: ''
 labels: Epic
 assignees: ''
 

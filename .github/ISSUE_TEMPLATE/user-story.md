@@ -1,7 +1,7 @@
 ---
 name: User Story
 about: An user story representing functionality to be added in a sprint.
-title: "[STORY]"
+title: ''
 labels: User Story
 assignees: ''
 
