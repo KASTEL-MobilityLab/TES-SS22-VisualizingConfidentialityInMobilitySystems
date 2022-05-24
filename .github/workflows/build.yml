@@ -1,10 +1,10 @@
-name: Node.js CI
+name: Test and Build
 
 on:
   push:
-    branches: [main, dev]
+    branches: [main]
   pull_request:
-    branches: [main, dev]
+    branches: [main]
 
 jobs:
   build:
@@ -22,7 +22,5 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: "npm"
       - run: npm ci
-      - run: npm run check-format
-      - run: npm run lint
-      - run: npm run build --if-present
+      - run: npm run build
       - run: npm run test:unit
