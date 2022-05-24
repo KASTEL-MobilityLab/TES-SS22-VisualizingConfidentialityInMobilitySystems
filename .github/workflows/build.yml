@@ -13,6 +13,11 @@ jobs:
       matrix:
         os: [ubuntu-latest, windows-latest, macos-latest]
         node-version: [14.x, 16.x, 18.x]
+        exclude:
+          - os: windows-latest
+            node-version: [14.x, 18.x]
+          - os: macos-laest
+            node-version: [14.x, 18.x]
 
     steps:
       - uses: actions/checkout@v3
@@ -29,3 +34,29 @@ jobs:
 
       - name: Test
         run: npm run test:unit
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v3
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16.x
+
+      - name: npm install
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Deploy to GitHub Pages
+      - uses: JamesIves/github-pages-deploy-action@v4.3.3
+      - with:
+        branch: gh-pages
+        folder: dist
+        token: ${{ secrets.GITHUB_TOKEN }}
