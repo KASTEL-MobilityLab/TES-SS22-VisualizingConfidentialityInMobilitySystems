@@ -1,10 +1,9 @@
-name: Test and Build
+name: Test, Build and Deploy
 
 on:
-  push:
-    branches: [main]
   pull_request:
-    branches: [main]
+    branches:
+      - main
 
 permissions:
   contents: write
@@ -14,13 +13,13 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
+        os: [ubuntu-latest]
         node-version: [14.x, 16.x, 18.x]
-        exclude:
+        include:
           - os: windows-latest
-            node-version: [14.x, 18.x]
-          - os: macos-laest
-            node-version: [14.x, 18.x]
+            node-version: 16.x
+          - os: macos-latest
+            node-version: 16.x
 
     steps:
       - uses: actions/checkout@v3
@@ -58,7 +57,7 @@ jobs:
         run: npm run build
 
       - name: Deploy to GitHub Pages
-      - uses: JamesIves/github-pages-deploy-action@v4.3.3
-      - with:
-        branch: gh-pages
-        folder: dist
+        uses: JamesIves/github-pages-deploy-action@v4.3.3
+        with:
+          branch: gh-pages
+          folder: dist

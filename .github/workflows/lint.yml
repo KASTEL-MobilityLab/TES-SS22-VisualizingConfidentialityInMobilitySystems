@@ -1,6 +1,13 @@
 name: Check Lint and Format
 
-on: [push, pull_request]
+on:
+  push:
+    branches-ignore:
+      - main
+  pull_request:
+    branches:
+      - main
+      - dev
 
 jobs:
   lint:
