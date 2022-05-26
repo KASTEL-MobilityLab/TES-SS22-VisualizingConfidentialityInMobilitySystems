@@ -1,6 +1,6 @@
 name: Check Lint and Format
 
-on: [push, pull_request]
+on: push
 
 jobs:
   lint:
