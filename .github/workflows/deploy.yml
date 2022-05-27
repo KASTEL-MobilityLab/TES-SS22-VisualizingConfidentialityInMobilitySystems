@@ -10,7 +10,6 @@ permissions:
 
 jobs:
   deploy:
-    if: github.event.pull_request.merged == 'true'
     runs-on: ubuntu-latest
 
     steps:
@@ -21,7 +20,8 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 16.x
-
+          cache: "npm"
+          
       - name: npm install
         run: npm ci
 
