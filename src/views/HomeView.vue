@@ -1,6 +1,6 @@
 <template>
   <main>
-    <div id="map" class=""></div>
+    <div id="leafletMap"></div>
   </main>
 </template>
 
@@ -11,7 +11,7 @@ export default {
   setup() {
     let map;
     onMounted(() => {
-      map = new L.Map("map").setView([49.006889, 8.403653], 13);
+      map = new L.Map("leafletMap").setView([49.006889, 8.403653], 13);
       L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
         attribution:
           "&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors",
@@ -21,7 +21,7 @@ export default {
 };
 </script>
 <style scoped>
-#map {
-  height: 1200px;
+#leafletMap {
+  height: 1000px;
 }
 </style>
