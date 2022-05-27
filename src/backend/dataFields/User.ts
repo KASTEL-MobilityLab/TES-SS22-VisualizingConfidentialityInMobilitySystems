@@ -1,5 +1,4 @@
 class User implements DataField {
-  //Initialize the UserID with the first letter of the ID
   id: string;
   forename: string;
   surname: string;

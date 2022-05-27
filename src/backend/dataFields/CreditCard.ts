@@ -1,7 +1,6 @@
 class CreditCard implements NonCash {
   id: string;
   tripId: string;
-  type: ["Credit Card", "Cash"];
   provider: string;
   cardNumber: number;
   ccv: number;
@@ -10,7 +9,6 @@ class CreditCard implements NonCash {
   constructor(
     id: string,
     tripId: string,
-    type: ["Credit Card", "Cash"],
     provider: string,
     cardNumber: number,
     ccv: number,
@@ -18,7 +16,6 @@ class CreditCard implements NonCash {
   ) {
     this.id = id;
     this.tripId = tripId;
-    this.type = type;
     this.provider = provider;
     this.cardNumber = cardNumber;
     this.ccv = ccv;
