@@ -5,7 +5,7 @@
 </template>
 
 <script lang="ts">
-import * as L from "leaflet";
+import L from "leaflet";
 import { onMounted } from "vue";
 export default {
   setup() {
@@ -13,8 +13,8 @@ export default {
     onMounted(() => {
       map = new L.Map("leafletMap").setView([49.006889, 8.403653], 13);
       L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-        attribution:
-          "&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors",
+        maxZoom: 19,
+        attribution: "© OpenStreetMap",
       }).addTo(map);
     });
   },
