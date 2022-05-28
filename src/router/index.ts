@@ -1,13 +1,35 @@
+import DefaultView from "@/views/DefaultView.vue";
+import PaymentDataView from "@/views/PaymentDataView.vue";
+import RiderDataView from "@/views/RiderDataView.vue";
+import TripDataView from "@/views/TripDataView.vue";
+import VehicleDataView from "@/views/VehicleDataView.vue";
 import { createRouter, createWebHistory } from "vue-router";
-import HomeView from "../views/HomeView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: "/",
-      name: "home",
-      component: HomeView,
+      name: "default",
+      component: DefaultView,
+      children: [
+        {
+          path: "rider",
+          component: RiderDataView,
+        },
+        {
+          path: "vehicle",
+          component: VehicleDataView,
+        },
+        {
+          path: "trip",
+          component: TripDataView,
+        },
+        {
+          path: "payment",
+          component: PaymentDataView,
+        },
+      ],
     },
     {
       path: "/help",
