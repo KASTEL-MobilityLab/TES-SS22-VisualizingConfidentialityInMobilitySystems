@@ -22,5 +22,7 @@ export default {
 #leafletMap {
   height: 100vh;
   width: 100vw;
+  z-index: 1;
+  position: absolute;
 }
 </style>
