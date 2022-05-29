@@ -1,0 +1,119 @@
+{
+    "PType": {
+        "data": "payment",
+        "dataType": "type",
+        "risk": "1"
+    },
+    "PProvider": {
+        "data": "payment",
+        "dataType": "provider",
+        "risk": "1"
+    }
+    ,
+    "PCardNumber": {
+        "data": "payment",
+        "dataType": "cardNumber",
+        "risk": "3"
+    }
+    ,
+    "PCcv": {
+        "data": "payment",
+        "dataType": "ccv",
+        "risk": "3"
+    }
+    ,
+    "PExpiryDate": {
+        "data": "payment",
+        "dataType": "expiryDate",
+        "risk": "2"
+    },
+
+    "RStart": {
+        "data": "route",
+        "dataType": "start",
+        "risk": "2"
+    },
+    "REnd": {
+        "data": "route",
+        "dataType": "end",
+        "risk": "2"
+    },
+
+    "TAvgSpeed": {
+        "data": "trip",
+        "dataType": "avgSpeed",
+        "risk": "1"
+    },
+    "TPrice": {
+        "data": "trip",
+        "dataType": "price",
+        "risk": "1"
+    },
+    "TStartTime": {
+        "data": "trip",
+        "dataType": "startTime",
+        "risk": "1"
+    },
+    "TEndTime": {
+        "data": "trip",
+        "dataType": "endTime",
+        "risk": "1"
+    },
+
+    "UForename": {
+        "data": "user",
+        "dataType": "forename",
+        "risk": "1"
+    },
+    "USurname": {
+        "data": "user",
+        "dataType": "surname",
+        "risk": "1"    
+    },
+    "UPhoneNumber": {
+        "data": "user",
+        "dataType": "phoneNumber",
+        "risk": "2"    
+    },
+    "UEmail": {
+        "data": "user",
+        "dataType": "email",
+        "risk": "2"    
+    },
+
+    "VId": {
+        "data": "vehicle",
+        "dataType": "id",
+        "risk": "1"
+    },
+    "VType": {
+        "data": "vehicle",
+        "dataType": "type",
+        "risk": "1"
+    },
+    "VCompanyId": {
+        "data": "vehicle",
+        "dataType": "companyId",
+        "risk": "1"
+    },
+    "VCondition": {
+        "data": "vehicle",
+        "dataType": "condition",
+        "risk": "1"
+    },
+    "VBatteryCondition": {
+        "data": "vehicle",
+        "dataType": "batteryCondition",
+        "risk": "1"
+    },
+    "VStatus": {
+        "data": "vehicle",
+        "dataType": "status",
+        "risk": "2"
+    },
+    "VBatterLevel": {
+        "data": "vehicle",
+        "dataType": "batteryLevel",
+        "risk": "1"
+    }
+}
