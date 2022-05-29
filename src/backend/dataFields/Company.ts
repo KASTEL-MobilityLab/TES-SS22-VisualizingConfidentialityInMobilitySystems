@@ -1,23 +1,14 @@
-class Company implements DataField {
-  private _id: string;
-  private _name: string;
+import type { DataField } from "./DataField";
+
+/**
+ * The Company class. A Company has an id and a name.
+ */
+export class Company implements DataField {
+  readonly id: string;
+  readonly name: string;
 
   constructor(id: string, name: string) {
-    this._id = id;
-    this._name = name;
-  }
-
-  public get name(): string {
-    return this._name;
-  }
-  public set name(value: string) {
-    this._name = value;
-  }
-
-  public get id(): string {
-    return this.id;
-  }
-  public set id(value: string) {
-    this.id = value;
+    this.id = id;
+    this.name = name;
   }
 }
