@@ -1,0 +1,22 @@
+{
+    "UForename": {
+        "data": "user",
+        "dataType": "forename",
+        "risk": "1"
+    },
+    "USurname": {
+        "data": "user",
+        "dataType": "surname",
+        "risk": "1"    
+    },
+    "UPhoneNumber": {
+        "data": "user",
+        "dataType": "phoneNumber",
+        "risk": "2"    
+    },
+    "UEmail": {
+        "data": "user",
+        "dataType": "email",
+        "risk": "2"    
+    }
+}
