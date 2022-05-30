@@ -1,0 +1,22 @@
+{
+    "TAvgSpeed": {
+        "data": "trip",
+        "dataType": "avgSpeed",
+        "risk": "1"
+    },
+    "TPrice": {
+        "data": "trip",
+        "dataType": "price",
+        "risk": "1"
+    },
+    "TStartTime": {
+        "data": "trip",
+        "dataType": "startTime",
+        "risk": "1"
+    },
+    "TEndTime": {
+        "data": "trip",
+        "dataType": "endTime",
+        "risk": "1"
+    }
+}

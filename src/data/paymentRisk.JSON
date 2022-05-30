@@ -1,0 +1,30 @@
+{
+    "PType": {
+        "data": "payment",
+        "dataType": "type",
+        "risk": "1"
+    },
+    "PProvider": {
+        "data": "payment",
+        "dataType": "provider",
+        "risk": "1"
+    }
+    ,
+    "PCardNumber": {
+        "data": "payment",
+        "dataType": "cardNumber",
+        "risk": "3"
+    }
+    ,
+    "PCcv": {
+        "data": "payment",
+        "dataType": "ccv",
+        "risk": "3"
+    }
+    ,
+    "PExpiryDate": {
+        "data": "payment",
+        "dataType": "expiryDate",
+        "risk": "2"
+    }
+}
