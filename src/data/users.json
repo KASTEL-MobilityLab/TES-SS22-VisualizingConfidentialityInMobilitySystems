@@ -1,0 +1,16 @@
+{
+  "U01": {
+    "id": "U01",
+    "forename": "Theo",
+    "surname": "Schweitzer",
+    "phoneNumber": "02256708826",
+    "email": "theo.schweitzer@gmail.com"
+  },
+  "U02": {
+    "id": "U02",
+    "forename": "Miriam",
+    "surname": "Lewerentz",
+    "phoneNumber": "03841263688",
+    "email": "miriam.lewerentz@gmail.com"
+  }
+}
