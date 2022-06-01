@@ -1,5 +1,5 @@
-{
-  "P01": {
+[
+  {
     "id": "P01",
     "tripId": "T01",
     "type": "Credit Card",
@@ -8,7 +8,7 @@
     "ccv": "632",
     "expiryDate": "2026-4-01"
   },
-  "P02": {
+  {
     "id": "P02",
     "tripId": "T02",
     "type": "Credit Card",
@@ -17,4 +17,4 @@
     "ccv": "912",
     "expiryDate": "2025-10-01"
   }
-}
+]

@@ -1,5 +1,5 @@
-{
-  "V01": {
+[
+  {
     "id": "V01",
     "type": "e-scooter",
     "companyId": "C01",
@@ -8,7 +8,7 @@
     "status": "active",
     "batteryLevel": "74"
   },
-  "V02": {
+  {
     "id": "V02",
     "type": "e-scooter",
     "companyId": "C02",
@@ -17,7 +17,7 @@
     "status": "active",
     "batteryLevel": "74"
   },
-  "V03": {
+  {
     "id": "V03",
     "type": "e-scooter",
     "companyId": "C01",
@@ -26,4 +26,4 @@
     "status": "inactive",
     "batteryLevel": "56"
   }
-}
+]

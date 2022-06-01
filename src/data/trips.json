@@ -1,5 +1,5 @@
-{
-  "T01": {
+[
+  {
     "id": "T01",
     "routeId": "R01",
     "vehicleId": "V01",
@@ -10,7 +10,7 @@
     "startTime": "Wednesday, 25. May 2022 13:06:04",
     "endTime": "Wednesday, 25. May 2022 13:20:04"
   },
-  "T02": {
+  {
     "id": "T02",
     "routeId": "R02",
     "vehicleId": "V02",
@@ -21,4 +21,4 @@
     "startTime": "Wednesday, 22. May 2022 17:50:19",
     "endTime": "Wednesday, 22. May 2022 18:10:34"
   }
-}
+]
