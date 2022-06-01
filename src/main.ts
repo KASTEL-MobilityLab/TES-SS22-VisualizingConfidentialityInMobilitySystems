@@ -2,6 +2,7 @@ import "@fortawesome/fontawesome-free/js/all.js";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/js/bootstrap.js";
 import "leaflet/dist/leaflet.css";
+import "reflect-metadata";
 import { createApp } from "vue";
 import App from "./App.vue";
 import router from "./router";
