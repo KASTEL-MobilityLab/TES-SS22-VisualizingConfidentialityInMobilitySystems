@@ -1,10 +1,24 @@
-<script setup lang="ts">
-const allDataModules = [
-  { id: 1, value: "Rider Data" },
-  { id: 2, value: "Vehicle Data" },
-  { id: 3, value: "Payment Data" },
-  { id: 4, value: "Trip Data" },
-];
+<script lang="ts">
+import { DataManager } from "@/backend/DataManager";
+import { onMounted, ref } from "vue";
+export default {
+  setup() {
+    let dm = new DataManager();
+    const allDataModules = ref([
+      { id: 1, value: "Rider Data" },
+      { id: 2, value: "Vehicle Data" },
+      { id: 3, value: "Payment Data" },
+      { id: 4, value: "Trip Data" },
+    ]);
+    onMounted(() => {
+      dm.loadAllData();
+    });
+    return {
+      dm,
+      allDataModules,
+    };
+  },
+};
 </script>
 
 <template>
