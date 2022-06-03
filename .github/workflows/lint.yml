@@ -1,17 +1,14 @@
-name: Node.js CI
+name: Check Lint and Format
 
-on:
-  push:
-    branches: [main, dev]
-  pull_request:
-    branches: [main, dev]
+on: [push]
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
+  lint:
+    runs-on: ${{ matrix.os }}
 
     strategy:
       matrix:
+        os: [ubuntu-latest]
         node-version: [14.x, 16.x, 18.x]
 
     steps:
@@ -21,8 +18,12 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: "npm"
-      - run: npm ci
-      - run: npm run check-format
-      - run: npm run lint
-      - run: npm run build --if-present
-      - run: npm run test:unit
+
+      - name: npm install
+        run: npm ci
+
+      - name: check format
+        run: npm run check-format
+
+      - name: check lint
+        run: npm run check-lint
