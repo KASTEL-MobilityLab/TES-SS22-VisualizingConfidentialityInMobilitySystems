@@ -1,7 +1,7 @@
 import { User } from "@/backend/dataFields/User";
 import { plainToInstance, type ClassConstructor } from "class-transformer";
 import { readFile } from "fs/promises";
-import { Trip } from "./dataFields/Trip";
+import type { Trip } from "./dataFields/Trip";
 
 /**
  * Asynchronously reads JSON Data from a given path.
