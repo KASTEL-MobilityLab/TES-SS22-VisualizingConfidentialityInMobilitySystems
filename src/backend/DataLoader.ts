@@ -1,29 +1,19 @@
 import { User } from "@/backend/dataFields/User";
 import { plainToInstance, type ClassConstructor } from "class-transformer";
+import { readFile } from "fs/promises";
 import { Trip } from "./dataFields/Trip";
 
-export class DataLoader {
-  loadUsers(): User[] {
-    return loadTransform(User, "users.json");
-  }
-  loadTrips() {
-    return loadTransform(Trip, "trips.json");
-  }
-
-  // TODO: the rest of the data fields
-}
-
 /**
- * Asynchronously fetches JSON Data from a given path.
+ * Asynchronously reads JSON Data from a given path.
  *
  * @param path the path to a JSON file
- * @returns a Promise of Objects
+ * @returns a Promise of record<string, any>
  */
-export async function loadJSON(path: string): Promise<Record<any, string>[]> {
-  // TODO: is this return type correct?
-  return fetch(path)
-    .then((res) => res.json())
-    .then((data) => data);
+export async function readJsonFile(
+  path: string
+): Promise<Record<string, unknown>[]> {
+  const file = await readFile(path, "utf8");
+  return JSON.parse(file);
 }
 
 /**
@@ -37,6 +27,20 @@ export async function loadTransform<T>(
   cls: ClassConstructor<T>,
   path: string
 ): Promise<T[]> {
-  const jsonData: Record<string, any>[] = loadJSON(`@/backend/data/${path}`); // FIX: does not work like this (incorrect type)
-  return plainToInstance(cls, jsonData);
+  const data = await readJsonFile(path);
+  const transformedData: T[] = plainToInstance(cls, data);
+  return transformedData;
+}
+
+export class DataLoader {
+  private readonly DATA_PATH = "src/data/";
+  private readonly USER_DATA_PATH = this.DATA_PATH + "users.json";
+
+  async loadUsers(): Promise<User[]> {
+    return loadTransform<User>(User, this.USER_DATA_PATH);
+  }
+  loadTrips(): Trip[] {
+    throw Error("Not implemented");
+  }
+  // TODO: the rest of the data fields
 }

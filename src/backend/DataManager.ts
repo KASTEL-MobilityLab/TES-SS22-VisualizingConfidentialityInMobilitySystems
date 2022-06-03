@@ -10,8 +10,6 @@ export class DataManager {
 
   dataLoader: DataLoader;
 
-  private dataPath = "@/data/";
-
   constructor() {
     this.dataLoader = new DataLoader();
     this.users = [];
@@ -20,10 +18,10 @@ export class DataManager {
   }
 
   /**
-   * This method (asnchronously) loads all data into the DataManager.
+   * This method loads all data into the DataManager.
    */
   async loadAllData() {
-    this.users = this.dataLoader.loadUsers();
+    this.users = await this.dataLoader.loadUsers();
     this.trips = this.dataLoader.loadTrips();
   }
 }

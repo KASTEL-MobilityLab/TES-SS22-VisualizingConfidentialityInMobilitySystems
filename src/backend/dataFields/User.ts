@@ -12,7 +12,7 @@ export class User implements DataField {
   @Expose()
   readonly surname: string;
   @Expose()
-  readonly phoneNumber: number;
+  readonly phoneNumber: string;
   @Expose()
   readonly email: string;
 
@@ -20,13 +20,13 @@ export class User implements DataField {
     id: string,
     forename: string,
     surname: string,
-    phonNumber: number,
+    phoneNumber: string,
     email: string
   ) {
     this.id = id;
     this.forename = forename;
     this.surname = surname;
-    this.phoneNumber = phonNumber;
+    this.phoneNumber = phoneNumber;
     this.email = email;
   }
 
