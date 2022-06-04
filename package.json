@@ -21,6 +21,7 @@
     "class-transformer": "^0.5.1",
     "leaflet": "^1.8.0",
     "reflect-metadata": "^0.1.13",
+    "typescript-json-serializer": "^4.2.0",
     "vue": "^3.2.36",
     "vue-router": "^4.0.14"
   },
