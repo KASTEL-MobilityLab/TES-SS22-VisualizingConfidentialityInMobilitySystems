@@ -1,42 +1,29 @@
-import { User } from "@/backend/dataFields/User";
-import { plainToInstance, type ClassConstructor } from "class-transformer";
-import { Trip } from "./dataFields/Trip";
+import companyJson from "../data/companies.json";
+import vehicleJson from "../data/vehicles.json";
+import type { Company } from "./dataFields/Company";
+import type { Vehicle } from "./dataFields/Vehicle";
+import { Train } from "./dataFields/vehicles/Train";
+import { EScooter } from "./dataFields/vehicles/EScooter";
 
 export class DataLoader {
-  loadUsers(): User[] {
-    return loadTransform(User, "users.json");
+  /**
+   * Loads all data from the respective company json file and transforms the array of data to an array of companies
+   *
+   * @returns an array of companies
+   */
+  loadAllCompanies(): Company[] {
+    const transformedCompanyData: Company[] = [];
+    return transformedCompanyData;
   }
-  loadTrips() {
-    return loadTransform(Trip, "trips.json");
+
+  /**
+   * Loads all data from the respective vehicle json file and transform the array of data to an array of vehilces
+   *
+   * @returns an array of vehicles
+   */
+  loadAllVehicles(): Vehicle[] {
+    //TODO: Find solution for giving the plainToInstance method the class/interface Vehcicle instead of the realizing class Train
+    const transformedVehicleData: Vehicle[] = [];
+    return transformedVehicleData;
   }
-
-  // TODO: the rest of the data fields
-}
-
-/**
- * Asynchronously fetches JSON Data from a given path.
- *
- * @param path the path to a JSON file
- * @returns a Promise of Objects
- */
-export async function loadJSON(path: string): Promise<Record<any, string>[]> {
-  // TODO: is this return type correct?
-  return fetch(path)
-    .then((res) => res.json())
-    .then((data) => data);
-}
-
-/**
- * Loads the JSON data from a given path and tries to transform it into instances of `cls`
- *
- * @param cls The created objects will be of type `cls`.
- * @param path The path to a Json file. The file has to be in the src/backend/data/ directory
- * @returns an array of Type `cls`
- */
-export async function loadTransform<T>(
-  cls: ClassConstructor<T>,
-  path: string
-): Promise<T[]> {
-  const jsonData: Record<string, any>[] = loadJSON(`@/backend/data/${path}`); // FIX: does not work like this (incorrect type)
-  return plainToInstance(cls, jsonData);
 }
