@@ -2,11 +2,26 @@ import "reflect-metadata";
 import { describe, expect, it } from "vitest";
 import { VehicleStatus } from "../dataFields/types";
 import { User } from "../dataFields/User";
-import { DataLoader } from "../DataLoader";
+import { AvailableData, DataLoader, getData } from "../DataLoader";
 import { Company } from "./../dataFields/Company";
 import { EScooter } from "./../dataFields/vehicles/EScooter";
 
-describe("DataLoader", () => {
+describe("Async get Data", async () => {
+  it("invalid fileName", async () =>
+    await expect(getData("foo")).rejects.toThrow(
+      "Could not import data from src/data/foo.json"
+    ));
+
+  it("valid fileName", async () => {
+    const companies = await getData(AvailableData.companies);
+    expect(companies[0]).toMatchObject({
+      id: "C01",
+      name: "Fire Runner",
+    });
+  });
+});
+
+describe("DataLoader", async () => {
   const dl = new DataLoader();
   const firstCompany = new Company("C01", "Fire Runner");
   const firstUser = new User(
@@ -26,8 +41,8 @@ describe("DataLoader", () => {
     firstCompany
   );
 
-  it("load all companies", () => {
-    const companies = dl.loadAllCompanies();
+  it("load all companies", async () => {
+    const companies = await dl.loadAllCompanies();
     const loadedCompany = companies[0];
     expect(loadedCompany).toBeInstanceOf(Company);
     expect(loadedCompany).toEqual(firstCompany);

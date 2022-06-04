@@ -14,6 +14,9 @@ export class DataManager {
 
   dataLoader: DataLoader;
 
+  /**
+   * Construct a new DataManager.
+   */
   constructor() {
     this.dataLoader = new DataLoader();
     this.users = [];
@@ -26,8 +29,8 @@ export class DataManager {
   /**
    * This method loads all data into the DataManager.
    */
-  loadAllData() {
-    this.companies = this.dataLoader.loadAllCompanies();
+  async loadAllData() {
+    this.companies = await this.dataLoader.loadAllCompanies();
     this.vehicles = this.dataLoader.loadAllVehicles();
   }
 }
