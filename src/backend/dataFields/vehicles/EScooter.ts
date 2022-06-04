@@ -1,5 +1,7 @@
+import { Exclude, Type } from "class-transformer";
+import "reflect-metadata";
 import type { Company } from "../Company";
-import { VehicleType, type VehicleStatus } from "../types";
+import { VehicleStatus, VehicleType } from "../types";
 import type { IndividualVehicle } from "./IndividualVehicle";
 
 /**
@@ -7,22 +9,34 @@ import type { IndividualVehicle } from "./IndividualVehicle";
  */
 export class EScooter implements IndividualVehicle {
   readonly id: string;
+
+  @Exclude()
   readonly type: VehicleType = VehicleType.escooter;
+
   readonly companyId: string;
-  readonly company: Company;
+
+  @Exclude()
+  company?: Company;
+
+  @Type(() => Number)
   condition: number;
+
+  @Type(() => Number)
   batteryCondition: number;
+
   status: VehicleStatus;
+
+  @Type(() => Number)
   batteryLevel: number;
 
   constructor(
     id: string,
     companyId: string,
-    company: Company,
     condition: number,
     batteryCondition: number,
     status: VehicleStatus,
-    batteryLevel: number
+    batteryLevel: number,
+    company?: Company
   ) {
     this.id = id;
     this.companyId = companyId;

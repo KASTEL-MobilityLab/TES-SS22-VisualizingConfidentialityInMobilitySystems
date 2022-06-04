@@ -24,7 +24,7 @@ export class DataManager {
   }
 
   /**
-   * This method (asnchronously) loads all data into the DataManager.
+   * This method loads all data into the DataManager.
    */
   loadAllData() {
     this.companies = this.dataLoader.loadAllCompanies();

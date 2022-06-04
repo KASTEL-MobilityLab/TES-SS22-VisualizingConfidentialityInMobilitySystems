@@ -1,8 +1,10 @@
+import { plainToInstance } from "class-transformer";
 import companyJson from "../data/companies.json";
+import userJson from "../data/users.json";
 import vehicleJson from "../data/vehicles.json";
-import type { Company } from "./dataFields/Company";
+import { Company } from "./dataFields/Company";
+import { User } from "./dataFields/User";
 import type { Vehicle } from "./dataFields/Vehicle";
-import { Train } from "./dataFields/vehicles/Train";
 import { EScooter } from "./dataFields/vehicles/EScooter";
 
 export class DataLoader {
@@ -12,18 +14,29 @@ export class DataLoader {
    * @returns an array of companies
    */
   loadAllCompanies(): Company[] {
-    const transformedCompanyData: Company[] = [];
+    const transformedCompanyData: Company[] = plainToInstance(
+      Company,
+      companyJson
+    );
     return transformedCompanyData;
   }
 
+  loadAllUsers(): User[] {
+    const users: User[] = plainToInstance(User, userJson);
+    return users;
+  }
+
   /**
-   * Loads all data from the respective vehicle json file and transform the array of data to an array of vehilces
+   * Loads all data from the respective vehicle json file and transform the array of data to an array of vehicles
    *
    * @returns an array of vehicles
    */
   loadAllVehicles(): Vehicle[] {
-    //TODO: Find solution for giving the plainToInstance method the class/interface Vehcicle instead of the realizing class Train
-    const transformedVehicleData: Vehicle[] = [];
+    const transformedVehicleData: Vehicle[] = plainToInstance(
+      EScooter,
+      vehicleJson,
+      { enableImplicitConversion: true }
+    );
     return transformedVehicleData;
   }
 }
