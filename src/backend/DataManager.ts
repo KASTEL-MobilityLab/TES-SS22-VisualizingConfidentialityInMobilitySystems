@@ -24,13 +24,20 @@ export class DataManager {
     this.trips = [];
     this.vehicles = [];
     this.routes = [];
+
+    this.loadAllData();
   }
 
   /**
    * This method loads all data into the DataManager.
    */
-  async loadAllData() {
+  private async loadAllData() {
     this.companies = await this.dataLoader.loadAllCompanies();
     this.vehicles = this.dataLoader.loadAllVehicles();
+  }
+
+  // TODO: replace with generic function <T extends DataField> when ready
+  getDataById(id: string): Vehicle {
+    return this.vehicles[0];
   }
 }

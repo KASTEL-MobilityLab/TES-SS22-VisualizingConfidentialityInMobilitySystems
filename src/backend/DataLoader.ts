@@ -36,6 +36,9 @@ export async function getData(
   }
 }
 
+/**
+ * The DataLoader takes care of loading local JSON files and transforms them to their corresponding classes.
+ */
 export class DataLoader {
   /**
    * Loads all data from the respective company json file and transforms the array of data to an array of companies
@@ -52,6 +55,7 @@ export class DataLoader {
   }
 
   /**
+   * Loads all data from the respective User json file and transform the array of data to an array of User
    *
    * @returns an array of {@link User}
    */
