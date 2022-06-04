@@ -1,19 +1,13 @@
-import { Expose } from "class-transformer";
 import type { DataField } from "./DataField";
 
 /**
  * The User class.
  */
 export class User implements DataField {
-  @Expose()
   readonly id: string;
-  @Expose()
   readonly forename: string;
-  @Expose()
   readonly surname: string;
-  @Expose()
   readonly phoneNumber: string;
-  @Expose()
   readonly email: string;
 
   constructor(

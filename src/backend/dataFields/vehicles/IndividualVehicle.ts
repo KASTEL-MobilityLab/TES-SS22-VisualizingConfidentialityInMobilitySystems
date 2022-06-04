@@ -9,5 +9,5 @@ export interface IndividualVehicle extends Vehicle {
   readonly type: VehicleType;
   status: VehicleStatus;
   readonly companyId: string;
-  readonly company: Company;
+  company?: Company;
 }

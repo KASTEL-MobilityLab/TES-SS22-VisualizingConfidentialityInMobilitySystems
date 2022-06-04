@@ -16,6 +16,8 @@ export enum VehicleStatus {
   inactive = "Inactive",
 }
 
+export type VehicleStatusString = keyof typeof VehicleStatus;
+
 /**
  * PaymentType specifies, whether a given Payment was made Online or offline.
  */

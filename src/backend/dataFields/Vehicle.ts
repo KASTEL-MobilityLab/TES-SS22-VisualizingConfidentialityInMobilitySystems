@@ -7,5 +7,5 @@ import type { DataField } from "./DataField";
 export interface Vehicle extends DataField {
   readonly id: string;
   readonly companyId: string;
-  readonly company: Company;
+  company?: Company;
 }
