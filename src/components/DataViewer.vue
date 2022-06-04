@@ -1,20 +1,16 @@
 <script lang="ts">
-import { DataManager } from "@/backend/DataManager";
-import { onMounted, ref } from "vue";
+import { dataManagerKey } from "@/keys";
+import { inject, ref } from "vue";
 export default {
   setup() {
-    let dm = new DataManager();
+    const $dm = inject(dataManagerKey);
     const allDataModules = ref([
       { id: 1, value: "Rider Data" },
       { id: 2, value: "Vehicle Data" },
       { id: 3, value: "Payment Data" },
       { id: 4, value: "Trip Data" },
     ]);
-    onMounted(() => {
-      dm.loadAllData();
-    });
     return {
-      dm,
       allDataModules,
     };
   },
