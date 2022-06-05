@@ -24,7 +24,7 @@ export class User implements DataField {
     this.email = email;
   }
 
-  getName(): string {
+  getFullName(): string {
     return `${this.forename} ${this.surname}`;
   }
 }

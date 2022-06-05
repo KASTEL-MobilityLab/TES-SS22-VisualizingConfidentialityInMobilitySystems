@@ -7,5 +7,5 @@ import type { Vehicle } from "../Vehicle";
 export interface PublicVehicle extends Vehicle {
   readonly id: string;
   readonly companyId: string;
-  readonly company: Company;
+  company?: Company;
 }

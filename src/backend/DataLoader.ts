@@ -2,9 +2,11 @@ import { plainToInstance } from "class-transformer";
 import userJson from "../data/users.json";
 import vehicleJson from "../data/vehicles.json";
 import { Company } from "./dataFields/Company";
+import { VehicleType } from "./dataFields/types";
 import { User } from "./dataFields/User";
 import type { Vehicle } from "./dataFields/Vehicle";
 import { EScooter } from "./dataFields/vehicles/EScooter";
+import { Train } from "./dataFields/vehicles/Train";
 
 /**
  * Specifies, which data can be loaded with the function {@link getData}.
@@ -70,10 +72,22 @@ export class DataLoader {
    * @returns an array of {@link Vehicle}s
    */
   loadAllVehicles(): Vehicle[] {
-    const transformedVehicleData: Vehicle[] = plainToInstance(
-      EScooter,
-      vehicleJson
+    const vehicles: Vehicle[] = [];
+
+    // push all escooters
+    vehicles.push(
+      ...plainToInstance(EScooter, vehicleJson, {
+        excludeExtraneousValues: true,
+      }).filter((v) => v.type === VehicleType.escooter)
     );
-    return transformedVehicleData;
+
+    // push all trains
+    vehicles.push(
+      ...plainToInstance(Train, vehicleJson, {
+        excludeExtraneousValues: true,
+      }).filter((v) => v.type === VehicleType.train)
+    );
+
+    return vehicles;
   }
 }

@@ -25,5 +25,10 @@
     "batteryCondition": "94",
     "status": "Inactive",
     "batteryLevel": "56"
+  },
+  {
+    "id": "V04",
+    "type": "Train",
+    "companyId": "C03"
   }
 ]
