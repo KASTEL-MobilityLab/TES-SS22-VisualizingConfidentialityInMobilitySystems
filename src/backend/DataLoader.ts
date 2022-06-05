@@ -72,11 +72,11 @@ export class DataLoader {
     const vehicles: Vehicle[] = [];
 
     // push all escooters
-    vehicles.push(
-      ...plainToInstance(EScooter, vehicleJson, {
-        excludeExtraneousValues: true,
-      }).filter((v) => v.type === VehicleType.escooter)
-    );
+    const escooters = plainToInstance(EScooter, vehicleJson, {
+      excludeExtraneousValues: true,
+    }).filter((v) => v.type === VehicleType.escooter);
+
+    vehicles.push(...escooters);
 
     // push all trains
     vehicles.push(
