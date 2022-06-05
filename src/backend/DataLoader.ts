@@ -72,8 +72,7 @@ export class DataLoader {
   loadAllVehicles(): Vehicle[] {
     const transformedVehicleData: Vehicle[] = plainToInstance(
       EScooter,
-      vehicleJson,
-      { enableImplicitConversion: true }
+      vehicleJson
     );
     return transformedVehicleData;
   }

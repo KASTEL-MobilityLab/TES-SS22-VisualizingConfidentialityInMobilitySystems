@@ -11,10 +11,7 @@ defineProps<{
 // This component takes an instance of DataField and displays all its attributes
 // in the Data Viewer.
 
-const $dm: DataManager | undefined = inject(dataManagerKey);
-if ($dm == undefined) {
-  throw Error("could not inject data Manager");
-}
+const $dm: DataManager = inject(dataManagerKey) as DataManager;
 // instead of V01 we will later have access to the currently selected vehicle on the map
 // via an app-level provided attribute.
 const vehicle: Vehicle = $dm.getDataById("V01");
