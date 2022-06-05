@@ -1,5 +1,4 @@
-import type { DataField } from "./DataField";
-import type { Trip } from "./Trip";
+import type { DataField, Trip } from "@/backend/dataFields";
 
 /**
  * The payment method that is associated with a given Trip.

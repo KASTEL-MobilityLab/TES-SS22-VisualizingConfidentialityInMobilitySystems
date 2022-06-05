@@ -1,13 +1,9 @@
+import { Company, EScooter, Train, User, Vehicle } from "@/backend/dataFields";
 import { plainToInstance } from "class-transformer";
 import "reflect-metadata";
 import userJson from "../data/users.json";
 import vehicleJson from "../data/vehicles.json";
-import { Company } from "./dataFields/Company";
 import { VehicleType } from "./dataFields/types";
-import { User } from "./dataFields/User";
-import type { Vehicle } from "./dataFields/Vehicle";
-import { EScooter } from "./dataFields/vehicles/EScooter";
-import { Train } from "./dataFields/vehicles/Train";
 
 /**
  * Specifies, which data can be loaded with the function {@link getData}.
