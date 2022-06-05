@@ -1,25 +1,13 @@
-import { Exclude, Expose, Type } from "class-transformer";
+import { Expose, Type } from "class-transformer";
 import "reflect-metadata";
 import type { Company } from "../Company";
 import { VehicleStatus, VehicleType } from "../types";
-import type { IndividualVehicle } from "./IndividualVehicle";
+import { IndividualVehicle } from "./IndividualVehicle";
 
 /**
  * The E-Scooter Class.
  */
-export class EScooter implements IndividualVehicle {
-  @Expose()
-  readonly id: string;
-
-  @Expose()
-  readonly type: VehicleType;
-
-  @Expose()
-  readonly companyId: string;
-
-  @Exclude()
-  company?: Company;
-
+export class EScooter extends IndividualVehicle {
   @Type(() => Number)
   @Expose()
   condition: number;
@@ -44,13 +32,10 @@ export class EScooter implements IndividualVehicle {
     batteryLevel: number,
     company?: Company
   ) {
-    this.id = id;
-    this.companyId = companyId;
-    this.company = company;
+    super(id, companyId, VehicleType.escooter, company);
     this.condition = condition;
     this.batteryCondition = batteryCondition;
     this.status = status;
     this.batteryLevel = batteryLevel;
-    this.type = VehicleType.escooter;
   }
 }

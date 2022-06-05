@@ -1,13 +1,17 @@
 import type { Company } from "../Company";
-import type { VehicleStatus, VehicleType } from "../types";
-import type { Vehicle } from "../Vehicle";
+import type { VehicleType } from "../types";
+import { Vehicle } from "../Vehicle";
 
 /**
  * This interface has to be implemented by every Individually used vehicle like E-Scooters.
  */
-export interface IndividualVehicle extends Vehicle {
-  readonly type: VehicleType;
-  status: VehicleStatus;
-  readonly companyId: string;
-  company?: Company;
+export abstract class IndividualVehicle extends Vehicle {
+  constructor(
+    id: string,
+    companyId: string,
+    type: VehicleType,
+    company?: Company
+  ) {
+    super(id, companyId, type, company);
+  }
 }

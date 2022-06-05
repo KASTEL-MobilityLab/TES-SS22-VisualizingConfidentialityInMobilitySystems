@@ -1,4 +1,5 @@
 import { plainToInstance } from "class-transformer";
+import "reflect-metadata";
 import userJson from "../data/users.json";
 import vehicleJson from "../data/vehicles.json";
 import { Company } from "./dataFields/Company";

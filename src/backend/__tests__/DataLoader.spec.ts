@@ -3,6 +3,8 @@ import { describe, expect, it } from "vitest";
 import { VehicleStatus, VehicleType } from "../dataFields/types";
 import { User } from "../dataFields/User";
 import type { Vehicle } from "../dataFields/Vehicle";
+import { IndividualVehicle } from "../dataFields/vehicles/IndividualVehicle";
+import { PublicVehicle } from "../dataFields/vehicles/PublicVehicle";
 import { Train } from "../dataFields/vehicles/Train";
 import { AvailableData, DataLoader, getData } from "../DataLoader";
 import { Company } from "./../dataFields/Company";
@@ -72,16 +74,19 @@ describe.concurrent("DataLoader", async () => {
       for (const veh of vehicles.filter(
         (v) => v.type === VehicleType.escooter
       )) {
+        expect(veh).toBeInstanceOf(IndividualVehicle);
         expect(veh).toBeInstanceOf(EScooter);
       }
     });
     it("equality of first escooter", () => {
       expect((<EScooter>loadedEScooter).status).toBe(VehicleStatus.active);
+      expect((<EScooter>loadedEScooter).type).toBe(VehicleType.escooter);
       expect(loadedEScooter).toEqual(firstEScooter);
     });
 
     it("convert all Trains", () => {
       for (const veh of vehicles.filter((v) => v.type === VehicleType.train)) {
+        expect(veh).toBeInstanceOf(PublicVehicle);
         expect(veh).toBeInstanceOf(Train);
       }
     });
