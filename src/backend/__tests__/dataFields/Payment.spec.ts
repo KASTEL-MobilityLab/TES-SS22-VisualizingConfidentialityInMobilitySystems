@@ -1,13 +1,11 @@
-import { Vehicle } from "@/backend/dataFields/Vehicle";
 import { VehicleStatus } from "@/backend/dataFields/types";
 import { EScooter } from "@/backend/dataFields/vehicles/EScooter";
-import { Train } from "@/backend/dataFields/vehicles/Train";
 import { describe, expect, it } from "vitest";
 import { Trip } from "@/backend/dataFields/Trip";
 import { Route } from "@/backend/Route";
 import { LatLng } from "@/backend/utils/LatLng";
 import { Company } from "@/backend/dataFields/Company";
-import { Cash, User } from "@/backend/dataFields";
+import { User } from "@/backend/dataFields";
 import { PayPal } from "@/backend/dataFields/payments/Paypal";
 
 describe("Test Payment Subclasses", () => {

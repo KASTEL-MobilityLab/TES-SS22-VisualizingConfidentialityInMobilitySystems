@@ -1,4 +1,4 @@
-import { Exclude, Expose } from "class-transformer";
+import { Expose } from "class-transformer";
 import { Payment } from "../Payment";
 import type { Trip } from "../Trip";
 import type { PaymentType } from "../types";

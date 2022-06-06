@@ -1,4 +1,3 @@
-import { Exclude } from "class-transformer";
 import { Payment } from "../Payment";
 import type { Trip } from "../Trip";
 import { PaymentType } from "../types";

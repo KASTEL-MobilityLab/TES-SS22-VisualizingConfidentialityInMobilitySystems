@@ -31,8 +31,11 @@ export class DataManager {
    * This method loads all data into the DataManager.
    */
   private async loadAllData() {
+    this.users = await this.dataLoader.loadAllUsers();
     this.companies = await this.dataLoader.loadAllCompanies();
-    this.vehicles = this.dataLoader.loadAllVehicles();
+    this.trips = await this.dataLoader.loadAllTrips();
+    this.vehicles = await this.dataLoader.loadAllVehicles();
+    this.routes = await this.dataLoader.loadAllRoutes();
   }
 
   // TODO: replace with generic function <T extends DataField> when ready

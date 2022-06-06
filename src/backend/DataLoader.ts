@@ -11,8 +11,6 @@ import {
 import { Cash } from "@/backend/dataFields/payments/Cash";
 import { plainToInstance } from "class-transformer";
 import "reflect-metadata";
-import userJson from "../data/users.json";
-import vehicleJson from "../data/vehicles.json";
 import { PayPal } from "./dataFields/payments/Paypal";
 import { PaymentType, VehicleType } from "./dataFields/types";
 import { Route } from "./Route";
