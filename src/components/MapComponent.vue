@@ -10,6 +10,24 @@ const topLeft = new L.LatLng(49.036357, 8.334785);
 const bottomRight = new L.LatLng(48.977558, 8.469264);
 const bounds = new L.LatLngBounds(topLeft, bottomRight);
 
+const stamenWaterColor = L.tileLayer(
+  "https://stamen-tiles.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.jpg",
+  {
+    attribution:
+      'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+    minZoom: 14,
+    maxZoom: 16,
+  }
+);
+
+const mapLabels = L.tileLayer(
+  "https://stamen-tiles.a.ssl.fastly.net/terrain-labels/{z}/{x}/{y}.png",
+  {
+    minZoom: 14,
+    maxZoom: 16,
+  }
+);
+
 export default {
   setup() {
     let map;
@@ -20,22 +38,9 @@ export default {
         maxBounds: bounds,
         maxBoundsViscosity: 0.6,
       });
-      L.tileLayer(
-        "https://stamen-tiles.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.jpg",
-        {
-          attribution:
-            'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-          minZoom: 14,
-          maxZoom: 16,
-        }
-      ).addTo(map);
-      L.tileLayer(
-        "https://stamen-tiles.a.ssl.fastly.net/terrain-labels/{z}/{x}/{y}.png",
-        {
-          minZoom: 14,
-          maxZoom: 16,
-        }
-      ).addTo(map);
+      // add tileLayers
+      stamenWaterColor.addTo(map);
+      mapLabels.addTo(map);
     });
   },
 };
