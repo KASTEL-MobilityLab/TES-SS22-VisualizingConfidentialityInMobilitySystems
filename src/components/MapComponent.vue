@@ -3,6 +3,7 @@
 </template>
 
 <script lang="ts">
+import { createBikeMarker } from "@/markerUtils";
 import L from "leaflet";
 import { onMounted } from "vue";
 
@@ -27,7 +28,7 @@ const mapLabels = L.tileLayer(
     maxZoom: 16,
   }
 );
-
+const bikePositionV01 = new L.LatLng(49.007478, 8.385981);
 export default {
   setup() {
     let map;
@@ -41,6 +42,7 @@ export default {
       // add tileLayers
       stamenWaterColor.addTo(map);
       mapLabels.addTo(map);
+      createBikeMarker(bikePositionV01).addTo(map);
     });
   },
 };
