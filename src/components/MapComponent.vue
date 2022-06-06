@@ -5,11 +5,21 @@
 <script lang="ts">
 import L from "leaflet";
 import { onMounted } from "vue";
+
+const topLeft = new L.LatLng(49.036357, 8.334785);
+const bottomRight = new L.LatLng(48.977558, 8.469264);
+const bounds = new L.LatLngBounds(topLeft, bottomRight);
+
 export default {
   setup() {
     let map;
     onMounted(() => {
-      map = new L.Map("leafletMap").setView([49.006889, 8.403653], 13);
+      map = new L.Map("leafletMap", {
+        center: bounds.getCenter(),
+        zoom: 15,
+        maxBounds: bounds,
+        maxBoundsViscosity: 0.6,
+      });
       L.tileLayer(
         "https://stamen-tiles.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.jpg",
         {
