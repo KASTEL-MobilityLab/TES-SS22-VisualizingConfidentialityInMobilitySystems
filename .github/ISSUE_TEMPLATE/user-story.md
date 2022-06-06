@@ -19,6 +19,12 @@ um **Nutzen/Wert**
 
 - [ ] Aufgabe
 
-## Akzeptanzkriterien
+### Allgemeine Akzeptanzkriterien
+
+- [ ] Clean Code Kriterien eingehalten
+- [ ] Code ist ausreichend kommentiert
+- [ ] Funktionalität ist mit Tests abgesichert 
+
+### Spezifische Akzeptanzkriterien
 
 *Spezifische Akzeptanzkriterien*
