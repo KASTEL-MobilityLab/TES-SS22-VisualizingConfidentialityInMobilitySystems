@@ -26,16 +26,14 @@ export default {
           attribution:
             'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
           minZoom: 14,
-          maxZoom: 17,
+          maxZoom: 16,
         }
       ).addTo(map);
       L.tileLayer(
         "https://stamen-tiles.a.ssl.fastly.net/terrain-labels/{z}/{x}/{y}.png",
         {
-          attribution:
-            'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
           minZoom: 14,
-          maxZoom: 17,
+          maxZoom: 16,
         }
       ).addTo(map);
     });
