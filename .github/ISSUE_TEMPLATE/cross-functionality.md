@@ -1,19 +1,16 @@
 ---
-name: User Story
-about: An user story representing functionality to be added in a sprint.
+name: Cross-functional Issue
+about: A backend-related functionality that is required for a User story.
 title: ''
-labels: User Story
+labels: Cross-Functionality
 assignees: ''
 
 ---
 
-**Story-Punkte: 1/2/3/5/8**
+**Aufwandsschätzung: 1/2/3/5/8**
 
-## Story Name
-
-Als **Rolle**,
-möchte ich **Ziel/Wunsch/Funktion**,
-um **Nutzen/Wert**
+## Für welche User-Story wird dies benötigt?
+Story-Nummer: 
 
 ## Aufgabenliste
 
