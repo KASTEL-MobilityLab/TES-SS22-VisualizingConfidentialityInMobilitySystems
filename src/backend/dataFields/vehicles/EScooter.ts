@@ -5,23 +5,23 @@ import { VehicleStatus, VehicleType } from "../types";
 import { IndividualVehicle } from "./IndividualVehicle";
 
 /**
- * The E-Scooter Class.
+ * The E-Scooter class.
  */
 export class EScooter extends IndividualVehicle {
   @Type(() => Number)
   @Expose()
-  condition: number;
+  readonly condition: number;
 
   @Type(() => Number)
   @Expose()
-  batteryCondition: number;
+  readonly batteryCondition: number;
 
   @Expose()
-  status: VehicleStatus;
+  readonly status: VehicleStatus;
 
   @Type(() => Number)
   @Expose()
-  batteryLevel: number;
+  readonly batteryLevel: number;
 
   constructor(
     id: string,

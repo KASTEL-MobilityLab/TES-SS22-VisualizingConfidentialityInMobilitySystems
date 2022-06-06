@@ -1,9 +1,21 @@
-import { Company, EScooter, Train, User, Vehicle } from "@/backend/dataFields";
+import {
+  Company,
+  CreditCard,
+  EScooter,
+  Train,
+  Trip,
+  User,
+  Vehicle,
+  type Payment,
+} from "@/backend/dataFields";
+import { Cash } from "@/backend/dataFields/payments/Cash";
 import { plainToInstance } from "class-transformer";
 import "reflect-metadata";
 import userJson from "../data/users.json";
 import vehicleJson from "../data/vehicles.json";
-import { VehicleType } from "./dataFields/types";
+import { PayPal } from "./dataFields/payments/Paypal";
+import { PaymentType, VehicleType } from "./dataFields/types";
+import { Route } from "./Route";
 
 /**
  * Specifies, which data can be loaded with the function {@link getData}.
@@ -18,7 +30,7 @@ export enum AvailableData {
 /**
  * Dynamically import the specified json file. Valid strings are specified in the {@link AvailableData} enum.
  * @param fileName A string that specifies the filename, i.e for src/data/companies.json `fileName='companies'`
- * or `fileName='AvailableData.companies'"
+ * or `fileName='AvailableData.companies'".
  * @returns a Promise of Record<string, unknown>
  */
 export async function getData(
@@ -40,7 +52,7 @@ export async function getData(
  */
 export class DataLoader {
   /**
-   * Loads all data from the respective company json file and transforms the array of data to an array of companies
+   * Loads all data from the specific company json file and transforms the array of data to an array of companies.
    *
    * @returns an array of {@link Company}
    */
@@ -54,37 +66,99 @@ export class DataLoader {
   }
 
   /**
-   * Loads all data from the respective User json file and transform the array of data to an array of User
+   * Loads all data from the specific User json file and transforms the array of data to an array of users.
    *
    * @returns an array of {@link User}
    */
-  loadAllUsers(): User[] {
-    const users: User[] = plainToInstance(User, userJson);
-    return users;
+  async loadAllUsers(): Promise<User[]> {
+    const userJson = await getData("users");
+    const transformedUserData: User[] = plainToInstance(User, userJson);
+    return transformedUserData;
   }
 
   /**
-   * Loads all data from the respective vehicle json file and transform the array of data to an array of vehicles
+   * Loads all data from the specific vehicle json file and transforms the array of data to an array of vehicles.
    *
    * @returns an array of {@link Vehicle}s
    */
-  loadAllVehicles(): Vehicle[] {
-    const vehicles: Vehicle[] = [];
+  async loadAllVehicles(): Promise<Vehicle[]> {
+    const vehicleJson = await getData("vehicles");
+    const transformedVehicleData: Vehicle[] = [];
 
-    // push all escooters
+    //Filter the e-scooters from all vehicles
     const escooters = plainToInstance(EScooter, vehicleJson, {
       excludeExtraneousValues: true,
-    }).filter((v) => v.type === VehicleType.escooter);
+    }).filter((vehicle) => vehicle.type === VehicleType.escooter);
 
-    vehicles.push(...escooters);
+    //Push all e-scooters
+    transformedVehicleData.push(...escooters);
 
-    // push all trains
-    vehicles.push(
-      ...plainToInstance(Train, vehicleJson, {
-        excludeExtraneousValues: true,
-      }).filter((v) => v.type === VehicleType.train)
-    );
+    //Filter the trains from all vehicles
+    const trains = plainToInstance(Train, vehicleJson, {
+      excludeExtraneousValues: true,
+    }).filter((vehicle) => vehicle.type === VehicleType.train);
 
-    return vehicles;
+    //Push all trains
+    transformedVehicleData.push(...trains);
+
+    return transformedVehicleData;
+  }
+
+  /**
+   * Loads all data from the specific payment json file and transforms the array of data to an array of payments.
+   *
+   * @returns an array of {@link Payment}s
+   */
+  async loadAllPayments(): Promise<Payment[]> {
+    const paymentJson = await getData("payments");
+    const transformedPaymentData: Payment[] = [];
+
+    //Filter the cash payments from all payments
+    const cashPayments = plainToInstance(Cash, paymentJson, {
+      excludeExtraneousValues: true,
+    }).filter((payment) => payment.paymentType === PaymentType.cash);
+
+    //Push all cash payments
+    transformedPaymentData.push(...cashPayments);
+
+    //Filter the credit card payments from all payments
+    const creditCardPayments = plainToInstance(CreditCard, paymentJson, {
+      excludeExtraneousValues: true,
+    }).filter((payment) => payment.paymentType === PaymentType.creditcard);
+
+    //Push all credit card payments
+    transformedPaymentData.push(...creditCardPayments);
+
+    //Filter the PayPal payments from all payments
+    const payPalPayments = plainToInstance(PayPal, paymentJson, {
+      excludeExtraneousValues: true,
+    }).filter((payment) => payment.paymentType === PaymentType.paypal);
+
+    //Push all PayPal payments
+    transformedPaymentData.push(...payPalPayments);
+
+    return transformedPaymentData;
+  }
+
+  /**
+   * Loads all data from the specific trip json file and transforms the array of data to an array of trips.
+   *
+   * @returns an array of {@link Trip}
+   */
+  async loadAllTrips(): Promise<Trip[]> {
+    const tripJson = await getData("trips");
+    const transformedTripData: Trip[] = plainToInstance(Trip, tripJson);
+    return transformedTripData;
+  }
+
+  /**
+   * Loads all data from the specific route json file and transforms the array of data to an array of routes.
+   *
+   * @returns an array of {@link Route}
+   */
+  async loadAllRoutes(): Promise<Route[]> {
+    const routeJson = await getData("routes");
+    const transformedRouteData: Route[] = plainToInstance(Route, routeJson);
+    return transformedRouteData;
   }
 }

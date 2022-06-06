@@ -1,14 +1,12 @@
 import { Exclude, Expose } from "class-transformer";
 import type { Company } from "./Company";
-import type { DataField } from "./DataField";
+import { DataField } from "./DataField";
 import type { VehicleType } from "./types";
 
 /**
  * The interface every vehicle must implement.
  */
-export abstract class Vehicle implements DataField {
-  @Expose()
-  readonly id: string;
+export abstract class Vehicle extends DataField {
   @Expose()
   readonly companyId: string;
   @Expose()
@@ -22,11 +20,11 @@ export abstract class Vehicle implements DataField {
     type: VehicleType,
     company?: Company
   ) {
-    this.id = id;
+    super(id);
     this.companyId = companyId;
     this.type = type;
     if (company !== undefined) {
-      this.company = company;
+      this._company = company;
     }
   }
 
@@ -37,12 +35,15 @@ export abstract class Vehicle implements DataField {
     return this._company;
   }
 
-  set company(c: Company) {
-    if (c.id !== this.companyId) {
+  set company(company: Company) {
+    this.checkForeignKeyReferences(company, this.companyId);
+    /*
+    if (company.id !== this.companyId) {
       throw Error(
-        `Cannot set company with Company Id ${c.id}: Id does not match the company id of this vehicle ${this.companyId}`
+        `Cannot set company with Company Id ${company.id}: Id does not match the company id of this vehicle id ${this.companyId}`
       );
     }
-    this._company = c;
+    */
+    this._company = company;
   }
 }

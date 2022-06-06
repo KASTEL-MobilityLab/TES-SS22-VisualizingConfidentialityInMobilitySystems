@@ -1,15 +1,15 @@
-import type { DataField } from "./DataField";
+import { Expose } from "class-transformer";
+import { DataField } from "./DataField";
 
 /**
  * The Company class. A Company has an id and a name.
  */
-
-export class Company implements DataField {
-  readonly id: string;
+export class Company extends DataField {
+  @Expose()
   readonly name: string;
 
   constructor(id: string, name: string) {
-    this.id = id;
+    super(id);
     this.name = name;
   }
 }

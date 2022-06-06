@@ -1,13 +1,20 @@
-import type { DataField } from "./DataField";
+import { Expose } from "class-transformer";
+import { DataField } from "./DataField";
 
 /**
  * The User class.
  */
-export class User implements DataField {
-  readonly id: string;
+export class User extends DataField {
+  @Expose()
   readonly forename: string;
+
+  @Expose()
   readonly surname: string;
+
+  @Expose()
   readonly phoneNumber: string;
+
+  @Expose()
   readonly email: string;
 
   constructor(
@@ -17,7 +24,7 @@ export class User implements DataField {
     phoneNumber: string,
     email: string
   ) {
-    this.id = id;
+    super(id);
     this.forename = forename;
     this.surname = surname;
     this.phoneNumber = phoneNumber;

@@ -20,5 +20,16 @@
     "price": "10",
     "startTime": "Wednesday, 22. May 2022 17:50:19",
     "endTime": "Wednesday, 22. May 2022 18:10:34"
+  },
+  {
+    "id": "T03",
+    "routeId": "R03",
+    "vehicleId": "V04",
+    "userId": "U03",
+    "paymentId": "P03",
+    "avgSpeed": "20.32",
+    "price": "10",
+    "startTime": "Wednesday, 22. May 2022 17:50:19",
+    "endTime": "Wednesday, 22. May 2022 18:10:34"
   }
 ]

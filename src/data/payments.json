@@ -16,5 +16,14 @@
     "cardNumber": "5490966481531968",
     "ccv": "912",
     "expiryDate": "2025-10-01"
+  },
+  {
+    "id": "P03",
+    "tripId": "T03",
+    "type": "PayPal",
+    "provider": "PayPal",
+    "cardNumber": "5490966481531968",
+    "ccv": "912",
+    "expiryDate": "2025-10-01"
   }
 ]
