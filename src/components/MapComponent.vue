@@ -3,7 +3,11 @@
 </template>
 
 <script lang="ts">
-import { createBikeMarker } from "@/markerUtils";
+import {
+  createBikeMarker,
+  createBusMarker,
+  createTrainMarker,
+} from "@/utils/markerUtils";
 import L from "leaflet";
 import { onMounted } from "vue";
 
@@ -29,6 +33,8 @@ const mapLabels = L.tileLayer(
   }
 );
 const bikePositionV01 = new L.LatLng(49.007478, 8.385981);
+const trainPositionV02 = new L.LatLng(49.0075, 8.381111);
+const busPositionV03 = new L.LatLng(49.0025, 8.38591);
 export default {
   setup() {
     let map;
@@ -43,6 +49,8 @@ export default {
       stamenWaterColor.addTo(map);
       mapLabels.addTo(map);
       createBikeMarker(bikePositionV01).addTo(map);
+      createBusMarker(busPositionV03).addTo(map);
+      createTrainMarker(trainPositionV02).addTo(map);
     });
   },
 };
@@ -53,5 +61,9 @@ export default {
   width: 100vw;
   z-index: 1;
   position: absolute;
+}
+#fontAwesomeIcon {
+  text-align: center;
+  line-height: 20px;
 }
 </style>
