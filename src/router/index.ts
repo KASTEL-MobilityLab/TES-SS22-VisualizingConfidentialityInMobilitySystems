@@ -1,10 +1,10 @@
+import DataView from "@/views/DataView.vue";
 import DefaultView from "@/views/dataViewer/DefaultView.vue";
 import PaymentDataView from "@/views/dataViewer/PaymentDataView.vue";
 import RiderDataView from "@/views/dataViewer/RiderDataView.vue";
 import TripDataView from "@/views/dataViewer/TripDataView.vue";
 import VehicleDataView from "@/views/dataViewer/VehicleDataView.vue";
 import WelcomeView from "@/views/dataViewer/WelcomeView.vue";
-import DataViewerView from "@/views/DataViewerView.vue";
 import { createRouter, createWebHistory } from "vue-router";
 
 const router = createRouter({
@@ -13,7 +13,7 @@ const router = createRouter({
     {
       path: "/",
       name: "Home",
-      component: DataViewerView,
+      component: DataView,
       children: [
         {
           // Display welcome message like in our Figma Prototype
