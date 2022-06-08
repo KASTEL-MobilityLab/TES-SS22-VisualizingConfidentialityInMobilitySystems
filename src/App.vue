@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import MapComponent from "@/components/MapComponent.vue";
 import NavBar from "@/components/NavBar.vue";
-import DataViewer from "./components/DataViewer.vue";
+import { RouterView } from "vue-router";
 </script>
 
 <template>
@@ -10,7 +10,9 @@ import DataViewer from "./components/DataViewer.vue";
     <div class="outer-wrap">
       <MapComponent />
       <div class="overlay">
-        <DataViewer />
+        <!-- Renders the view that matches the top level root: DataViewerView and HelpView
+        We need to find a way to show HelpView on the left side and not switch between Help and DataViewer-->
+        <RouterView />
       </div>
     </div>
   </main>
