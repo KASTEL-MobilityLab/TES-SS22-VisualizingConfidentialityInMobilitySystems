@@ -38,7 +38,7 @@ div.overlay {
   bottom: 0;
   left: 65vw;
   z-index: 2;
-  opacity: 0.9;
+  opacity: 0.95;
   border-radius: 150px;
 }
 </style>

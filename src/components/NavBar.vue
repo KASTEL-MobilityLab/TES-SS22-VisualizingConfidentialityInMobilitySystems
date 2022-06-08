@@ -6,7 +6,8 @@ import { RouterLink } from "vue-router";
   <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
       <RouterLink to="/" class="navbar-brand"
-        >Confidentiality Visualizer</RouterLink
+        ><i class="fa-solid fa-lock fa-fw"></i> Confidentiality
+        Visualizer</RouterLink
       >
       <ul class="navbar-nav ms-auto me-auto">
         <li class="nav-item active dropdown">
@@ -33,9 +34,11 @@ import { RouterLink } from "vue-router";
         </li>
       </ul>
       <div class="d-flex">
-        <span class="navbar-brand p-2">DE | EN</span>
+        <span class="navbar-brand m-2"
+          >EN <i class="fa-solid fa-globe fa-fw"></i
+        ></span>
         <div class="vr"></div>
-        <RouterLink to="/help" class="navbar-brand p-2">Help</RouterLink>
+        <RouterLink to="/help" class="navbar-brand m-2">Help</RouterLink>
       </div>
     </div>
   </nav>
