@@ -3,8 +3,15 @@ import type { Trip } from "./dataFields/Trip";
 import type { User } from "./dataFields/User";
 import { DataLoader } from "./DataLoader";
 import type { Route } from "./Route";
+import { Role } from "./roles";
 
 export class DataManager {
+  currentRole: Role;
+  currentUser?: User;
+  currentCompany?: Company;
+  currentVehicle?: Vehicle;
+  currrentTrip?: Trip;
+
   users: User[];
   companies: Company[];
   trips: Trip[];
@@ -17,6 +24,8 @@ export class DataManager {
    * Construct a new DataManager.
    */
   constructor() {
+    //The city is set as the default role
+    this.currentRole = Role.city;
     this.dataLoader = new DataLoader();
     this.users = [];
     this.companies = [];
@@ -39,14 +48,14 @@ export class DataManager {
   }
 
   // TODO: replace with generic function <T extends DataField> when ready
-  getDataById(id: string): Vehicle {
+  getDataById(id: string): DataField {
     return this.vehicles[0];
   }
 
   private setVehicleReferences() {
-    for (const veh of this.vehicles) {
-      veh.company = this.getForeignKeyReference<Company>(
-        veh.companyId,
+    for (const vehicle of this.vehicles) {
+      vehicle.company = this.getForeignKeyReference<Company>(
+        vehicle.companyId,
         this.companies
       );
     }
@@ -65,5 +74,48 @@ export class DataManager {
       throw Error(`No Key matches the given reference Id ${referenceId}`);
     }
     return ref;
+  }
+
+  /**
+   * Change the current role.
+   * @param role The selected role from the enum roles.
+   */
+  private changeRole(role: string) {
+    if (!(role in Role)) {
+      throw Error(`Could not change role to ${role}`);
+    }
+    this.currentRole = <Role>role;
+  }
+
+  /**
+   * Change the current user.
+   * @param userId The user of the selected user.
+   */
+  private changeUser(userId: string) {
+    this.currentUser = this.getDataById(userId);
+  }
+
+  /**
+   * Change the current company.
+   * @param companyId The user of the selected company.
+   */
+  private changeCompany(companyId: string) {
+    this.currentCompany = this.getDataById(companyId);
+  }
+
+  /**
+   * Change the current vehicle.
+   * @param vehicleId The user of the selected vehicle.
+   */
+  private changeVehicle(vehicleId: string) {
+    this.currentVehicle = this.getDataById(vehicleId);
+  }
+
+  /**
+   * Change the current trip.
+   * @param tripId The user of the selected trip.
+   */
+  private changeTrip(tripId: string) {
+    this.currrentTrip = this.getDataById(tripId);
   }
 }

@@ -1,7 +1,10 @@
+import { Expose } from "class-transformer";
+
 /**
  * The top level interface that every data field (like Trip or Payment) has to implement.
  */
 export abstract class DataField {
+  @Expose()
   readonly id: string;
 
   constructor(id: string) {

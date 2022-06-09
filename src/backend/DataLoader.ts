@@ -23,6 +23,7 @@ export enum AvailableData {
   users = "users",
   vehicles = "vehicles",
   payments = "payments",
+  routes = "routes",
 }
 
 /**
@@ -38,10 +39,16 @@ export async function getData(
     throw Error(`Could not import data from src/data/${fileName}.json`);
   }
   try {
-    const data = await import(`../data/${fileName}.json`);
-    return data.default;
-  } catch (err) {
-    throw Error(`Unexpected error parsing the JSON file: ${err}`);
+    //Get routes data
+    if (fileName === "routes") {
+      const data = await import(`../data/risk/${fileName}.json`);
+      return data.default;
+    } else {
+      const data = await import(`../data/${fileName}.json`);
+      return data.default;
+    }
+  } catch (error) {
+    throw Error(`Unexpected error parsing the JSON file: ${error}`);
   }
 }
 

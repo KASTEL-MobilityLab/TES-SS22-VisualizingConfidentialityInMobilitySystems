@@ -7,8 +7,8 @@ import { IndividualVehicle } from "../dataFields/vehicles/IndividualVehicle";
 import { PublicVehicle } from "../dataFields/vehicles/PublicVehicle";
 import { Train } from "../dataFields/vehicles/Train";
 import { AvailableData, DataLoader, getData } from "../DataLoader";
-import { Company } from "./../dataFields/Company";
-import { EScooter } from "./../dataFields/vehicles/EScooter";
+import { Company } from "../dataFields/Company";
+import { EScooter } from "../dataFields/vehicles/EScooter";
 
 describe.concurrent("Async get Data", async () => {
   it("invalid fileName", async () =>
@@ -54,23 +54,23 @@ describe.concurrent("DataLoader", async () => {
     expect(loadedCompany).toEqual(fireRunnerCompany);
   });
 
-  it("load all users", () => {
-    const users = dl.loadAllUsers();
+  it("load all users", async () => {
+    const users = await dl.loadAllUsers();
     const loadedUser = users[0];
     expect(loadedUser).toBeInstanceOf(User);
     expect(loadedUser).toEqual(firstUser);
     expect(loadedUser.getFullName()).toBe(firstUser.getFullName());
   });
 
-  describe("load all Vehicles", () => {
-    const vehicles = dl.loadAllVehicles();
+  describe("load all Vehicles", async () => {
+    const vehicles = await dl.loadAllVehicles();
 
     const loadedEScooter: Vehicle = vehicles[0];
     loadedEScooter.company = fireRunnerCompany;
     const loadedTrain: Vehicle = vehicles[3];
     loadedTrain.company = kVVCompany;
 
-    it("convert all EScooters", () => {
+    it("convert all EScooters", async () => {
       for (const veh of vehicles.filter(
         (v) => v.type === VehicleType.escooter
       )) {
@@ -78,19 +78,19 @@ describe.concurrent("DataLoader", async () => {
         expect(veh).toBeInstanceOf(EScooter);
       }
     });
-    it("equality of first escooter", () => {
+    it("equality of first escooter", async () => {
       expect((<EScooter>loadedEScooter).status).toBe(VehicleStatus.active);
       expect((<EScooter>loadedEScooter).type).toBe(VehicleType.escooter);
       expect(loadedEScooter).toEqual(firstEScooter);
     });
 
-    it("convert all Trains", () => {
+    it("convert all Trains", async () => {
       for (const veh of vehicles.filter((v) => v.type === VehicleType.train)) {
         expect(veh).toBeInstanceOf(PublicVehicle);
         expect(veh).toBeInstanceOf(Train);
       }
     });
-    it("equality of first train", () => {
+    it("equality of first train", async () => {
       expect(loadedTrain).toEqual(firstTrain);
     });
   });

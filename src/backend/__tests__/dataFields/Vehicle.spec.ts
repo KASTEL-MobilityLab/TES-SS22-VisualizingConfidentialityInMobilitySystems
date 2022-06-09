@@ -4,7 +4,7 @@ import { EScooter } from "@/backend/dataFields/vehicles/EScooter";
 import { Train } from "@/backend/dataFields/vehicles/Train";
 import { describe, expect, it } from "vitest";
 
-describe("Test Vehicle Subclasses", () => {
+describe.concurrent("Test Vehicle Subclasses", async () => {
   const fireRunnerCompany = new Company("C01", "Fire Runner");
   const escooter = new EScooter(
     "V01",
@@ -16,12 +16,12 @@ describe("Test Vehicle Subclasses", () => {
     fireRunnerCompany
   );
 
-  it("try to retrieve undefined company of vehicle", () => {
+  it("try to retrieve undefined company of vehicle", async () => {
     const train = new Train("V01", "C01");
     expect(() => train.company).toThrowError();
   });
 
-  it("assign invalid company", () => {
+  it("assign invalid company", async () => {
     const invalidCompany = new Company("C10", "Foo");
     expect(() => (escooter.company = invalidCompany)).toThrowError();
 
