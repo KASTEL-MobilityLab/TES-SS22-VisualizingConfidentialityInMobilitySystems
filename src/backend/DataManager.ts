@@ -89,6 +89,7 @@ export class DataManager {
 
   /**
    * Change the current user.
+   * TODO: implement getDataById
    * @param userId The user of the selected user.
    */
   private changeUser(userId: string) {
@@ -97,6 +98,7 @@ export class DataManager {
 
   /**
    * Change the current company.
+   * TODO: implement getDataById
    * @param companyId The user of the selected company.
    */
   private changeCompany(companyId: string) {
@@ -105,6 +107,7 @@ export class DataManager {
 
   /**
    * Change the current vehicle.
+   * TODO: implement getDataById
    * @param vehicleId The user of the selected vehicle.
    */
   private changeVehicle(vehicleId: string) {
@@ -113,6 +116,7 @@ export class DataManager {
 
   /**
    * Change the current trip.
+   * TODO: implement getDataById
    * @param tripId The user of the selected trip.
    */
   private changeTrip(tripId: string) {
