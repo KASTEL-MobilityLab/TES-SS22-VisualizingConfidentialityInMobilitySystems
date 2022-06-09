@@ -1,8 +1,4 @@
-<template>
-  <div id="leafletMap"></div>
-</template>
-
-<script lang="ts">
+<script setup lang="ts">
 import {
   createBikeMarker,
   createBusMarker,
@@ -35,26 +31,26 @@ const mapLabels = L.tileLayer(
 const bikePositionV01 = new L.LatLng(49.007478, 8.385981);
 const trainPositionV02 = new L.LatLng(49.0075, 8.381111);
 const busPositionV03 = new L.LatLng(49.0025, 8.38591);
-export default {
-  setup() {
-    let map;
-    onMounted(() => {
-      map = new L.Map("leafletMap", {
-        center: bounds.getCenter(),
-        zoom: 15,
-        maxBounds: bounds,
-        maxBoundsViscosity: 0.6,
-      });
-      // add tileLayers
-      stamenWaterColor.addTo(map);
-      mapLabels.addTo(map);
-      createBikeMarker(bikePositionV01).addTo(map);
-      createBusMarker(busPositionV03).addTo(map);
-      createTrainMarker(trainPositionV02).addTo(map);
-    });
-  },
-};
+
+onMounted(() => {
+  const map = L.map("leafletMap", {
+    center: bounds.getCenter(),
+    zoom: 15,
+    layers: [stamenWaterColor, mapLabels],
+    maxBounds: bounds,
+    maxBoundsViscosity: 0.6,
+  });
+  // add some test markers
+  createBikeMarker(bikePositionV01).addTo(map);
+  createBusMarker(busPositionV03).addTo(map);
+  createTrainMarker(trainPositionV02).addTo(map);
+});
 </script>
+
+<template>
+  <div id="leafletMap"></div>
+</template>
+
 <style scoped>
 #leafletMap {
   height: 100vh;
