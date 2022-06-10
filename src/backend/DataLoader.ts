@@ -24,29 +24,26 @@ export enum AvailableData {
   vehicles = "vehicles",
   payments = "payments",
   routes = "routes",
+  trips = "trips",
+  risks = "risk/risk",
+  explanation = "risk/explanation",
 }
 
 /**
  * Dynamically import the specified json file. Valid strings are specified in the {@link AvailableData} enum.
- * @param fileName A string that specifies the filename, i.e for src/data/companies.json `fileName='companies'`
+ * @param dataPath A string that specifies the filename, i.e for src/data/companies.json `fileName='companies'`
  * or `fileName='AvailableData.companies'".
  * @returns a Promise of Record<string, unknown>
  */
 export async function getData(
-  fileName: string
+  dataPath: AvailableData
 ): Promise<Record<string, unknown>[]> {
-  if (!(fileName in AvailableData)) {
-    throw Error(`Could not import data from src/data/${fileName}.json`);
-  }
+  // if (!(fileName in AvailableData)) {
+  //   throw Error(`Could not import data from src/data/${fileName}.json`);
+  // }
   try {
-    //Get routes data
-    if (fileName === "routes") {
-      const data = await import(`../data/risk/${fileName}.json`);
-      return data.default;
-    } else {
-      const data = await import(`../data/${fileName}.json`);
-      return data.default;
-    }
+    const data = await import(`../data/${dataPath}.json`);
+    return data.default;
   } catch (error) {
     throw Error(`Unexpected error parsing the JSON file: ${error}`);
   }
@@ -62,7 +59,7 @@ export class DataLoader {
    * @returns an array of {@link Company}
    */
   async loadAllCompanies(): Promise<Company[]> {
-    const companyJson = await getData("companies");
+    const companyJson = await getData(AvailableData.companies);
     const transformedCompanyData: Company[] = plainToInstance(
       Company,
       companyJson
@@ -76,7 +73,7 @@ export class DataLoader {
    * @returns an array of {@link User}
    */
   async loadAllUsers(): Promise<User[]> {
-    const userJson = await getData("users");
+    const userJson = await getData(AvailableData.users);
     const transformedUserData: User[] = plainToInstance(User, userJson);
     return transformedUserData;
   }
@@ -87,7 +84,7 @@ export class DataLoader {
    * @returns an array of {@link Vehicle}s
    */
   async loadAllVehicles(): Promise<Vehicle[]> {
-    const vehicleJson = await getData("vehicles");
+    const vehicleJson = await getData(AvailableData.vehicles);
     const transformedVehicleData: Vehicle[] = [];
 
     //Filter the e-scooters from all vehicles
@@ -115,7 +112,7 @@ export class DataLoader {
    * @returns an array of {@link Payment}s
    */
   async loadAllPayments(): Promise<Payment[]> {
-    const paymentJson = await getData("payments");
+    const paymentJson = await getData(AvailableData.payments);
     const transformedPaymentData: Payment[] = [];
 
     //Filter the cash payments from all payments
@@ -151,7 +148,7 @@ export class DataLoader {
    * @returns an array of {@link Trip}
    */
   async loadAllTrips(): Promise<Trip[]> {
-    const tripJson = await getData("trips");
+    const tripJson = await getData(AvailableData.trips);
     const transformedTripData: Trip[] = plainToInstance(Trip, tripJson);
     return transformedTripData;
   }
@@ -162,7 +159,7 @@ export class DataLoader {
    * @returns an array of {@link Route}
    */
   async loadAllRoutes(): Promise<Route[]> {
-    const routeJson = await getData("routes");
+    const routeJson = await getData(AvailableData.routes);
     const transformedRouteData: Route[] = plainToInstance(Route, routeJson);
     return transformedRouteData;
   }

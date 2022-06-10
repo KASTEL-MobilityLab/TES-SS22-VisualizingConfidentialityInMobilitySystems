@@ -2,15 +2,15 @@ import type { Company, DataField, Vehicle } from "./dataFields";
 import type { Trip } from "./dataFields/Trip";
 import type { User } from "./dataFields/User";
 import { DataLoader } from "./DataLoader";
-import type { Route } from "./Route";
 import { Role } from "./roles";
+import type { Route } from "./Route";
 
 export class DataManager {
   currentRole: Role;
   currentUser?: User;
   currentCompany?: Company;
   currentVehicle?: Vehicle;
-  currrentTrip?: Trip;
+  currentTrip?: Trip;
 
   users: User[];
   companies: Company[];
@@ -93,7 +93,7 @@ export class DataManager {
    * @param userId The user of the selected user.
    */
   private changeUser(userId: string) {
-    this.currentUser = this.getDataById(userId);
+    this.currentUser = <User>this.getDataById(userId);
   }
 
   /**
@@ -102,7 +102,7 @@ export class DataManager {
    * @param companyId The user of the selected company.
    */
   private changeCompany(companyId: string) {
-    this.currentCompany = this.getDataById(companyId);
+    this.currentCompany = <Company>this.getDataById(companyId);
   }
 
   /**
@@ -111,7 +111,7 @@ export class DataManager {
    * @param vehicleId The user of the selected vehicle.
    */
   private changeVehicle(vehicleId: string) {
-    this.currentVehicle = this.getDataById(vehicleId);
+    this.currentVehicle = <Vehicle>this.getDataById(vehicleId);
   }
 
   /**
@@ -120,6 +120,6 @@ export class DataManager {
    * @param tripId The user of the selected trip.
    */
   private changeTrip(tripId: string) {
-    this.currrentTrip = this.getDataById(tripId);
+    this.currentTrip = <Trip>this.getDataById(tripId);
   }
 }

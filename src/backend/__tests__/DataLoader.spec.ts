@@ -1,27 +1,29 @@
 import "reflect-metadata";
 import { describe, expect, it } from "vitest";
+import { Company } from "../dataFields/Company";
 import { VehicleStatus, VehicleType } from "../dataFields/types";
 import { User } from "../dataFields/User";
 import type { Vehicle } from "../dataFields/Vehicle";
+import { EScooter } from "../dataFields/vehicles/EScooter";
 import { IndividualVehicle } from "../dataFields/vehicles/IndividualVehicle";
 import { PublicVehicle } from "../dataFields/vehicles/PublicVehicle";
 import { Train } from "../dataFields/vehicles/Train";
 import { AvailableData, DataLoader, getData } from "../DataLoader";
-import { Company } from "../dataFields/Company";
-import { EScooter } from "../dataFields/vehicles/EScooter";
 
 describe.concurrent("Async get Data", async () => {
-  it("invalid fileName", async () =>
-    await expect(getData("foo")).rejects.toThrow(
-      "Could not import data from src/data/foo.json"
-    ));
-
-  it("valid fileName", async () => {
+  it("valid data path", async () => {
     const companies = await getData(AvailableData.companies);
     expect(companies[0]).toMatchObject({
       id: "C01",
       name: "Fire Runner",
     });
+  });
+
+  it("load risk data", async () => {
+    // change later, when branch is merged
+    // const risk = await getData(AvailableData.risks);
+    // check if first element is loaded correctly
+    await expect(getData(AvailableData.risks)).rejects.toThrowError();
   });
 });
 
