@@ -34,17 +34,38 @@ export class DataManager {
     this.routes = [];
 
     this.loadAllData();
+    // this could be problematic here, because loadAllData is async, so
+    // it might not be finished when setAllReference is called.
+    // we might have to use seperate method for loading and setting references outside of the constructor
+    // because the constructor cannot be async (we cannot await this.loadAllData())
+    this.setAllReferences();
+  }
+
+  private setAllReferences() {
+    this.setVehicleReferences();
+    // TODO:
+    // this.setCompanyReferences();
+    // this.setUserReferences();
+    // this.setTripReferences();
   }
 
   /**
    * This method loads all data into the DataManager.
    */
   private async loadAllData() {
-    this.users = await this.dataLoader.loadAllUsers();
-    this.companies = await this.dataLoader.loadAllCompanies();
-    this.trips = await this.dataLoader.loadAllTrips();
-    this.vehicles = await this.dataLoader.loadAllVehicles();
-    this.routes = await this.dataLoader.loadAllRoutes();
+    [this.users, this.companies, this.trips, this.vehicles, this.routes] =
+      await Promise.all([
+        this.dataLoader.loadAllUsers(),
+        this.dataLoader.loadAllCompanies(),
+        this.dataLoader.loadAllTrips(),
+        this.dataLoader.loadAllVehicles(),
+        this.dataLoader.loadAllRoutes(),
+      ]);
+    // this.users = await this.dataLoader.loadAllUsers();
+    // this.companies = await this.dataLoader.loadAllCompanies();
+    // this.trips = await this.dataLoader.loadAllTrips();
+    // this.vehicles = await this.dataLoader.loadAllVehicles();
+    // this.routes = await this.dataLoader.loadAllRoutes();
   }
 
   // TODO: replace with generic function <T extends DataField> when ready
