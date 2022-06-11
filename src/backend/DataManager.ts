@@ -1,4 +1,4 @@
-import type { Company, DataField, Vehicle } from "./dataFields";
+import type { Company, DataField, Payment, Vehicle } from "./dataFields";
 import type { Trip } from "./dataFields/Trip";
 import type { User } from "./dataFields/User";
 import { DataLoader } from "./DataLoader";
@@ -12,9 +12,10 @@ export class DataManager {
   currentVehicle?: Vehicle;
   currrentTrip?: Trip;
 
-  users: User[];
   companies: Company[];
+  payments: Payment[];
   trips: Trip[];
+  users: User[];
   vehicles: Vehicle[];
   routes: Route[];
 
@@ -27,9 +28,10 @@ export class DataManager {
     //The city is set as the default role
     this.currentRole = Role.city;
     this.dataLoader = new DataLoader();
-    this.users = [];
     this.companies = [];
+    this.payments = [];
     this.trips = [];
+    this.users = [];
     this.vehicles = [];
     this.routes = [];
 
@@ -52,11 +54,47 @@ export class DataManager {
     return this.vehicles[0];
   }
 
+  /**
+   * Sets the specific trip referencee of a payment.
+   */
+  private setPaymentReferences() {
+    for (const payment of this.payments) {
+      payment.trip = this.getForeignKeyReference<Trip>(
+        payment.tripId,
+        this.trips
+      );
+    }
+  }
+
+  /**
+   * Sets the specfic company reference of a vehicle.
+   */
   private setVehicleReferences() {
     for (const vehicle of this.vehicles) {
       vehicle.company = this.getForeignKeyReference<Company>(
         vehicle.companyId,
         this.companies
+      );
+    }
+  }
+
+  /**
+   * Sets the specifc vehicle, user, payment, and route references of a trip.
+   */
+  private setTripReferences() {
+    for (const trip of this.trips) {
+      trip.vehicle = this.getForeignKeyReference<Vehicle>(
+        trip.vehicleId,
+        this.vehicles
+      );
+      trip.user = this.getForeignKeyReference<User>(trip.userId, this.users);
+      trip.payment = this.getForeignKeyReference<Payment>(
+        trip.paymentId,
+        this.payments
+      );
+      trip.route = this.getForeignKeyReference<Route>(
+        trip.routeId,
+        this.routes
       );
     }
   }
