@@ -5,10 +5,10 @@ import type { Payment, Trip, User, Vehicle } from "./dataFields";
  * A DataPackage can be created either for a trip after clicking on driven trip or for a vehicle that is currently not active.
  */
 export class DataPackage {
+  vehicle: Vehicle;
   user?: User;
   payment?: Payment;
   trip?: Trip;
-  vehicle: Vehicle;
 
   /**
    * Construct a new DataPackage.
@@ -17,10 +17,12 @@ export class DataPackage {
    * @param trip The trip of the dataPackage.
    * @param vehicle The Vehicle of the DataPackage.
    */
-  constructor(user: User, payment: Payment, trip: Trip, vehicle: Vehicle) {
-    this.user = user;
-    this.payment = payment;
-    this.trip = trip;
+  constructor(vehicle: Vehicle, user?: User, payment?: Payment, trip?: Trip) {
     this.vehicle = vehicle;
+    if (vehicle.active) {
+      this.user = user;
+      this.payment = payment;
+      this.trip = trip;
+    }
   }
 }

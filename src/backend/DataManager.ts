@@ -26,7 +26,7 @@ export class DataManager {
   routes: Route[];
 
   dataLoader: DataLoader;
-
+  //The currently selected DataPackage
   currentDataPackage?: DataPackage;
 
   /**

@@ -11,6 +11,8 @@ export abstract class Vehicle extends DataField {
   readonly companyId: string;
   @Expose()
   readonly type: VehicleType;
+  @Expose()
+  readonly active: boolean;
   @Exclude()
   private _company?: Company;
 
@@ -18,11 +20,13 @@ export abstract class Vehicle extends DataField {
     id: string,
     companyId: string,
     type: VehicleType,
+    active: boolean,
     company?: Company
   ) {
     super(id);
     this.companyId = companyId;
     this.type = type;
+    this.active = active;
     if (company !== undefined) {
       this._company = company;
     }
