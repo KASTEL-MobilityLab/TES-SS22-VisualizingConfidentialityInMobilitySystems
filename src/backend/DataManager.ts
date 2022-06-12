@@ -1,9 +1,15 @@
-import type { Company, DataField, Payment, Vehicle } from "./dataFields";
-import type { Trip } from "./dataFields/Trip";
-import type { User } from "./dataFields/User";
+import type {
+  Company,
+  DataField,
+  Payment,
+  Vehicle,
+  Trip,
+  User,
+} from "./dataFields";
 import { DataLoader } from "./DataLoader";
 import { Role } from "./roles";
 import type { Route } from "./Route";
+import type { DataPackage } from "./DataPackage";
 
 export class DataManager {
   currentRole: Role;
@@ -20,6 +26,8 @@ export class DataManager {
   routes: Route[];
 
   dataLoader: DataLoader;
+
+  currentDataPackage?: DataPackage;
 
   /**
    * Construct a new DataManager.
@@ -43,12 +51,16 @@ export class DataManager {
     this.setAllReferences();
   }
 
+  /**
+   * This method sets all references that have not been set in the initialization
+   */
   private setAllReferences() {
     this.setVehicleReferences();
-    // TODO:
-    // this.setCompanyReferences();
-    // this.setUserReferences();
-    // this.setTripReferences();
+    this.setPaymentReferences();
+    this.setTripReferences();
+    // TODO: -> DONE
+    // this.setCompanyReferences(); -> Company has no references
+    // this.setUserReferences(); -> User has no references
   }
 
   /**
@@ -70,9 +82,19 @@ export class DataManager {
     // this.routes = await this.dataLoader.loadAllRoutes();
   }
 
-  // TODO: replace with generic function <T extends DataField> when ready
-  getDataById(id: string): DataField {
-    return this.vehicles[0];
+  /**
+   * Searches for a given DataField in the particular referenceArray.
+   * If the given id does not match any DataField in the array, an error will be thrown.
+   * @param id Id of the searched DataField
+   * @param referencesArray Array of the type of the searched DataField
+   * @returns Matching DataField to the given id
+   */
+  getDataById<T extends DataField>(id: string, referenceArray: T[]): T {
+    const data = referenceArray.find((dataField) => dataField.id === id);
+    if (data === undefined) {
+      throw Error(`No data is found with the Id ${id}`);
+    }
+    return data;
   }
 
   /**
@@ -123,12 +145,17 @@ export class DataManager {
   /**
    * Searches for a given reference in the referenceArray.
    * If the given referenceId does not match any reference in the array, an error will be thrown.
+   * @param referenceId Id of the referenced DataField
+   * @param referencesArray Array of the type of the referenced DataField
+   * @returns DataField that is referenced with the referenceId
    */
   private getForeignKeyReference<T extends DataField>(
     referenceId: string,
     referencesArray: T[]
   ): T {
-    const ref = referencesArray.find((df) => df.id === referenceId);
+    const ref = referencesArray.find(
+      (dataField) => dataField.id === referenceId
+    );
     if (ref === undefined) {
       throw Error(`No Key matches the given reference Id ${referenceId}`);
     }
@@ -148,37 +175,33 @@ export class DataManager {
 
   /**
    * Change the current user.
-   * TODO: implement getDataById
    * @param userId The user of the selected user.
    */
   private changeUser(userId: string) {
-    this.currentUser = <User>this.getDataById(userId);
+    this.currentUser = <User>this.getDataById(userId, this.users);
   }
 
   /**
    * Change the current company.
-   * TODO: implement getDataById
    * @param companyId The user of the selected company.
    */
   private changeCompany(companyId: string) {
-    this.currentCompany = <Company>this.getDataById(companyId);
+    this.currentCompany = <Company>this.getDataById(companyId, this.companies);
   }
 
   /**
    * Change the current vehicle.
-   * TODO: implement getDataById
    * @param vehicleId The user of the selected vehicle.
    */
   private changeVehicle(vehicleId: string) {
-    this.currentVehicle = <Vehicle>this.getDataById(vehicleId);
+    this.currentVehicle = <Vehicle>this.getDataById(vehicleId, this.vehicles);
   }
 
   /**
    * Change the current trip.
-   * TODO: implement getDataById
    * @param tripId The user of the selected trip.
    */
   private changeTrip(tripId: string) {
-    this.currentTrip = <Trip>this.getDataById(tripId);
+    this.currentTrip = <Trip>this.getDataById(tripId, this.trips);
   }
 }

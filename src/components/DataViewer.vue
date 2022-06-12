@@ -15,6 +15,21 @@ export default {
     };
   },
 };
+
+const user = {
+  id: "U01",
+  forename: "Theo",
+  surname: "Schweitzer",
+  phoneNumber: "02256708826",
+  email: "theo.schweitzer@gmail.com",
+};
+const riskColor = {
+  id: "text-success",
+  forename: "text-warning",
+  surname: "text-warning",
+  phoneNumber: "text-warning",
+  email: "text-warning",
+};
 </script>
 
 <template>
