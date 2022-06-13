@@ -1,7 +1,7 @@
 import { Exclude, Expose } from "class-transformer";
 import type { Company } from "./Company";
 import { DataField } from "./DataField";
-import type { VehicleType } from "./types";
+import type { VehicleType, VehicleStatus } from "./types";
 
 /**
  * The interface every vehicle must implement.
@@ -12,7 +12,7 @@ export abstract class Vehicle extends DataField {
   @Expose()
   readonly type: VehicleType;
   @Expose()
-  readonly active: boolean;
+  readonly status: VehicleStatus;
   @Exclude()
   private _company?: Company;
 
@@ -20,13 +20,13 @@ export abstract class Vehicle extends DataField {
     id: string,
     companyId: string,
     type: VehicleType,
-    active: boolean,
+    status: VehicleStatus,
     company?: Company
   ) {
     super(id);
     this.companyId = companyId;
     this.type = type;
-    this.active = active;
+    this.status = status;
     if (company !== undefined) {
       this._company = company;
     }

@@ -1,5 +1,5 @@
 import type { Company } from "../Company";
-import type { VehicleType } from "../types";
+import type { VehicleStatus, VehicleType } from "../types";
 import { Vehicle } from "../Vehicle";
 
 /**
@@ -10,8 +10,9 @@ export abstract class IndividualVehicle extends Vehicle {
     id: string,
     companyId: string,
     type: VehicleType,
+    status: VehicleStatus,
     company?: Company
   ) {
-    super(id, companyId, type, company);
+    super(id, companyId, type, status, company);
   }
 }

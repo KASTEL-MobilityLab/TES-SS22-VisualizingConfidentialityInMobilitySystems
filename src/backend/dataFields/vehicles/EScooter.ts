@@ -16,9 +16,6 @@ export class EScooter extends IndividualVehicle {
   @Expose()
   readonly batteryCondition: number;
 
-  @Expose()
-  readonly status: VehicleStatus;
-
   @Type(() => Number)
   @Expose()
   readonly batteryLevel: number;
@@ -30,12 +27,12 @@ export class EScooter extends IndividualVehicle {
     batteryCondition: number,
     status: VehicleStatus,
     batteryLevel: number,
+
     company?: Company
   ) {
-    super(id, companyId, VehicleType.escooter, company);
+    super(id, companyId, VehicleType.escooter, status, company);
     this.condition = condition;
     this.batteryCondition = batteryCondition;
-    this.status = status;
     this.batteryLevel = batteryLevel;
   }
 }

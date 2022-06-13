@@ -6,8 +6,7 @@
     "condition": "84",
     "batteryCondition": "89",
     "status": "Active",
-    "batteryLevel": "74",
-    "active": "true"
+    "batteryLevel": "74"
   },
   {
     "id": "V02",
@@ -16,8 +15,7 @@
     "condition": "32",
     "batteryCondition": "49",
     "status": "Active",
-    "batteryLevel": "74",
-    "active": "true"
+    "batteryLevel": "74"
   },
   {
     "id": "V03",
@@ -26,13 +24,13 @@
     "condition": "90",
     "batteryCondition": "94",
     "status": "Inactive",
-    "batteryLevel": "56",
-    "active": "false"
+    "batteryLevel": "56"
   },
   {
     "id": "V04",
     "type": "Train",
     "companyId": "C03",
-    "active": "true"
+    "active": "true",
+    "status": "Inactive"
   }
 ]

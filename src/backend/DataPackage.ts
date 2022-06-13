@@ -1,4 +1,5 @@
 import type { Payment, Trip, User, Vehicle } from "./dataFields";
+import { VehicleStatus } from "./dataFields/types";
 
 /**
  * Class that contains all the data that can be dispalyed in the DataViewer after clicking on an icon in the user interface.
@@ -19,7 +20,7 @@ export class DataPackage {
    */
   constructor(vehicle: Vehicle, user?: User, payment?: Payment, trip?: Trip) {
     this.vehicle = vehicle;
-    if (vehicle.active) {
+    if (vehicle.status === VehicleStatus.active) {
       this.user = user;
       this.payment = payment;
       this.trip = trip;

@@ -9,7 +9,7 @@ import type {
 import { DataLoader } from "./DataLoader";
 import { Role } from "./roles";
 import type { Route } from "./Route";
-import type { DataPackage } from "./DataPackage";
+import { DataPackage } from "./DataPackage";
 
 export class DataManager {
   currentRole: Role;
@@ -48,13 +48,15 @@ export class DataManager {
     // it might not be finished when setAllReference is called.
     // we might have to use seperate method for loading and setting references outside of the constructor
     // because the constructor cannot be async (we cannot await this.loadAllData())
-    this.setAllReferences();
+    // Danial: Ja, das ist ein großes Problem, da er ansonsten anföngt die Refernezen zu setzen, ohne das überhaupt die Daten fertig
+    // geladen wurden
+    //this.setAllReferences();
   }
 
   /**
    * This method sets all references that have not been set in the initialization
    */
-  private setAllReferences() {
+  setAllReferences() {
     this.setVehicleReferences();
     this.setPaymentReferences();
     this.setTripReferences();
@@ -124,7 +126,7 @@ export class DataManager {
   /**
    * Sets the specifc vehicle, user, payment, and route references of a trip.
    */
-  private setTripReferences() {
+  setTripReferences() {
     for (const trip of this.trips) {
       trip.vehicle = this.getForeignKeyReference<Vehicle>(
         trip.vehicleId,
@@ -203,5 +205,44 @@ export class DataManager {
    */
   private changeTrip(tripId: string) {
     this.currentTrip = <Trip>this.getDataById(tripId, this.trips);
+  }
+
+  /**
+   * Changes the current DataPackage to a new DataPackage
+   * @param vehicle The vehicle that is selected.
+   * @param user The user that is driving the trip.
+   * @param payment The payment with which the trip is paid.
+   * @param trip The trip that is driven by the user.
+   */
+  private changeDataPackage(
+    vehicle: Vehicle,
+    user?: User,
+    payment?: Payment,
+    trip?: Trip
+  ) {
+    const newDataPackage: DataPackage = new DataPackage(
+      vehicle,
+      user,
+      payment,
+      trip
+    );
+    if (this.checkValidityOfDataPackage(newDataPackage) === true) {
+      this.currentDataPackage = newDataPackage;
+    } else {
+      throw Error(`The DataPackage to creation is not valid.`);
+    }
+  }
+
+  //Brauchen wir diese Methode überhaupt, da wir eigentlich davor schon alle Referenzen setzen?
+  //Eigentlich reicht es auch, wenn man in changeDataPackage() eine Hilfsmethode hat, die die richtigen
+  //DataFields raussucht und dann daraus ein DataPackage bildet.
+  checkValidityOfDataPackage(dataPackage: DataPackage): boolean {
+    //Checks whether the same company is used
+    let sameCompany = false;
+    if (dataPackage.vehicle.company === dataPackage.trip?.vehicle.company) {
+      sameCompany = true;
+    }
+    //TODO: Implement the rest of the checks
+    return sameCompany;
   }
 }
