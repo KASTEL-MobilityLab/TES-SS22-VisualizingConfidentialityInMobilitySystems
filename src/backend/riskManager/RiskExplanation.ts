@@ -1,4 +1,4 @@
-import explainationJson from "src/data/risk/explaination.json";
+import explainationJson from "src/data/risk/explanation.json";
 
 /**
  *  Returns the detailed info String for a data.
