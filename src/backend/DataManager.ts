@@ -60,9 +60,6 @@ export class DataManager {
     this.setVehicleReferences();
     this.setPaymentReferences();
     this.setTripReferences();
-    // TODO: -> DONE
-    // this.setCompanyReferences(); -> Company has no references
-    // this.setUserReferences(); -> User has no references
   }
 
   /**
@@ -77,11 +74,6 @@ export class DataManager {
         this.dataLoader.loadAllVehicles(),
         this.dataLoader.loadAllRoutes(),
       ]);
-    // this.users = await this.dataLoader.loadAllUsers();
-    // this.companies = await this.dataLoader.loadAllCompanies();
-    // this.trips = await this.dataLoader.loadAllTrips();
-    // this.vehicles = await this.dataLoader.loadAllVehicles();
-    // this.routes = await this.dataLoader.loadAllRoutes();
   }
 
   /**
@@ -220,13 +212,8 @@ export class DataManager {
     payment?: Payment,
     trip?: Trip
   ) {
-    const newDataPackage: DataPackage = new DataPackage(
-      vehicle,
-      user,
-      payment,
-      trip
-    );
-    if (this.checkValidityOfDataPackage(newDataPackage) === true) {
+    const newDataPackage = new DataPackage(vehicle, user, payment, trip);
+    if (this.checkValidityOfDataPackage(newDataPackage)) {
       this.currentDataPackage = newDataPackage;
     } else {
       throw Error(`The DataPackage to creation is not valid.`);
