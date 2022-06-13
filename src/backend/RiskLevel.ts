@@ -1,4 +1,3 @@
-
 /**
  *  RiskLevel specifies how high the risk associated with a datatype is.
  */

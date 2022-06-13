@@ -2,7 +2,10 @@
   {
     "dataType": "PaymentType",
     "risk": "1",
-    "explainationId": "1"
+    "explainationId": "1",
+    "userVisibility": "true",
+    "companyVisibility": "true",
+    "cityVisibilitiy": "false"
   },
   {
     "dataType": "PaymentProvider",
