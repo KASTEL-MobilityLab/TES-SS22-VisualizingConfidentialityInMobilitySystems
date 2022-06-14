@@ -1,11 +1,46 @@
+import { Exclude, Expose } from "class-transformer";
 import type { Company } from "./Company";
-import type { DataField } from "./DataField";
+import { DataField } from "./DataField";
+import type { VehicleType, VehicleStatus } from "./types";
 
 /**
  * The interface every vehicle must implement.
  */
-export interface Vehicle extends DataField {
-  readonly id: string;
+export abstract class Vehicle extends DataField {
+  @Expose()
   readonly companyId: string;
-  readonly company: Company;
+  @Expose()
+  readonly type: VehicleType;
+  @Expose()
+  readonly status: VehicleStatus;
+  @Exclude()
+  private _company?: Company;
+
+  constructor(
+    id: string,
+    companyId: string,
+    type: VehicleType,
+    status: VehicleStatus,
+    company?: Company
+  ) {
+    super(id);
+    this.companyId = companyId;
+    this.type = type;
+    this.status = status;
+    if (company !== undefined) {
+      this._company = company;
+    }
+  }
+
+  get company() {
+    if (this._company === undefined) {
+      throw Error("Company has not been set yet.");
+    }
+    return this._company;
+  }
+
+  set company(company: Company) {
+    this.checkForeignKeyReferences(company, this.companyId);
+    this._company = company;
+  }
 }

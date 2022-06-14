@@ -1,35 +1,38 @@
+import { Expose, Type } from "class-transformer";
+import "reflect-metadata";
 import type { Company } from "../Company";
-import { VehicleType, type VehicleStatus } from "../types";
-import type { IndividualVehicle } from "./IndividualVehicle";
+import { VehicleStatus, VehicleType } from "../types";
+import { IndividualVehicle } from "./IndividualVehicle";
 
 /**
- * The E-Scooter Class.
+ * The E-Scooter class.
  */
-export class EScooter implements IndividualVehicle {
-  readonly id: string;
-  readonly type: VehicleType = VehicleType.escooter;
-  readonly companyId: string;
-  readonly company: Company;
-  condition: number;
-  batteryCondition: number;
-  status: VehicleStatus;
-  batteryLevel: number;
+export class EScooter extends IndividualVehicle {
+  @Type(() => Number)
+  @Expose()
+  readonly condition: number;
+
+  @Type(() => Number)
+  @Expose()
+  readonly batteryCondition: number;
+
+  @Type(() => Number)
+  @Expose()
+  readonly batteryLevel: number;
 
   constructor(
     id: string,
     companyId: string,
-    company: Company,
     condition: number,
     batteryCondition: number,
     status: VehicleStatus,
-    batteryLevel: number
+    batteryLevel: number,
+
+    company?: Company
   ) {
-    this.id = id;
-    this.companyId = companyId;
-    this.company = company;
+    super(id, companyId, VehicleType.escooter, status, company);
     this.condition = condition;
     this.batteryCondition = batteryCondition;
-    this.status = status;
     this.batteryLevel = batteryLevel;
   }
 }

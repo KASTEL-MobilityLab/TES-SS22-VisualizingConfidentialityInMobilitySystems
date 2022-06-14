@@ -1,10 +1,14 @@
-{
-  "C01": {
+[
+  {
     "id": "C01",
     "name": "Fire Runner"
   },
-  "C02": {
+  {
     "id": "C02",
     "name": "Voi"
+  },
+  {
+    "id": "C03",
+    "name": "KVV"
   }
-}
+]

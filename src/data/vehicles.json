@@ -1,29 +1,36 @@
-{
-  "V01": {
+[
+  {
     "id": "V01",
-    "type": "e-scooter",
+    "type": "E-Scooter",
     "companyId": "C01",
     "condition": "84",
     "batteryCondition": "89",
-    "status": "active",
+    "status": "Active",
     "batteryLevel": "74"
   },
-  "V02": {
+  {
     "id": "V02",
-    "type": "e-scooter",
+    "type": "E-Scooter",
     "companyId": "C02",
     "condition": "32",
     "batteryCondition": "49",
-    "status": "active",
+    "status": "Active",
     "batteryLevel": "74"
   },
-  "V03": {
+  {
     "id": "V03",
-    "type": "e-scooter",
+    "type": "E-Scooter",
     "companyId": "C01",
     "condition": "90",
     "batteryCondition": "94",
-    "status": "inactive",
+    "status": "Inactive",
     "batteryLevel": "56"
+  },
+  {
+    "id": "V04",
+    "type": "Train",
+    "companyId": "C03",
+    "active": "true",
+    "status": "Inactive"
   }
-}
+]
