@@ -1,0 +1,1 @@
+var e=[{id:"U01",forename:"Theo",surname:"Schweitzer",phoneNumber:"02256708826",email:"theo.schweitzer@gmail.com"},{id:"U02",forename:"Miriam",surname:"Lewerentz",phoneNumber:"03841263688",email:"miriam.lewerentz@gmail.com"},{id:"U03",forename:"Klaus",surname:"Mark",phoneNumber:"0334552343",email:"klaus.mark@gmail.com"}];export{e as default};

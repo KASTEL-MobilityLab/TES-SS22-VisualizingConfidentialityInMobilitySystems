@@ -1,1 +1,0 @@
-import{_ as e,o as s,c,a as o}from"./index.63eafbe8.js";const a={},t={class:"container"},r=o("h1",{class:"display-1"},"This is our help page!",-1),_=[r];function n(i,d){return s(),c("div",t,_)}var p=e(a,[["render",n]]);export{p as default};
