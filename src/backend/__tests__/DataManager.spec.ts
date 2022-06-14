@@ -38,10 +38,4 @@ describe.concurrent("DataLoader", async () => {
     VehicleStatus.inactive,
     kVVCompany
   );
-
-  it("test loadAllData() ", async () => {
-    const trips = dataManager.trips;
-    const loadedTrip = trips[0];
-    expect(loadedTrip.vehicleId).equal(firstEScooter.id);
-  });
 });

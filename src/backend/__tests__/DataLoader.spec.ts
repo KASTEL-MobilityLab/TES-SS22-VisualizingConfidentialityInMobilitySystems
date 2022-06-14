@@ -47,7 +47,12 @@ describe.concurrent("DataLoader", async () => {
     74,
     fireRunnerCompany
   );
-  const firstTrain = new Train("V04", "C03", kVVCompany);
+  const firstTrain = new Train(
+    "V04",
+    "C03",
+    VehicleStatus.inactive,
+    kVVCompany
+  );
 
   it("load all companies", async () => {
     const companies = await dl.loadAllCompanies();

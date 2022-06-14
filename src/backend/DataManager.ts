@@ -50,7 +50,7 @@ export class DataManager {
     // because the constructor cannot be async (we cannot await this.loadAllData())
     // Danial: Ja, das ist ein großes Problem, da er ansonsten anföngt die Refernezen zu setzen, ohne das überhaupt die Daten fertig
     // geladen wurden
-    //this.setAllReferences();
+    this.setAllReferences();
   }
 
   /**
