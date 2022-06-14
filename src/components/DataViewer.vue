@@ -33,7 +33,7 @@ const riskColor = {
 </script>
 
 <template>
-  <div class="container w-75 bg-light rounded">
+  <div class="container w-75 h-75 bg-light rounded">
     <h1 class="text-center p-2">Data Viewer</h1>
     <template v-for="data in allDataModules" :key="data.id">
       <div class="row">
