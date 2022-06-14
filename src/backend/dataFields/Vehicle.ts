@@ -41,13 +41,6 @@ export abstract class Vehicle extends DataField {
 
   set company(company: Company) {
     this.checkForeignKeyReferences(company, this.companyId);
-    /*
-    if (company.id !== this.companyId) {
-      throw Error(
-        `Cannot set company with Company Id ${company.id}: Id does not match the company id of this vehicle id ${this.companyId}`
-      );
-    }
-    */
     this._company = company;
   }
 }
