@@ -5,111 +5,218 @@
     "explainationId": "1",
     "userVisibility": "true",
     "companyVisibility": "true",
-    "cityVisibilitiy": "false"
+    "cityVisibilitiy": "false",
+    "visible": "Erklärung",
+    "notVisible": "Kann nicht angezeigt werden, weil..."
   },
   {
     "dataType": "PaymentProvider",
     "risk": "1",
-    "explainationId": "2"
+    "explainationId": "2",
+    "userVisibility": "true",
+    "companyVisibility": "true",
+    "cityVisibilitiy": "false",
+    "visible": "Erklärung",
+    "notVisible": "Kann nicht angezeigt werden, weil..."
   },
   {
     "dataType": "PaymentCardNumber",
     "risk": "3",
-    "explainationId": "3"
+    "explainationId": "3",
+    "userVisibility": "true",
+    "companyVisibility": "true",
+    "cityVisibilitiy": "false",
+    "visible": "Erklärung",
+    "notVisible": "Kann nicht angezeigt werden, weil..."
   },
   {
     "dataType": "PaymentCcv",
     "risk": "3",
-    "explainationId": "4"
+    "explainationId": "4",
+    "userVisibility": "true",
+    "companyVisibility": "true",
+    "cityVisibilitiy": "false",
+    "visible": "Erklärung",
+    "notVisible": "Kann nicht angezeigt werden, weil..."
   },
   {
     "dataType": "PaymentExpiryDate",
     "risk": "2",
-    "explainationId": "5"
+    "explainationId": "5",
+    "userVisibility": "true",
+    "companyVisibility": "true",
+    "cityVisibilitiy": "false",
+    "visible": "Erklärung",
+    "notVisible": "Kann nicht angezeigt werden, weil..."
   },
   {
     "dataType": "RouteStart",
     "risk": "2",
-    "explainationId": "6"
+    "explainationId": "6",
+    "userVisibility": "true",
+    "companyVisibility": "true",
+    "cityVisibilitiy": "false",
+    "visible": "Erklärung",
+    "notVisible": "Kann nicht angezeigt werden, weil..."
   },
   {
     "dataType": "RouteEnd",
     "risk": "2",
-    "explainationId": "7"
+    "explainationId": "7",
+    "userVisibility": "true",
+    "companyVisibility": "true",
+    "cityVisibilitiy": "false",
+    "visible": "Erklärung",
+    "notVisible": "Kann nicht angezeigt werden, weil..."
   },
   {
     "dataType": "TripAvgSpeed",
     "risk": "1",
-    "explainationId": "8"
+    "explainationId": "8",
+    "userVisibility": "true",
+    "companyVisibility": "true",
+    "cityVisibilitiy": "false",
+    "visible": "Erklärung",
+    "notVisible": "Kann nicht angezeigt werden, weil..."
   },
   {
     "dataType": "TripPrice",
     "risk": "1",
-    "explainationId": "9"
+    "explainationId": "9",
+    "userVisibility": "true",
+    "companyVisibility": "true",
+    "cityVisibilitiy": "false",
+    "visible": "Erklärung",
+    "notVisible": "Kann nicht angezeigt werden, weil..."
   },
   {
     "dataType": "TripStartTime",
     "risk": "1",
-    "explainationId": "10"
+    "explainationId": "10",
+    "userVisibility": "true",
+    "companyVisibility": "true",
+    "cityVisibilitiy": "false",
+    "visible": "Erklärung",
+    "notVisible": "Kann nicht angezeigt werden, weil..."
   },
   {
     "dataType": "TripEndTime",
     "risk": "1",
-    "explainationId": "11"
+    "explainationId": "11",
+    "userVisibility": "true",
+    "companyVisibility": "true",
+    "cityVisibilitiy": "false",
+    "visible": "Erklärung",
+    "notVisible": "Kann nicht angezeigt werden, weil..."
   },
   {
     "dataType": "UserForename",
     "risk": "1",
-    "explainationId": "12"
+    "explainationId": "12",
+    "userVisibility": "true",
+    "companyVisibility": "true",
+    "cityVisibilitiy": "false",
+    "visible": "Erklärung",
+    "notVisible": "Kann nicht angezeigt werden, weil..."
   },
   {
     "dataType": "UserSurname",
     "risk": "1",
-    "explainationId": "13"
+    "explainationId": "13",
+    "userVisibility": "true",
+    "companyVisibility": "true",
+    "cityVisibilitiy": "false",
+    "visible": "Erklärung",
+    "notVisible": "Kann nicht angezeigt werden, weil..."
   },
   {
     "dataType": "UserPhoneNumber",
     "risk": "2",
-    "explainationId": "14"
+    "explainationId": "14",
+    "userVisibility": "true",
+    "companyVisibility": "true",
+    "cityVisibilitiy": "false",
+    "visible": "Erklärung",
+    "notVisible": "Kann nicht angezeigt werden, weil..."
   },
   {
     "dataType": "UserEmail",
     "risk": "2",
-    "explainationId": "15"
+    "explainationId": "15",
+    "userVisibility": "true",
+    "companyVisibility": "true",
+    "cityVisibilitiy": "false",
+    "visible": "Erklärung",
+    "notVisible": "Kann nicht angezeigt werden, weil..."
   },
   {
     "dataType": "VehicleId",
     "risk": "1",
-    "explainationId": "16"
+    "explainationId": "16",
+    "userVisibility": "true",
+    "companyVisibility": "true",
+    "cityVisibilitiy": "false",
+    "visible": "Erklärung",
+    "notVisible": "Kann nicht angezeigt werden, weil..."
   },
   {
     "dataType": "VehicleType",
     "risk": "1",
-    "explainationId": "17"
+    "explainationId": "17",
+    "userVisibility": "true",
+    "companyVisibility": "true",
+    "cityVisibilitiy": "false",
+    "visible": "Erklärung",
+    "notVisible": "Kann nicht angezeigt werden, weil..."
   },
   {
     "dataType": "VehicleCompanyId",
     "risk": "1",
-    "explainationId": "18"
+    "explainationId": "18",
+    "userVisibility": "true",
+    "companyVisibility": "true",
+    "cityVisibilitiy": "false",
+    "visible": "Erklärung",
+    "notVisible": "Kann nicht angezeigt werden, weil..."
   },
   {
     "dataType": "VehicleCondition",
     "risk": "1",
-    "explainationId": "19"
+    "explainationId": "19",
+    "userVisibility": "true",
+    "companyVisibility": "true",
+    "cityVisibilitiy": "false",
+    "visible": "Erklärung",
+    "notVisible": "Kann nicht angezeigt werden, weil..."
   },
   {
     "dataType": "VehicleBatteryCondition",
     "risk": "1",
-    "explainationId": "20"
+    "explainationId": "20",
+    "userVisibility": "true",
+    "companyVisibility": "true",
+    "cityVisibilitiy": "false",
+    "visible": "Erklärung",
+    "notVisible": "Kann nicht angezeigt werden, weil..."
   },
   {
     "dataType": "VehicleStatus",
     "risk": "2",
-    "explainationId": "21"
+    "explainationId": "21",
+    "userVisibility": "true",
+    "companyVisibility": "true",
+    "cityVisibilitiy": "false",
+    "visible": "Erklärung",
+    "notVisible": "Kann nicht angezeigt werden, weil..."
   },
   {
     "dataType": "VehicleBatteryLevel",
     "risk": "1",
-    "explainationId": "22"
+    "explainationId": "22",
+    "userVisibility": "true",
+    "companyVisibility": "true",
+    "cityVisibilitiy": "false",
+    "visible": "Erklärung",
+    "notVisible": "Kann nicht angezeigt werden, weil..."
   }
 ]

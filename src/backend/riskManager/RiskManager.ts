@@ -1,9 +1,7 @@
-//import riskJson from "src/data/risk/risk.json";
-//import explainationJson from "src/data/risk/explanation.json";
-import type { RiskLevel } from "./RiskLevel";
+import riskJson from "src/data/risk/risk.json";
+import { RiskLevel } from "./RiskLevel";
 import type { Role } from "../Role";
-//import { riskExplanation } from "./RiskExplanation.js";
-import type { RiskDefinition } from "./RiskDefinition";
+import { RiskDefinition } from "./RiskDefinition";
 
 /**
  * The riskManager class.
@@ -13,9 +11,9 @@ export class RiskManager {
   dataType: string;
 
   constructor(role: Role, dataType: string) {
+    this.loadAllRiskDefinitions;
     this.role = role;
     this.dataType = dataType;
-    //this.riskDefinitions = riskDefinitions;
   }
 
   riskDefinitions!: RiskDefinition[];
@@ -78,5 +76,46 @@ export class RiskManager {
     }
   }
 
-  //loadAllRiskDefinitions(): void {}
+  /**
+   * Loads the data of the riskJson in an Array of RiskDefinitions.
+   * */
+  private loadAllRiskDefinitions(): void {
+    try {
+      for (let i = 0; i < riskJson.length; i++) {
+        const dataType = riskJson[i].dataType;
+        let risk = RiskLevel.low;
+        if (riskJson[i].risk == "medium") {
+          risk = RiskLevel.medium;
+        } else if (riskJson[i].risk == "high") {
+          risk = RiskLevel.high;
+        }
+        let userVisibility = false;
+        if (riskJson[i].userVisibility == "true") {
+          userVisibility = true;
+        }
+        let companyVisibility = false;
+        if (riskJson[i].companyVisibility == "true") {
+          companyVisibility = true;
+        }
+        let cityVisibility = false;
+        if (riskJson[i].cityVisibilitiy == "true") {
+          cityVisibility = true;
+        }
+        const visibleExplanation = riskJson[i].visible;
+        const notVisibleExplanation = riskJson[i].notVisible;
+        const riskDefinition = new RiskDefinition(
+          dataType,
+          risk,
+          userVisibility,
+          companyVisibility,
+          cityVisibility,
+          visibleExplanation,
+          notVisibleExplanation
+        );
+        this.riskDefinitions.push(riskDefinition);
+      }
+    } catch (err) {
+      throw Error(`Soething went wrong reading the JSON: ${err}`);
+    }
+  }
 }
