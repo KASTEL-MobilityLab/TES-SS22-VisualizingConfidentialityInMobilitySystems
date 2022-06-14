@@ -17,7 +17,7 @@ describe.concurrent("Test Vehicle Subclasses", async () => {
   );
 
   it("try to retrieve undefined company of vehicle", async () => {
-    const train = new Train("V01", "C01");
+    const train = new Train("V01", "C01", VehicleStatus.inactive);
     expect(() => train.company).toThrowError();
   });
 

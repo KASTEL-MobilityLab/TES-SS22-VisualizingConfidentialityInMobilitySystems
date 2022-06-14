@@ -23,7 +23,7 @@ describe.concurrent("Async get Data", async () => {
     // change later, when branch is merged
     // const risk = await getData(AvailableData.risks);
     // check if first element is loaded correctly
-    //await expect(getData(AvailableData.risks)).rejects.toThrowError();
+    await expect(getData(AvailableData.risks)).rejects.toThrowError();
   });
 });
 

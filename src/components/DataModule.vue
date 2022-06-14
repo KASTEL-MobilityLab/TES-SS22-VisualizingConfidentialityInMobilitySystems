@@ -14,7 +14,7 @@ defineProps<{
 const $dm: DataManager = inject(dataManagerKey) as DataManager;
 // instead of V01 we will later have access to the currently selected vehicle on the map
 // via an app-level provided attribute.
-const vehicle: Vehicle = $dm.getDataById("V01");
+const vehicle: Vehicle = $dm.getDataById("V01", $dm.vehicles);
 </script>
 
 <template>
