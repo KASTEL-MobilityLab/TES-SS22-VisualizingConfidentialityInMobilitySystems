@@ -1,12 +1,12 @@
+import { User } from "@/backend/dataFields";
+import { Company } from "@/backend/dataFields/Company";
+import { PayPal } from "@/backend/dataFields/payments/Paypal";
+import { Trip } from "@/backend/dataFields/Trip";
 import { VehicleStatus } from "@/backend/dataFields/types";
 import { EScooter } from "@/backend/dataFields/vehicles/EScooter";
-import { describe, expect, it } from "vitest";
-import { Trip } from "@/backend/dataFields/Trip";
 import { Route } from "@/backend/Route";
 import { LatLng } from "@/backend/utils/LatLng";
-import { Company } from "@/backend/dataFields/Company";
-import { User } from "@/backend/dataFields";
-import { PayPal } from "@/backend/dataFields/payments/Paypal";
+import { describe, expect, it } from "vitest";
 
 describe("Test Payment Subclasses", () => {
   const route = new Route(
@@ -43,19 +43,13 @@ describe("Test Payment Subclasses", () => {
   );
   const payment = new PayPal(
     "max.mustermann@gmail.com",
-    "PayPal",
     "P01",
     "T01",
     tripToHerrenstreet
   );
 
   it("try to retrieve undefined trip of payment", async () => {
-    const payment = new PayPal(
-      "max.mustermann@gmail.com",
-      "PayPal",
-      "P02",
-      "T04"
-    );
+    const payment = new PayPal("max.mustermann@gmail.com", "P02", "T04");
     expect(() => payment.trip).toThrowError();
   });
 

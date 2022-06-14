@@ -59,6 +59,9 @@ export class DataManager {
    * This method loads all data into the DataManager.
    */
   private async loadAllData() {
+    // this.users = await this.dataLoader.loadAllUsers();
+    // console.log(this.users);
+
     [this.users, this.companies, this.trips, this.vehicles, this.routes] =
       await Promise.all([
         this.dataLoader.loadAllUsers(),
