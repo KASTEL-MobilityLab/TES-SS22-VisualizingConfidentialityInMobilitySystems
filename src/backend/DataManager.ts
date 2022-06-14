@@ -2,14 +2,14 @@ import type {
   Company,
   DataField,
   Payment,
-  Vehicle,
   Trip,
   User,
+  Vehicle,
 } from "./dataFields";
 import { DataLoader } from "./DataLoader";
+import { DataPackage } from "./DataPackage";
 import { Role } from "./roles";
 import type { Route } from "./Route";
-import { DataPackage } from "./DataPackage";
 
 export class DataManager {
   currentRole: Role;
@@ -44,13 +44,6 @@ export class DataManager {
     this.routes = [];
 
     this.loadAllData();
-    // this could be problematic here, because loadAllData is async, so
-    // it might not be finished when setAllReference is called.
-    // we might have to use seperate method for loading and setting references outside of the constructor
-    // because the constructor cannot be async (we cannot await this.loadAllData())
-    // Danial: Ja, das ist ein großes Problem, da er ansonsten anföngt die Refernezen zu setzen, ohne das überhaupt die Daten fertig
-    // geladen wurden
-    //this.setAllReferences();
   }
 
   /**
@@ -93,7 +86,7 @@ export class DataManager {
   }
 
   /**
-   * Sets the specific trip referencee of a payment.
+   * Sets the specific trip reference of a payment.
    */
   private setPaymentReferences() {
     for (const payment of this.payments) {
@@ -105,7 +98,7 @@ export class DataManager {
   }
 
   /**
-   * Sets the specfic company reference of a vehicle.
+   * Sets the specific company reference of a vehicle.
    */
   private setVehicleReferences() {
     for (const vehicle of this.vehicles) {
@@ -117,7 +110,7 @@ export class DataManager {
   }
 
   /**
-   * Sets the specifc vehicle, user, payment, and route references of a trip.
+   * Sets the specific vehicle, user, payment, and route references of a trip.
    */
   setTripReferences() {
     for (const trip of this.trips) {
@@ -214,23 +207,10 @@ export class DataManager {
     trip?: Trip
   ) {
     const newDataPackage = new DataPackage(vehicle, user, payment, trip);
-    if (this.checkValidityOfDataPackage(newDataPackage)) {
+    if (newDataPackage.checkValidity()) {
       this.currentDataPackage = newDataPackage;
     } else {
       throw Error(`The DataPackage to creation is not valid.`);
     }
-  }
-
-  //Brauchen wir diese Methode überhaupt, da wir eigentlich davor schon alle Referenzen setzen?
-  //Eigentlich reicht es auch, wenn man in changeDataPackage() eine Hilfsmethode hat, die die richtigen
-  //DataFields raussucht und dann daraus ein DataPackage bildet.
-  checkValidityOfDataPackage(dataPackage: DataPackage): boolean {
-    //Checks whether the same company is used
-    let sameCompany = false;
-    if (dataPackage.vehicle.company === dataPackage.trip?.vehicle.company) {
-      sameCompany = true;
-    }
-    //TODO: Implement the rest of the checks
-    return sameCompany;
   }
 }

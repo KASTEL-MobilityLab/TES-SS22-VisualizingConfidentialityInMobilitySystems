@@ -26,4 +26,13 @@ export class DataPackage {
       this.trip = trip;
     }
   }
+
+  checkValidity(): boolean {
+    let valid = false;
+    if (this.vehicle.company === this.trip?.vehicle.company) {
+      valid = true;
+    }
+    // more checks ...
+    return valid;
+  }
 }
