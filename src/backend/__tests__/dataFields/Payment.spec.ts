@@ -28,7 +28,7 @@ describe("Test Payment Subclasses", () => {
     "U01",
     "Max",
     "Mustermann",
-    "0177574712378",
+    49177574712378,
     "max.mustermann@gmail.com"
   );
   const tripToHerrenstreet = new Trip(
