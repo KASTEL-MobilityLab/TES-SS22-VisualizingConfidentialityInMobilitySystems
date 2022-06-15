@@ -21,7 +21,6 @@
     "id": "P03",
     "tripId": "T03",
     "type": "PayPal",
-    "provider": "PayPal",
     "userName": "Tom_Fritz1824"
   }
 ]
