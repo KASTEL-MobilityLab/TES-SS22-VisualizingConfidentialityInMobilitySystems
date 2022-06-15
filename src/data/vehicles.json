@@ -30,7 +30,6 @@
     "id": "V04",
     "type": "Train",
     "companyId": "C03",
-    "active": "true",
     "status": "Inactive"
   }
 ]
