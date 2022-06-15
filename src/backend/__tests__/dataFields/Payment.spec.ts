@@ -43,19 +43,13 @@ describe("Test Payment Subclasses", () => {
   );
   const payment = new PayPal(
     "max.mustermann@gmail.com",
-    "PayPal",
     "P01",
     "T01",
     tripToHerrenstreet
   );
 
   it("try to retrieve undefined trip of payment", async () => {
-    const payment = new PayPal(
-      "max.mustermann@gmail.com",
-      "PayPal",
-      "P02",
-      "T04"
-    );
+    const payment = new PayPal("max.mustermann@gmail.com", "P02", "T04");
     expect(() => payment.trip).toThrowError();
   });
 

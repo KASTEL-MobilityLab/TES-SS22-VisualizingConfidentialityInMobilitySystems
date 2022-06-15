@@ -20,6 +20,9 @@ export class CreditCard extends NonCash {
   @Expose()
   readonly expiryDate: Date;
 
+  @Expose()
+  readonly provider: string;
+
   constructor(
     cardNumber: number,
     ccv: number,
@@ -29,7 +32,8 @@ export class CreditCard extends NonCash {
     tripId: string,
     trip?: Trip
   ) {
-    super(PaymentType.creditcard, provider, id, tripId, trip);
+    super(PaymentType.creditcard, id, tripId, trip);
+    this.provider = provider;
     this.cardNumber = cardNumber;
     this.ccv = ccv;
     this.expiryDate = expiryDate;
