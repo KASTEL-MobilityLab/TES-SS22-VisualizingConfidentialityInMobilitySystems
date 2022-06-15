@@ -12,7 +12,7 @@ export class User extends DataField {
   readonly surname: string;
 
   @Expose()
-  readonly phoneNumber: string;
+  readonly phoneNumber: number;
 
   @Expose()
   readonly email: string;
@@ -21,7 +21,7 @@ export class User extends DataField {
     id: string,
     forename: string,
     surname: string,
-    phoneNumber: string,
+    phoneNumber: number,
     email: string
   ) {
     super(id);
