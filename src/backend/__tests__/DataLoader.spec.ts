@@ -63,7 +63,7 @@ describe.concurrent("DataLoader", async () => {
     "P01",
     "T01"
   );
-  const firstPayPal = new PayPal("Tom_Fritz1824", "P03", "T03");
+  const firstPayPal = new PayPal("Tom_Fritz1824", "PayPal", "P03", "T03");
 
   it("load all companies", async () => {
     const companies = await dl.loadAllCompanies();
