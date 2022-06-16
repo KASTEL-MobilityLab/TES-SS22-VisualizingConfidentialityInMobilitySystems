@@ -7,8 +7,8 @@ import LocaleSwitcher from "./localeSwitcher.vue";
   <nav class="navbar fixed-top navbar-expand-md navbar-light bg-light py-3">
     <div class="container-fluid">
       <RouterLink to="/" class="navbar-brand display-4"
-        ><i class="fa-solid fa-lock fa-fw"></i> Confidentiality
-        Visualizer</RouterLink
+        ><i class="fa-solid fa-lock fa-fw"></i>
+        {{ $t("app.confidentiality-visualizer") }}</RouterLink
       >
       <ul class="navbar-nav">
         <li class="nav-item active dropdown">
@@ -19,7 +19,7 @@ import LocaleSwitcher from "./localeSwitcher.vue";
             role="button"
             data-bs-toggle="dropdown"
           >
-            User
+            {{ $t("app.user") }}
           </a>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="#">User1</a></li>
@@ -28,10 +28,10 @@ import LocaleSwitcher from "./localeSwitcher.vue";
           </ul>
         </li>
         <li class="nav-item">
-          <span class="nav-link active">City</span>
+          <span class="nav-link active">{{ $t("app.city") }}</span>
         </li>
         <li class="nav-item">
-          <span class="nav-link active">Company</span>
+          <span class="nav-link active">{{ $t("app.company") }}</span>
         </li>
       </ul>
       <div class="d-flex-inline">
@@ -40,7 +40,7 @@ import LocaleSwitcher from "./localeSwitcher.vue";
         </span>
         <div class="vr"></div>
         <RouterLink to="/help" class="navbar-brand m-4 display-4"
-          >Help <i class="fa-solid fa-question fa-sm fa-fw"></i
+          >{{ $t("app.help") }}<i class="fa-solid fa-question fa-sm fa-fw"></i
         ></RouterLink>
       </div>
     </div>
