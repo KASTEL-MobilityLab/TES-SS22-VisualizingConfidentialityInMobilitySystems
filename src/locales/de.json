@@ -1,5 +1,6 @@
 {
   "help": "Hilfe",
   "confidentiality-visualizer": "Vertraulichkeits-Visualisierer",
-  "welcome": "Willkommen zu unserem @:confidentiality-visualizer"
+  "welcome": "Willkommen zu unserem @:confidentiality-visualizer",
+  "dataViewer": "Daten-Anzeiger"
 }
