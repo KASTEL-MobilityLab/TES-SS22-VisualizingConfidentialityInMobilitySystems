@@ -14,6 +14,7 @@ import router from "./router";
 
 const i18n = createI18n({
   legacy: false,
+  globalInjection: true,
   locale: "en",
   fallBackLocale: "en",
   messages: {
