@@ -10,7 +10,7 @@ function switchLocale() {
 
 <template>
   <button class="btn btn-light btn-lg" @click="switchLocale">
-    {{ i18n.locale.value.toUpperCase() }}
+    {{ $i18n.locale.toUpperCase() }}
     <i class="fa-solid fa-globe fa-fw"></i>
   </button>
 </template>

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { RouterLink } from "vue-router";
-import LocaleSwitcher from "./localeSwitcher.vue";
+import LocaleChanger from "./LocaleChanger.vue";
 </script>
 
 <template>
@@ -36,7 +36,7 @@ import LocaleSwitcher from "./localeSwitcher.vue";
       </ul>
       <div class="d-flex-inline">
         <span class="navbar-brand m-4 display-4">
-          <LocaleSwitcher />
+          <LocaleChanger />
         </span>
         <div class="vr"></div>
         <RouterLink to="/help" class="navbar-brand m-4 display-4"
