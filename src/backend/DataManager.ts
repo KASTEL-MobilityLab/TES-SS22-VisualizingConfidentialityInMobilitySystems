@@ -7,9 +7,11 @@ import type {
   Vehicle,
 } from "./dataFields";
 import { DataLoader } from "./DataLoader";
-import { DataPackage } from "./DataPackage";
+import type { DataModule } from "./dataModules/DataModule";
+import { RiskManager } from "./RiskManager";
 import { Role } from "./roles";
 import type { Route } from "./Route";
+import { UserDataModule } from "./dataModules/UserDataModule";
 
 export class DataManager {
   currentRole: Role;
@@ -26,8 +28,10 @@ export class DataManager {
   routes: Route[];
 
   dataLoader: DataLoader;
-  //The currently selected DataPackage
-  currentDataPackage?: DataPackage;
+  riskManager: RiskManager;
+
+  //The currently selected Data, including the DataModules of the Vehicle, User, Payment, and Trip.
+  currentData?: DataModule[];
 
   /**
    * Construct a new DataManager.
@@ -42,6 +46,10 @@ export class DataManager {
     this.users = [];
     this.vehicles = [];
     this.routes = [];
+
+    this.currentData = [];
+
+    this.riskManager = new RiskManager();
 
     this.loadAllData();
   }
@@ -194,23 +202,25 @@ export class DataManager {
   }
 
   /**
-   * Changes the current DataPackage to a new DataPackage
+   * Changes the current Data to a new DataModule
    * @param vehicle The vehicle that is selected.
    * @param user The user that is driving the trip.
    * @param payment The payment with which the trip is paid.
    * @param trip The trip that is driven by the user.
    */
-  private changeDataPackage(
+  private changeCurrentData(
     vehicle: Vehicle,
     user?: User,
     payment?: Payment,
     trip?: Trip
   ) {
-    const newDataPackage = new DataPackage(vehicle, user, payment, trip);
-    if (newDataPackage.checkValidity()) {
-      this.currentDataPackage = newDataPackage;
-    } else {
-      throw Error(`The DataPackage to creation is not valid.`);
+    if (user != undefined) {
+      const userDataModule = new UserDataModule(
+        "UDM1",
+        user,
+        this.riskManager,
+        this.currentRole
+      );
     }
   }
 }
