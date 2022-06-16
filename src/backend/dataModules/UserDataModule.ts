@@ -9,6 +9,8 @@ import { DataModule } from "./DataModule";
  * The DataModule of a specific User.
  */
 export class UserDataModule extends DataModule {
+  dataPackages: DataPackage[];
+
   constructor(
     id: string,
     user: User,
@@ -16,6 +18,7 @@ export class UserDataModule extends DataModule {
     currentRole: Role
   ) {
     super(id, user, riskManager, currentRole);
+    this.dataPackages = this.createDataPackages(user, riskManager, currentRole);
   }
 
   createDataPackages(
@@ -29,27 +32,27 @@ export class UserDataModule extends DataModule {
     //als eigene Enums für Vehicle, User, Payment, Trip, ... . Was hält ihr davon?
     const forenameDataPacakge = new DataPackage(
       UserDataFieldNames.forename,
-      user.forename,
-      riskManager.getExplanation("UserForename", currentRole),
-      riskManager.getVisibility("UserForename", currentRole)
+      user.forename
+      //riskManager.getExplanation("UserForename", currentRole),
+      //riskManager.getVisibility("UserForename", currentRole)
     );
     const surnameDataPackage = new DataPackage(
       UserDataFieldNames.surname,
-      user.surname,
-      riskManager.getExplanation("UserSurname", currentRole),
-      riskManager.getVisibility("UserSurname", currentRole)
+      user.surname
+      //riskManager.getExplanation("UserSurname", currentRole),
+      //riskManager.getVisibility("UserSurname", currentRole)
     );
     const phoneNumberDataPackage = new DataPackage(
       UserDataFieldNames.phoneNumber,
-      user.phoneNumber,
-      riskManager.getExplanation("UserPhoneNumber", currentRole),
-      riskManager.getVisibility("UserPhoneNumber", currentRole)
+      user.phoneNumber
+      //riskManager.getExplanation("UserPhoneNumber", currentRole),
+      //riskManager.getVisibility("UserPhoneNumber", currentRole)
     );
     const emailDataPackage = new DataPackage(
       UserDataFieldNames.email,
-      user.email,
-      riskManager.getExplanation("UserEmail", currentRole),
-      riskManager.getVisibility("UserEmail", currentRole)
+      user.email
+      //riskManager.getExplanation("UserEmail", currentRole),
+      //riskManager.getVisibility("UserEmail", currentRole)
     );
     const allUserDataPackages: [
       DataPackage,
@@ -64,5 +67,9 @@ export class UserDataModule extends DataModule {
     ];
 
     return allUserDataPackages;
+  }
+
+  getFirstUserDataPackage(): DataPackage {
+    return this.dataPackages[0];
   }
 }
