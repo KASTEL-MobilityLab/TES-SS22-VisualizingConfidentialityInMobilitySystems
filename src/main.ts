@@ -22,5 +22,11 @@ app.use(i18n);
  */
 const dm: DataManager = new DataManager();
 app.provide(dataManagerKey, readonly(dm));
+// we have to use async lambda function to execute init because
+// in some target builds, top level await is not available
+// though we still run into issues with this because the loading
+// takes roughly 83ms to run
+const init = async () => await dm.init();
+init();
 
 app.mount("#app");

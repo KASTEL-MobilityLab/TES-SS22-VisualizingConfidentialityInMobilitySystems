@@ -53,6 +53,11 @@ export async function getData(
  * The DataLoader takes care of loading local JSON files and transforms them to their corresponding classes.
  */
 export class DataLoader {
+  private classTransformerOptions = {
+    excludeExtraneousValues: true,
+    enableImplicitConversion: true,
+    excludePrefixes: ["_"],
+  };
   /**
    * Loads all data from the specific company json file and transforms the array of data to an array of companies.
    *
@@ -62,7 +67,8 @@ export class DataLoader {
     const companyJson = await getData(AvailableData.companies);
     const transformedCompanyData: Company[] = plainToInstance(
       Company,
-      companyJson
+      companyJson,
+      this.classTransformerOptions
     );
     return transformedCompanyData;
   }
@@ -74,7 +80,11 @@ export class DataLoader {
    */
   async loadAllUsers(): Promise<User[]> {
     const userJson = await getData(AvailableData.users);
-    const transformedUserData: User[] = plainToInstance(User, userJson);
+    const transformedUserData: User[] = plainToInstance(
+      User,
+      userJson,
+      this.classTransformerOptions
+    );
     return transformedUserData;
   }
 
@@ -88,17 +98,21 @@ export class DataLoader {
     const transformedVehicleData: Vehicle[] = [];
 
     //Filter the e-scooters from all vehicles
-    const escooters = plainToInstance(EScooter, vehicleJson, {
-      excludeExtraneousValues: true,
-    }).filter((vehicle) => vehicle.type === VehicleType.escooter);
+    const escooters = plainToInstance(
+      EScooter,
+      vehicleJson,
+      this.classTransformerOptions
+    ).filter((vehicle) => vehicle.type === VehicleType.escooter);
 
     //Push all e-scooters
     transformedVehicleData.push(...escooters);
 
     //Filter the trains from all vehicles
-    const trains = plainToInstance(Train, vehicleJson, {
-      excludeExtraneousValues: true,
-    }).filter((vehicle) => vehicle.type === VehicleType.train);
+    const trains = plainToInstance(
+      Train,
+      vehicleJson,
+      this.classTransformerOptions
+    ).filter((vehicle) => vehicle.type === VehicleType.train);
 
     //Push all trains
     transformedVehicleData.push(...trains);
@@ -116,25 +130,31 @@ export class DataLoader {
     const transformedPaymentData: Payment[] = [];
 
     //Filter the cash payments from all payments
-    const cashPayments = plainToInstance(Cash, paymentJson, {
-      excludeExtraneousValues: true,
-    }).filter((payment) => payment.paymentType === PaymentType.cash);
+    const cashPayments = plainToInstance(
+      Cash,
+      paymentJson,
+      this.classTransformerOptions
+    ).filter((payment) => payment.paymentType === PaymentType.cash);
 
     //Push all cash payments
     transformedPaymentData.push(...cashPayments);
 
     //Filter the credit card payments from all payments
-    const creditCardPayments = plainToInstance(CreditCard, paymentJson, {
-      excludeExtraneousValues: true,
-    }).filter((payment) => payment.paymentType === PaymentType.creditcard);
+    const creditCardPayments = plainToInstance(
+      CreditCard,
+      paymentJson,
+      this.classTransformerOptions
+    ).filter((payment) => payment.paymentType === PaymentType.creditcard);
 
     //Push all credit card payments
     transformedPaymentData.push(...creditCardPayments);
 
     //Filter the PayPal payments from all payments
-    const payPalPayments = plainToInstance(PayPal, paymentJson, {
-      excludeExtraneousValues: true,
-    }).filter((payment) => payment.paymentType === PaymentType.paypal);
+    const payPalPayments = plainToInstance(
+      PayPal,
+      paymentJson,
+      this.classTransformerOptions
+    ).filter((payment) => payment.paymentType === PaymentType.paypal);
 
     //Push all PayPal payments
     transformedPaymentData.push(...payPalPayments);
@@ -149,7 +169,11 @@ export class DataLoader {
    */
   async loadAllTrips(): Promise<Trip[]> {
     const tripJson = await getData(AvailableData.trips);
-    const transformedTripData: Trip[] = plainToInstance(Trip, tripJson);
+    const transformedTripData: Trip[] = plainToInstance(
+      Trip,
+      tripJson,
+      this.classTransformerOptions
+    );
     return transformedTripData;
   }
 
@@ -160,7 +184,11 @@ export class DataLoader {
    */
   async loadAllRoutes(): Promise<Route[]> {
     const routeJson = await getData(AvailableData.routes);
-    const transformedRouteData: Route[] = plainToInstance(Route, routeJson);
+    const transformedRouteData: Route[] = plainToInstance(
+      Route,
+      routeJson,
+      this.classTransformerOptions
+    );
     return transformedRouteData;
   }
 }

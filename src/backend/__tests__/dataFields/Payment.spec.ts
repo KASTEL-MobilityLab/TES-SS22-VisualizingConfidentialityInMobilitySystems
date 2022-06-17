@@ -1,12 +1,12 @@
+import { User, CreditCard } from "@/backend/dataFields";
+import { Company } from "@/backend/dataFields/Company";
+import { PayPal } from "@/backend/dataFields/payments/Paypal";
+import { Trip } from "@/backend/dataFields/Trip";
 import { VehicleStatus } from "@/backend/dataFields/types";
 import { EScooter } from "@/backend/dataFields/vehicles/EScooter";
-import { describe, expect, it } from "vitest";
-import { Trip } from "@/backend/dataFields/Trip";
 import { Route } from "@/backend/Route";
 import { LatLng } from "@/backend/utils/LatLng";
-import { Company } from "@/backend/dataFields/Company";
-import { User } from "@/backend/dataFields";
-import { PayPal } from "@/backend/dataFields/payments/Paypal";
+import { describe, expect, it } from "vitest";
 
 describe("Test Payment Subclasses", () => {
   const route = new Route(
@@ -28,7 +28,7 @@ describe("Test Payment Subclasses", () => {
     "U01",
     "Max",
     "Mustermann",
-    "0177574712378",
+    49177574712378,
     "max.mustermann@gmail.com"
   );
   const tripToHerrenstreet = new Trip(
@@ -43,19 +43,13 @@ describe("Test Payment Subclasses", () => {
   );
   const payment = new PayPal(
     "max.mustermann@gmail.com",
-    "PayPal",
     "P01",
     "T01",
     tripToHerrenstreet
   );
 
   it("try to retrieve undefined trip of payment", async () => {
-    const payment = new PayPal(
-      "max.mustermann@gmail.com",
-      "PayPal",
-      "P02",
-      "T04"
-    );
+    const payment = new PayPal("max.mustermann@gmail.com", "P02", "T04");
     expect(() => payment.trip).toThrowError();
   });
 
@@ -74,5 +68,18 @@ describe("Test Payment Subclasses", () => {
 
     // should not throw an error
     payment.trip = tripToHerrenstreet;
+  });
+
+  it("try to create a credit card payment with numbers instead of strings", async () => {
+    const date: Date = new Date(Date.now());
+    const payment1 = new CreditCard(
+      32,
+      344,
+      date,
+      "Master Card",
+      "P0001",
+      "T0001"
+    );
+    expect(payment1.cardNumber).toEqual(32);
   });
 });

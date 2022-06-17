@@ -19,5 +19,12 @@
   "i18n-ally.sortKeys": true,
   "editor.codeActionsOnSave": {
     "source.fixAll": true
+  },
+  // dont show spell check errors in problems pane
+  "cSpell.diagnosticLevel": "Hint",
+  "workbench.colorCustomizations": {
+    // but make them more visible
+    "editorHint.border": "#ff7700",
+    "editorHint.foreground": "#f000"
   }
 }
