@@ -8,11 +8,9 @@ import { NonCash } from "./NonCash";
  * and can be used as an offline or online payment.
  */
 export class CreditCard extends NonCash {
-  @Type(() => Number)
   @Expose()
   readonly cardNumber: number;
 
-  @Type(() => Number)
   @Expose()
   readonly ccv: number;
 

@@ -8,15 +8,12 @@ import { IndividualVehicle } from "./IndividualVehicle";
  * The E-Scooter class.
  */
 export class EScooter extends IndividualVehicle {
-  @Type(() => Number)
   @Expose()
   readonly condition: number;
 
-  @Type(() => Number)
   @Expose()
   readonly batteryCondition: number;
 
-  @Type(() => Number)
   @Expose()
   readonly batteryLevel: number;
 

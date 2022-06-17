@@ -22,7 +22,6 @@ export class Trip extends DataField {
   @Expose()
   readonly paymentId: string;
 
-  @Type(() => Number)
   @Expose()
   readonly price: number;
 
