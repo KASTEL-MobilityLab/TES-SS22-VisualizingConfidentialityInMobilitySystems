@@ -35,7 +35,7 @@ describe.concurrent("DataLoader", async () => {
     "U01",
     "Theo",
     "Schweitzer",
-    "02256708826",
+    49188323232,
     "theo.schweitzer@gmail.com"
   );
   const firstEScooter = new EScooter(
