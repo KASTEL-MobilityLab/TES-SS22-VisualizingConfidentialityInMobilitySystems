@@ -1,0 +1,1 @@
+var t=[{id:"R01",start:{lat:49.007578,lng:8.38937},end:{lat:49.011074,lng:8.413184}},{id:"R02",start:{lat:49.014439,lng:8.390794},end:{lat:49.011218,lng:8.407751}},{id:"R03",start:{lat:42.014439,lng:8.390794},end:{lat:89.011218,lng:10.407751}}];export{t as default};
