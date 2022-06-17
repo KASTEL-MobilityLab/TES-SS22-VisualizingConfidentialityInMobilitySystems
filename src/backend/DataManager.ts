@@ -42,31 +42,36 @@ export class DataManager {
     this.users = [];
     this.vehicles = [];
     this.routes = [];
-
-    this.loadAllData();
   }
 
   /**
    * This method sets all references that have not been set in the initialization
    */
-  setAllReferences() {
+  private setAllReferences() {
     this.setVehicleReferences();
     this.setPaymentReferences();
     this.setTripReferences();
   }
 
   /**
-   * This method loads all data into the DataManager.
+   * This method initializes the data manager by asynchronously loading all data.
    */
-  private async loadAllData() {
-    [this.users, this.companies, this.trips, this.vehicles, this.routes] =
-      await Promise.all([
-        this.dataLoader.loadAllUsers(),
-        this.dataLoader.loadAllCompanies(),
-        this.dataLoader.loadAllTrips(),
-        this.dataLoader.loadAllVehicles(),
-        this.dataLoader.loadAllRoutes(),
-      ]);
+  async init() {
+    [
+      this.users,
+      this.companies,
+      this.trips,
+      this.vehicles,
+      this.routes,
+      this.payments,
+    ] = await Promise.all([
+      this.dataLoader.loadAllUsers(),
+      this.dataLoader.loadAllCompanies(),
+      this.dataLoader.loadAllTrips(),
+      this.dataLoader.loadAllVehicles(),
+      this.dataLoader.loadAllRoutes(),
+      this.dataLoader.loadAllPayments(),
+    ]);
     this.setAllReferences();
   }
 
