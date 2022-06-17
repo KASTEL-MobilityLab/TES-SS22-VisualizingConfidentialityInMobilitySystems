@@ -33,6 +33,6 @@ app.use(i18n);
  * with `const $dm = inject('$dataManager')`
  */
 const dm: DataManager = new DataManager();
+await dm.init();
 app.provide(dataManagerKey, readonly(dm));
-
 app.mount("#app");

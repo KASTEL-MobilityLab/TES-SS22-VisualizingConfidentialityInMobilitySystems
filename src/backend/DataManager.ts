@@ -42,8 +42,6 @@ export class DataManager {
     this.users = [];
     this.vehicles = [];
     this.routes = [];
-
-    this.loadAllData();
   }
 
   /**
@@ -56,9 +54,9 @@ export class DataManager {
   }
 
   /**
-   * This method loads all data into the DataManager.
+   * This method initializes the data manager by asynchronously loading all data.
    */
-  private async loadAllData() {
+  async init() {
     [
       this.users,
       this.companies,
