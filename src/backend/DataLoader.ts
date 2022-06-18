@@ -46,6 +46,16 @@ export async function getData(
   }
 }
 
+export interface DataLoaderParams {
+  companyPath?: AvailableData;
+  userPath?: AvailableData;
+  vehiclePath?: AvailableData;
+  paymentPath?: AvailableData;
+  routePath?: AvailableData;
+  tripPath?: AvailableData;
+  riskPath?: AvailableData;
+}
+
 /**
  * The DataLoader takes care of loading local JSON files and transforms them to their corresponding classes.
  */
@@ -77,7 +87,7 @@ export class DataLoader {
     tripPath = AvailableData.trips,
     riskPath = AvailableData.risks,
     paymentPath = AvailableData.payments,
-  }) {
+  }: DataLoaderParams) {
     this.companyPath = companyPath;
     this.userPath = userPath;
     this.vehiclePath = vehiclePath;

@@ -1,5 +1,9 @@
 <script setup lang="ts">
+import type { DataManager } from "@/backend/DataManager";
+import { dataManagerKey } from "@/keys";
+import { inject } from "vue";
 import { RouterView } from "vue-router";
+const $dm = inject(dataManagerKey) as DataManager;
 </script>
 
 <template>
@@ -11,6 +15,7 @@ import { RouterView } from "vue-router";
     <div class="text-center m-2">
       <!-- All nested views will be displayed in this div -->
       <RouterView />
+      <div>{{ $dm.companies }}</div>
     </div>
   </div>
 </template>

@@ -7,7 +7,7 @@ import type {
   Vehicle,
 } from "./dataFields";
 import type { Route } from "./dataFields/Route";
-import { DataLoader } from "./DataLoader";
+import { DataLoader, type DataLoaderParams } from "./DataLoader";
 import { DataPackage } from "./DataPackage";
 import { Role } from "./roles";
 
@@ -32,10 +32,10 @@ export class DataManager {
   /**
    * Construct a new DataManager.
    */
-  constructor() {
+  constructor(dataLoaderParams: DataLoaderParams = {}) {
     //The city is set as the default role
     this.currentRole = Role.city;
-    this.dataLoader = new DataLoader({});
+    this.dataLoader = new DataLoader(dataLoaderParams);
     this.companies = [];
     this.payments = [];
     this.trips = [];
