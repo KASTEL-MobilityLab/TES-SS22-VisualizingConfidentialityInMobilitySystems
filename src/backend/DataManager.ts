@@ -9,7 +9,7 @@ import type {
 import { DataLoader } from "./DataLoader";
 import { DataPackage } from "./DataPackage";
 import { Role } from "./roles";
-import type { Route } from "./Route";
+import type { Route } from "./dataFields/Route";
 
 export class DataManager {
   currentRole: Role;

@@ -12,8 +12,8 @@ import { Cash } from "@/backend/dataFields/payments/Cash";
 import { plainToInstance } from "class-transformer";
 import "reflect-metadata";
 import { PayPal } from "./dataFields/payments/Paypal";
+import { Route } from "./dataFields/Route";
 import { PaymentType, VehicleType } from "./dataFields/types";
-import { Route } from "./Route";
 
 /**
  * Specifies, which data can be loaded with the function {@link getData}.
