@@ -7,3 +7,9 @@ export enum UserDataFieldNames {
   phoneNumber = "Phone Number",
   email = "E-Mail",
 }
+
+export enum EScooterDataFieldNames {}
+//To be implemented
+
+export enum TrainDataFieldNames {}
+//To be implemented

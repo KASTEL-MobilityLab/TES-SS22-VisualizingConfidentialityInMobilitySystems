@@ -11,15 +11,11 @@ var user1 = new User(
   "015731371721",
   "MaxMustermann@gmail.com"
 );
-var riskManager = new RiskManager();
-var currentRole = Role.city;
-var userDataModule = new UserDataModule(
-  "UDM01",
-  user1,
-  riskManager,
-  currentRole
-);
+var userDataModule = new UserDataModule(user1);
 var userDataPackage1 = userDataModule.getFirstUserDataPackage();
+var stringTest = user1["id"];
+var listPropertyNames = Object.keys(user1);
+console.log(listPropertyNames);
 </script>
 
 <template>

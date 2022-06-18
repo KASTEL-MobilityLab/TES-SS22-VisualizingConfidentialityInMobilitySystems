@@ -1,22 +1,9 @@
 export class DataPackage {
-  fieldName: string;
-  value: string;
-  //explanation?: string;
-  //currentVisibile?: boolean;
+  readonly fieldName: string;
+  readonly value: string;
 
-  constructor(
-    fieldName: string,
-    value: string
-    //explanation?: string,
-    //currentVisible?: boolean
-  ) {
+  constructor(fieldName: string, value: string) {
     this.fieldName = fieldName;
     this.value = value;
-    //this.explanation = explanation;
-    //this.currentVisibile = currentVisible;
-  }
-
-  setCurrentVisible(currentVisibile: boolean) {
-    //xthis.currentVisibile = currentVisibile;
   }
 }

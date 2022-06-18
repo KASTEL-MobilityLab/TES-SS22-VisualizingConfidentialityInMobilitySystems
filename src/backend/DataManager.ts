@@ -215,12 +215,7 @@ export class DataManager {
     trip?: Trip
   ) {
     if (user != undefined) {
-      const userDataModule = new UserDataModule(
-        "UDM1",
-        user,
-        this.riskManager,
-        this.currentRole
-      );
+      const userDataModule = new UserDataModule(user);
     }
   }
 }
