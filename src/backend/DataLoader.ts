@@ -19,27 +19,28 @@ import { PaymentType, VehicleType } from "./dataFields/types";
  * Specifies, which data can be loaded with the function {@link getData}.
  */
 export enum AvailableData {
-  companies = "companies",
-  users = "users",
-  vehicles = "vehicles",
-  payments = "payments",
-  routes = "routes",
-  trips = "trips",
-  risks = "risk/risk",
-  explanation = "risk/explanation",
+  companies = "data/companies",
+  users = "data/users",
+  vehicles = "data/vehicles",
+  payments = "data/payments",
+  routes = "data/routes",
+  trips = "data/trips",
+  risks = "data/risk/risk",
+  explanation = "data/risk/explanation",
+  testCompanies = "backend/__tests__/testData/companies",
 }
 
 /**
  * Dynamically import the specified json file. Valid strings are specified in the {@link AvailableData} enum.
- * @param dataPath A string that specifies the filename, i.e for src/data/companies.json `fileName='companies'`
- * or `fileName='AvailableData.companies'".
+ *
+ * @param dataPath A string that specifies the filename, i.e for src/data/companies.json `dataPath=AvailableData.companies`
  * @returns a Promise of Record<string, unknown>
  */
 export async function getData(
   dataPath: AvailableData
 ): Promise<Record<string, unknown>[]> {
   try {
-    const data = await import(`../data/${dataPath}.json`);
+    const data = await import(`../${dataPath}.json`);
     return data.default;
   } catch (error) {
     throw Error(`Unexpected error parsing the JSON file: ${error}`);
