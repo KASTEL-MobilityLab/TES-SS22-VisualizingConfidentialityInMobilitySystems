@@ -188,4 +188,14 @@ export class DataLoader {
     );
     return transformedRouteData;
   }
+
+  // static async loadAllRisks(): Promise<RiskDefinition[]> {
+  //   const riskJson = await getData(AvailableData.risks);
+  //   const transformedRiskData: RiskDefinition[] = plainToInstance(
+  //     RiskDefinition,
+  //     riskJson,
+  //     this.classTransformerOptions
+  //   );
+  //   return transformedRiskData;
+  // }
 }
