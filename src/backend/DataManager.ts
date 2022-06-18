@@ -25,7 +25,6 @@ export class DataManager {
   vehicles: Vehicle[];
   routes: Route[];
 
-  dataLoader: DataLoader;
   //The currently selected DataPackage
   currentDataPackage?: DataPackage;
 
@@ -35,7 +34,6 @@ export class DataManager {
   constructor() {
     //The city is set as the default role
     this.currentRole = Role.city;
-    this.dataLoader = new DataLoader();
     this.companies = [];
     this.payments = [];
     this.trips = [];
@@ -65,12 +63,12 @@ export class DataManager {
       this.routes,
       this.payments,
     ] = await Promise.all([
-      this.dataLoader.loadAllUsers(),
-      this.dataLoader.loadAllCompanies(),
-      this.dataLoader.loadAllTrips(),
-      this.dataLoader.loadAllVehicles(),
-      this.dataLoader.loadAllRoutes(),
-      this.dataLoader.loadAllPayments(),
+      DataLoader.loadAllUsers(),
+      DataLoader.loadAllCompanies(),
+      DataLoader.loadAllTrips(),
+      DataLoader.loadAllVehicles(),
+      DataLoader.loadAllRoutes(),
+      DataLoader.loadAllPayments(),
     ]);
     this.setAllReferences();
   }

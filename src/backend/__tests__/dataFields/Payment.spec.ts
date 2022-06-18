@@ -1,4 +1,4 @@
-import { User, CreditCard } from "@/backend/dataFields";
+import { CreditCard, User } from "@/backend/dataFields";
 import { Company } from "@/backend/dataFields/Company";
 import { PayPal } from "@/backend/dataFields/payments/Paypal";
 import { Trip } from "@/backend/dataFields/Trip";

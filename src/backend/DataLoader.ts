@@ -38,9 +38,6 @@ export enum AvailableData {
 export async function getData(
   dataPath: AvailableData
 ): Promise<Record<string, unknown>[]> {
-  // if (!(fileName in AvailableData)) {
-  //   throw Error(`Could not import data from src/data/${fileName}.json`);
-  // }
   try {
     const data = await import(`../data/${dataPath}.json`);
     return data.default;
@@ -53,7 +50,7 @@ export async function getData(
  * The DataLoader takes care of loading local JSON files and transforms them to their corresponding classes.
  */
 export class DataLoader {
-  private classTransformerOptions = {
+  private static classTransformerOptions = {
     excludeExtraneousValues: true,
     enableImplicitConversion: true,
     excludePrefixes: ["_"],
@@ -63,7 +60,7 @@ export class DataLoader {
    *
    * @returns an array of {@link Company}
    */
-  async loadAllCompanies(): Promise<Company[]> {
+  static async loadAllCompanies(): Promise<Company[]> {
     const companyJson = await getData(AvailableData.companies);
     const transformedCompanyData: Company[] = plainToInstance(
       Company,
@@ -78,7 +75,7 @@ export class DataLoader {
    *
    * @returns an array of {@link User}
    */
-  async loadAllUsers(): Promise<User[]> {
+  static async loadAllUsers(): Promise<User[]> {
     const userJson = await getData(AvailableData.users);
     const transformedUserData: User[] = plainToInstance(
       User,
@@ -93,7 +90,7 @@ export class DataLoader {
    *
    * @returns an array of {@link Vehicle}s
    */
-  async loadAllVehicles(): Promise<Vehicle[]> {
+  static async loadAllVehicles(): Promise<Vehicle[]> {
     const vehicleJson = await getData(AvailableData.vehicles);
     const transformedVehicleData: Vehicle[] = [];
 
@@ -125,7 +122,7 @@ export class DataLoader {
    *
    * @returns an array of {@link Payment}s
    */
-  async loadAllPayments(): Promise<Payment[]> {
+  static async loadAllPayments(): Promise<Payment[]> {
     const paymentJson = await getData(AvailableData.payments);
     const transformedPaymentData: Payment[] = [];
 
@@ -167,7 +164,7 @@ export class DataLoader {
    *
    * @returns an array of {@link Trip}
    */
-  async loadAllTrips(): Promise<Trip[]> {
+  static async loadAllTrips(): Promise<Trip[]> {
     const tripJson = await getData(AvailableData.trips);
     const transformedTripData: Trip[] = plainToInstance(
       Trip,
@@ -182,7 +179,7 @@ export class DataLoader {
    *
    * @returns an array of {@link Route}
    */
-  async loadAllRoutes(): Promise<Route[]> {
+  static async loadAllRoutes(): Promise<Route[]> {
     const routeJson = await getData(AvailableData.routes);
     const transformedRouteData: Route[] = plainToInstance(
       Route,
