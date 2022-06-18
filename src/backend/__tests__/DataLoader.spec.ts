@@ -20,9 +20,17 @@ describe.concurrent("Async get Data", async () => {
       name: "Fire Runner",
     });
   });
+
+  it("load risk data", async () => {
+    // change later, when branch is merged
+    // const risk = await getData(AvailableData.risks);
+    // check if first element is loaded correctly
+    //await expect(getData(AvailableData.risks)).rejects.toThrowError();
+  });
 });
 
 describe.concurrent("DataLoader", async () => {
+  const dl = new DataLoader();
   const fireRunnerCompany = new Company("C01", "Fire Runner");
   const kVVCompany = new Company("C03", "KVV");
   const firstUser = new User(
@@ -58,14 +66,14 @@ describe.concurrent("DataLoader", async () => {
   const firstPayPal = new PayPal("Tom_Fritz1824", "P03", "T03");
 
   it("load all companies", async () => {
-    const companies = await DataLoader.loadAllCompanies();
+    const companies = await dl.loadAllCompanies();
     const loadedCompany = companies[0];
     expect(loadedCompany).toBeInstanceOf(Company);
     expect(loadedCompany).toEqual(fireRunnerCompany);
   });
 
   it("load all users", async () => {
-    const users = await DataLoader.loadAllUsers();
+    const users = await dl.loadAllUsers();
     const loadedUser = users[0];
     expect(loadedUser).toBeInstanceOf(User);
     expect(loadedUser).toEqual(firstUser);
@@ -73,7 +81,7 @@ describe.concurrent("DataLoader", async () => {
   });
 
   describe("load all Vehicles", async () => {
-    const vehicles = await DataLoader.loadAllVehicles();
+    const vehicles = await dl.loadAllVehicles();
 
     const loadedEScooter: Vehicle = vehicles[0];
     loadedEScooter.company = fireRunnerCompany;
@@ -106,7 +114,7 @@ describe.concurrent("DataLoader", async () => {
   });
 
   describe("load all payments", async () => {
-    const payments = await DataLoader.loadAllPayments();
+    const payments = await dl.loadAllPayments();
     const loadedCreditCard = payments[0];
     const loadedPayPal = payments[2];
 
