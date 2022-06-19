@@ -10,6 +10,7 @@ import {
 } from "@/backend/dataFields";
 import { Cash } from "@/backend/dataFields/payments/Cash";
 import { plainToInstance } from "class-transformer";
+import fetch from "cross-fetch";
 import "reflect-metadata";
 import { PayPal } from "./dataFields/payments/Paypal";
 import { Route } from "./dataFields/Route";
@@ -31,7 +32,7 @@ export enum AvailableData {
 }
 
 /**
- * Dynamically import the specified json file. Valid strings are specified in the {@link AvailableData} enum.
+ * Asynchronously fetches the specified json file. Valid data paths are specified in the {@link AvailableData} enum.
  *
  * @param dataPath A string that specifies the filename, i.e for src/data/companies.json `dataPath=AvailableData.companies`
  * @returns a Promise of Record<string, unknown>
@@ -40,8 +41,22 @@ export async function getData(
   dataPath: AvailableData
 ): Promise<Record<string, unknown>[]> {
   try {
-    const data = await import(`../${dataPath}.json`);
-    return data.default;
+    let url: URL;
+    if (
+      import.meta.env.MODE === "development" ||
+      import.meta.env.MODE === "test"
+    ) {
+      // relative path not supported, thus this ugly work-around
+      const baseURL = "http://localhost:3000";
+      url = new URL(`src/${dataPath}.json`, baseURL + import.meta.env.BASE_URL);
+    } else {
+      url = new URL(`../${dataPath}.json`, import.meta.url);
+    }
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw Error("Parsing JSON failed with error: " + response.statusText);
+    }
+    return await response.json();
   } catch (error) {
     throw Error(`Unexpected error parsing the JSON file: ${error}`);
   }
