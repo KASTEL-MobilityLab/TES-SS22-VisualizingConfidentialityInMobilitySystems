@@ -1,19 +1,19 @@
 import {
+  Cash,
   Company,
   CreditCard,
   EScooter,
+  PayPal,
+  Route,
   Train,
   Trip,
   User,
   Vehicle,
   type Payment,
 } from "@/backend/dataFields";
-import { Cash } from "@/backend/dataFields/payments/Cash";
 import { plainToInstance } from "class-transformer";
 import fetch from "cross-fetch";
 import "reflect-metadata";
-import { PayPal } from "./dataFields/payments/Paypal";
-import { Route } from "./dataFields/Route";
 import { PaymentType, VehicleType } from "./dataFields/types";
 
 /**
@@ -27,7 +27,6 @@ export enum AvailableData {
   routes = "data/routes",
   trips = "data/trips",
   risks = "data/risk/risk",
-  explanation = "data/risk/explanation",
   testCompanies = "backend/__tests__/testData/companies",
 }
 
@@ -42,15 +41,12 @@ export async function getData(
 ): Promise<Record<string, unknown>[]> {
   try {
     let url: URL;
-    if (
-      import.meta.env.MODE === "development" ||
-      import.meta.env.MODE === "test"
-    ) {
+    if (import.meta.env.DEV) {
       // relative path not supported, thus this ugly work-around
       const baseURL = "http://localhost:3000";
       url = new URL(`src/${dataPath}.json`, baseURL + import.meta.env.BASE_URL);
     } else {
-      url = new URL(`../${dataPath}.json`, import.meta.url);
+      url = new URL(`./src/${dataPath}.json`, import.meta.url);
     }
     const response = await fetch(url);
     if (!response.ok) {
