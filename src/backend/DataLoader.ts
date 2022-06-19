@@ -40,13 +40,14 @@ export async function getData(
   dataPath: AvailableData
 ): Promise<Record<string, unknown>[]> {
   try {
-    let url: URL;
+    let url: URL | string;
     if (import.meta.env.DEV) {
       // relative path not supported, thus this ugly work-around
       const baseURL = "http://localhost:3000";
       url = new URL(`src/${dataPath}.json`, baseURL + import.meta.env.BASE_URL);
     } else {
-      url = new URL(`./src/${dataPath}.json`, import.meta.url);
+      // this works, if we put all json files inside the public/ folder
+      url = `${dataPath}.json`;
     }
     const response = await fetch(url);
     if (!response.ok) {
