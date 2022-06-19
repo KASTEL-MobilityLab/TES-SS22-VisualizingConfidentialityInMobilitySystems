@@ -5,10 +5,10 @@ import { Expose } from "class-transformer";
  */
 export abstract class DataField {
   @Expose()
-  readonly _id: string;
+  readonly id: string;
 
-  constructor(_id: string) {
-    this._id = _id;
+  constructor(id: string) {
+    this.id = id;
   }
 
   /**
@@ -17,9 +17,9 @@ export abstract class DataField {
    * @param dataFieldId Id that is stored within a DataField and that is tested
    */
   checkForeignKeyReferences(storedDataField: DataField, dataFieldId: string) {
-    if (storedDataField._id !== dataFieldId) {
+    if (storedDataField.id !== dataFieldId) {
       throw Error(
-        `Cannot set ${storedDataField.constructor.name} with ${storedDataField.constructor.name} Id ${storedDataField._id}:
+        `Cannot set ${storedDataField.constructor.name} with ${storedDataField.constructor.name} Id ${storedDataField.id}:
          Id does not match the ${storedDataField.constructor.name} id of this ${this.constructor.name} id ${dataFieldId}`
       );
     }

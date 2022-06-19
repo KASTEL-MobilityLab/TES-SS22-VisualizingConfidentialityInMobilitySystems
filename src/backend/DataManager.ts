@@ -7,11 +7,10 @@ import type {
   Vehicle,
 } from "./dataFields";
 import { DataLoader } from "./DataLoader";
-import type { DataModule } from "./dataModules/DataModule";
+import { DataModule } from "./dataModules/DataModule";
 import { RiskManager } from "./RiskManager";
 import { Role } from "./roles";
 import type { Route } from "./Route";
-import { UserDataModule } from "./dataModules/UserDataModule";
 
 export class DataManager {
   currentRole: Role;
@@ -31,7 +30,7 @@ export class DataManager {
   riskManager: RiskManager;
 
   //The currently selected Data, including the DataModules of the Vehicle, User, Payment, and Trip.
-  currentData?: DataModule[];
+  currentData?: DataModule;
 
   /**
    * Construct a new DataManager.
@@ -46,9 +45,6 @@ export class DataManager {
     this.users = [];
     this.vehicles = [];
     this.routes = [];
-
-    this.currentData = [];
-
     this.riskManager = new RiskManager();
 
     this.loadAllData();
@@ -86,7 +82,7 @@ export class DataManager {
    * @returns Matching DataField to the given id
    */
   getDataById<T extends DataField>(id: string, referenceArray: T[]): T {
-    const data = referenceArray.find((dataField) => dataField._id === id);
+    const data = referenceArray.find((dataField) => dataField.id === id);
     if (data === undefined) {
       throw Error(`No data is found with the Id ${id}`);
     }
@@ -150,7 +146,7 @@ export class DataManager {
     referencesArray: T[]
   ): T {
     const ref = referencesArray.find(
-      (dataField) => dataField._id === referenceId
+      (dataField) => dataField.id === referenceId
     );
     if (ref === undefined) {
       throw Error(`No Key matches the given reference Id ${referenceId}`);
@@ -215,7 +211,7 @@ export class DataManager {
     trip?: Trip
   ) {
     if (user != undefined) {
-      const userDataModule = new UserDataModule(user);
+      const userDataModule = new DataModule(user);
     }
   }
 }
