@@ -1,14 +1,9 @@
 <script setup lang="ts">
 import { User } from "@/backend/dataFields";
+import { DataManager } from "@/backend/DataManager";
 import { DataModule } from "@/backend/dataModules/DataModule";
-
-var user1 = new User(
-  "U01",
-  "Max",
-  "Mustermann",
-  "015731371721",
-  "MaxMustermann@gmail.com"
-);
+const dataMananger = new DataManager();
+var user1 = dataMananger.users[0];
 
 var dataModule = new DataModule(user1);
 </script>

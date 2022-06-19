@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import { DataManager } from "@/backend/DataManager";
+
+const dataMananger = new DataManager();
 const user = {
   id: "U01",
   forename: "Theo",
