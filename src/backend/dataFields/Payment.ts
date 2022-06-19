@@ -1,13 +1,13 @@
-import { Exclude, Expose } from "class-transformer";
 import { DataField } from "@/backend/dataFields/DataField";
 import { Trip } from "@/backend/dataFields/Trip";
 import { PaymentType } from "@/backend/dataFields/types";
+import { Exclude, Expose } from "class-transformer";
 
 /**
  * The abstract class every payment must extend.
  */
 export abstract class Payment extends DataField {
-  @Expose()
+  @Expose({ name: "type" })
   readonly paymentType: PaymentType;
   @Expose()
   readonly tripId: string;

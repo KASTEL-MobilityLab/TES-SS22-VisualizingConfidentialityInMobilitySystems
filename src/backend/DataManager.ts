@@ -6,11 +6,11 @@ import type {
   User,
   Vehicle,
 } from "./dataFields";
-import { DataLoader } from "./DataLoader";
+import type { Route } from "./dataFields/Route";
+import { DataLoader, type DataLoaderParams } from "./DataLoader";
 import { DataModule } from "./dataModules/DataModule";
-import { RiskManager } from "./RiskManager";
+import type { RiskManager } from "./RiskManager";
 import { Role } from "./roles";
-import type { Route } from "./Route";
 
 export class DataManager {
   currentRole: Role;
@@ -27,7 +27,7 @@ export class DataManager {
   routes: Route[];
 
   dataLoader: DataLoader;
-  riskManager: RiskManager;
+  //riskManager: RiskManager;
 
   //The currently selected Data, including the DataModules of the Vehicle, User, Payment, and Trip.
   currentData?: DataModule;
@@ -35,42 +35,46 @@ export class DataManager {
   /**
    * Construct a new DataManager.
    */
-  constructor() {
+  constructor(dataLoaderParams: DataLoaderParams = {}) {
     //The city is set as the default role
     this.currentRole = Role.city;
-    this.dataLoader = new DataLoader();
+    this.dataLoader = new DataLoader(dataLoaderParams);
     this.companies = [];
     this.payments = [];
     this.trips = [];
     this.users = [];
     this.vehicles = [];
     this.routes = [];
-    this.riskManager = new RiskManager();
-
-    this.loadAllData();
   }
 
   /**
    * This method sets all references that have not been set in the initialization
    */
-  setAllReferences() {
+  private setAllReferences() {
     this.setVehicleReferences();
     this.setPaymentReferences();
     this.setTripReferences();
   }
 
   /**
-   * This method loads all data into the DataManager.
+   * This method initializes the data manager by asynchronously loading all data.
    */
-  private async loadAllData() {
-    [this.users, this.companies, this.trips, this.vehicles, this.routes] =
-      await Promise.all([
-        this.dataLoader.loadAllUsers(),
-        this.dataLoader.loadAllCompanies(),
-        this.dataLoader.loadAllTrips(),
-        this.dataLoader.loadAllVehicles(),
-        this.dataLoader.loadAllRoutes(),
-      ]);
+  async init() {
+    [
+      this.users,
+      this.companies,
+      this.trips,
+      this.vehicles,
+      this.routes,
+      this.payments,
+    ] = await Promise.all([
+      this.dataLoader.loadAllUsers(),
+      this.dataLoader.loadAllCompanies(),
+      this.dataLoader.loadAllTrips(),
+      this.dataLoader.loadAllVehicles(),
+      this.dataLoader.loadAllRoutes(),
+      this.dataLoader.loadAllPayments(),
+    ]);
     this.setAllReferences();
   }
 

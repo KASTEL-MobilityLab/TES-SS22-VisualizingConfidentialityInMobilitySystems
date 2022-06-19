@@ -1,5 +1,6 @@
 import { Exclude, Expose, Type } from "class-transformer";
-import type { Route } from "../Route";
+import "reflect-metadata";
+import type { Route } from "./Route";
 import { DataField } from "./DataField";
 import type { Payment } from "./Payment";
 import type { User } from "./User";
@@ -21,7 +22,6 @@ export class Trip extends DataField {
   @Expose()
   readonly paymentId: string;
 
-  @Type(() => Number)
   @Expose()
   readonly price: number;
 

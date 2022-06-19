@@ -8,17 +8,18 @@ import { NonCash } from "./NonCash";
  * and can be used as an offline or online payment.
  */
 export class CreditCard extends NonCash {
-  @Type(() => Number)
   @Expose()
   readonly cardNumber: number;
 
-  @Type(() => Number)
   @Expose()
   readonly ccv: number;
 
   @Type(() => Date)
   @Expose()
   readonly expiryDate: Date;
+
+  @Expose()
+  readonly provider: string;
 
   constructor(
     cardNumber: number,
@@ -29,7 +30,8 @@ export class CreditCard extends NonCash {
     tripId: string,
     trip?: Trip
   ) {
-    super(PaymentType.creditcard, provider, id, tripId, trip);
+    super(PaymentType.creditcard, id, tripId, trip);
+    this.provider = provider;
     this.cardNumber = cardNumber;
     this.ccv = ccv;
     this.expiryDate = expiryDate;

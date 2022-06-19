@@ -1,7 +1,9 @@
 import "reflect-metadata";
 import { describe, expect, it } from "vitest";
+import { CreditCard } from "../dataFields";
 import { Company } from "../dataFields/Company";
-import { VehicleStatus, VehicleType } from "../dataFields/types";
+import { PayPal } from "../dataFields/payments/Paypal";
+import { PaymentType, VehicleStatus, VehicleType } from "../dataFields/types";
 import { User } from "../dataFields/User";
 import type { Vehicle } from "../dataFields/Vehicle";
 import { EScooter } from "../dataFields/vehicles/EScooter";
@@ -18,24 +20,30 @@ describe.concurrent("Async get Data", async () => {
       name: "Fire Runner",
     });
   });
-
-  it("load risk data", async () => {
-    // change later, when branch is merged
-    // const risk = await getData(AvailableData.risks);
-    // check if first element is loaded correctly
-    //await expect(getData(AvailableData.risks)).rejects.toThrowError();
-  });
 });
 
 describe.concurrent("DataLoader", async () => {
-  const dl = new DataLoader();
+  const dl = new DataLoader({
+    /**
+     * TODO: Insert Test Data here
+     
+      companyPath: AvailableData.testCompanies,
+      userPath: AvailableData.testUsers,
+      vehiclePath: AvailableData.testVehicles,
+      routePath: AvailableData.testRoutes,
+      tripPath: AvailableData.testTrips,
+      riskPath: AvailableData.testRisks,
+      paymentPath: AvailableData.testPayments,
+
+      */
+  });
   const fireRunnerCompany = new Company("C01", "Fire Runner");
   const kVVCompany = new Company("C03", "KVV");
   const firstUser = new User(
     "U01",
     "Theo",
     "Schweitzer",
-    "02256708826",
+    49188323232,
     "theo.schweitzer@gmail.com"
   );
   const firstEScooter = new EScooter(
@@ -53,6 +61,15 @@ describe.concurrent("DataLoader", async () => {
     VehicleStatus.inactive,
     kVVCompany
   );
+  const firstPayment = new CreditCard(
+    5568404992412103,
+    632,
+    new Date("2026-4-01"),
+    "Mastercard",
+    "P01",
+    "T01"
+  );
+  const firstPayPal = new PayPal("Tom_Fritz1824", "P03", "T03");
 
   it("load all companies", async () => {
     const companies = await dl.loadAllCompanies();
@@ -77,7 +94,7 @@ describe.concurrent("DataLoader", async () => {
     const loadedTrain: Vehicle = vehicles[3];
     loadedTrain.company = kVVCompany;
 
-    it("convert all EScooters", async () => {
+    it("convert all EScooters", () => {
       for (const veh of vehicles.filter(
         (v) => v.type === VehicleType.escooter
       )) {
@@ -85,20 +102,40 @@ describe.concurrent("DataLoader", async () => {
         expect(veh).toBeInstanceOf(EScooter);
       }
     });
-    it("equality of first escooter", async () => {
+    it("equality of first escooter", () => {
       expect((<EScooter>loadedEScooter).status).toBe(VehicleStatus.active);
       expect((<EScooter>loadedEScooter).type).toBe(VehicleType.escooter);
       expect(loadedEScooter).toEqual(firstEScooter);
     });
 
-    it("convert all Trains", async () => {
+    it("convert all Trains", () => {
       for (const veh of vehicles.filter((v) => v.type === VehicleType.train)) {
         expect(veh).toBeInstanceOf(PublicVehicle);
         expect(veh).toBeInstanceOf(Train);
       }
     });
-    it("equality of first train", async () => {
+    it("equality of first train", () => {
       expect(loadedTrain).toEqual(firstTrain);
+    });
+  });
+
+  describe("load all payments", async () => {
+    const payments = await dl.loadAllPayments();
+    const loadedCreditCard = payments[0];
+    const loadedPayPal = payments[2];
+
+    it("load all credit cards", () => {
+      for (const payment of payments.filter(
+        (p) => p.paymentType === PaymentType.creditcard
+      )) {
+        expect(payment).toBeInstanceOf(CreditCard);
+      }
+      expect(loadedCreditCard).toEqual(firstPayment);
+    });
+
+    it("load all paypal payments", () => {
+      expect(loadedPayPal).toBeInstanceOf(PayPal);
+      expect(loadedPayPal).toEqual(firstPayPal);
     });
   });
 });

@@ -6,22 +6,30 @@ import { RouterLink } from "vue-router";
   <div class="container">
     <div class="row">
       <div class="col m-5">
-        <RouterLink to="rider" class="link-dark">Rider Data</RouterLink>
+        <RouterLink to="rider" class="link-dark">{{
+          $t("data.riderData")
+        }}</RouterLink>
       </div>
     </div>
     <div class="row">
       <div class="col m-5">
-        <RouterLink to="payment" class="link-dark">Payment Data</RouterLink>
+        <RouterLink to="payment" class="link-dark">{{
+          $t("data.paymentData")
+        }}</RouterLink>
       </div>
     </div>
     <div class="row">
       <div class="col m-5">
-        <RouterLink to="vehicle" class="link-dark">Vehicle Data</RouterLink>
+        <RouterLink to="vehicle" class="link-dark">{{
+          $t("data.vehicleData")
+        }}</RouterLink>
       </div>
     </div>
     <div class="row">
       <div class="col m-5">
-        <RouterLink to="trip" class="link-dark">Trip Data</RouterLink>
+        <RouterLink to="trip" class="link-dark">{{
+          $t("data.tripData")
+        }}</RouterLink>
       </div>
     </div>
   </div>
