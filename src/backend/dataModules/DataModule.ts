@@ -24,6 +24,10 @@ export abstract class DataModule {
    */
   abstract createDataPackages(dataField: DataField): DataPackage[];
 
+  capitalizeFirstLetter(string: string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
+
   checkValidity() {
     //TODO: To be implemented
   }

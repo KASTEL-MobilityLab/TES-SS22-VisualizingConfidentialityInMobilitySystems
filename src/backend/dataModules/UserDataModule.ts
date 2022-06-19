@@ -7,6 +7,8 @@ import { DataModule } from "./DataModule";
  * The DataModule of a specific User.
  */
 export class UserDataModule extends DataModule {
+  private static readonly UNDERLINE: string = "_";
+
   constructor(user: User) {
     super(user);
   }
@@ -46,6 +48,7 @@ export class UserDataModule extends DataModule {
     return this.dataPackages[0];
   }
 
+  /*
   createDataPackages(user: User): DataPackage[] {
     const userPropertyNames = Object.keys(user);
     const userDataFieldNames = Object.keys(UserDataFieldNames);
@@ -60,6 +63,22 @@ export class UserDataModule extends DataModule {
           );
           allUserDataPackages.push(dataPackage);
         }
+      }
+    }
+    return allUserDataPackages;
+  }
+  */
+
+  createDataPackages(user: User): DataPackage[] {
+    const allUserDataPackages: DataPackage[] = [];
+    const userPropertyNames = Object.keys(user);
+    for (let i = 0; i < userPropertyNames.length; i++) {
+      if (userPropertyNames[i].charAt(0) !== UserDataModule.UNDERLINE) {
+        const dataPackage = new DataPackage(
+          Object.values(userPropertyNames)[i],
+          Object.values(user)[i]
+        );
+        allUserDataPackages.push(dataPackage);
       }
     }
     return allUserDataPackages;

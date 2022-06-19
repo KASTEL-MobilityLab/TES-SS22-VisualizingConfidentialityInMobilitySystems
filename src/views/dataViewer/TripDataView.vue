@@ -13,8 +13,9 @@ var user1 = new User(
 );
 var userDataModule = new UserDataModule(user1);
 var userDataPackage1 = userDataModule.getFirstUserDataPackage();
-var stringTest = user1["id"];
+var stringTest = user1["_id"];
 var listPropertyNames = Object.keys(user1);
+console.log(stringTest);
 console.log(listPropertyNames);
 </script>
 

@@ -86,7 +86,7 @@ export class DataManager {
    * @returns Matching DataField to the given id
    */
   getDataById<T extends DataField>(id: string, referenceArray: T[]): T {
-    const data = referenceArray.find((dataField) => dataField.id === id);
+    const data = referenceArray.find((dataField) => dataField._id === id);
     if (data === undefined) {
       throw Error(`No data is found with the Id ${id}`);
     }
@@ -150,7 +150,7 @@ export class DataManager {
     referencesArray: T[]
   ): T {
     const ref = referencesArray.find(
-      (dataField) => dataField.id === referenceId
+      (dataField) => dataField._id === referenceId
     );
     if (ref === undefined) {
       throw Error(`No Key matches the given reference Id ${referenceId}`);
