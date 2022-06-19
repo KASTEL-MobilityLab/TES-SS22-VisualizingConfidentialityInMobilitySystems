@@ -4,7 +4,7 @@ import { PayPal } from "@/backend/dataFields/payments/Paypal";
 import { Trip } from "@/backend/dataFields/Trip";
 import { VehicleStatus } from "@/backend/dataFields/types";
 import { EScooter } from "@/backend/dataFields/vehicles/EScooter";
-import { Route } from "@/backend/Route";
+import { Route } from "@/backend/dataFields/Route";
 import { LatLng } from "@/backend/utils/LatLng";
 import { describe, expect, it } from "vitest";
 

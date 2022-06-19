@@ -1,6 +1,6 @@
 import { Exclude, Expose, Type } from "class-transformer";
 import "reflect-metadata";
-import type { Route } from "../Route";
+import type { Route } from "./Route";
 import { DataField } from "./DataField";
 import type { Payment } from "./Payment";
 import type { User } from "./User";

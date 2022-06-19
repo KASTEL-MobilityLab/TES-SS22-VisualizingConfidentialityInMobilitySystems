@@ -12,59 +12,99 @@ import { Cash } from "@/backend/dataFields/payments/Cash";
 import { plainToInstance } from "class-transformer";
 import "reflect-metadata";
 import { PayPal } from "./dataFields/payments/Paypal";
+import { Route } from "./dataFields/Route";
 import { PaymentType, VehicleType } from "./dataFields/types";
-import { Route } from "./Route";
 
 /**
  * Specifies, which data can be loaded with the function {@link getData}.
  */
 export enum AvailableData {
-  companies = "companies",
-  users = "users",
-  vehicles = "vehicles",
-  payments = "payments",
-  routes = "routes",
-  trips = "trips",
-  risks = "risk/risk",
-  explanation = "risk/explanation",
+  companies = "data/companies",
+  users = "data/users",
+  vehicles = "data/vehicles",
+  payments = "data/payments",
+  routes = "data/routes",
+  trips = "data/trips",
+  risks = "data/risk/risk",
+  explanation = "data/risk/explanation",
+  testCompanies = "backend/__tests__/testData/companies",
 }
 
 /**
  * Dynamically import the specified json file. Valid strings are specified in the {@link AvailableData} enum.
- * @param dataPath A string that specifies the filename, i.e for src/data/companies.json `fileName='companies'`
- * or `fileName='AvailableData.companies'".
+ *
+ * @param dataPath A string that specifies the filename, i.e for src/data/companies.json `dataPath=AvailableData.companies`
  * @returns a Promise of Record<string, unknown>
  */
 export async function getData(
   dataPath: AvailableData
 ): Promise<Record<string, unknown>[]> {
-  // if (!(fileName in AvailableData)) {
-  //   throw Error(`Could not import data from src/data/${fileName}.json`);
-  // }
   try {
-    const data = await import(`../data/${dataPath}.json`);
+    const data = await import(`../${dataPath}.json`);
     return data.default;
   } catch (error) {
     throw Error(`Unexpected error parsing the JSON file: ${error}`);
   }
 }
 
+export interface DataLoaderParams {
+  companyPath?: AvailableData;
+  userPath?: AvailableData;
+  vehiclePath?: AvailableData;
+  paymentPath?: AvailableData;
+  routePath?: AvailableData;
+  tripPath?: AvailableData;
+  riskPath?: AvailableData;
+}
+
 /**
  * The DataLoader takes care of loading local JSON files and transforms them to their corresponding classes.
  */
 export class DataLoader {
+  private companyPath: AvailableData;
+  private userPath: AvailableData;
+  private vehiclePath: AvailableData;
+  private routePath: AvailableData;
+  private tripPath: AvailableData;
+  private riskPath: AvailableData;
+  private paymentPath: AvailableData;
+
   private classTransformerOptions = {
     excludeExtraneousValues: true,
     enableImplicitConversion: true,
     excludePrefixes: ["_"],
   };
+
+  /**
+   * Constructs a data loader instance with the specified paths.
+   *
+   * @param paths Optional. An object that specifies the paths to the json files that should be loaded.
+   */
+  constructor({
+    companyPath = AvailableData.companies,
+    userPath = AvailableData.users,
+    vehiclePath = AvailableData.vehicles,
+    routePath = AvailableData.routes,
+    tripPath = AvailableData.trips,
+    riskPath = AvailableData.risks,
+    paymentPath = AvailableData.payments,
+  }: DataLoaderParams) {
+    this.companyPath = companyPath;
+    this.userPath = userPath;
+    this.vehiclePath = vehiclePath;
+    this.routePath = routePath;
+    this.tripPath = tripPath;
+    this.riskPath = riskPath;
+    this.paymentPath = paymentPath;
+  }
+
   /**
    * Loads all data from the specific company json file and transforms the array of data to an array of companies.
    *
    * @returns an array of {@link Company}
    */
   async loadAllCompanies(): Promise<Company[]> {
-    const companyJson = await getData(AvailableData.companies);
+    const companyJson = await getData(this.companyPath);
     const transformedCompanyData: Company[] = plainToInstance(
       Company,
       companyJson,
@@ -79,7 +119,7 @@ export class DataLoader {
    * @returns an array of {@link User}
    */
   async loadAllUsers(): Promise<User[]> {
-    const userJson = await getData(AvailableData.users);
+    const userJson = await getData(this.userPath);
     const transformedUserData: User[] = plainToInstance(
       User,
       userJson,
@@ -94,7 +134,7 @@ export class DataLoader {
    * @returns an array of {@link Vehicle}s
    */
   async loadAllVehicles(): Promise<Vehicle[]> {
-    const vehicleJson = await getData(AvailableData.vehicles);
+    const vehicleJson = await getData(this.vehiclePath);
     const transformedVehicleData: Vehicle[] = [];
 
     //Filter the e-scooters from all vehicles
@@ -126,7 +166,7 @@ export class DataLoader {
    * @returns an array of {@link Payment}s
    */
   async loadAllPayments(): Promise<Payment[]> {
-    const paymentJson = await getData(AvailableData.payments);
+    const paymentJson = await getData(this.paymentPath);
     const transformedPaymentData: Payment[] = [];
 
     //Filter the cash payments from all payments
@@ -168,7 +208,7 @@ export class DataLoader {
    * @returns an array of {@link Trip}
    */
   async loadAllTrips(): Promise<Trip[]> {
-    const tripJson = await getData(AvailableData.trips);
+    const tripJson = await getData(this.tripPath);
     const transformedTripData: Trip[] = plainToInstance(
       Trip,
       tripJson,
@@ -183,7 +223,7 @@ export class DataLoader {
    * @returns an array of {@link Route}
    */
   async loadAllRoutes(): Promise<Route[]> {
-    const routeJson = await getData(AvailableData.routes);
+    const routeJson = await getData(this.routePath);
     const transformedRouteData: Route[] = plainToInstance(
       Route,
       routeJson,
@@ -191,4 +231,14 @@ export class DataLoader {
     );
     return transformedRouteData;
   }
+
+  // async loadAllRisks(): Promise<RiskDefinition[]> {
+  //   const riskJson = await getData(this.riskPath);
+  //   const transformedRiskData: RiskDefinition[] = plainToInstance(
+  //     RiskDefinition,
+  //     riskJson,
+  //     this.classTransformerOptions
+  //   );
+  //   return transformedRiskData;
+  // }
 }

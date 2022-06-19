@@ -20,17 +20,23 @@ describe.concurrent("Async get Data", async () => {
       name: "Fire Runner",
     });
   });
-
-  it("load risk data", async () => {
-    // change later, when branch is merged
-    // const risk = await getData(AvailableData.risks);
-    // check if first element is loaded correctly
-    //await expect(getData(AvailableData.risks)).rejects.toThrowError();
-  });
 });
 
 describe.concurrent("DataLoader", async () => {
-  const dl = new DataLoader();
+  const dl = new DataLoader({
+    /**
+     * TODO: Insert Test Data here
+     
+      companyPath: AvailableData.testCompanies,
+      userPath: AvailableData.testUsers,
+      vehiclePath: AvailableData.testVehicles,
+      routePath: AvailableData.testRoutes,
+      tripPath: AvailableData.testTrips,
+      riskPath: AvailableData.testRisks,
+      paymentPath: AvailableData.testPayments,
+
+      */
+  });
   const fireRunnerCompany = new Company("C01", "Fire Runner");
   const kVVCompany = new Company("C03", "KVV");
   const firstUser = new User(
