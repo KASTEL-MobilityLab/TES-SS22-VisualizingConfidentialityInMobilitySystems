@@ -1,17 +1,17 @@
 import type { Company } from "../Company";
-import type { PublicVehicle } from "./PublicVehicle";
+import { VehicleStatus, VehicleType } from "../types";
+import { PublicVehicle } from "./PublicVehicle";
 
 /**
  * The train class.
  */
-export class Train implements PublicVehicle {
-  readonly id: string;
-  readonly companyId: string;
-  readonly company: Company;
-
-  constructor(id: string, companyId: string, company: Company) {
-    this.id = id;
-    this.companyId = companyId;
-    this.company = company;
+export class Train extends PublicVehicle {
+  constructor(
+    id: string,
+    companyId: string,
+    status: VehicleStatus,
+    company?: Company
+  ) {
+    super(id, companyId, VehicleType.train, status, company);
   }
 }

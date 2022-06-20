@@ -1,26 +1,37 @@
-import type { DataField } from "./DataField";
+import { Expose } from "class-transformer";
+import { DataField } from "./DataField";
 
 /**
  * The User class.
  */
-export class User implements DataField {
-  readonly id: string;
+export class User extends DataField {
+  @Expose()
   readonly forename: string;
+
+  @Expose()
   readonly surname: string;
+
+  @Expose()
   readonly phoneNumber: number;
+
+  @Expose()
   readonly email: string;
 
   constructor(
     id: string,
     forename: string,
     surname: string,
-    phonNumber: number,
+    phoneNumber: number,
     email: string
   ) {
-    this.id = id;
+    super(id);
     this.forename = forename;
     this.surname = surname;
-    this.phoneNumber = phonNumber;
+    this.phoneNumber = phoneNumber;
     this.email = email;
+  }
+
+  getFullName(): string {
+    return `${this.forename} ${this.surname}`;
   }
 }

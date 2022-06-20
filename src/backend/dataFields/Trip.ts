@@ -1,5 +1,7 @@
-import type { Route } from "../Route";
-import type { DataField } from "./DataField";
+import { Exclude, Expose, Type } from "class-transformer";
+import "reflect-metadata";
+import type { Route } from "./Route";
+import { DataField } from "./DataField";
 import type { Payment } from "./Payment";
 import type { User } from "./User";
 import type { Vehicle } from "./Vehicle";
@@ -7,20 +9,39 @@ import type { Vehicle } from "./Vehicle";
 /**
  * The Trip class. Connects User, Vehicle, Payment and Route together.
  */
-export class Trip implements DataField {
-  readonly id: string;
+export class Trip extends DataField {
+  @Expose()
   readonly routeId: string;
+
+  @Expose()
   readonly vehicleId: string;
+
+  @Expose()
   readonly userId: string;
+
+  @Expose()
   readonly paymentId: string;
+
+  @Expose()
   readonly price: number;
+
+  @Expose()
   readonly startTime: string;
+
+  @Expose()
   readonly endTime: string;
 
-  readonly vehicle: Vehicle;
-  readonly user: User;
-  readonly payment: Payment;
-  readonly route: Route;
+  @Exclude()
+  private _vehicle?: Vehicle;
+
+  @Exclude()
+  private _user?: User;
+
+  @Exclude()
+  private _payment?: Payment;
+
+  @Exclude()
+  private _route?: Route;
 
   constructor(
     id: string,
@@ -31,12 +52,12 @@ export class Trip implements DataField {
     price: number,
     startTime: string,
     endTime: string,
-    vehicle: Vehicle,
-    user: User,
-    payment: Payment,
-    route: Route
+    vehicle?: Vehicle,
+    user?: User,
+    payment?: Payment,
+    route?: Route
   ) {
-    this.id = id;
+    super(id);
     this.routeId = routeId;
     this.vehicleId = vehicleId;
     this.userId = userId;
@@ -44,9 +65,65 @@ export class Trip implements DataField {
     this.price = price;
     this.startTime = startTime;
     this.endTime = endTime;
-    this.vehicle = vehicle;
-    this.user = user;
-    this.payment = payment;
-    this.route = route;
+    if (vehicle !== undefined) {
+      this._vehicle = vehicle;
+    }
+    if (user !== undefined) {
+      this._user = user;
+    }
+    if (payment !== undefined) {
+      this._payment = payment;
+    }
+    if (route !== undefined) {
+      this._route = route;
+    }
+  }
+
+  get vehicle() {
+    if (this._vehicle === undefined) {
+      throw Error("Vehicle has not been set yet.");
+    }
+    return this._vehicle;
+  }
+
+  set vehicle(vehicle: Vehicle) {
+    this.checkForeignKeyReferences(vehicle, this.vehicleId);
+    this._vehicle = vehicle;
+  }
+
+  get user() {
+    if (this._user === undefined) {
+      throw Error("User has not been set yet.");
+    }
+    return this._user;
+  }
+
+  set user(user: User) {
+    this.checkForeignKeyReferences(user, this.userId);
+    this._user = user;
+  }
+
+  get payment() {
+    if (this._payment === undefined) {
+      throw Error("Payment has not been set yet.");
+    }
+    return this._payment;
+  }
+
+  set payment(payment: Payment) {
+    this.checkForeignKeyReferences(payment, this.paymentId);
+    this._payment = payment;
+  }
+
+  get route() {
+    if (this._route === undefined) {
+      throw Error("Route has not been set yet.");
+    }
+    return this._route;
+  }
+
+  set route(route: Route) {
+    this.checkForeignKeyReferences(route, this.routeId);
+    this._route = route;
   }
 }

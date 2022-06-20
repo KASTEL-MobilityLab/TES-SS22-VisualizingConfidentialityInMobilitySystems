@@ -1,0 +1,30 @@
+{
+  "cSpell.words": [
+    "iconify",
+    "intlify",
+    "typecheck",
+    "Vite",
+    "vitejs",
+    "vitest",
+    "fortawesome",
+    "fontawesome",
+    "typecheck",
+    "popperjs",
+    "commitlint",
+    "rushstack"
+  ],
+  "i18n-ally.sourceLanguage": "en",
+  "i18n-ally.keystyle": "nested",
+  "i18n-ally.localesPaths": "src/locales",
+  "i18n-ally.sortKeys": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true
+  },
+  // dont show spell check errors in problems pane
+  "cSpell.diagnosticLevel": "Hint",
+  "workbench.colorCustomizations": {
+    // but make them more visible
+    "editorHint.border": "#ff7700",
+    "editorHint.foreground": "#f000"
+  }
+}

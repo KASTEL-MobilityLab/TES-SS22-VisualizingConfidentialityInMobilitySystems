@@ -1,3 +1,13 @@
 {
-  "recommendations": ["vue.volar", "vue.vscode-typescript-vue-plugin"]
+  "recommendations": [
+    "vue.volar",
+    "vue.vscode-typescript-vue-plugin",
+    "antfu.iconify",
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "lokalise.i18n-ally",
+    "streetsidesoftware.code-spell-checker",
+    "stevencl.adddoccomments",
+    "yzhang.markdown-all-in-one"
+  ]
 }

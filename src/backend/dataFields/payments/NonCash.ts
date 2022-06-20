@@ -1,10 +1,17 @@
-import type { Payment } from "../Payment";
+import { Payment } from "../Payment";
+import type { Trip } from "../Trip";
 import type { PaymentType } from "../types";
 
 /**
- * The NonCash Interface.
+ * This abstract class has to be extended by every Non cash payment like Creditcards.
  */
-export interface NonCash extends Payment {
-  readonly provider: string;
-  readonly paymentType: PaymentType;
+export abstract class NonCash extends Payment {
+  constructor(
+    paymentType: PaymentType,
+    id: string,
+    tripId: string,
+    trip?: Trip
+  ) {
+    super(paymentType, id, tripId, trip);
+  }
 }

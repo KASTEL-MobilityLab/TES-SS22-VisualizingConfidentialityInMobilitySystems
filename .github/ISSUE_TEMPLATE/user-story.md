@@ -21,4 +21,12 @@ um **Nutzen/Wert**
 
 ## Akzeptanzkriterien
 
-*Spezifische Akzeptanzkriterien*
+### Allgemeine Akzeptanzkriterien
+
+- [ ] Clean Code Kriterien eingehalten
+- [ ] Code ist ausreichend kommentiert (insb. TSDoc vorhanden)
+- [ ] Funktionalität ist mit Tests abgesichert
+
+### Spezifische Akzeptanzkriterien
+
+- [ ] *spezifisches Kriterium*

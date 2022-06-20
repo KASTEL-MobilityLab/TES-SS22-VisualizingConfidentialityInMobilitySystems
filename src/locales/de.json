@@ -1,0 +1,28 @@
+{
+  "app": {
+    "help": "Hilfe",
+    "confidentiality-visualizer": "Vertraulichkeits-Visualisierer",
+    "welcome": "Willkommen zu unserem @:app.confidentiality-visualizer",
+    "dataViewer": "Daten-Anzeiger",
+    "user": "Benutzer",
+    "company": "Unternehmen",
+    "city": "Stadt",
+    "month": "kein Monat | ein Monat | {count} Monate",
+    "year": "kein Jahr | ein Jahr | {count} Jahre",
+    "day": "kein Tag | ein Tag | {count} Tage"
+  },
+  "data": {
+    "riderData": "Fahrerdaten",
+    "vehicleData": "Fahrzeugdaten",
+    "tripData": "Trip-Daten",
+    "paymentData": "Bezahlungsdaten",
+    "user": {
+      "forename": "Vorname",
+      "surname": "Nachname",
+      "email": "E-Mail",
+      "phoneNumber": "Telefonnummer",
+      "birthday": "Geburtstag",
+      "address": "Adresse"
+    }
+  }
+}
