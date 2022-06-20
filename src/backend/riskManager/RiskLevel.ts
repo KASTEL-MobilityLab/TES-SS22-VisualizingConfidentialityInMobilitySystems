@@ -2,7 +2,7 @@
  *  RiskLevel specifies how high the risk associated with a datatype is.
  */
 export enum RiskLevel {
-  low = "low",
-  medium = "medium",
-  high = "high",
+  low = "Low",
+  medium = "Medium",
+  high = "High",
 }

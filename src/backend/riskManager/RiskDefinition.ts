@@ -1,12 +1,25 @@
-import type { Role } from "../roles";
-import type { RiskLevel } from "./RiskLevel";
+import { Expose, Transform, Type } from "class-transformer";
+import { Role } from "../roles";
+import { RiskLevel } from "./RiskLevel";
 
 /**
  * The riskDefinition class.
  */
 export class RiskDefinition {
+  @Expose()
   dataType: string;
+
+  // convert string to real RiskLevel
+  // use the key of the RiskLevel enum (not the assigned string value)
+  @Transform(({ value }) => RiskLevel[value as keyof typeof RiskLevel])
+  @Expose()
   riskLevel: RiskLevel;
+
+  @Type(() => String)
+  @Transform(({ value }) =>
+    value.map((roleString: string) => Role[roleString as keyof typeof Role])
+  )
+  @Expose()
   roleVisibility: Role[];
 
   constructor(dataType: string, riskLevel: RiskLevel, roleVisibility: Role[]) {

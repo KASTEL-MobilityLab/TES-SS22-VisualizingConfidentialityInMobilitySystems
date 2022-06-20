@@ -21,8 +21,10 @@ export class RiskManager {
    * Checks whether the array of RiskDefinitions has been set already
    * and then tries to find the correct instance. If none is found or the
    * array is not initialized yet, it throws an error.
+   *
+   * @param dataType the string of the DataType
    */
-  private findRiskDefinition(dataType: string) {
+  findRiskDefinition(dataType: string) {
     if (this.riskDefinitions === undefined) {
       throw Error("RiskDefinitions are not set yet");
     }
