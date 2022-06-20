@@ -1,11 +1,19 @@
 <script setup lang="ts">
-import { User } from "@/backend/dataFields";
-import { DataManager } from "@/backend/DataManager";
+import { AvailableData, DataLoader } from "@/backend/DataLoader";
 import { DataModule } from "@/backend/dataModules/DataModule";
-const dataMananger = new DataManager();
-var user1 = dataMananger.users[0];
+//Preliminary use of the DataLoader instead of the DataManager due to not defined placement of every accessible DataManager
+const dataLoader = new DataLoader({
+  companyPath: AvailableData.companies,
+  userPath: AvailableData.users,
+  vehiclePath: AvailableData.vehicles,
+  routePath: AvailableData.routes,
+  tripPath: AvailableData.trips,
+  riskPath: AvailableData.risks,
+  paymentPath: AvailableData.payments,
+});
 
-var dataModule = new DataModule(user1);
+var users = await dataLoader.loadAllUsers();
+var dataModule = new DataModule(users[0]);
 </script>
 
 <template>

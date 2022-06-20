@@ -18,6 +18,7 @@ import { PaymentType, VehicleType } from "./dataFields/types";
 /**
  * Specifies, which data can be loaded with the function {@link getData}.
  */
+
 export enum AvailableData {
   companies = "data/companies",
   users = "data/users",
@@ -28,6 +29,7 @@ export enum AvailableData {
   risks = "data/risk/risk",
   explanation = "data/risk/explanation",
   testCompanies = "backend/__tests__/testData/companies",
+  testUsers = "testUsers",
 }
 
 /**

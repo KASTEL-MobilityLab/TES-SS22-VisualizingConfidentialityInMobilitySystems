@@ -7,10 +7,12 @@ import { RouterView } from "vue-router";
     <h1 class="text-center p-3 fw-bold">
       <i class="fa-solid fa-database fa-fw"></i> {{ $t("app.dataViewer") }}
     </h1>
-
-    <div class="text-center m-2">
-      <!-- All nested views will be displayed in this div -->
-      <RouterView />
-    </div>
+    <!-- Due to the use of async data loading in this div component the Suspense tag is needed. -->
+    <Suspense>
+      <div class="text-center m-2">
+        <!-- All nested views will be displayed in this div. -->
+        <RouterView />
+      </div>
+    </Suspense>
   </div>
 </template>
