@@ -27,7 +27,7 @@ const riskColor = {
 <template>
   <h4 class="text-center m-2">Rider Data</h4>
   <template v-for="(value, key) in dataModule.displayedData" :key="key">
-    <!-- :class="riskColor[key]"> -->
+    <!-- div class="riskColor[key]"> -->
     <div class="row m-2 p-2">
       <div class="col m-2 fw-bold">
         {{ key }}

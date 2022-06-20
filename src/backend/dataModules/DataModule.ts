@@ -1,7 +1,14 @@
 import type { DataField } from "../dataFields";
 
+/**
+ * The DataModule class that stores all the data that is displayed in the DataViewer. Additionally, the risk of every data is stored
+ * and assigned to the specific data.
+ */
 export class DataModule {
+  //Stores the data that is shown to the user
   displayedData: any;
+  //Stores the risks of the shown data
+  risks: any;
   private excludedProperties = ["id", "type"];
 
   constructor(dataField: DataField) {
@@ -16,5 +23,9 @@ export class DataModule {
         this.displayedData[propertyNames[i].toUpperCase()] = propertyValues[i];
       }
     }
+  }
+
+  assignRiskToDisplayedData() {
+    //To be implemented
   }
 }
