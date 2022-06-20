@@ -1,12 +1,7 @@
-import explainationJson from "src/data/risk/explanation.json";
-
 /**
- *  Returns the detailed info String for a data.
+ *  The RiskExplanation Class.
  */
-export function riskExplanation(id: number, visible: boolean) {
-  if (visible) {
-    return explainationJson[id].visible;
-  } else {
-    return explainationJson[id].notVisible;
-  }
+export class RiskExplanation {
+  // TODO: implement Explanation class
+  // how are explanations structured?
 }

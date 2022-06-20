@@ -1,48 +1,27 @@
-import { RiskLevel } from "./RiskLevel.js";
+import type { Role } from "../roles";
+import type { RiskLevel } from "./RiskLevel";
 
 /**
  * The riskDefinition class.
  */
 export class RiskDefinition {
   dataType: string;
-  risk: RiskLevel;
-  userVisibility: boolean;
-  companyVisibility: boolean;
-  cityVisibility: boolean;
-  visibleExplanation: string;
-  notVisibleExplanation: string;
+  riskLevel: RiskLevel;
+  roleVisibility: Role[];
 
-  constructor(
-    dataType: string,
-    riskStrig: string,
-    userVisibility: boolean,
-    companyVisibility: boolean,
-    cityVisibility: boolean,
-    visibleExplanation: string,
-    notVisibleExplanation: string
-  ) {
+  constructor(dataType: string, riskLevel: RiskLevel, roleVisibility: Role[]) {
     this.dataType = dataType;
-    this.risk = this.getRisk(riskStrig);
-    this.userVisibility = userVisibility;
-    this.companyVisibility = companyVisibility;
-    this.cityVisibility = cityVisibility;
-    this.visibleExplanation = visibleExplanation;
-    this.notVisibleExplanation = notVisibleExplanation;
+    this.riskLevel = riskLevel;
+    this.roleVisibility = roleVisibility;
   }
 
   /**
-   * Turns risk string into RiskLevel enum.
+   * Returns true, if this datatype is visible in the given role.
+   *
+   * @param role the Role to check for visibility
+   * @returns true if this datatype is visible in the given role, false otherwise
    */
-  private getRisk(riskStrig: string): RiskLevel {
-    if (riskStrig != "low" && riskStrig != "medium" && riskStrig != "high") {
-      throw Error(`Value for risk is inavlid`);
-    }
-    let riskEnum = RiskLevel.low;
-    if (riskStrig == "medium") {
-      riskEnum = RiskLevel.medium;
-    } else if (riskStrig == "high") {
-      riskEnum = RiskLevel.high;
-    }
-    return riskEnum;
+  isVisible(role: Role): boolean {
+    return this.roleVisibility.includes(role);
   }
 }
