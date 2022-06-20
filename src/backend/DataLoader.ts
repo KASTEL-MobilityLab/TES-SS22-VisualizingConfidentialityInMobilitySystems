@@ -14,6 +14,7 @@ import "reflect-metadata";
 import { PayPal } from "./dataFields/payments/Paypal";
 import { Route } from "./dataFields/Route";
 import { PaymentType, VehicleType } from "./dataFields/types";
+import { RiskDefinition } from "./riskManager/RiskDefinition";
 
 /**
  * Specifies, which data can be loaded with the function {@link getData}.
@@ -232,13 +233,13 @@ export class DataLoader {
     return transformedRouteData;
   }
 
-  // async loadAllRisks(): Promise<RiskDefinition[]> {
-  //   const riskJson = await getData(this.riskPath);
-  //   const transformedRiskData: RiskDefinition[] = plainToInstance(
-  //     RiskDefinition,
-  //     riskJson,
-  //     this.classTransformerOptions
-  //   );
-  //   return transformedRiskData;
-  // }
+  async loadAllRisks(): Promise<RiskDefinition[]> {
+    const riskJson = await getData(this.riskPath);
+    const transformedRiskData: RiskDefinition[] = plainToInstance(
+      RiskDefinition,
+      riskJson,
+      this.classTransformerOptions
+    );
+    return transformedRiskData;
+  }
 }

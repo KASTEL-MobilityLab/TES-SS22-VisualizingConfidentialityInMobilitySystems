@@ -1,24 +1,19 @@
-import riskJson from "src/data/risk/risk.json";
-import { RiskLevel } from "./RiskLevel";
-import type { Role } from "../Role";
-import { RiskDefinition } from "./RiskDefinition";
-import { plainToInstance } from "class-transformer";
 import "reflect-metadata";
+import type { Role } from "../roles";
+import type { RiskDefinition } from "./RiskDefinition";
+import { RiskLevel } from "./RiskLevel";
 
 /**
  * The riskManager class.
  * */
 export class RiskManager {
   role: Role;
-  dataType: string;
+  riskDefinitions?: RiskDefinition[];
 
-  constructor(role: Role, dataType: string) {
-    this.loadAllRiskDefinitions;
+  constructor(role: Role, riskDefinitions?: RiskDefinition[]) {
     this.role = role;
-    this.dataType = dataType;
+    this.riskDefinitions = riskDefinitions;
   }
-
-  riskDefinitions!: RiskDefinition[];
 
   /**
    * Returns the risk of a dataType (low, medium or high)
@@ -26,8 +21,8 @@ export class RiskManager {
    * @returns low, medium or high
    * */
   getRisk(dataType: string): RiskLevel {
-    const risk = this.riskDefinitions.find(
-      (element) => element.dataType == dataType
+    const risk = this.riskDefinitions?.find(
+      (element) => element.dataType === dataType
     )?.risk;
     if (
       risk == RiskLevel.low ||
@@ -45,7 +40,7 @@ export class RiskManager {
    * @returns boolean with the visibility
    * */
   getVisibility(dataType: string, role: Role): boolean {
-    const found = this.riskDefinitions.find(
+    const found = this.riskDefinitions?.find(
       (element) => element.dataType == dataType
     );
     if (
@@ -71,7 +66,7 @@ export class RiskManager {
    * @returns a sting with detaild infos
    * */
   getExplanation(dataType: string, role: Role): string {
-    const found = this.riskDefinitions.find(
+    const found = this.riskDefinitions?.find(
       (element) => element.dataType == dataType
     );
     if (
@@ -87,9 +82,5 @@ export class RiskManager {
     } else {
       throw Error(`Value for visibility or explanation is inavlid`);
     }
-  }
-
-  private loadAllRiskDefinitions(): void {
-    this.riskDefinitions = plainToInstance(RiskDefinition, riskJson);
   }
 }
