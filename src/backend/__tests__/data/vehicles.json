@@ -1,0 +1,17 @@
+[
+  {
+    "id": "V01",
+    "type": "E-Scooter",
+    "companyId": "C01",
+    "condition": 84,
+    "batteryCondition": 89,
+    "status": "Active",
+    "batteryLevel": 74
+  },
+  {
+    "id": "V04",
+    "type": "Train",
+    "companyId": "C02",
+    "status": "Inactive"
+  }
+]

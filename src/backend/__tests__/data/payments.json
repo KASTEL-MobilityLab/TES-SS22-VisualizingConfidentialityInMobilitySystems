@@ -1,0 +1,22 @@
+[
+  {
+    "id": "P01",
+    "tripId": "T01",
+    "type": "Credit Card",
+    "provider": "Mastercard",
+    "cardNumber": 5568404992412103,
+    "ccv": 632,
+    "expiryDate": "2026-4-01"
+  },
+  {
+    "id": "P02",
+    "tripId": "T02",
+    "type": "PayPal",
+    "userName": "Tom_Fritz1824"
+  },
+  {
+    "id": "P03",
+    "tripId": "T03",
+    "type": "Cash"
+  }
+]

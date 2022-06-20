@@ -1,0 +1,25 @@
+[
+  {
+    "id": "T01",
+    "routeId": "R01",
+    "vehicleId": "V01",
+    "userId": "U01",
+    "paymentId": "P01",
+    "avgSpeed": 27.45,
+    "price": 2.6,
+    "x": "Wednesday, 25. May 2022 13:06:04",
+    "startTime": "2022-05-25T13:06:04Z",
+    "endTime": "2022-05-25T13:08:04Z"
+  },
+  {
+    "id": "T02",
+    "routeId": "R02",
+    "vehicleId": "V02",
+    "userId": "U02",
+    "paymentId": "P02",
+    "avgSpeed": 20.32,
+    "price": 10,
+    "startTime": "2022-05-25T15:04:04Z",
+    "endTime": "2022-05-25T15:22:20Z"
+  }
+]
