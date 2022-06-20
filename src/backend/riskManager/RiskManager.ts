@@ -7,11 +7,9 @@ import type { RiskLevel } from "./RiskLevel";
  * The riskManager class.
  * */
 export class RiskManager {
-  role: Role;
   riskDefinitions?: RiskDefinition[];
 
-  constructor(role: Role, riskDefinitions?: RiskDefinition[]) {
-    this.role = role;
+  constructor(riskDefinitions?: RiskDefinition[]) {
     this.riskDefinitions = riskDefinitions;
   }
 

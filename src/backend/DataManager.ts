@@ -39,7 +39,7 @@ export class DataManager {
     //The city is set as the default role
     this.currentRole = Role.city;
     this.dataLoader = new DataLoader(dataLoaderParams);
-    this.riskManager = new RiskManager(this.currentRole);
+    this.riskManager = new RiskManager();
     this.companies = [];
     this.payments = [];
     this.trips = [];
