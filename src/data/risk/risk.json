@@ -2,287 +2,111 @@
   {
     "dataType": "PaymentType",
     "risk": "low",
-    "visibility": {
-      "userVisibility": true,
-      "companyVisibility": true,
-      "cityVisibility": false
-    },
-    "explanation": {
-      "visible": "Erklärung",
-      "notVisible": "Kann nicht angezeigt werden, weil..."
-    }
+    "roleVisibility": ["Company", "User"]
   },
   {
     "dataType": "PaymentProvider",
     "risk": "low",
-    "visibility": {
-      "userVisibility": true,
-      "companyVisibility": true,
-      "cityVisibility": false
-    },
-    "explanation": {
-      "visible": "Erklärung",
-      "notVisible": "Kann nicht angezeigt werden, weil..."
-    }
+    "roleVisibility": ["Company", "User"]
   },
   {
     "dataType": "PaymentCardNumber",
     "risk": "high",
-    "visibility": {
-      "userVisibility": true,
-      "companyVisibility": true,
-      "cityVisibility": false
-    },
-    "explanation": {
-      "visible": "Erklärung",
-      "notVisible": "Kann nicht angezeigt werden, weil..."
-    }
+    "roleVisibility": ["Company", "User"]
   },
   {
     "dataType": "PaymentCcv",
     "risk": "high",
-    "visibility": {
-      "userVisibility": true,
-      "companyVisibility": true,
-      "cityVisibility": false
-    },
-    "explanation": {
-      "visible": "Erklärung",
-      "notVisible": "Kann nicht angezeigt werden, weil..."
-    }
+    "roleVisibility": ["Company", "User"]
   },
   {
     "dataType": "PaymentExpiryDate",
     "risk": "medium",
-    "visibility": {
-      "userVisibility": true,
-      "companyVisibility": true,
-      "cityVisibility": false
-    },
-    "explanation": {
-      "visible": "Erklärung",
-      "notVisible": "Kann nicht angezeigt werden, weil..."
-    }
+    "roleVisibility": ["Company", "User"]
   },
   {
     "dataType": "RouteStart",
     "risk": "medium",
-    "visibility": {
-      "userVisibility": true,
-      "companyVisibility": true,
-      "cityVisibility": false
-    },
-    "explanation": {
-      "visible": "Erklärung",
-      "notVisible": "Kann nicht angezeigt werden, weil..."
-    }
+    "roleVisibility": ["Company", "User"]
   },
   {
     "dataType": "RouteEnd",
     "risk": "medium",
-    "visibility": {
-      "userVisibility": true,
-      "companyVisibility": true,
-      "cityVisibility": false
-    },
-    "explanation": {
-      "visible": "Erklärung",
-      "notVisible": "Kann nicht angezeigt werden, weil..."
-    }
+    "roleVisibility": ["Company", "User"]
   },
   {
     "dataType": "TripAvgSpeed",
     "risk": "low",
-    "visibility": {
-      "userVisibility": true,
-      "companyVisibility": true,
-      "cityVisibility": false
-    },
-    "explanation": {
-      "visible": "Erklärung",
-      "notVisible": "Kann nicht angezeigt werden, weil..."
-    }
+    "roleVisibility": ["Company", "User"]
   },
   {
     "dataType": "TripPrice",
     "risk": "low",
-    "visibility": {
-      "userVisibility": true,
-      "companyVisibility": true,
-      "cityVisibility": false
-    },
-    "explanation": {
-      "visible": "Erklärung",
-      "notVisible": "Kann nicht angezeigt werden, weil..."
-    }
+    "roleVisibility": ["Company", "User"]
   },
   {
     "dataType": "TripStartTime",
     "risk": "low",
-    "visibility": {
-      "userVisibility": true,
-      "companyVisibility": true,
-      "cityVisibility": false
-    },
-    "explanation": {
-      "visible": "Erklärung",
-      "notVisible": "Kann nicht angezeigt werden, weil..."
-    }
+    "roleVisibility": ["Company", "User"]
   },
   {
     "dataType": "TripEndTime",
     "risk": "low",
-    "visibility": {
-      "userVisibility": true,
-      "companyVisibility": true,
-      "cityVisibility": false
-    },
-    "explanation": {
-      "visible": "Erklärung",
-      "notVisible": "Kann nicht angezeigt werden, weil..."
-    }
+    "roleVisibility": ["Company", "User"]
   },
   {
     "dataType": "UserForename",
     "risk": "low",
-    "visibility": {
-      "userVisibility": true,
-      "companyVisibility": true,
-      "cityVisibility": false
-    },
-    "explanation": {
-      "visible": "Erklärung",
-      "notVisible": "Kann nicht angezeigt werden, weil..."
-    }
+    "roleVisibility": ["Company", "User"]
   },
   {
     "dataType": "UserSurname",
     "risk": "low",
-    "visibility": {
-      "userVisibility": true,
-      "companyVisibility": true,
-      "cityVisibility": false
-    },
-    "explanation": {
-      "visible": "Erklärung",
-      "notVisible": "Kann nicht angezeigt werden, weil..."
-    }
+    "roleVisibility": ["Company", "User"]
   },
   {
     "dataType": "UserPhoneNumber",
     "risk": "medium",
-    "visibility": {
-      "userVisibility": true,
-      "companyVisibility": true,
-      "cityVisibility": false
-    },
-    "explanation": {
-      "visible": "Erklärung",
-      "notVisible": "Kann nicht angezeigt werden, weil..."
-    }
+    "roleVisibility": ["Company", "User"]
   },
   {
     "dataType": "UserEmail",
     "risk": "medium",
-    "visibility": {
-      "userVisibility": true,
-      "companyVisibility": true,
-      "cityVisibility": false
-    },
-    "explanation": {
-      "visible": "Erklärung",
-      "notVisible": "Kann nicht angezeigt werden, weil..."
-    }
+    "roleVisibility": ["Company", "User"]
   },
   {
     "dataType": "VehicleId",
     "risk": "low",
-    "visibility": {
-      "userVisibility": true,
-      "companyVisibility": true,
-      "cityVisibility": false
-    },
-    "explanation": {
-      "visible": "Erklärung",
-      "notVisible": "Kann nicht angezeigt werden, weil..."
-    }
+    "roleVisibility": ["Company", "User"]
   },
   {
     "dataType": "VehicleType",
     "risk": "low",
-    "visibility": {
-      "userVisibility": true,
-      "companyVisibility": true,
-      "cityVisibility": false
-    },
-    "explanation": {
-      "visible": "Erklärung",
-      "notVisible": "Kann nicht angezeigt werden, weil..."
-    }
+    "roleVisibility": ["Company", "User"]
   },
   {
     "dataType": "VehicleCompanyId",
     "risk": "low",
-    "visibility": {
-      "userVisibility": true,
-      "companyVisibility": true,
-      "cityVisibility": false
-    },
-    "explanation": {
-      "visible": "Erklärung",
-      "notVisible": "Kann nicht angezeigt werden, weil..."
-    }
+    "roleVisibility": ["Company", "User"]
   },
   {
     "dataType": "VehicleCondition",
     "risk": "low",
-    "visibility": {
-      "userVisibility": true,
-      "companyVisibility": true,
-      "cityVisibility": false
-    },
-    "explanation": {
-      "visible": "Erklärung",
-      "notVisible": "Kann nicht angezeigt werden, weil..."
-    }
+    "roleVisibility": ["Company", "User"]
   },
   {
     "dataType": "VehicleBatteryCondition",
     "risk": "low",
-    "visibility": {
-      "userVisibility": true,
-      "companyVisibility": true,
-      "cityVisibility": false
-    },
-    "explanation": {
-      "visible": "Erklärung",
-      "notVisible": "Kann nicht angezeigt werden, weil..."
-    }
+    "roleVisibility": ["Company", "User"]
   },
   {
     "dataType": "VehicleStatus",
     "risk": "medium",
-    "visibility": {
-      "userVisibility": true,
-      "companyVisibility": true,
-      "cityVisibility": false
-    },
-    "explanation": {
-      "visible": "Erklärung",
-      "notVisible": "Kann nicht angezeigt werden, weil..."
-    }
+    "roleVisibility": ["Company", "User"]
   },
   {
     "dataType": "VehicleBatteryLevel",
     "risk": "low",
-    "visibility": {
-      "userVisibility": true,
-      "companyVisibility": true,
-      "cityVisibility": false
-    },
-    "explanation": {
-      "visible": "Erklärung",
-      "notVisible": "Kann nicht angezeigt werden, weil..."
-    }
+    "roleVisibility": ["Company", "User"]
   }
 ]
