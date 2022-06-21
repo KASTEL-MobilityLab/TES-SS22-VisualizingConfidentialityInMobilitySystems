@@ -7,9 +7,9 @@ import type { DataField } from "../dataFields";
 export class DataModule {
   public static readonly PREFIX_OF_NON_DISPLAYED_DATA = "_";
   //Stores the data that is shown to the user
-  private displayedData: Record<string, string>;
+  public displayedData: Record<string, string>;
   //Stores the risks of the shown data
-  private risks?: Record<string, string>;
+  public risks?: Record<string, string>;
   private excludedProperties = ["id", "type"];
 
   constructor(dataField: DataField) {
