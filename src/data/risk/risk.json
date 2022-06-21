@@ -55,22 +55,22 @@
     "roleVisibility": ["company", "user"]
   },
   {
-    "dataType": "UserForename",
+    "dataType": "forename",
     "riskLevel": "low",
     "roleVisibility": ["company", "user"]
   },
   {
-    "dataType": "UserSurname",
+    "dataType": "surname",
     "riskLevel": "low",
     "roleVisibility": ["company", "user"]
   },
   {
-    "dataType": "UserPhoneNumber",
+    "dataType": "phoneNumber",
     "riskLevel": "medium",
     "roleVisibility": ["company", "user"]
   },
   {
-    "dataType": "UserEmail",
+    "dataType": "email",
     "riskLevel": "medium",
     "roleVisibility": ["company", "user"]
   },
