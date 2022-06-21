@@ -5,28 +5,33 @@ import type { DataField } from "../dataFields";
  * and assigned to the specific data.
  */
 export class DataModule {
-  //DataModule iterable machen ->
+  public static readonly PREFIX_OF_NON_DISPLAYED_DATA = "_";
   //Stores the data that is shown to the user
-  displayedData: any;
+  private displayedData: Record<string, string>;
   //Stores the risks of the shown data
-  risks: any;
+  private risks?: Record<string, string>;
   private excludedProperties = ["id", "type"];
 
   constructor(dataField: DataField) {
+    this.displayedData = this.assignDataFieldToDisplayedData(dataField);
+  }
+
+  assignDataFieldToDisplayedData(dataField: DataField): Record<string, string> {
     const propertyNames = Object.keys(dataField);
     const propertyValues = Object.values(dataField);
     this.displayedData = {};
     for (let i = 0; i < propertyNames.length; i++) {
       if (
-        !propertyNames[i].startsWith("_") &&
+        !propertyNames[i].startsWith(DataModule.PREFIX_OF_NON_DISPLAYED_DATA) &&
         !this.excludedProperties.includes(propertyNames[i])
       ) {
         this.displayedData[propertyNames[i]] = propertyValues[i];
       }
     }
+    return this.displayedData;
   }
-
-  assignRiskToDisplayedData() {
+  assignRiskToDisplayedData(): Record<string, string> {
+    throw new Error("To be impelemented");
     //TODO: To be implemented
   }
 }
