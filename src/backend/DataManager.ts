@@ -9,7 +9,6 @@ import type {
 import type { Route } from "./dataFields/Route";
 import { DataLoader, type DataLoaderParams } from "./DataLoader";
 import { DataModule } from "./dataModules/DataModule";
-import type { RiskManager } from "./RiskManager";
 import { Role } from "./roles";
 
 export class DataManager {

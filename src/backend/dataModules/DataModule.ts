@@ -5,6 +5,7 @@ import type { DataField } from "../dataFields";
  * and assigned to the specific data.
  */
 export class DataModule {
+  //DataModule iterable machen ->
   //Stores the data that is shown to the user
   displayedData: any;
   //Stores the risks of the shown data
@@ -20,12 +21,12 @@ export class DataModule {
         !propertyNames[i].startsWith("_") &&
         !this.excludedProperties.includes(propertyNames[i])
       ) {
-        this.displayedData[propertyNames[i].toUpperCase()] = propertyValues[i];
+        this.displayedData[propertyNames[i]] = propertyValues[i];
       }
     }
   }
 
   assignRiskToDisplayedData() {
-    //To be implemented
+    //TODO: To be implemented
   }
 }
