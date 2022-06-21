@@ -17,12 +17,48 @@ import { RiskLevel } from "@/backend/riskManager/RiskLevel";
 import { Role } from "@/backend/roles";
 import { LatLng } from "@/backend/utils/LatLng";
 
+/**
+ * Manually defines the expected data.
+ *
+ * Note: The Order of the data inside each array is important.
+ * It must match the order, in which the DataLoader pushes the elements to the data array.
+ * Example: In payments, the order must be: all Cash, then all CreditCard, then all PayPal.
+ */
+
+/**
+ * Manually sets the references of each data field (inplace).
+ */
+export function setReferences(
+  vehicles: Vehicle[],
+  trips: Trip[],
+  payments: Payment[]
+) {
+  // vehicles
+  vehicles[0].company = companies[0];
+  vehicles[1].company = companies[1];
+
+  // trips
+  trips[0].payment = payments[0];
+  trips[0].vehicle = vehicles[0];
+  trips[0].user = users[0];
+  trips[0].route = routes[0];
+  trips[1].payment = payments[1];
+  trips[1].vehicle = vehicles[1];
+  trips[1].user = users[1];
+  trips[1].route = routes[1];
+
+  // payments
+  payments[0].trip = trips[0];
+  payments[1].trip = trips[1];
+}
+
 export const companies: Company[] = [
   new Company("C01", "Fire Runner"),
   new Company("C02", "Voi"),
 ];
 
 export const payments: Payment[] = [
+  new Cash("P03", "T03"),
   new CreditCard(
     5568404992412103,
     632,
@@ -32,7 +68,6 @@ export const payments: Payment[] = [
     "T01"
   ),
   new PayPal("Tom_Fritz1824", "P02", "T02"),
-  new Cash("P03", "T03"),
 ];
 export const users: User[] = [
   new User(
@@ -95,5 +130,5 @@ export const risks: RiskDefinition[] = [
 ];
 export const vehicles: Vehicle[] = [
   new EScooter("V01", "C01", 84, 89, VehicleStatus.active, 74),
-  new Train("V04", "C03", VehicleStatus.inactive),
+  new Train("V02", "C02", VehicleStatus.inactive),
 ];
