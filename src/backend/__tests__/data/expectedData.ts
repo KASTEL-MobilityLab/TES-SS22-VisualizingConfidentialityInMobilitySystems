@@ -1,5 +1,4 @@
 import {
-  Cash,
   Company,
   CreditCard,
   EScooter,
@@ -25,40 +24,12 @@ import { LatLng } from "@/backend/utils/LatLng";
  * Example: In payments, the order must be: all Cash, then all CreditCard, then all PayPal.
  */
 
-/**
- * Manually sets the references of each data field (inplace).
- */
-export function setReferences(
-  vehicles: Vehicle[],
-  trips: Trip[],
-  payments: Payment[]
-) {
-  // vehicles
-  vehicles[0].company = companies[0];
-  vehicles[1].company = companies[1];
-
-  // trips
-  trips[0].payment = payments[0];
-  trips[0].vehicle = vehicles[0];
-  trips[0].user = users[0];
-  trips[0].route = routes[0];
-  trips[1].payment = payments[1];
-  trips[1].vehicle = vehicles[1];
-  trips[1].user = users[1];
-  trips[1].route = routes[1];
-
-  // payments
-  payments[0].trip = trips[0];
-  payments[1].trip = trips[1];
-}
-
 export const companies: Company[] = [
   new Company("C01", "Fire Runner"),
   new Company("C02", "Voi"),
 ];
 
 export const payments: Payment[] = [
-  new Cash("P03", "T03"),
   new CreditCard(
     5568404992412103,
     632,

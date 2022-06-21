@@ -1,7 +1,12 @@
 import "reflect-metadata";
 import { describe, expect, it } from "vitest";
 import type { DataField } from "../dataFields";
-import { AvailableData, DataLoader, getData } from "../DataLoader";
+import {
+  AvailableData,
+  DataLoader,
+  getData,
+  type DataLoaderParams,
+} from "../DataLoader";
 import { RiskDefinition } from "../riskManager/RiskDefinition";
 import * as expectedData from "./data/expectedData";
 
@@ -16,7 +21,7 @@ describe.concurrent("Async get Data", async () => {
 });
 
 // utility function to compare two arrays of dataFields
-function compareDataFields<T extends DataField>(
+export function compareDataFields<T extends DataField>(
   actualDataFields: T[],
   expectedDataFields: T[],
   verbose = false
@@ -43,17 +48,18 @@ function compareDataFields<T extends DataField>(
   });
 }
 
-describe.concurrent("DataLoader", () => {
-  const dl = new DataLoader({
-    companyPath: AvailableData.testCompanies,
-    userPath: AvailableData.testUsers,
-    vehiclePath: AvailableData.testVehicles,
-    routePath: AvailableData.testRoutes,
-    tripPath: AvailableData.testTrips,
-    riskPath: AvailableData.testRisks,
-    paymentPath: AvailableData.testPayments,
-  });
+export const testDataLoaderParams: DataLoaderParams = {
+  companyPath: AvailableData.testCompanies,
+  userPath: AvailableData.testUsers,
+  vehiclePath: AvailableData.testVehicles,
+  routePath: AvailableData.testRoutes,
+  tripPath: AvailableData.testTrips,
+  riskPath: AvailableData.testRisks,
+  paymentPath: AvailableData.testPayments,
+};
 
+describe.concurrent("DataLoader", () => {
+  const dl = new DataLoader(testDataLoaderParams);
   it("load all companies", async () => {
     const companies = await dl.loadAllCompanies();
     const expectedCompanies = expectedData.companies;
