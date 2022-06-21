@@ -1,7 +1,7 @@
 import { Exclude, Expose } from "class-transformer";
 import type { Company } from "./Company";
 import { DataField } from "./DataField";
-import type { VehicleType, VehicleStatus } from "./types";
+import type { VehicleStatus, VehicleType } from "./types";
 
 /**
  * The interface every vehicle must implement.

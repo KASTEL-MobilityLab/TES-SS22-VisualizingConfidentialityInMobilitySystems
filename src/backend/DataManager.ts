@@ -9,6 +9,8 @@ import type {
 import type { Route } from "./dataFields/Route";
 import { DataLoader, type DataLoaderParams } from "./DataLoader";
 import { DataModule } from "./dataModules/DataModule";
+import type { RiskDefinition } from "./riskManager/RiskDefinition";
+import { RiskManager } from "./riskManager/RiskManager";
 import { Role } from "./roles";
 
 export class DataManager {
@@ -26,10 +28,9 @@ export class DataManager {
   routes: Route[];
 
   dataLoader: DataLoader;
-  //riskManager: RiskManager;
-
-  //The currently selected Data, including the DataModules of the Vehicle, User, Payment, and Trip.
-  currentData?: DataModule;
+  //The currently selected DataModule
+  currentDataPackage?: DataModule;
+  riskManager: RiskManager;
 
   /**
    * Construct a new DataManager.
@@ -38,6 +39,7 @@ export class DataManager {
     //The city is set as the default role
     this.currentRole = Role.city;
     this.dataLoader = new DataLoader(dataLoaderParams);
+    this.riskManager = new RiskManager();
     this.companies = [];
     this.payments = [];
     this.trips = [];
@@ -59,6 +61,7 @@ export class DataManager {
    * This method initializes the data manager by asynchronously loading all data.
    */
   async init() {
+    let riskDefinitions: RiskDefinition[];
     [
       this.users,
       this.companies,
@@ -66,6 +69,7 @@ export class DataManager {
       this.vehicles,
       this.routes,
       this.payments,
+      riskDefinitions,
     ] = await Promise.all([
       this.dataLoader.loadAllUsers(),
       this.dataLoader.loadAllCompanies(),
@@ -73,7 +77,9 @@ export class DataManager {
       this.dataLoader.loadAllVehicles(),
       this.dataLoader.loadAllRoutes(),
       this.dataLoader.loadAllPayments(),
+      this.dataLoader.loadAllRisks(),
     ]);
+    this.riskManager.riskDefinitions = riskDefinitions;
     this.setAllReferences();
   }
 
