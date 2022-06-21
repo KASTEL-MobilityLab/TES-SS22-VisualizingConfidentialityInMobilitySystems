@@ -32,13 +32,13 @@ export enum AvailableData {
   trips = "data/trips",
   risks = "data/risk/risk",
   explanation = "data/risk/explanation",
-  testCompanies = "backend/__tests__/testData/companies",
-  testUsers = "backend/__tests__/testData/users",
-  testVehicles = "backend/__tests__/testData/vehicles",
-  testPayments = "backend/__tests__/testData/payments",
-  testRoutes = "backend/__tests__/testData/routes",
-  testTrips = "backend/__tests__/testData/trips",
-  testRisks = "backend/__tests__/testData/risk",
+  testCompanies = "backend/__tests__/data/companies",
+  testUsers = "backend/__tests__/data/users",
+  testVehicles = "backend/__tests__/data/vehicles",
+  testPayments = "backend/__tests__/data/payments",
+  testRoutes = "backend/__tests__/data/routes",
+  testTrips = "backend/__tests__/data/trips",
+  testRisks = "backend/__tests__/data/risk",
 }
 
 /**
