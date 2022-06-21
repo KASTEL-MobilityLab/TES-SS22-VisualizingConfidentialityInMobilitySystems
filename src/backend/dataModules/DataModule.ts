@@ -1,4 +1,5 @@
 import type { DataField } from "../dataFields";
+import type { RiskManager } from "../riskManager/RiskManager";
 
 /**
  * The DataModule class that stores all the data that is displayed in the DataViewer. Additionally, the risk of every data is stored
@@ -30,8 +31,22 @@ export class DataModule {
     }
     return this.displayedData;
   }
-  assignRiskToDisplayedData(): Record<string, string> {
-    throw new Error("To be impelemented");
-    //TODO: To be implemented
+  assignRiskToDisplayedData(
+    dataField: DataField,
+    riskManager: RiskManager
+  ): Record<string, string> {
+    const propertyNames = Object.keys(dataField);
+    this.risks = {};
+    for (let i = 0; i < propertyNames.length; i++) {
+      if (
+        !propertyNames[i].startsWith(DataModule.PREFIX_OF_NON_DISPLAYED_DATA) &&
+        !this.excludedProperties.includes(propertyNames[i])
+      ) {
+        this.risks[propertyNames[i]] = riskManager.getRiskLevel(
+          propertyNames[i]
+        );
+      }
+    }
+    return this.risks;
   }
 }
