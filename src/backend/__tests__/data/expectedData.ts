@@ -77,8 +77,8 @@ export const trips: Trip[] = [
     "P01",
     27.45,
     2.6,
-    new Date("2022-05-25T13:06:04Z"),
-    new Date("2022-05-25T13:08:04Z")
+    new Date("2022-05-25T13:06:04"),
+    new Date("2022-05-25T13:08:04")
   ),
   new Trip(
     "T02",
@@ -88,8 +88,8 @@ export const trips: Trip[] = [
     "P02",
     20.32,
     10,
-    new Date("2022-05-25T15:04:04Z"),
-    new Date("2022-05-25T15:22:20Z")
+    new Date("2022-05-25T15:04:04"),
+    new Date("2022-05-25T15:22:20")
   ),
 ];
 export const risks: RiskDefinition[] = [

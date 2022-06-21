@@ -7,8 +7,8 @@
     "paymentId": "P01",
     "avgSpeed": 27.45,
     "price": 2.6,
-    "startTime": "2022-05-25T13:06:04Z",
-    "endTime": "2022-05-25T13:08:04Z"
+    "startTime": "2022-05-25T13:06:04",
+    "endTime": "2022-05-25T13:08:04"
   },
   {
     "id": "T02",
@@ -18,7 +18,7 @@
     "paymentId": "P02",
     "avgSpeed": 20.32,
     "price": 10,
-    "startTime": "2022-05-25T15:04:04Z",
-    "endTime": "2022-05-25T15:22:20Z"
+    "startTime": "2022-05-25T15:04:04",
+    "endTime": "2022-05-25T15:22:20"
   }
 ]
