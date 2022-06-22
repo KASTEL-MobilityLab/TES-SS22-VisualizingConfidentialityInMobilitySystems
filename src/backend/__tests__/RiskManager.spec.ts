@@ -2,11 +2,11 @@ import { DataManager } from "@/backend/DataManager";
 import { DataModule } from "@/backend/dataModules/DataModule";
 import "reflect-metadata";
 import { describe, expect, it } from "vitest";
-import { DataLoader } from "../../DataLoader";
-import { DataType } from "../../dataType";
-import { RiskDefinition } from "../../riskManager/RiskDefinition";
-import { RiskLevel } from "../../riskManager/RiskLevel";
-import { Role } from "../../roles";
+import { DataLoader } from "../DataLoader";
+import { DataType } from "../dataType";
+import { RiskDefinition } from "../riskManager/RiskDefinition";
+import { RiskLevel } from "../riskManager/RiskLevel";
+import { Role } from "../roles";
 
 describe.concurrent("TestRisks", async () => {
   const dl = new DataLoader({

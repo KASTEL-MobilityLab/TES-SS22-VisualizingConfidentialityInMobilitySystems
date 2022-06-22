@@ -220,7 +220,7 @@ export class DataManager {
     trip?: Trip
   ) {
     if (user != undefined) {
-      const userDataModule = new DataModule(user);
+      const userDataModule = new DataModule(user, this.riskManager);
     }
   }
 }

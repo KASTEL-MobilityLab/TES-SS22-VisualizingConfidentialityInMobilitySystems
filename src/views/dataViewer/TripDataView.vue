@@ -8,9 +8,10 @@ import { inject } from "vue";
 const $dm = inject(dataManagerKey);
 const riskManager = new RiskManager();
 var dmUsers = $dm?.users;
-var dmDataModule = new DataModule(dmUsers![0]);
+var dmDataModule = new DataModule(dmUsers![0], $dm?.riskManager);
 const testString = "TODO";
 const currentRole = $dm?.currentRole;
+console.log(dmDataModule.risks);
 </script>
 
 <template>

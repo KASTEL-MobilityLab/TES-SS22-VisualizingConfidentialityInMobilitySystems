@@ -1,4 +1,6 @@
 import type { DataField } from "../dataFields";
+import { RiskColors } from "../riskManager/riskColors";
+import { RiskLevel } from "../riskManager/RiskLevel";
 import type { RiskManager } from "../riskManager/RiskManager";
 
 /**
@@ -13,9 +15,11 @@ export class DataModule {
   public risks: Record<string, string>;
   private excludedProperties = ["id", "type"];
 
-  constructor(dataField: DataField, riskManager: RiskManager) {
+  constructor(dataField: DataField, riskManager?: RiskManager) {
     this.displayedData = this.assignDataFieldToDisplayedData(dataField);
-    this.risks = this.assignRiskToDisplayedData(dataField, riskManager);
+    this.risks = this.convertRisks(
+      this.assignRiskToDisplayedData(dataField, riskManager)
+    );
   }
 
   assignDataFieldToDisplayedData(dataField: DataField): Record<string, string> {
@@ -34,7 +38,7 @@ export class DataModule {
   }
   assignRiskToDisplayedData(
     dataField: DataField,
-    riskManager: RiskManager
+    riskManager?: RiskManager
   ): Record<string, string> {
     const propertyNames = Object.keys(dataField);
     this.risks = {};
@@ -43,11 +47,27 @@ export class DataModule {
         !propertyNames[i].startsWith(DataModule.PREFIX_OF_NON_DISPLAYED_DATA) &&
         !this.excludedProperties.includes(propertyNames[i])
       ) {
-        this.risks[propertyNames[i]] = riskManager.getRiskLevel(
-          propertyNames[i]
-        );
+        if (riskManager !== undefined) {
+          this.risks[propertyNames[i]] = riskManager.getRiskLevel(
+            propertyNames[i]
+          );
+        }
       }
     }
     return this.risks;
+  }
+
+  convertRisks(risks: Record<string, string>): Record<string, string> {
+    const propertyNames = Object.keys(risks);
+    for (let i = 0; i < Object.keys(risks).length; i++) {
+      if (risks[propertyNames[i]] === RiskLevel.low) {
+        risks[propertyNames[i]] = RiskColors.Green;
+      } else if (risks[propertyNames[i]] === RiskLevel.medium) {
+        risks[propertyNames[i]] = RiskColors.Yellow;
+      } else if (risks[propertyNames[i]] === RiskLevel.high) {
+        risks[propertyNames[i]] = RiskColors.Red;
+      }
+    }
+    return risks;
   }
 }
