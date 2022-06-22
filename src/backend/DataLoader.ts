@@ -11,6 +11,7 @@ import {
   Vehicle,
   type Payment,
 } from "@/backend/dataFields";
+import { isNode } from "browser-or-node";
 import { plainToInstance } from "class-transformer";
 import fetch from "cross-fetch";
 import "reflect-metadata";
@@ -41,17 +42,18 @@ export async function getData(
 ): Promise<Record<string, unknown>[]> {
   try {
     let url: URL | string;
-    if (import.meta.env.DEV) {
-      // relative path not supported, thus this ugly work-around
-      const baseURL = "http://localhost:3000";
-      url = new URL(`src/${dataPath}.json`, baseURL + import.meta.env.BASE_URL);
+    if (isNode) {
+      // relative path not supported in node-fetch, thus this ugly work-around
+      const port = process.env.PORT || "3000";
+      const baseURL = "http://localhost:" + port;
+      url = new URL(`${dataPath}.json`, baseURL + import.meta.env.BASE_URL);
     } else {
       // this works, if we put all json files inside the public/ folder
       url = `${dataPath}.json`;
     }
     const response = await fetch(url);
     if (!response.ok) {
-      throw Error("Parsing JSON failed with error: " + response.statusText);
+      throw Error("Fetching JSON failed with error: " + response.statusText);
     }
     return await response.json();
   } catch (error) {
