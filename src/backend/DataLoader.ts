@@ -34,13 +34,13 @@ export enum AvailableData {
   trips = "data/trips",
   risks = "data/risk/risk",
   explanation = "data/risk/explanation",
-  testCompanies = "backend/__tests__/data/companies",
-  testUsers = "backend/__tests__/data/users",
-  testVehicles = "backend/__tests__/data/vehicles",
-  testPayments = "backend/__tests__/data/payments",
-  testRoutes = "backend/__tests__/data/routes",
-  testTrips = "backend/__tests__/data/trips",
-  testRisks = "backend/__tests__/data/risk",
+  testCompanies = "src/backend/__tests__/data/companies",
+  testUsers = "src/backend/__tests__/data/users",
+  testVehicles = "src/backend/__tests__/data/vehicles",
+  testPayments = "src/backend/__tests__/data/payments",
+  testRoutes = "src/backend/__tests__/data/routes",
+  testTrips = "src/backend/__tests__/data/trips",
+  testRisks = "src/backend/__tests__/data/risk",
 }
 
 /**
@@ -57,10 +57,10 @@ export async function getData(
     if (isNode) {
       // relative path not supported in node-fetch, thus this ugly work-around
       const port = process.env.PORT || "3000";
-      const baseURL = "http://localhost:" + port;
+      const baseURL = process.env.LOCALHOST + port;
       url = new URL(`${dataPath}.json`, baseURL + import.meta.env.BASE_URL);
     } else {
-      // this works, if we put all json files inside the public/ folder
+      // anything inside public will be into the root of dist
       url = `${dataPath}.json`;
     }
     const response = await fetch(url);
