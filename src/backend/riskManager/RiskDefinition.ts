@@ -1,4 +1,5 @@
 import { Expose, Transform, Type } from "class-transformer";
+import type { DataType } from "../dataType";
 import { Role } from "../roles";
 import { RiskLevel } from "./RiskLevel";
 
@@ -7,7 +8,7 @@ import { RiskLevel } from "./RiskLevel";
  */
 export class RiskDefinition {
   @Expose()
-  dataType: string;
+  dataType: DataType;
 
   // convert string to real RiskLevel
   // use the key of the RiskLevel enum (not the assigned string value)
@@ -22,7 +23,11 @@ export class RiskDefinition {
   @Expose()
   roleVisibility: Role[];
 
-  constructor(dataType: string, riskLevel: RiskLevel, roleVisibility: Role[]) {
+  constructor(
+    dataType: DataType,
+    riskLevel: RiskLevel,
+    roleVisibility: Role[]
+  ) {
     this.dataType = dataType;
     this.riskLevel = riskLevel;
     this.roleVisibility = roleVisibility;

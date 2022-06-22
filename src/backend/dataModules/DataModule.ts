@@ -10,11 +10,12 @@ export class DataModule {
   //Stores the data that is shown to the user
   public displayedData: Record<string, string>;
   //Stores the risks of the shown data
-  public risks?: Record<string, string>;
+  public risks: Record<string, string>;
   private excludedProperties = ["id", "type"];
 
-  constructor(dataField: DataField) {
+  constructor(dataField: DataField, riskManager: RiskManager) {
     this.displayedData = this.assignDataFieldToDisplayedData(dataField);
+    this.risks = this.assignRiskToDisplayedData(dataField, riskManager);
   }
 
   assignDataFieldToDisplayedData(dataField: DataField): Record<string, string> {
