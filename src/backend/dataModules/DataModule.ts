@@ -1,4 +1,5 @@
 import type { DataField } from "../dataFields";
+import { DataType } from "../dataType";
 import { RiskColors } from "../riskManager/riskColors";
 import { RiskLevel } from "../riskManager/RiskLevel";
 import type { RiskManager } from "../riskManager/RiskManager";
@@ -25,13 +26,21 @@ export class DataModule {
   assignDataFieldToDisplayedData(dataField: DataField): Record<string, string> {
     const propertyNames = Object.keys(dataField);
     const propertyValues = Object.values(dataField);
+    const dataTypeValues = Object.values(DataType);
     this.displayedData = {};
     for (let i = 0; i < propertyNames.length; i++) {
       if (
         !propertyNames[i].startsWith(DataModule.PREFIX_OF_NON_DISPLAYED_DATA) &&
         !this.excludedProperties.includes(propertyNames[i])
       ) {
-        this.displayedData[propertyNames[i]] = propertyValues[i];
+        console.log(propertyNames[i]);
+        const dataTypeValue = dataTypeValues.find(
+          (locales) => locales === "data.user." + propertyNames[i]
+        );
+        console.log(dataTypeValue);
+        if (dataTypeValue != null) {
+          this.displayedData[dataTypeValue] = propertyValues[i];
+        }
       }
     }
     return this.displayedData;

@@ -18,6 +18,7 @@ const riskColor = {
 };
 const testString = "TODO";
 const currentRole = $dm?.currentRole;
+console.log(dmDataModule.displayedData);
 </script>
 
 <template>
@@ -28,7 +29,7 @@ const currentRole = $dm?.currentRole;
       <div class="row m-2 p-2">
         <div class="col m-2 fw-bold">
           <button @click="riskManager.getExplanation(testString, currentRole)">
-            {{ key }}
+            {{ $t(key) }}
           </button>
         </div>
         <div class="col m-2">

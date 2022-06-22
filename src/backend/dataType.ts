@@ -8,8 +8,8 @@ export enum DataType {
   //TODO: Abändern auf das neue Format
   PaymentType = "PaymentType",
   //DataTypes of the user
-  Forename = "forename",
-  Surname = "surname",
-  PhoneNumber = "phoneNumber",
-  Email = "email",
+  Forename = "data.user.forename",
+  Surname = "data.user.surname",
+  PhoneNumber = "data.user.phoneNumber",
+  Email = "data.user.email",
 }
