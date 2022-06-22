@@ -12,11 +12,14 @@ import * as expectedData from "./data/expectedData";
 
 describe.concurrent("Async get Data", async () => {
   it("valid data path", async () => {
-    const companies = await getData(AvailableData.companies);
+    const companies = await getData(AvailableData.testCompanies);
     expect(companies[0]).toMatchObject({
       id: "C01",
       name: "Fire Runner",
     });
+  });
+  it("invalid data path", async () => {
+    await expect(getData("invalid")).rejects.toThrow();
   });
 });
 
