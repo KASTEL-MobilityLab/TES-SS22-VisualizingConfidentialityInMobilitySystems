@@ -16,6 +16,7 @@ import { plainToInstance } from "class-transformer";
 import fetch from "cross-fetch";
 import "reflect-metadata";
 import { PaymentType, VehicleType } from "./dataFields/types";
+import { RiskDefinition } from "./riskManager/RiskDefinition";
 
 /**
  * Specifies, which data can be loaded with the function {@link getData}.
@@ -246,13 +247,13 @@ export class DataLoader {
     return transformedRouteData;
   }
 
-  // async loadAllRisks(): Promise<RiskDefinition[]> {
-  //   const riskJson = await getData(this.riskPath);
-  //   const transformedRiskData: RiskDefinition[] = plainToInstance(
-  //     RiskDefinition,
-  //     riskJson,
-  //     this.classTransformerOptions
-  //   );
-  //   return transformedRiskData;
-  // }
+  async loadAllRisks(): Promise<RiskDefinition[]> {
+    const riskJson = await getData(this.riskPath);
+    const transformedRiskData: RiskDefinition[] = plainToInstance(
+      RiskDefinition,
+      riskJson,
+      this.classTransformerOptions
+    );
+    return transformedRiskData;
+  }
 }
