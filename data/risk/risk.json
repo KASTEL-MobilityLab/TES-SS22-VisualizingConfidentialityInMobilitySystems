@@ -1,0 +1,112 @@
+[
+  {
+    "dataType": "PaymentType",
+    "riskLevel": "low",
+    "roleVisibility": ["company", "user"]
+  },
+  {
+    "dataType": "PaymentProvider",
+    "riskLevel": "low",
+    "roleVisibility": ["company", "user"]
+  },
+  {
+    "dataType": "PaymentCardNumber",
+    "riskLevel": "high",
+    "roleVisibility": ["company", "user"]
+  },
+  {
+    "dataType": "PaymentCcv",
+    "riskLevel": "high",
+    "roleVisibility": ["company", "user"]
+  },
+  {
+    "dataType": "PaymentExpiryDate",
+    "riskLevel": "medium",
+    "roleVisibility": ["company", "user"]
+  },
+  {
+    "dataType": "RouteStart",
+    "riskLevel": "medium",
+    "roleVisibility": ["company", "user"]
+  },
+  {
+    "dataType": "RouteEnd",
+    "riskLevel": "medium",
+    "roleVisibility": ["company", "user"]
+  },
+  {
+    "dataType": "TripAvgSpeed",
+    "riskLevel": "low",
+    "roleVisibility": ["company", "user"]
+  },
+  {
+    "dataType": "TripPrice",
+    "riskLevel": "low",
+    "roleVisibility": ["company", "user"]
+  },
+  {
+    "dataType": "TripStartTime",
+    "riskLevel": "low",
+    "roleVisibility": ["company", "user"]
+  },
+  {
+    "dataType": "TripEndTime",
+    "riskLevel": "low",
+    "roleVisibility": ["company", "user"]
+  },
+  {
+    "dataType": "UserForename",
+    "riskLevel": "low",
+    "roleVisibility": ["company", "user"]
+  },
+  {
+    "dataType": "UserSurname",
+    "riskLevel": "low",
+    "roleVisibility": ["company", "user"]
+  },
+  {
+    "dataType": "UserPhoneNumber",
+    "riskLevel": "medium",
+    "roleVisibility": ["company", "user"]
+  },
+  {
+    "dataType": "UserEmail",
+    "riskLevel": "medium",
+    "roleVisibility": ["company", "user"]
+  },
+  {
+    "dataType": "VehicleId",
+    "riskLevel": "low",
+    "roleVisibility": ["company", "user"]
+  },
+  {
+    "dataType": "VehicleType",
+    "riskLevel": "low",
+    "roleVisibility": ["company", "user"]
+  },
+  {
+    "dataType": "VehicleCompanyId",
+    "riskLevel": "low",
+    "roleVisibility": ["company", "user"]
+  },
+  {
+    "dataType": "VehicleCondition",
+    "riskLevel": "low",
+    "roleVisibility": ["company", "user"]
+  },
+  {
+    "dataType": "VehicleBatteryCondition",
+    "riskLevel": "low",
+    "roleVisibility": ["company", "user"]
+  },
+  {
+    "dataType": "VehicleStatus",
+    "riskLevel": "medium",
+    "roleVisibility": ["company", "user"]
+  },
+  {
+    "dataType": "VehicleBatteryLevel",
+    "riskLevel": "low",
+    "roleVisibility": ["company", "user"]
+  }
+]
