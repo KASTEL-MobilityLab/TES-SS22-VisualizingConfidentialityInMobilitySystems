@@ -18,82 +18,91 @@ import "reflect-metadata";
 import { PaymentType, VehicleType } from "./dataFields/types";
 import { RiskDefinition } from "./riskManager/RiskDefinition";
 
+const DataPath = "data/";
+const TestDataPath = "src/backend/__tests__/data/";
+
 /**
  * Specifies, which data can be loaded with the function {@link getData}.
  */
-export enum AvailableData {
+export const AvailableData = {
   // Data Paths prefixes (like data/ or backend/__tests__.../.../) are hardcoded here,
   // but string enums do not allow computed properties.
   // thus if we want to save those prefixes in variables we have to use an object literal
   // or similar, but then the getData method has to be adjusted
-  companies = "data/companies",
-  users = "data/users",
-  vehicles = "data/vehicles",
-  payments = "data/payments",
-  routes = "data/routes",
-  trips = "data/trips",
-  risks = "data/risk/risk",
-  explanation = "data/risk/explanation",
-  testCompanies = "src/backend/__tests__/data/companies",
-  testUsers = "src/backend/__tests__/data/users",
-  testVehicles = "src/backend/__tests__/data/vehicles",
-  testPayments = "src/backend/__tests__/data/payments",
-  testRoutes = "src/backend/__tests__/data/routes",
-  testTrips = "src/backend/__tests__/data/trips",
-  testRisks = "src/backend/__tests__/data/risk",
-}
+  companies: DataPath + "companies",
+  users: DataPath + "users",
+  vehicles: DataPath + "vehicles",
+  payments: DataPath + "payments",
+  routes: DataPath + "routes",
+  trips: DataPath + "trips",
+  risks: DataPath + "risk/risk",
+  explanation: DataPath + "risk/explanation",
+  testCompanies: TestDataPath + "companies",
+  testUsers: TestDataPath + "users",
+  testVehicles: TestDataPath + "vehicles",
+  testPayments: TestDataPath + "payments",
+  testRoutes: TestDataPath + "routes",
+  testTrips: TestDataPath + "trips",
+  testRisks: TestDataPath + "risk",
+};
 
 /**
- * Asynchronously fetches the specified json file. Valid data paths are specified in the {@link AvailableData} enum.
+ * Asynchronously fetches the specified json file. Possible Paths are specified in the {@link AvailableData} object.
  *
- * @param dataPath A string that specifies the filename, i.e for src/data/companies.json `dataPath=AvailableData.companies`
+ * @param dataPath A string that specifies the filename relative to the root folder, i.e for src/data/companies.json `dataPath=AvailableData.companies`
  * @returns a Promise of Record<string, unknown>
  */
 export async function getData(
-  dataPath: AvailableData
+  dataPath: string
 ): Promise<Record<string, unknown>[]> {
   try {
     let url: URL | string;
     if (isNode) {
       // relative path not supported in node-fetch, thus this ugly work-around
-      const port = process.env.PORT || "3000";
-      const baseURL = process.env.LOCALHOST + port;
-      url = new URL(`${dataPath}.json`, baseURL + import.meta.env.BASE_URL);
+
+      // somehow, import.meta.env.VITE_PORT is not defined, so we have to load it manually
+      // to construct the base url
+      const port = import.meta.env.VITE_PORT || "3000";
+      const baseURL =
+        import.meta.env.VITE_LOCALHOST + port + import.meta.env.BASE_URL;
+      url = new URL(`${dataPath}.json`, baseURL);
     } else {
       // anything inside public will be into the root of dist
       url = `${dataPath}.json`;
     }
     const response = await fetch(url);
     if (!response.ok) {
-      throw Error("Fetching JSON failed with error: " + response.statusText);
+      throw new Error(
+        "Fetching JSON failed with error: " + response.statusText
+      );
     }
     return await response.json();
   } catch (error) {
-    throw Error(`Unexpected error parsing the JSON file: ${error}`);
+    throw new Error(`Unexpected error parsing the JSON file: ${error}`);
   }
 }
 
 export interface DataLoaderParams {
-  companyPath?: AvailableData;
-  userPath?: AvailableData;
-  vehiclePath?: AvailableData;
-  paymentPath?: AvailableData;
-  routePath?: AvailableData;
-  tripPath?: AvailableData;
-  riskPath?: AvailableData;
+  companyPath?: string;
+  userPath?: string;
+  vehiclePath?: string;
+  paymentPath?: string;
+  routePath?: string;
+  tripPath?: string;
+  riskPath?: string;
 }
 
 /**
  * The DataLoader takes care of loading local JSON files and transforms them to their corresponding classes.
  */
 export class DataLoader {
-  private companyPath: AvailableData;
-  private userPath: AvailableData;
-  private vehiclePath: AvailableData;
-  private routePath: AvailableData;
-  private tripPath: AvailableData;
-  private riskPath: AvailableData;
-  private paymentPath: AvailableData;
+  private companyPath: string;
+  private userPath: string;
+  private vehiclePath: string;
+  private routePath: string;
+  private tripPath: string;
+  private riskPath: string;
+  private paymentPath: string;
 
   private classTransformerOptions = {
     excludeExtraneousValues: true,

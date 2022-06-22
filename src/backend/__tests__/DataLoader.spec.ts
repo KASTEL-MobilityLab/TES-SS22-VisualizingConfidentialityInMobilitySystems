@@ -18,6 +18,9 @@ describe.concurrent("Async get Data", async () => {
       name: "Fire Runner",
     });
   });
+  it("invalid data path", async () => {
+    await expect(getData("invalid")).rejects.toThrow();
+  });
 });
 
 // utility function to compare two arrays of dataFields
