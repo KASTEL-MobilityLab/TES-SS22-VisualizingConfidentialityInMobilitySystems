@@ -1,10 +1,8 @@
 <script setup lang="ts">
-import { DataLoader } from "@/backend/DataLoader";
 import { DataModule } from "@/backend/dataModules/DataModule";
 import { RiskManager } from "@/backend/RiskManager";
 import { dataManagerKey } from "@/keys";
 import { inject } from "vue";
-const dataLoader = new DataLoader({});
 const $dm = inject(dataManagerKey);
 var dmUsers = $dm?.users;
 var dmDataModule = new DataModule(dmUsers![0], $dm?.riskManager);

@@ -11,6 +11,7 @@ import { IndividualVehicle } from "../dataFields/vehicles/IndividualVehicle";
 import { PublicVehicle } from "../dataFields/vehicles/PublicVehicle";
 import { Train } from "../dataFields/vehicles/Train";
 import { AvailableData, DataLoader, getData } from "../DataLoader";
+import { DataType } from "../dataType";
 import { RiskDefinition } from "../riskManager/RiskDefinition";
 import { RiskLevel } from "../riskManager/RiskLevel";
 import { Role } from "../roles";
@@ -145,10 +146,11 @@ describe.concurrent("DataLoader", async () => {
   describe("load all risks", async () => {
     const risks = await dl.loadAllRisks();
     const loadedRisk = risks[0];
-    const expectedRisk = new RiskDefinition("PaymentType", RiskLevel.low, [
-      Role.company,
-      Role.user,
-    ]);
+    const expectedRisk = new RiskDefinition(
+      DataType.PaymentType,
+      RiskLevel.low,
+      [Role.company, Role.user]
+    );
     it("first risk loaded correctly", () => {
       expect(loadedRisk).toBeInstanceOf(RiskDefinition);
       expect(loadedRisk).toEqual(expectedRisk);

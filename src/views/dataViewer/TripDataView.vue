@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { AvailableData } from "@/backend/DataLoader";
 import { DataModule } from "@/backend/dataModules/DataModule";
 import { RiskManager } from "@/backend/RiskManager";
 import { dataManagerKey } from "@/keys";
