@@ -1,8 +1,8 @@
 import { Exclude, Expose, Type } from "class-transformer";
 import "reflect-metadata";
-import type { Route } from "./Route";
 import { DataField } from "./DataField";
 import type { Payment } from "./Payment";
+import type { Route } from "./Route";
 import type { User } from "./User";
 import type { Vehicle } from "./Vehicle";
 
@@ -25,11 +25,16 @@ export class Trip extends DataField {
   @Expose()
   readonly price: number;
 
+  @Type(() => Date)
   @Expose()
-  readonly startTime: string;
+  readonly startTime: Date;
+
+  @Type(() => Date)
+  @Expose()
+  readonly endTime: Date;
 
   @Expose()
-  readonly endTime: string;
+  readonly avgSpeed: number;
 
   @Exclude()
   private _vehicle?: Vehicle;
@@ -50,8 +55,9 @@ export class Trip extends DataField {
     userId: string,
     paymentId: string,
     price: number,
-    startTime: string,
-    endTime: string,
+    avgSpeed: number,
+    startTime: Date,
+    endTime: Date,
     vehicle?: Vehicle,
     user?: User,
     payment?: Payment,
@@ -63,6 +69,7 @@ export class Trip extends DataField {
     this.userId = userId;
     this.paymentId = paymentId;
     this.price = price;
+    this.avgSpeed = avgSpeed;
     this.startTime = startTime;
     this.endTime = endTime;
     if (vehicle !== undefined) {

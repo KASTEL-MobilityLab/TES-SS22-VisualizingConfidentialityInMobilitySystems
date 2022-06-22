@@ -20,6 +20,10 @@ import { RiskDefinition } from "./riskManager/RiskDefinition";
  * Specifies, which data can be loaded with the function {@link getData}.
  */
 export enum AvailableData {
+  // Data Paths prefixes (like data/ or backend/__tests__.../.../) are hardcoded here,
+  // but string enums do not allow computed properties.
+  // thus if we want to save those prefixes in variables we have to use an object literal
+  // or similar, but then the getData method has to be adjusted
   companies = "data/companies",
   users = "data/users",
   vehicles = "data/vehicles",
@@ -28,7 +32,13 @@ export enum AvailableData {
   trips = "data/trips",
   risks = "data/risk/risk",
   explanation = "data/risk/explanation",
-  testCompanies = "backend/__tests__/testData/companies",
+  testCompanies = "backend/__tests__/data/companies",
+  testUsers = "backend/__tests__/data/users",
+  testVehicles = "backend/__tests__/data/vehicles",
+  testPayments = "backend/__tests__/data/payments",
+  testRoutes = "backend/__tests__/data/routes",
+  testTrips = "backend/__tests__/data/trips",
+  testRisks = "backend/__tests__/data/risk",
 }
 
 /**
