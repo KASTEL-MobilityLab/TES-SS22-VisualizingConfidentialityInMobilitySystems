@@ -13,13 +13,12 @@ import {
 } from "@/backend/dataFields";
 import { isNode } from "browser-or-node";
 import { plainToInstance } from "class-transformer";
-import fetch from "cross-fetch";
 import "reflect-metadata";
 import { PaymentType, VehicleType } from "./dataFields/types";
 import { RiskDefinition } from "./riskManager/RiskDefinition";
 
 const DataPath = "data/";
-const TestDataPath = "src/backend/__tests__/data/";
+const TestDataPath = "backend/__tests__/data/";
 
 /**
  * Specifies, which data can be loaded with the function {@link getData}.
@@ -49,34 +48,27 @@ export const AvailableData = {
 /**
  * Asynchronously fetches the specified json file. Possible Paths are specified in the {@link AvailableData} object.
  *
- * @param dataPath A string that specifies the filename relative to the root folder, i.e for src/data/companies.json `dataPath=AvailableData.companies`
+ * @param dataPath A string that specifies the filename relative to the root folder.
  * @returns a Promise of Record<string, unknown>
  */
 export async function getData(
   dataPath: string
 ): Promise<Record<string, unknown>[]> {
   try {
-    let url: URL | string;
     if (isNode) {
-      // relative path not supported in node-fetch, thus this ugly work-around
-
-      // somehow, import.meta.env.VITE_PORT is not defined, so we have to load it manually
-      // to construct the base url
-      const port = import.meta.env.VITE_PORT || "3000";
-      const baseURL =
-        import.meta.env.VITE_LOCALHOST + port + import.meta.env.BASE_URL;
-      url = new URL(`${dataPath}.json`, baseURL);
+      const data = await import(`./src/${dataPath}.json`);
+      return data.default;
     } else {
       // anything inside public will be into the root of dist
-      url = `${dataPath}.json`;
+      const url = `${dataPath}.json`;
+      const response = await fetch(url);
+      if (!response.ok) {
+        throw new Error(
+          "Fetching JSON failed with error: " + response.statusText
+        );
+      }
+      return await response.json();
     }
-    const response = await fetch(url);
-    if (!response.ok) {
-      throw new Error(
-        "Fetching JSON failed with error: " + response.statusText
-      );
-    }
-    return await response.json();
   } catch (error) {
     throw new Error(`Unexpected error parsing the JSON file: ${error}`);
   }
