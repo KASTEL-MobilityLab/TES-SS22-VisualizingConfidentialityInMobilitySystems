@@ -1,14 +1,10 @@
 <script setup lang="ts">
 import { DataModule } from "@/backend/dataModules/DataModule";
-import { RiskManager } from "@/backend/RiskManager";
 import { dataManagerKey } from "@/keys";
 import { inject } from "vue";
 const $dm = inject(dataManagerKey);
-var dmUsers = $dm?.users;
-var dmDataModule = new DataModule(dmUsers![0], $dm?.riskManager);
-const riskManager = new RiskManager();
-const risks = dmDataModule.risks;
-console.log(risks);
+var users = $dm?.users;
+var dataModule = new DataModule(users![0], $dm?.riskManager);
 const riskColor = {
   id: "text-success",
   forename: "text-warning",
@@ -16,19 +12,16 @@ const riskColor = {
   phoneNumber: "text-warning",
   email: "text-warning",
 };
-const testString = "TODO";
-const currentRole = $dm?.currentRole;
-console.log(dmDataModule.displayedData);
 </script>
 
 <template>
   <h4 class="text-center m-2">Rider Data</h4>
-  <template v-for="(value, key) in dmDataModule.displayedData" :key="key">
+  <template v-for="(value, key) in dataModule.displayedData" :key="key">
     <div class="risks[key]">
       <!-- div class="riskColor[key]"> -->
       <div class="row m-2 p-2">
         <div class="col m-2 fw-bold">
-          <button @click="riskManager.getExplanation(testString, currentRole)">
+          <button>
             {{ $t(key) }}
           </button>
         </div>
