@@ -1,4 +1,4 @@
-import { Exclude, Expose } from "class-transformer";
+import { Exclude, Expose, Type } from "class-transformer";
 import { LatLng } from "../utils/LatLng";
 import type { Company } from "./Company";
 import { DataField } from "./DataField";
@@ -17,7 +17,8 @@ export abstract class Vehicle extends DataField {
   @Exclude()
   private _company?: Company;
 
-  @Exclude()
+  @Type(() => LatLng)
+  @Expose()
   currentPosition?: LatLng;
 
   constructor(
@@ -25,7 +26,8 @@ export abstract class Vehicle extends DataField {
     companyId: string,
     type: VehicleType,
     status: VehicleStatus,
-    company?: Company
+    company?: Company,
+    currentPosition?: LatLng
   ) {
     super(id);
     this.companyId = companyId;
@@ -34,6 +36,7 @@ export abstract class Vehicle extends DataField {
     if (company !== undefined) {
       this._company = company;
     }
+    this.currentPosition = currentPosition;
   }
 
   get company() {
