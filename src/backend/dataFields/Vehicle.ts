@@ -1,4 +1,5 @@
 import { Exclude, Expose } from "class-transformer";
+import { LatLng } from "../utils/LatLng";
 import type { Company } from "./Company";
 import { DataField } from "./DataField";
 import type { VehicleStatus, VehicleType } from "./types";
@@ -15,6 +16,9 @@ export abstract class Vehicle extends DataField {
   readonly status: VehicleStatus;
   @Exclude()
   private _company?: Company;
+
+  @Exclude()
+  currentPosition?: LatLng;
 
   constructor(
     id: string,

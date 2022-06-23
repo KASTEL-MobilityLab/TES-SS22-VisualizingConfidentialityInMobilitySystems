@@ -81,6 +81,7 @@ export class DataManager {
     ]);
     this.riskManager.riskDefinitions = riskDefinitions;
     this.setAllReferences();
+    this.trips.map((trip) => (trip.vehicle.currentPosition = trip.route.start));
   }
 
   /**
