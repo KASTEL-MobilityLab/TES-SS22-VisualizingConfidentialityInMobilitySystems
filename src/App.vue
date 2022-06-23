@@ -1,14 +1,19 @@
 <script setup lang="ts">
 import MapComponent from "@/components/MapComponent.vue";
 import NavBar from "@/components/NavBar.vue";
-import { RouterView } from "vue-router";
 </script>
 
 <template>
   <main>
     <NavBar />
     <div class="outer-wrap">
-      <MapComponent />
+      <Suspense>
+        <MapComponent />
+
+        <template #fallback>
+          <h1 class="text-center display-4">Loading ... Please Wait</h1>
+        </template>
+      </Suspense>
       <div class="overlay">
         <!-- Renders the view that matches the top level root: DataViewerView and HelpView
         We need to find a way to show HelpView on the left side and not switch between Help and DataViewer-->

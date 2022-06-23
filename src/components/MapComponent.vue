@@ -1,11 +1,12 @@
 <script setup lang="ts">
-import {
-  createBikeMarker,
-  createBusMarker,
-  createTrainMarker,
-} from "@/utils/markerUtils";
-import L from "leaflet";
-import { onMounted } from "vue";
+import type { DataManager } from "@/backend/DataManager";
+import { dataManagerKey } from "@/keys";
+import type { VehicleLayer } from "@/utils/leafletExtension";
+import { generateAllVehicleMarkers } from "@/utils/markerUtils";
+import L, { type LayerEvent } from "leaflet";
+import { inject, onMounted } from "vue";
+
+const $dm = inject(dataManagerKey) as DataManager;
 
 const topLeft = new L.LatLng(49.036357, 8.334785);
 const bottomRight = new L.LatLng(48.977558, 8.469264);
@@ -28,11 +29,8 @@ const mapLabels = L.tileLayer(
     maxZoom: 16,
   }
 );
-const bikePositionV01 = new L.LatLng(49.007478, 8.385981);
-const trainPositionV02 = new L.LatLng(49.0075, 8.381111);
-const busPositionV03 = new L.LatLng(49.0025, 8.38591);
 
-onMounted(() => {
+onMounted(async () => {
   const map = L.map("leafletMap", {
     center: bounds.getCenter(),
     zoom: 15,
@@ -40,11 +38,29 @@ onMounted(() => {
     maxBounds: bounds,
     maxBoundsViscosity: 0.6,
   });
-  // add some test markers
-  createBikeMarker(bikePositionV01).addTo(map);
-  createBusMarker(busPositionV03).addTo(map);
-  createTrainMarker(trainPositionV02).addTo(map);
+  var markersLayer = L.featureGroup().addTo(map);
+  // add this event listener to each marker in the feature group
+  markersLayer.on("click", vehicleMarkerClicked);
+
+  await $dm.init();
+  const vehicles = $dm.vehicles;
+  const markers = generateAllVehicleMarkers(vehicles);
+  markers.forEach((marker) => {
+    marker.addTo(markersLayer);
+  });
 });
+
+/**
+ * Sets the currently selected vehicle in the data manager to the clicked vehicle.
+ *
+ * @param event the layer event of the clicked marker
+ */
+function vehicleMarkerClicked(event: LayerEvent): void {
+  const vehicleLayer: VehicleLayer = event.layer as VehicleLayer;
+  const vehicleId = vehicleLayer.vehicleId;
+  console.log("Clicked on marker of vehicle " + vehicleId);
+  $dm.currentVehicle = $dm.getDataById(vehicleId, $dm.vehicles);
+}
 </script>
 
 <template>
