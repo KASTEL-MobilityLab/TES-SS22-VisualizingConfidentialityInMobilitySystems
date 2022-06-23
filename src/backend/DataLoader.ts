@@ -1,6 +1,7 @@
 import {
   Company,
   CreditCard,
+  DataField,
   EScooter,
   Train,
   Trip,
@@ -9,7 +10,7 @@ import {
   type Payment,
 } from "@/backend/dataFields";
 import { Cash } from "@/backend/dataFields/payments/Cash";
-import { plainToInstance } from "class-transformer";
+import { plainToInstance, type ClassConstructor } from "class-transformer";
 import "reflect-metadata";
 import { PayPal } from "./dataFields/payments/Paypal";
 import { Route } from "./dataFields/Route";
@@ -243,5 +244,22 @@ export class DataLoader {
       this.classTransformerOptions
     );
     return transformedRiskData;
+  }
+
+  async loadTransformedData<T extends DataField>(
+    cls: ClassConstructor<T>
+  ): Promise<T[]> {
+    //Abändern der eingesetzten Varaible auf die getDataFieldPath Methode
+    const dataFieldJson = await getData(AvailableData.companies);
+    const transformedDataFieldData: T[] = plainToInstance(
+      cls,
+      dataFieldJson,
+      this.classTransformerOptions
+    );
+    return transformedDataFieldData;
+  }
+
+  getDataFieldPath<T extends DataField>(cls: ClassConstructor<T>): string {
+    throw new Error("To be implemented");
   }
 }
