@@ -61,7 +61,7 @@ export function createMarker(vehicle: Vehicle): VehicleMarker {
   const marker = <VehicleMarker>L.marker(position.toLeafletLatLng(), {
     icon: vehicleIcon.icon,
   });
-  marker.vehicleId = vehicle.id;
+  marker.vehicle = vehicle;
   return marker;
 }
 
