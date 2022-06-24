@@ -30,7 +30,7 @@ const mapLabels = L.tileLayer(
   }
 );
 
-onMounted(async () => {
+onMounted(() => {
   const map = L.map("leafletMap", {
     center: bounds.getCenter(),
     zoom: 15,
@@ -42,7 +42,6 @@ onMounted(async () => {
   // add this event listener to each marker in the feature group
   markersLayer.on("click", vehicleMarkerClicked);
 
-  await $dm.init();
   const vehicles = $dm.vehicles;
   const markers = generateAllVehicleMarkers(vehicles);
   markers.forEach((marker) => {
