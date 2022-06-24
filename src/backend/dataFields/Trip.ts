@@ -86,6 +86,18 @@ export class Trip extends DataField {
     }
   }
 
+  /**
+   * Sets the current position of the vehicle to the start of this trip.
+   */
+  setVehicleStartPosition() {
+    if (!(this._vehicle && this._route)) {
+      throw Error(
+        "Vehicle and route must be set before setting start position of a vehicle."
+      );
+    }
+    this._vehicle.currentPosition = this._route.start;
+  }
+
   get vehicle() {
     if (this._vehicle === undefined) {
       throw Error("Vehicle has not been set yet.");
