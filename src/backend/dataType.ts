@@ -7,6 +7,7 @@ import type { i18n } from "@/i18n";
 export enum DataType {
   //TODO: Abändern auf das neue Format
   PaymentType = "PaymentType",
+  PaymentProvider = "PaymentProvider",
   //DataTypes of the user
   Forename = "data.user.forename",
   Surname = "data.user.surname",
