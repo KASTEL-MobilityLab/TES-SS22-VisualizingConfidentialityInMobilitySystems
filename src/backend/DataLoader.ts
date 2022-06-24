@@ -1,77 +1,101 @@
 import {
+  Cash,
   Company,
   CreditCard,
   DataField,
   EScooter,
+  PayPal,
+  Route,
   Train,
   Trip,
   User,
   Vehicle,
   type Payment,
 } from "@/backend/dataFields";
-import { Cash } from "@/backend/dataFields/payments/Cash";
+import { isNode } from "browser-or-node";
 import { plainToInstance, type ClassConstructor } from "class-transformer";
 import "reflect-metadata";
-import { PayPal } from "./dataFields/payments/Paypal";
-import { Route } from "./dataFields/Route";
 import { PaymentType, VehicleType } from "./dataFields/types";
 import { RiskDefinition } from "./riskManager/RiskDefinition";
+
+const DataPath = "data/";
+const TestDataPath = "backend/__tests__/data/";
 
 /**
  * Specifies, which data can be loaded with the function {@link getData}.
  */
-
-export enum AvailableData {
-  companies = "data/companies",
-  users = "data/users",
-  vehicles = "data/vehicles",
-  payments = "data/payments",
-  routes = "data/routes",
-  trips = "data/trips",
-  risks = "data/risk/risk",
-  explanation = "data/risk/explanation",
-  testCompanies = "backend/__tests__/testData/companies",
-  testUsers = "testUsers",
-}
+export const AvailableData = {
+  // Data Paths prefixes (like data/ or backend/__tests__.../.../) are hardcoded here,
+  // but string enums do not allow computed properties.
+  // thus if we want to save those prefixes in variables we have to use an object literal
+  // or similar, but then the getData method has to be adjusted
+  companies: DataPath + "companies",
+  users: DataPath + "users",
+  vehicles: DataPath + "vehicles",
+  payments: DataPath + "payments",
+  routes: DataPath + "routes",
+  trips: DataPath + "trips",
+  risks: DataPath + "risk/risk",
+  explanation: DataPath + "risk/explanation",
+  testCompanies: TestDataPath + "companies",
+  testUsers: TestDataPath + "users",
+  testVehicles: TestDataPath + "vehicles",
+  testPayments: TestDataPath + "payments",
+  testRoutes: TestDataPath + "routes",
+  testTrips: TestDataPath + "trips",
+  testRisks: TestDataPath + "risk",
+};
 
 /**
- * Dynamically import the specified json file. Valid strings are specified in the {@link AvailableData} enum.
+ * Asynchronously fetches the specified json file. Possible Paths are specified in the {@link AvailableData} object.
  *
- * @param dataPath A string that specifies the filename, i.e for src/data/companies.json `dataPath=AvailableData.companies`
+ * @param dataPath A string that specifies the filename relative to the root folder.
  * @returns a Promise of Record<string, unknown>
  */
 export async function getData(
-  dataPath: AvailableData
+  dataPath: string
 ): Promise<Record<string, unknown>[]> {
   try {
-    const data = await import(`../${dataPath}.json`);
-    return data.default;
+    if (isNode) {
+      const data = await import(`./src/${dataPath}.json`);
+      return data.default;
+    } else {
+      // anything inside public will be into the root of dist
+      const url = `${dataPath}.json`;
+      const response = await fetch(url);
+      if (!response.ok) {
+        throw new Error(
+          "Fetching JSON failed with error: " + response.statusText
+        );
+      }
+      return await response.json();
+    }
   } catch (error) {
-    throw Error(`Unexpected error parsing the JSON file: ${error}`);
+    throw new Error(`Unexpected error parsing the JSON file: ${error}`);
   }
 }
 
 export interface DataLoaderParams {
-  companyPath?: AvailableData;
-  userPath?: AvailableData;
-  vehiclePath?: AvailableData;
-  paymentPath?: AvailableData;
-  routePath?: AvailableData;
-  tripPath?: AvailableData;
-  riskPath?: AvailableData;
+  companyPath?: string;
+  userPath?: string;
+  vehiclePath?: string;
+  paymentPath?: string;
+  routePath?: string;
+  tripPath?: string;
+  riskPath?: string;
 }
 
 /**
  * The DataLoader takes care of loading local JSON files and transforms them to their corresponding classes.
  */
 export class DataLoader {
-  private companyPath: AvailableData;
-  private userPath: AvailableData;
-  private vehiclePath: AvailableData;
-  private routePath: AvailableData;
-  private tripPath: AvailableData;
-  private riskPath: AvailableData;
-  private paymentPath: AvailableData;
+  private companyPath: string;
+  private userPath: string;
+  private vehiclePath: string;
+  private routePath: string;
+  private tripPath: string;
+  private riskPath: string;
+  private paymentPath: string;
 
   private classTransformerOptions = {
     excludeExtraneousValues: true,

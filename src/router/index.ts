@@ -5,10 +5,10 @@ import RiderDataView from "@/views/dataViewer/RiderDataView.vue";
 import TripDataView from "@/views/dataViewer/TripDataView.vue";
 import VehicleDataView from "@/views/dataViewer/VehicleDataView.vue";
 import WelcomeView from "@/views/dataViewer/WelcomeView.vue";
-import { createRouter, createWebHistory } from "vue-router";
+import { createRouter, createWebHashHistory } from "vue-router";
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
+  history: createWebHashHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: "/",

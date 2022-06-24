@@ -1,159 +1,98 @@
 import "reflect-metadata";
 import { describe, expect, it } from "vitest";
-import { CreditCard } from "../dataFields";
-import { Company } from "../dataFields/Company";
-import { PayPal } from "../dataFields/payments/Paypal";
-import { PaymentType, VehicleStatus, VehicleType } from "../dataFields/types";
-import { User } from "../dataFields/User";
-import type { Vehicle } from "../dataFields/Vehicle";
-import { EScooter } from "../dataFields/vehicles/EScooter";
-import { IndividualVehicle } from "../dataFields/vehicles/IndividualVehicle";
-import { PublicVehicle } from "../dataFields/vehicles/PublicVehicle";
-import { Train } from "../dataFields/vehicles/Train";
-import { AvailableData, DataLoader, getData } from "../DataLoader";
-import { DataType } from "../dataType";
+import type { DataField } from "../dataFields";
+import {
+  AvailableData,
+  DataLoader,
+  getData,
+  type DataLoaderParams,
+} from "../DataLoader";
 import { RiskDefinition } from "../riskManager/RiskDefinition";
-import { RiskLevel } from "../riskManager/RiskLevel";
-import { Role } from "../roles";
+import * as expectedData from "./data/expectedData";
 
 describe.concurrent("Async get Data", async () => {
   it("valid data path", async () => {
-    const companies = await getData(AvailableData.companies);
+    const companies = await getData(AvailableData.testCompanies);
     expect(companies[0]).toMatchObject({
       id: "C01",
       name: "Fire Runner",
     });
   });
+  it("invalid data path", async () => {
+    await expect(getData("invalid")).rejects.toThrow();
+  });
 });
 
-describe.concurrent("DataLoader", async () => {
-  const dl = new DataLoader({
-    /**
-     * TODO: Insert Test Data here
-     
-      companyPath: AvailableData.testCompanies,
-      userPath: AvailableData.testUsers,
-      vehiclePath: AvailableData.testVehicles,
-      routePath: AvailableData.testRoutes,
-      tripPath: AvailableData.testTrips,
-      riskPath: AvailableData.testRisks,
-      paymentPath: AvailableData.testPayments,
-
-      */
+// utility function to compare two arrays of dataFields
+export function compareDataFields<T extends DataField>(
+  actualDataFields: T[],
+  expectedDataFields: T[],
+  verbose = false
+) {
+  if (actualDataFields.length !== expectedDataFields.length) {
+    throw new Error(
+      "Length of loaded data does not match length of expected data. Is the test data correctly set up?"
+    );
+  }
+  actualDataFields.forEach((actual, index) => {
+    const expected: T = expectedDataFields[index];
+    if (verbose) {
+      console.log(`Actual DataField at index ${index}`);
+      console.table(actual);
+      console.log(`Expected DataField at index ${index}`);
+      console.table(expected);
+    }
+    // check that all properties exist
+    Object.getOwnPropertyNames(expected).forEach((property) => {
+      expect(actual).toHaveProperty(property);
+    });
+    expect(actual).toBeInstanceOf(expected.constructor);
+    expect(actual).toStrictEqual(expected);
   });
-  const fireRunnerCompany = new Company("C01", "Fire Runner");
-  const kVVCompany = new Company("C03", "KVV");
-  const firstUser = new User(
-    "U01",
-    "Theo",
-    "Schweitzer",
-    49188323232,
-    "theo.schweitzer@gmail.com"
-  );
-  const firstEScooter = new EScooter(
-    "V01",
-    fireRunnerCompany.id,
-    84,
-    89,
-    VehicleStatus.active,
-    74,
-    fireRunnerCompany
-  );
-  const firstTrain = new Train(
-    "V04",
-    "C03",
-    VehicleStatus.inactive,
-    kVVCompany
-  );
-  const firstPayment = new CreditCard(
-    5568404992412103,
-    632,
-    new Date("2026-4-01"),
-    "Mastercard",
-    "P01",
-    "T01"
-  );
-  const firstPayPal = new PayPal("Tom_Fritz1824", "P03", "T03");
+}
 
+export const testDataLoaderParams: DataLoaderParams = {
+  companyPath: AvailableData.testCompanies,
+  userPath: AvailableData.testUsers,
+  vehiclePath: AvailableData.testVehicles,
+  routePath: AvailableData.testRoutes,
+  tripPath: AvailableData.testTrips,
+  riskPath: AvailableData.testRisks,
+  paymentPath: AvailableData.testPayments,
+};
+
+describe.concurrent("DataLoader", () => {
+  const dl = new DataLoader(testDataLoaderParams);
   it("load all companies", async () => {
     const companies = await dl.loadAllCompanies();
-    const loadedCompany = companies[0];
-    expect(loadedCompany).toBeInstanceOf(Company);
-    expect(loadedCompany).toEqual(fireRunnerCompany);
+    const expectedCompanies = expectedData.companies;
+    compareDataFields(companies, expectedCompanies);
   });
 
   it("load all users", async () => {
     const users = await dl.loadAllUsers();
-    const loadedUser = users[0];
-    expect(loadedUser).toBeInstanceOf(User);
-    expect(loadedUser).toEqual(firstUser);
-    expect(loadedUser.getFullName()).toBe(firstUser.getFullName());
+    const expectedUsers = expectedData.users;
+    compareDataFields(users, expectedUsers);
   });
 
-  describe("load all Vehicles", async () => {
+  it("load all Vehicles", async () => {
     const vehicles = await dl.loadAllVehicles();
-
-    const loadedEScooter: Vehicle = vehicles[0];
-    loadedEScooter.company = fireRunnerCompany;
-    const loadedTrain: Vehicle = vehicles[3];
-    loadedTrain.company = kVVCompany;
-
-    it("convert all EScooters", () => {
-      for (const veh of vehicles.filter(
-        (v) => v.type === VehicleType.escooter
-      )) {
-        expect(veh).toBeInstanceOf(IndividualVehicle);
-        expect(veh).toBeInstanceOf(EScooter);
-      }
-    });
-    it("equality of first escooter", () => {
-      expect((<EScooter>loadedEScooter).status).toBe(VehicleStatus.active);
-      expect((<EScooter>loadedEScooter).type).toBe(VehicleType.escooter);
-      expect(loadedEScooter).toEqual(firstEScooter);
-    });
-
-    it("convert all Trains", () => {
-      for (const veh of vehicles.filter((v) => v.type === VehicleType.train)) {
-        expect(veh).toBeInstanceOf(PublicVehicle);
-        expect(veh).toBeInstanceOf(Train);
-      }
-    });
-    it("equality of first train", () => {
-      expect(loadedTrain).toEqual(firstTrain);
-    });
+    const expectedVehicles = expectedData.vehicles;
+    compareDataFields(vehicles, expectedVehicles);
   });
 
-  describe("load all payments", async () => {
+  it("load all payments", async () => {
     const payments = await dl.loadAllPayments();
-    const loadedCreditCard = payments[0];
-    const loadedPayPal = payments[2];
-
-    it("load all credit cards", () => {
-      for (const payment of payments.filter(
-        (p) => p.paymentType === PaymentType.creditcard
-      )) {
-        expect(payment).toBeInstanceOf(CreditCard);
-      }
-      expect(loadedCreditCard).toEqual(firstPayment);
-    });
-
-    it("load all paypal payments", () => {
-      expect(loadedPayPal).toBeInstanceOf(PayPal);
-      expect(loadedPayPal).toEqual(firstPayPal);
-    });
+    const expectedPayments = expectedData.payments;
+    compareDataFields(payments, expectedPayments);
   });
 
-  describe("load all risks", async () => {
+  it("load all risks", async () => {
     const risks = await dl.loadAllRisks();
-    const loadedRisk = risks[0];
-    const expectedRisk = new RiskDefinition(
-      DataType.PaymentType,
-      RiskLevel.low,
-      [Role.company, Role.user]
-    );
-    it("first risk loaded correctly", () => {
-      expect(loadedRisk).toBeInstanceOf(RiskDefinition);
-      expect(loadedRisk).toEqual(expectedRisk);
-    });
+    const expectedRisks = expectedData.risks;
+    for (const index in risks) {
+      expect(risks[index]).toBeInstanceOf(RiskDefinition);
+      expect(risks[index]).toEqual(expectedRisks[index]);
+    }
   });
 });
