@@ -8,36 +8,50 @@ import { inject, onMounted } from "vue";
 
 const $dm = inject(dataManagerKey) as DataManager;
 
-const topLeft = new L.LatLng(49.036357, 8.334785);
-const bottomRight = new L.LatLng(48.977558, 8.469264);
-const bounds = new L.LatLngBounds(topLeft, bottomRight);
-
-const stamenWaterColor = L.tileLayer(
-  "https://stamen-tiles.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.jpg",
-  {
-    attribution:
-      'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-    minZoom: 14,
-    maxZoom: 16,
-  }
-);
-
-const mapLabels = L.tileLayer(
-  "https://stamen-tiles.a.ssl.fastly.net/terrain-labels/{z}/{x}/{y}.png",
-  {
-    minZoom: 14,
-    maxZoom: 16,
-  }
-);
-
+// setup the map and generate markers, when this component is mounted
 onMounted(() => {
-  const map = L.map("leafletMap", {
+  const map = setupMap();
+  setupMarkers(map);
+});
+
+/**
+ * Setup the map with layers and bounds.
+ */
+function setupMap(): L.Map {
+  const topLeft = new L.LatLng(49.036357, 8.334785);
+  const bottomRight = new L.LatLng(48.977558, 8.469264);
+  const bounds = new L.LatLngBounds(topLeft, bottomRight);
+
+  const stamenWaterColor = L.tileLayer(
+    "https://stamen-tiles.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.jpg",
+    {
+      attribution:
+        'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+      minZoom: 14,
+      maxZoom: 16,
+    }
+  );
+
+  const mapLabels = L.tileLayer(
+    "https://stamen-tiles.a.ssl.fastly.net/terrain-labels/{z}/{x}/{y}.png",
+    {
+      minZoom: 14,
+      maxZoom: 16,
+    }
+  );
+  return L.map("leafletMap", {
     center: bounds.getCenter(),
     zoom: 15,
     layers: [stamenWaterColor, mapLabels],
     maxBounds: bounds,
     maxBoundsViscosity: 0.6,
   });
+}
+
+/**
+ * Generate the markers for the map by accessing the vehicles property of the global data manager.
+ * */
+function setupMarkers(map: L.Map) {
   var markersLayer = L.featureGroup().addTo(map);
   // add this event listener to each marker in the feature group
   markersLayer.on("click", vehicleMarkerClicked);
@@ -47,7 +61,7 @@ onMounted(() => {
   markers.forEach((marker) => {
     marker.addTo(markersLayer);
   });
-});
+}
 
 /**
  * Sets the currently selected vehicle in the data manager to the clicked vehicle.
@@ -56,9 +70,9 @@ onMounted(() => {
  */
 function vehicleMarkerClicked(event: LayerEvent): void {
   const vehicleLayer: VehicleLayer = event.layer as VehicleLayer;
-  const vehicleId = vehicleLayer.vehicleId;
-  console.log("Clicked on marker of vehicle " + vehicleId);
-  $dm.currentVehicle = $dm.getDataById(vehicleId, $dm.vehicles);
+  const vehicle = vehicleLayer.vehicle;
+  console.log("Clicked on marker of vehicle " + vehicle.id);
+  $dm.currentVehicle = vehicle;
 }
 </script>
 
