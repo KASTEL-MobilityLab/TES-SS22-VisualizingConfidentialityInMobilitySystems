@@ -69,16 +69,22 @@ export class DataModule {
     riskManager?: RiskManager
   ): Record<string, string> {
     const propertyNames = Object.keys(dataField);
+    const dataTypeValues = Object.values(DataType);
     this.risks = {};
     for (let i = 0; i < propertyNames.length; i++) {
       if (
         !propertyNames[i].startsWith(DataModule.PREFIX_OF_NON_DISPLAYED_DATA) &&
         !this.excludedProperties.includes(propertyNames[i])
       ) {
+        const dataTypeValue = dataTypeValues.find(
+          (locales) => locales === "data.user." + propertyNames[i]
+        );
         if (riskManager !== undefined) {
-          this.risks[propertyNames[i]] = riskManager.getRiskLevel(
-            propertyNames[i]
-          );
+          if (dataTypeValue != null) {
+            this.risks[dataTypeValue] = riskManager.getRiskLevel(
+              propertyNames[i]
+            );
+          }
         }
       }
     }

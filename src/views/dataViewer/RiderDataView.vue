@@ -12,24 +12,26 @@ const riskColor = {
   phoneNumber: "text-warning",
   email: "text-warning",
 };
+console.log(dataModule.risks);
+console.log(dataModule.displayedData);
 </script>
 
 <template>
   <h4 class="text-center m-2">Rider Data</h4>
   <template v-for="(value, key) in dataModule.displayedData" :key="key">
-    <div class="risks[key]">
-      <!-- div class="riskColor[key]"> -->
-      <div class="row m-2 p-2">
-        <div class="col m-2 fw-bold">
-          <button>
-            {{ $t(key) }}
-          </button>
-        </div>
-        <div class="col m-2">
-          {{ value }}
+    <div classs="my-buttons">
+      <div class>
+        <div class="row m-2 p-2">
+          <div class="col m-2 fw-bold">
+            <button type="button" :class="dataModule.risks[key]">
+              {{ $t(key) }}
+            </button>
+          </div>
+          <div class="col m-2">
+            {{ value }}
+          </div>
         </div>
       </div>
     </div>
-    <!-- </div> -->
   </template>
 </template>

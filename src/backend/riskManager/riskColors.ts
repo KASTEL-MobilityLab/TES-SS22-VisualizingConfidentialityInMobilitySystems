@@ -4,7 +4,7 @@
  */
 
 export enum RiskColors {
-  Green = "text-success",
-  Yellow = "text-warning",
-  Red = "text-danger",
+  Green = "btn btn-success",
+  Yellow = "btn btn-warning",
+  Red = "btn btn-danger",
 }

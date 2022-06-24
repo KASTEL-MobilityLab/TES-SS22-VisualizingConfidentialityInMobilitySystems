@@ -247,7 +247,8 @@ export class DataLoader {
   }
 
   async loadTransformedData<T extends DataField>(
-    cls: ClassConstructor<T>
+    cls: ClassConstructor<T>,
+    path: string
   ): Promise<T[]> {
     //Abändern der eingesetzten Varaible auf die getDataFieldPath Methode
     const dataFieldJson = await getData(AvailableData.companies);
@@ -257,9 +258,5 @@ export class DataLoader {
       this.classTransformerOptions
     );
     return transformedDataFieldData;
-  }
-
-  getDataFieldPath<T extends DataField>(cls: ClassConstructor<T>): string {
-    throw new Error("To be implemented");
   }
 }
