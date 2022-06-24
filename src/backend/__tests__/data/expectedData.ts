@@ -11,6 +11,7 @@ import {
   Vehicle,
 } from "@/backend/dataFields";
 import { VehicleStatus } from "@/backend/dataFields/types";
+import { DataType } from "@/backend/dataType";
 import { RiskDefinition } from "@/backend/riskManager/RiskDefinition";
 import { RiskLevel } from "@/backend/riskManager/RiskLevel";
 import { Role } from "@/backend/roles";
@@ -93,8 +94,11 @@ export const trips: Trip[] = [
   ),
 ];
 export const risks: RiskDefinition[] = [
-  new RiskDefinition("PaymentType", RiskLevel.low, [Role.company, Role.user]),
-  new RiskDefinition("PaymentProvider", RiskLevel.high, [
+  new RiskDefinition(DataType.PaymentType, RiskLevel.low, [
+    Role.company,
+    Role.user,
+  ]),
+  new RiskDefinition(DataType.PaymentProvider, RiskLevel.high, [
     Role.company,
     Role.city,
   ]),

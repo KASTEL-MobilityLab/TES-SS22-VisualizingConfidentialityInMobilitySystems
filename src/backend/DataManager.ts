@@ -1,12 +1,12 @@
-import type {
+import {
   Company,
-  DataField,
-  Payment,
   Trip,
   User,
   Vehicle,
+  type DataField,
+  type Payment,
 } from "./dataFields";
-import type { Route } from "./dataFields/Route";
+import { Route } from "./dataFields/Route";
 import { DataLoader, type DataLoaderParams } from "./DataLoader";
 import { DataModule } from "./dataModules/DataModule";
 import type { RiskDefinition } from "./riskManager/RiskDefinition";
@@ -71,11 +71,20 @@ export class DataManager {
       this.payments,
       riskDefinitions,
     ] = await Promise.all([
+      /*
       this.dataLoader.loadAllUsers(),
       this.dataLoader.loadAllCompanies(),
       this.dataLoader.loadAllTrips(),
       this.dataLoader.loadAllVehicles(),
       this.dataLoader.loadAllRoutes(),
+      this.dataLoader.loadAllPayments(),
+      this.dataLoader.loadAllRisks(),
+      */
+      this.dataLoader.loadTransformedData(User, "users"),
+      this.dataLoader.loadTransformedData(Company, "companies"),
+      this.dataLoader.loadTransformedData(Trip, "trips"),
+      this.dataLoader.loadAllVehicles(),
+      this.dataLoader.loadTransformedData(Route, "routes"),
       this.dataLoader.loadAllPayments(),
       this.dataLoader.loadAllRisks(),
     ]);
