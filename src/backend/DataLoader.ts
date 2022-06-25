@@ -2,7 +2,6 @@ import {
   Cash,
   Company,
   CreditCard,
-  DataField,
   EScooter,
   PayPal,
   Route,
@@ -126,19 +125,25 @@ export class DataLoader {
     this.paymentPath = paymentPath;
   }
 
+  async loadAllData() {
+    return await Promise.all([
+      this.loadAllUsers(),
+      this.loadAllCompanies(),
+      this.loadAllTrips(),
+      this.loadAllVehicles(),
+      this.loadAllRoutes(),
+      this.loadAllPayments(),
+      this.loadAllRisks(),
+    ]);
+  }
+
   /**
    * Loads all data from the specific company json file and transforms the array of data to an array of companies.
    *
    * @returns an array of {@link Company}
    */
   async loadAllCompanies(): Promise<Company[]> {
-    const companyJson = await getData(this.companyPath);
-    const transformedCompanyData: Company[] = plainToInstance(
-      Company,
-      companyJson,
-      this.classTransformerOptions
-    );
-    return transformedCompanyData;
+    return this.loadTransformedData(Company, this.companyPath);
   }
 
   /**
@@ -147,13 +152,7 @@ export class DataLoader {
    * @returns an array of {@link User}
    */
   async loadAllUsers(): Promise<User[]> {
-    const userJson = await getData(this.userPath);
-    const transformedUserData: User[] = plainToInstance(
-      User,
-      userJson,
-      this.classTransformerOptions
-    );
-    return transformedUserData;
+    return this.loadTransformedData(User, this.userPath);
   }
 
   /**
@@ -198,34 +197,32 @@ export class DataLoader {
     const transformedPaymentData: Payment[] = [];
 
     //Filter the cash payments from all payments
-    const cashPayments = plainToInstance(
-      Cash,
-      paymentJson,
-      this.classTransformerOptions
-    ).filter((payment) => payment.paymentType === PaymentType.cash);
-
-    //Push all cash payments
-    transformedPaymentData.push(...cashPayments);
+    let cashPayments = await this.loadTransformedData(Cash, paymentJson);
+    cashPayments = cashPayments.filter(
+      (payment) => payment.paymentType === PaymentType.cash
+    );
 
     //Filter the credit card payments from all payments
-    const creditCardPayments = plainToInstance(
+    let creditCardPayments = await this.loadTransformedData(
       CreditCard,
-      paymentJson,
-      this.classTransformerOptions
-    ).filter((payment) => payment.paymentType === PaymentType.creditcard);
-
-    //Push all credit card payments
-    transformedPaymentData.push(...creditCardPayments);
+      paymentJson
+    );
+    creditCardPayments = creditCardPayments.filter(
+      (payment) => payment.paymentType === PaymentType.creditcard
+    );
 
     //Filter the PayPal payments from all payments
-    const payPalPayments = plainToInstance(
-      PayPal,
-      paymentJson,
-      this.classTransformerOptions
-    ).filter((payment) => payment.paymentType === PaymentType.paypal);
+    let payPalPayments = await this.loadTransformedData(PayPal, paymentJson);
+    payPalPayments = payPalPayments.filter(
+      (payment) => payment.paymentType === PaymentType.paypal
+    );
 
     //Push all PayPal payments
-    transformedPaymentData.push(...payPalPayments);
+    transformedPaymentData.push(
+      ...cashPayments,
+      ...creditCardPayments,
+      ...payPalPayments
+    );
 
     return transformedPaymentData;
   }
@@ -236,13 +233,7 @@ export class DataLoader {
    * @returns an array of {@link Trip}
    */
   async loadAllTrips(): Promise<Trip[]> {
-    const tripJson = await getData(this.tripPath);
-    const transformedTripData: Trip[] = plainToInstance(
-      Trip,
-      tripJson,
-      this.classTransformerOptions
-    );
-    return transformedTripData;
+    return this.loadTransformedData(Trip, this.tripPath);
   }
 
   /**
@@ -251,33 +242,32 @@ export class DataLoader {
    * @returns an array of {@link Route}
    */
   async loadAllRoutes(): Promise<Route[]> {
-    const routeJson = await getData(this.routePath);
-    const transformedRouteData: Route[] = plainToInstance(
-      Route,
-      routeJson,
-      this.classTransformerOptions
-    );
-    return transformedRouteData;
+    return this.loadTransformedData(Route, this.routePath);
   }
 
   async loadAllRisks(): Promise<RiskDefinition[]> {
-    const riskJson = await getData(this.riskPath);
-    const transformedRiskData: RiskDefinition[] = plainToInstance(
-      RiskDefinition,
-      riskJson,
-      this.classTransformerOptions
-    );
-    return transformedRiskData;
+    return this.loadTransformedData(RiskDefinition, this.riskPath);
   }
 
-  async loadTransformedData<T extends DataField>(
+  /**
+   *
+   * @param cls The class to transform the data into
+   * @param data Either a string that specifies the path or the loaded data itself
+   * @returns an array of transformed data
+   */
+  private async loadTransformedData<T>(
     cls: ClassConstructor<T>,
-    dataFieldName: string
+    data: string | Record<string, unknown>[]
   ): Promise<T[]> {
-    const dataFieldJson = await getData(DataPath + dataFieldName);
+    let jsonData: Record<string, unknown>[];
+    if (typeof data === "string") {
+      jsonData = await getData(data);
+    } else {
+      jsonData = data;
+    }
     const transformedDataFieldData: T[] = plainToInstance(
       cls,
-      dataFieldJson,
+      jsonData,
       this.classTransformerOptions
     );
     return transformedDataFieldData;
