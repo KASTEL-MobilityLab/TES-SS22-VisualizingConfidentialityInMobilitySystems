@@ -5,15 +5,6 @@ import { inject } from "vue";
 const $dm = inject(dataManagerKey);
 var users = $dm?.users;
 var dataModule = new DataModule(users![0], $dm?.riskManager);
-const riskColor = {
-  id: "text-success",
-  forename: "text-warning",
-  surname: "text-warning",
-  phoneNumber: "text-warning",
-  email: "text-warning",
-};
-console.log(dataModule.risks);
-console.log(dataModule.displayedData);
 </script>
 
 <template>

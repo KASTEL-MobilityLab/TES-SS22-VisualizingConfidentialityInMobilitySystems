@@ -272,10 +272,9 @@ export class DataLoader {
 
   async loadTransformedData<T extends DataField>(
     cls: ClassConstructor<T>,
-    path: string
+    dataFieldName: string
   ): Promise<T[]> {
-    //Abändern der eingesetzten Varaible auf die getDataFieldPath Methode
-    const dataFieldJson = await getData(AvailableData.companies);
+    const dataFieldJson = await getData(DataPath + dataFieldName);
     const transformedDataFieldData: T[] = plainToInstance(
       cls,
       dataFieldJson,

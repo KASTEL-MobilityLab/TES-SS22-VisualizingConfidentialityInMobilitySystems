@@ -71,15 +71,6 @@ export class DataManager {
       this.payments,
       riskDefinitions,
     ] = await Promise.all([
-      /*
-      this.dataLoader.loadAllUsers(),
-      this.dataLoader.loadAllCompanies(),
-      this.dataLoader.loadAllTrips(),
-      this.dataLoader.loadAllVehicles(),
-      this.dataLoader.loadAllRoutes(),
-      this.dataLoader.loadAllPayments(),
-      this.dataLoader.loadAllRisks(),
-      */
       this.dataLoader.loadTransformedData(User, "users"),
       this.dataLoader.loadTransformedData(Company, "companies"),
       this.dataLoader.loadTransformedData(Trip, "trips"),
