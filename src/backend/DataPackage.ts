@@ -1,38 +1,48 @@
-import type { Payment, Trip, User, Vehicle } from "./dataFields";
-import { VehicleStatus } from "./dataFields/types";
+import type {
+  Company,
+  Payment,
+  Route,
+  Trip,
+  User,
+  Vehicle,
+} from "./dataFields";
 
-/**
- * Class that contains all the data that can be dispalyed in the DataViewer after clicking on an icon in the user interface.
- * A DataPackage can be created either for a trip after clicking on driven trip or for a vehicle that is currently not active.
- */
 export class DataPackage {
-  vehicle: Vehicle;
-  user?: User;
-  payment?: Payment;
-  trip?: Trip;
+  private vehicle?: Vehicle;
+  private trip?: Trip;
 
-  /**
-   * Construct a new DataPackage.
-   * @param user The user of the DataPackage.
-   * @param payment The payment of the DataPackage.
-   * @param trip The trip of the dataPackage.
-   * @param vehicle The Vehicle of the DataPackage.
-   */
-  constructor(vehicle: Vehicle, user?: User, payment?: Payment, trip?: Trip) {
-    this.vehicle = vehicle;
-    if (vehicle.status === VehicleStatus.active) {
-      this.user = user;
-      this.payment = payment;
-      this.trip = trip;
-    }
+  getUser(): User | undefined {
+    return this.trip?.user;
   }
 
-  checkValidity(): boolean {
-    let valid = false;
-    if (this.vehicle.company === this.trip?.vehicle.company) {
-      valid = true;
-    }
-    // more checks ...
-    return valid;
+  getPayment(): Payment | undefined {
+    return this.trip?.payment;
+  }
+
+  getRoute(): Route | undefined {
+    return this.trip?.route;
+  }
+
+  getVehicle(): Vehicle | undefined {
+    return this.vehicle;
+  }
+
+  getTrip(): Trip | undefined {
+    return this.trip;
+  }
+
+  getCompany(): Company | undefined {
+    return this.vehicle?.company;
+  }
+
+  // called, when the user clicks on an empty spot on the map -> deselect
+  unsetReferences() {
+    this.vehicle = undefined;
+    this.trip = undefined;
+  }
+
+  update(vehicle: Vehicle, trip?: Trip) {
+    this.vehicle = vehicle;
+    this.trip = trip;
   }
 }

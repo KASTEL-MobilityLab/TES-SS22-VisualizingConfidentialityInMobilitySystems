@@ -77,7 +77,7 @@ function vehicleMarkerClicked(event: LeafletEvent) {
       " at position " +
       marker.getLatLng()
   );
-  $dm.currentVehicle = vehicle;
+  $dm.updateByVehicle(vehicle);
 }
 </script>
 

@@ -2,7 +2,7 @@ import { Exclude, Expose, Type } from "class-transformer";
 import { LatLng } from "../utils/LatLng";
 import type { Company } from "./Company";
 import { DataField } from "./DataField";
-import type { VehicleStatus, VehicleType } from "./types";
+import { VehicleStatus, type VehicleType } from "./types";
 
 /**
  * The interface every vehicle must implement.
@@ -40,7 +40,7 @@ export abstract class Vehicle extends DataField {
   }
 
   get company() {
-    if (this._company === undefined) {
+    if (!this._company) {
       throw Error("Company has not been set yet.");
     }
     return this._company;
@@ -49,5 +49,14 @@ export abstract class Vehicle extends DataField {
   set company(company: Company) {
     this.checkForeignKeyReferences(company, this.companyId);
     this._company = company;
+  }
+
+  /**
+   * Returns true if the vehicle is currently in use.
+   *
+   * @returns true if the vehicle is currently in use, false otherwise.
+   */
+  isActive(): boolean {
+    return this.status === VehicleStatus.active;
   }
 }
