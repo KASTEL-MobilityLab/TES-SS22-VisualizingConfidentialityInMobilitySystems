@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import type { DataManager } from "@/backend/DataManager";
 import { dataManagerKey } from "@/keys";
-import type { VehicleLayer } from "@/utils/leafletExtension";
+import type { VehicleMarker } from "@/utils/leafletExtension";
 import { generateAllVehicleMarkers } from "@/utils/markerUtils";
-import L, { type LayerEvent } from "leaflet";
+import L, { type LeafletEvent } from "leaflet";
 import { inject, onMounted } from "vue";
 
 const $dm = inject(dataManagerKey) as DataManager;
@@ -68,10 +68,15 @@ function setupMarkers(map: L.Map) {
  *
  * @param event the layer event of the clicked marker
  */
-function vehicleMarkerClicked(event: LayerEvent): void {
-  const vehicleLayer: VehicleLayer = event.layer as VehicleLayer;
-  const vehicle = vehicleLayer.vehicle;
-  console.log("Clicked on marker of vehicle " + vehicle.id);
+function vehicleMarkerClicked(event: LeafletEvent) {
+  const marker = event.propagatedFrom as VehicleMarker;
+  const vehicle = marker.vehicle;
+  console.log(
+    "Clicked on marker of vehicle " +
+      vehicle.id +
+      " at position " +
+      marker.getLatLng()
+  );
   $dm.currentVehicle = vehicle;
 }
 </script>
