@@ -24,12 +24,16 @@
     "condition": 90,
     "batteryCondition": 94,
     "status": "Inactive",
+    "currentPosition": {
+      "lat": 49.0025,
+      "lng": 8.38591
+    },
     "batteryLevel": 56
   },
   {
     "id": "V04",
     "type": "Train",
     "companyId": "C03",
-    "status": "Inactive"
+    "status": "Active"
   }
 ]

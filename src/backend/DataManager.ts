@@ -8,17 +8,15 @@ import type {
 } from "./dataFields";
 import type { Route } from "./dataFields/Route";
 import { DataLoader, type DataLoaderParams } from "./DataLoader";
-import { DataModule } from "./dataModules/DataModule";
+import { DataPackage } from "./DataPackage";
 import type { RiskDefinition } from "./riskManager/RiskDefinition";
 import { RiskManager } from "./riskManager/RiskManager";
 import { Role } from "./roles";
 
 export class DataManager {
   currentRole: Role;
-  currentUser?: User;
-  currentCompany?: Company;
-  currentVehicle?: Vehicle;
-  currentTrip?: Trip;
+  roleUser?: User;
+  roleCompany?: Company;
 
   companies: Company[];
   payments: Payment[];
@@ -28,8 +26,8 @@ export class DataManager {
   routes: Route[];
 
   dataLoader: DataLoader;
-  //The currently selected DataModule
-  currentDataPackage?: DataModule;
+  //The currently selected DataPackage
+  currentData: DataPackage;
   riskManager: RiskManager;
 
   /**
@@ -46,6 +44,7 @@ export class DataManager {
     this.users = [];
     this.vehicles = [];
     this.routes = [];
+    this.currentData = new DataPackage();
   }
 
   /**
@@ -73,8 +72,27 @@ export class DataManager {
     ] = await this.dataLoader.loadAllData();
     this.riskManager.riskDefinitions = riskDefinitions;
     this.setAllReferences();
+    this.trips.map((trip) => trip.setVehicleStartPosition());
   }
 
+  /**
+   * Updates the selected references by the given vehicle.
+   * If the vehicle is inactive, only the vehicle (and therefore company) will be changed.
+   * If it is active, the vehicle and the trip will be changed, causing the data package
+   * to update user and payment as well.
+   *
+   * @param vehicle the new selected vehicle
+   */
+  updateByVehicle(vehicle: Vehicle) {
+    let trip: Trip | undefined = undefined;
+
+    // check if vehicle is stationary or associated to a trip (active)
+    if (vehicle.isActive()) {
+      // vehicle is not stationary
+      trip = this.getTripByVehicle(vehicle);
+    }
+    this.currentData.update(vehicle, trip);
+  }
   /**
    * Searches for a given DataField in the particular referenceArray.
    * If the given id does not match any DataField in the array, an error will be thrown.
@@ -171,7 +189,7 @@ export class DataManager {
    * @param userId The user of the selected user.
    */
   private changeUser(userId: string) {
-    this.currentUser = <User>this.getDataById(userId, this.users);
+    this.roleUser = <User>this.getDataById(userId, this.users);
   }
 
   /**
@@ -179,40 +197,15 @@ export class DataManager {
    * @param companyId The user of the selected company.
    */
   private changeCompany(companyId: string) {
-    this.currentCompany = <Company>this.getDataById(companyId, this.companies);
+    this.roleCompany = <Company>this.getDataById(companyId, this.companies);
   }
 
-  /**
-   * Change the current vehicle.
-   * @param vehicleId The user of the selected vehicle.
-   */
-  private changeVehicle(vehicleId: string) {
-    this.currentVehicle = <Vehicle>this.getDataById(vehicleId, this.vehicles);
-  }
-
-  /**
-   * Change the current trip.
-   * @param tripId The user of the selected trip.
-   */
-  private changeTrip(tripId: string) {
-    this.currentTrip = <Trip>this.getDataById(tripId, this.trips);
-  }
-
-  /**
-   * Changes the current Data to a new DataModule
-   * @param vehicle The vehicle that is selected.
-   * @param user The user that is driving the trip.
-   * @param payment The payment with which the trip is paid.
-   * @param trip The trip that is driven by the user.
-   */
-  private changeCurrentData(
-    vehicle: Vehicle,
-    user?: User,
-    payment?: Payment,
-    trip?: Trip
-  ) {
-    if (user != undefined) {
-      const userDataModule = new DataModule(user, this.riskManager);
+  // find a trip by its vehicle.
+  private getTripByVehicle(vehicle: Vehicle): Trip {
+    const trip = this.trips.find((trip) => trip.vehicleId === vehicle.id);
+    if (!trip) {
+      throw Error(`No trip is found for vehicle ${vehicle.id}`);
     }
+    return trip;
   }
 }

@@ -60,6 +60,11 @@ const router = createRouter({
       // which is lazy-loaded when the route is visited.
       component: () => import("../views/HelpView.vue"),
     },
+    {
+      path: "/:pathMatch(.*)*",
+      name: "NotFound",
+      redirect: "/",
+    },
   ],
 });
 

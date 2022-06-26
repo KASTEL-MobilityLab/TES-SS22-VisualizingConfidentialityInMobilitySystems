@@ -24,10 +24,6 @@ const TestDataPath = "backend/__tests__/data/";
  * Specifies, which data can be loaded with the function {@link getData}.
  */
 export const AvailableData = {
-  // Data Paths prefixes (like data/ or backend/__tests__.../.../) are hardcoded here,
-  // but string enums do not allow computed properties.
-  // thus if we want to save those prefixes in variables we have to use an object literal
-  // or similar, but then the getData method has to be adjusted
   companies: DataPath + "companies",
   users: DataPath + "users",
   vehicles: DataPath + "vehicles",
