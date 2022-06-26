@@ -18,7 +18,7 @@ app.use(i18n);
 /**
  * provide DataManager instance globally to all components
  * note: a component that needs access, has to inject it
- * with `const $dm = inject('$dataManager')`
+ * with `const $dm = inject(dataManager) as DataManager`
  */
 const dm: DataManager = new DataManager();
 app.provide(dataManagerKey, readonly(dm));
