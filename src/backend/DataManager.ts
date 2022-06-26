@@ -69,15 +69,7 @@ export class DataManager {
       this.routes,
       this.payments,
       riskDefinitions,
-    ] = await Promise.all([
-      this.dataLoader.loadAllUsers(),
-      this.dataLoader.loadAllCompanies(),
-      this.dataLoader.loadAllTrips(),
-      this.dataLoader.loadAllVehicles(),
-      this.dataLoader.loadAllRoutes(),
-      this.dataLoader.loadAllPayments(),
-      this.dataLoader.loadAllRisks(),
-    ]);
+    ] = await this.dataLoader.loadAllData();
     this.riskManager.riskDefinitions = riskDefinitions;
     this.setAllReferences();
     this.trips.map((trip) => trip.setVehicleStartPosition());
