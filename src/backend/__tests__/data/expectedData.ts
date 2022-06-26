@@ -94,13 +94,21 @@ export const trips: Trip[] = [
   ),
 ];
 export const risks: RiskDefinition[] = [
-  new RiskDefinition(DataType.PaymentType, RiskLevel.low, [
+  new RiskDefinition(DataType.UserForename, RiskLevel.low, [
     Role.company,
     Role.user,
   ]),
-  new RiskDefinition(DataType.PaymentProvider, RiskLevel.high, [
+  new RiskDefinition(DataType.UserSurname, RiskLevel.low, [
     Role.company,
-    Role.city,
+    Role.user,
+  ]),
+  new RiskDefinition(DataType.UserPhoneNumber, RiskLevel.medium, [
+    Role.company,
+    Role.user,
+  ]),
+  new RiskDefinition(DataType.UserEmail, RiskLevel.medium, [
+    Role.company,
+    Role.user,
   ]),
 ];
 export const vehicles: Vehicle[] = [

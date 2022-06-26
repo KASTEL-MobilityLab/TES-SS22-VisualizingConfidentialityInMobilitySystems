@@ -4,11 +4,11 @@
 
 export enum DataType {
   //TODO: Abändern auf das neue Format
-  PaymentType = "PaymentType",
-  PaymentProvider = "PaymentProvider",
+  PaymentType = "payment_type",
+  PaymentProvider = "payment_provider",
   //DataTypes of the user
-  Forename = "data.user.forename",
-  Surname = "data.user.surname",
-  PhoneNumber = "data.user.phoneNumber",
-  Email = "data.user.email",
+  UserForename = "user_forename",
+  UserSurname = "user_surname",
+  UserPhoneNumber = "user_phoneNumber",
+  UserEmail = "user_email",
 }
