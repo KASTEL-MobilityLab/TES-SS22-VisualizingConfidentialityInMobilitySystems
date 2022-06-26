@@ -8,7 +8,7 @@ import type {
 } from "./dataFields";
 import type { Route } from "./dataFields/Route";
 import { DataLoader, type DataLoaderParams } from "./DataLoader";
-import { DataPackage } from "./DataPackage";
+import { DataModule } from "./dataModules/DataModule";
 import type { RiskDefinition } from "./riskManager/RiskDefinition";
 import { RiskManager } from "./riskManager/RiskManager";
 import { Role } from "./roles";
@@ -28,8 +28,8 @@ export class DataManager {
   routes: Route[];
 
   dataLoader: DataLoader;
-  //The currently selected DataPackage
-  currentDataPackage?: DataPackage;
+  //The currently selected DataModule
+  currentDataPackage?: DataModule;
   riskManager: RiskManager;
 
   /**
@@ -70,15 +70,7 @@ export class DataManager {
       this.routes,
       this.payments,
       riskDefinitions,
-    ] = await Promise.all([
-      this.dataLoader.loadAllUsers(),
-      this.dataLoader.loadAllCompanies(),
-      this.dataLoader.loadAllTrips(),
-      this.dataLoader.loadAllVehicles(),
-      this.dataLoader.loadAllRoutes(),
-      this.dataLoader.loadAllPayments(),
-      this.dataLoader.loadAllRisks(),
-    ]);
+    ] = await this.dataLoader.loadAllData();
     this.riskManager.riskDefinitions = riskDefinitions;
     this.setAllReferences();
   }
@@ -207,23 +199,20 @@ export class DataManager {
   }
 
   /**
-   * Changes the current DataPackage to a new DataPackage
+   * Changes the current Data to a new DataModule
    * @param vehicle The vehicle that is selected.
    * @param user The user that is driving the trip.
    * @param payment The payment with which the trip is paid.
    * @param trip The trip that is driven by the user.
    */
-  private changeDataPackage(
+  private changeCurrentData(
     vehicle: Vehicle,
     user?: User,
     payment?: Payment,
     trip?: Trip
   ) {
-    const newDataPackage = new DataPackage(vehicle, user, payment, trip);
-    if (newDataPackage.checkValidity()) {
-      this.currentDataPackage = newDataPackage;
-    } else {
-      throw Error(`The DataPackage to creation is not valid.`);
+    if (user != undefined) {
+      const userDataModule = new DataModule(user, this.riskManager);
     }
   }
 }

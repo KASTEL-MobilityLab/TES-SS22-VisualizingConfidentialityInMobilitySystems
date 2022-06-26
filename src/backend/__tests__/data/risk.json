@@ -1,12 +1,22 @@
 [
   {
-    "dataType": "PaymentType",
+    "dataType": "UserForename",
     "riskLevel": "low",
     "roleVisibility": ["company", "user"]
   },
   {
-    "dataType": "PaymentProvider",
-    "riskLevel": "high",
-    "roleVisibility": ["company", "city"]
+    "dataType": "UserSurname",
+    "riskLevel": "low",
+    "roleVisibility": ["company", "user"]
+  },
+  {
+    "dataType": "UserPhoneNumber",
+    "riskLevel": "medium",
+    "roleVisibility": ["company", "user"]
+  },
+  {
+    "dataType": "UserEmail",
+    "riskLevel": "medium",
+    "roleVisibility": ["company", "user"]
   }
 ]

@@ -16,12 +16,10 @@
     "vehicleData": "Vehicle Data",
     "tripData": "Trip Data",
     "paymentData": "Payment Data",
-    "user": {
-      "forename": "Forename",
-      "surname": "Surname",
-      "email": "E-Mail",
-      "phoneNumber": "Phone Number",
-      "address": "Address"
-    }
+    "forename": "Forename",
+    "surname": "Surname",
+    "email": "E-Mail",
+    "phoneNumber": "Phone Number",
+    "address": "Address"
   }
 }

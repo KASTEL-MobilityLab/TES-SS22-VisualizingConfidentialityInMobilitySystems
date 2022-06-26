@@ -23,14 +23,14 @@ export class RiskManager {
    * @param dataType the string of the DataType
    */
   findRiskDefinition(dataType: string) {
-    if (this.riskDefinitions === undefined) {
+    if (!this.riskDefinitions) {
       throw Error("RiskDefinitions are not set yet");
     }
     const riskDef = this.riskDefinitions.find(
-      (element) => element.dataType == dataType
+      (element) => element.dataType === dataType
     );
-    if (riskDef === undefined) {
-      throw Error("Cannot find RiskDefinition for datatype:" + dataType);
+    if (!riskDef) {
+      throw Error("Cannot find RiskDefinition for datatype: " + dataType);
     }
     return riskDef;
   }

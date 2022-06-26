@@ -92,7 +92,7 @@ describe.concurrent("DataLoader", () => {
     const expectedRisks = expectedData.risks;
     for (const index in risks) {
       expect(risks[index]).toBeInstanceOf(RiskDefinition);
-      expect(risks[index]).toEqual(expectedRisks[index]);
+      expect(risks[index]).toStrictEqual(expectedRisks[index]);
     }
   });
 });
