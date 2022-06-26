@@ -1,5 +1,5 @@
 import { Expose, Transform, Type } from "class-transformer";
-import type { DataType } from "../dataType";
+import { DataType } from "../dataType";
 import { Role } from "../roles";
 import { RiskLevel } from "./RiskLevel";
 
@@ -7,6 +7,7 @@ import { RiskLevel } from "./RiskLevel";
  * The riskDefinition class.
  */
 export class RiskDefinition {
+  @Transform(({ value }) => DataType[value as keyof typeof DataType])
   @Expose()
   dataType: DataType;
 
