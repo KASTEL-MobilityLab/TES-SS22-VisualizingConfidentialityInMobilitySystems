@@ -62,6 +62,12 @@ export function createMarker(vehicle: Vehicle): VehicleMarker {
     icon: vehicleIcon.icon,
   });
   marker.vehicle = vehicle;
+  marker.bindPopup(
+    "Clicked on marker of vehicle " +
+      vehicle.id +
+      " at position " +
+      marker.getLatLng()
+  );
   return marker;
 }
 
