@@ -15,15 +15,8 @@ import { Role } from "./roles";
 
 export class DataManager {
   currentRole: Role;
-  /**
-   * be aware that this user differs from `this.currentDataPackage.getUser()`
-   * as this user is meant to be the selected user as a *Role*
-   * The same applies for currentCompany
-   *
-   * TODO: make those properties an object or class (like RoleManager)
-   */
-  currentUser?: User;
-  currentCompany?: Company;
+  roleUser?: User;
+  roleCompany?: Company;
 
   companies: Company[];
   payments: Payment[];
@@ -34,7 +27,7 @@ export class DataManager {
 
   dataLoader: DataLoader;
   //The currently selected DataPackage
-  currentDataPackage: DataPackage;
+  currentData: DataPackage;
   riskManager: RiskManager;
 
   /**
@@ -51,7 +44,7 @@ export class DataManager {
     this.users = [];
     this.vehicles = [];
     this.routes = [];
-    this.currentDataPackage = new DataPackage();
+    this.currentData = new DataPackage();
   }
 
   /**
@@ -106,7 +99,7 @@ export class DataManager {
       // vehicle is not stationary
       trip = this.getTripByVehicle(vehicle);
     }
-    this.currentDataPackage.update(vehicle, trip);
+    this.currentData.update(vehicle, trip);
   }
   /**
    * Searches for a given DataField in the particular referenceArray.
@@ -204,7 +197,7 @@ export class DataManager {
    * @param userId The user of the selected user.
    */
   private changeUser(userId: string) {
-    this.currentUser = <User>this.getDataById(userId, this.users);
+    this.roleUser = <User>this.getDataById(userId, this.users);
   }
 
   /**
@@ -212,7 +205,7 @@ export class DataManager {
    * @param companyId The user of the selected company.
    */
   private changeCompany(companyId: string) {
-    this.currentCompany = <Company>this.getDataById(companyId, this.companies);
+    this.roleCompany = <Company>this.getDataById(companyId, this.companies);
   }
 
   // find a trip by its vehicle.
