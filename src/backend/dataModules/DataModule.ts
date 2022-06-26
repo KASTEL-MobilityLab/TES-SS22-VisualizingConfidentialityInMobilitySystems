@@ -39,23 +39,19 @@ export class DataModule {
    */
   assignDataFieldToDisplayedData(dataField: DataField): Record<string, string> {
     const dataFieldPropertyNames = Object.keys(dataField);
-    const dataFieldPropertyValues = Object.values(dataField);
-    const dataTypeValues = Object.values(DataType);
     this.displayedData = {};
     for (let i = 0; i < dataFieldPropertyNames.length; i++) {
-      if (
-        !dataFieldPropertyNames[i].startsWith(
-          DataModule.PREFIX_OF_NON_DISPLAYED_DATA
-        ) &&
-        !this.excludedProperties.includes(dataFieldPropertyNames[i])
-      ) {
-        const dataTypeValue = dataTypeValues.find((dataType) => {
-          const splittedPropertyNames = dataType.split("_");
-          dataFieldPropertyNames[splittedPropertyNames.length - 1] ===
-            dataFieldPropertyNames[i];
-        });
-        if (dataTypeValue != null) {
-          this.displayedData[dataTypeValue] = dataFieldPropertyValues[i];
+      if (this.showDisplayedData(dataFieldPropertyNames, i)) {
+        //Find specific value within DataType
+        for (let j = 0; j < Object.values(DataType).length; j++) {
+          const splittedDataType = Object.values(DataType)[j].split("_");
+          if (
+            dataFieldPropertyNames[i] ===
+            splittedDataType[splittedDataType.length - 1]
+          ) {
+            const dataTypeValue = Object.values(DataType)[j];
+            this.displayedData[dataTypeValue] = Object.values(dataField)[i];
+          }
         }
       }
     }
@@ -71,22 +67,20 @@ export class DataModule {
     dataField: DataField,
     riskManager?: RiskManager
   ): Record<string, string> {
-    const propertyNames = Object.keys(dataField);
-    const dataTypeValues = Object.values(DataType);
+    const dataFieldPropertyNames = Object.keys(dataField);
     this.risks = {};
-    for (let i = 0; i < propertyNames.length; i++) {
-      if (
-        !propertyNames[i].startsWith(DataModule.PREFIX_OF_NON_DISPLAYED_DATA) &&
-        !this.excludedProperties.includes(propertyNames[i])
-      ) {
-        const dataTypeValue = dataTypeValues.find((dataType) => {
-          const splittedPropertyNames = dataType.split("_");
-          propertyNames[-1] === propertyNames[i];
+    for (let i = 0; i < dataFieldPropertyNames.length; i++) {
+      if (this.showDisplayedData(dataFieldPropertyNames, i)) {
+        //Find specific value within DataType
+        const dataTypeValue = Object.values(DataType).find((dataType) => {
+          dataType.split("_")[dataType.split("_").length - 1] ===
+            dataFieldPropertyNames[i];
         });
         if (riskManager !== undefined) {
           if (dataTypeValue != null) {
+            //Find risk to the specfic value of the DataType
             this.risks[dataTypeValue] = riskManager.getRiskLevel(
-              dataTypeValues[i]
+              Object.values(DataType)[i]
             );
           }
         }
@@ -112,5 +106,21 @@ export class DataModule {
       }
     }
     return risks;
+  }
+
+  private showDisplayedData(
+    dataFieldPropertyNames: string[],
+    index: number
+  ): boolean {
+    if (
+      !dataFieldPropertyNames[index].startsWith(
+        DataModule.PREFIX_OF_NON_DISPLAYED_DATA
+      ) &&
+      !this.excludedProperties.includes(dataFieldPropertyNames[index])
+    ) {
+      return true;
+    } else {
+      return false;
+    }
   }
 }

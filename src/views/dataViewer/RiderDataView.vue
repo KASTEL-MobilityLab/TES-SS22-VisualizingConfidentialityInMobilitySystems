@@ -5,6 +5,7 @@ import { inject } from "vue";
 const $dm = inject(dataManagerKey);
 var users = $dm?.users;
 var dataModule = new DataModule(users![0], $dm?.riskManager);
+console.log(dataModule.risks);
 </script>
 
 <template>
