@@ -1,12 +1,11 @@
 <script setup lang="ts">
+import type { DataManager } from "@/backend/DataManager";
 import { DataModule } from "@/backend/dataModules/DataModule";
 import { dataManagerKey } from "@/keys";
 import { inject } from "vue";
-import type { DataManager } from "@/backend/DataManager";
 const $dm = inject(dataManagerKey) as DataManager;
 var users = $dm.users;
 var dataModule = new DataModule(users[0], $dm.riskManager);
-console.log(dataModule.risks);
 </script>
 
 <template>
