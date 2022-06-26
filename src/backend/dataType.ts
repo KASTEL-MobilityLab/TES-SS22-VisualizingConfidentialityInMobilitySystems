@@ -7,8 +7,8 @@ export enum DataType {
   PaymentType = "payment_type",
   PaymentProvider = "payment_provider",
   //DataTypes of the user
-  UserForename = "user_forename",
-  UserSurname = "user_surname",
-  UserPhoneNumber = "user_phoneNumber",
-  UserEmail = "user_email",
+  UserForename = "forename",
+  UserSurname = "surname",
+  UserPhoneNumber = "phoneNumber",
+  UserEmail = "email",
 }
