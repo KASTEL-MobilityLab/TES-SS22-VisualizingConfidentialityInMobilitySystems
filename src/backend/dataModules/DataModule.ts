@@ -12,6 +12,7 @@ export class DataModule {
   //A "_" as a prefic of a property of a DataField means that this property is not displayed in the frontend within the DataViewer.
   //Properties without a "_" as a prefix are displayed in the DataViewer.
   public static readonly PREFIX_OF_NON_DISPLAYED_DATA = "_";
+  public static readonly LAST_PART_OF_DATATYPE = 1;
   //Stores the data that is shown to the user
   public displayedData: Record<string, string>;
   //Stores the risks of the shown data
@@ -20,7 +21,7 @@ export class DataModule {
   private excludedProperties = ["id", "type"];
 
   /**
-   * Creates a DataMoudle.
+   * Creates a DataModule.
    * @param dataField The DataField to whom a DataModule shall be created.
    * @param riskManager The RiskManager that is assigned within the DataManager to manage the risks of the particular DataFields.
    */
@@ -48,9 +49,11 @@ export class DataModule {
         ) &&
         !this.excludedProperties.includes(dataFieldPropertyNames[i])
       ) {
-        const dataTypeValue = dataTypeValues.find(
-          (locales) => locales === "data.user." + dataFieldPropertyNames[i]
-        );
+        const dataTypeValue = dataTypeValues.find((dataType) => {
+          const splittedPropertyNames = dataType.split("_");
+          dataFieldPropertyNames[splittedPropertyNames.length - 1] ===
+            dataFieldPropertyNames[i];
+        });
         if (dataTypeValue != null) {
           this.displayedData[dataTypeValue] = dataFieldPropertyValues[i];
         }
@@ -76,13 +79,14 @@ export class DataModule {
         !propertyNames[i].startsWith(DataModule.PREFIX_OF_NON_DISPLAYED_DATA) &&
         !this.excludedProperties.includes(propertyNames[i])
       ) {
-        const dataTypeValue = dataTypeValues.find(
-          (locales) => locales === "data.user." + propertyNames[i]
-        );
+        const dataTypeValue = dataTypeValues.find((dataType) => {
+          const splittedPropertyNames = dataType.split("_");
+          propertyNames[-1] === propertyNames[i];
+        });
         if (riskManager !== undefined) {
           if (dataTypeValue != null) {
             this.risks[dataTypeValue] = riskManager.getRiskLevel(
-              propertyNames[i]
+              dataTypeValues[i]
             );
           }
         }
