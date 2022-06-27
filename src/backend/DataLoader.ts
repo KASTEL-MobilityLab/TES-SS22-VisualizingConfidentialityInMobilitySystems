@@ -15,7 +15,7 @@ import { isNode } from "browser-or-node";
 import { plainToInstance, type ClassConstructor } from "class-transformer";
 import "reflect-metadata";
 import { PaymentType, VehicleType } from "./dataFields/types";
-import { RiskDefinition } from "./riskManager/RiskDefinition";
+import { Risk } from "./riskManager/Risk";
 
 const DataPath = "data/";
 const TestDataPath = "backend/__tests__/data/";
@@ -241,8 +241,8 @@ export class DataLoader {
     return this.loadTransformedData(Route, this.routePath);
   }
 
-  async loadAllRisks(): Promise<RiskDefinition[]> {
-    return this.loadTransformedData(RiskDefinition, this.riskPath);
+  async loadAllRisks(): Promise<Risk[]> {
+    return this.loadTransformedData(Risk, this.riskPath);
   }
 
   /**

@@ -1,5 +1,5 @@
 import type { Role } from "../roles";
-import type { RiskDefinition } from "./RiskDefinition";
+import type { Risk } from "./Risk";
 import type { RiskExplanation } from "./RiskExplanation";
 import type { RiskLevel } from "./RiskLevel";
 
@@ -7,9 +7,9 @@ import type { RiskLevel } from "./RiskLevel";
  * The riskManager class.
  * */
 export class RiskManager {
-  riskDefinitions?: RiskDefinition[];
+  riskDefinitions?: Risk[];
 
-  constructor(riskDefinitions?: RiskDefinition[]) {
+  constructor(riskDefinitions?: Risk[]) {
     this.riskDefinitions = riskDefinitions;
   }
 

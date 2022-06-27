@@ -7,7 +7,7 @@ import {
   getData,
   type DataLoaderParams,
 } from "../DataLoader";
-import { RiskDefinition } from "../riskManager/RiskDefinition";
+import { Risk } from "../riskManager/Risk";
 import * as expectedData from "./data/expectedData";
 
 describe.concurrent("Async get Data", async () => {
@@ -91,7 +91,7 @@ describe.concurrent("DataLoader", () => {
     const risks = await dl.loadAllRisks();
     const expectedRisks = expectedData.risks;
     for (const index in risks) {
-      expect(risks[index]).toBeInstanceOf(RiskDefinition);
+      expect(risks[index]).toBeInstanceOf(Risk);
       expect(risks[index]).toStrictEqual(expectedRisks[index]);
     }
   });

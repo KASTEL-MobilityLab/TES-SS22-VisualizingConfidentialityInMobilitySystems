@@ -9,7 +9,7 @@ import type {
 import type { Route } from "./dataFields/Route";
 import { DataLoader, type DataLoaderParams } from "./DataLoader";
 import { DataPackage } from "./DataPackage";
-import type { RiskDefinition } from "./riskManager/RiskDefinition";
+import type { Risk } from "./riskManager/Risk";
 import { RiskManager } from "./riskManager/RiskManager";
 import { Role } from "./roles";
 
@@ -60,7 +60,7 @@ export class DataManager {
    * This method initializes the data manager by asynchronously loading all data.
    */
   async init() {
-    let riskDefinitions: RiskDefinition[];
+    let riskDefinitions: Risk[];
     [
       this.users,
       this.companies,

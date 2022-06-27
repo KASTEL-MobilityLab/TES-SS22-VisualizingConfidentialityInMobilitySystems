@@ -12,7 +12,7 @@ import {
 } from "@/backend/dataFields";
 import { VehicleStatus } from "@/backend/dataFields/types";
 import { DataType } from "@/backend/dataType";
-import { RiskDefinition } from "@/backend/riskManager/RiskDefinition";
+import { Risk } from "@/backend/riskManager/Risk";
 import { RiskLevel } from "@/backend/riskManager/RiskLevel";
 import { Role } from "@/backend/roles";
 import { LatLng } from "@/backend/utils/LatLng";
@@ -93,23 +93,14 @@ export const trips: Trip[] = [
     new Date("2022-05-25T15:22:20")
   ),
 ];
-export const risks: RiskDefinition[] = [
-  new RiskDefinition(DataType.UserForename, RiskLevel.low, [
+export const risks: Risk[] = [
+  new Risk(DataType.UserForename, RiskLevel.low, [Role.company, Role.user]),
+  new Risk(DataType.UserSurname, RiskLevel.low, [Role.company, Role.user]),
+  new Risk(DataType.UserPhoneNumber, RiskLevel.medium, [
     Role.company,
     Role.user,
   ]),
-  new RiskDefinition(DataType.UserSurname, RiskLevel.low, [
-    Role.company,
-    Role.user,
-  ]),
-  new RiskDefinition(DataType.UserPhoneNumber, RiskLevel.medium, [
-    Role.company,
-    Role.user,
-  ]),
-  new RiskDefinition(DataType.UserEmail, RiskLevel.medium, [
-    Role.company,
-    Role.user,
-  ]),
+  new Risk(DataType.UserEmail, RiskLevel.medium, [Role.company, Role.user]),
 ];
 export const vehicles: Vehicle[] = [
   new EScooter("V01", "C01", 84, 89, VehicleStatus.active, 74),

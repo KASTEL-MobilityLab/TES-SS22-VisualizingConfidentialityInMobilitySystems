@@ -6,7 +6,7 @@ import { RiskLevel } from "./RiskLevel";
 /**
  * The riskDefinition class.
  */
-export class RiskDefinition {
+export class Risk {
   @Transform(({ value }) => DataType[value as keyof typeof DataType])
   @Expose()
   dataType: DataType;
