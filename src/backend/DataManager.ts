@@ -35,7 +35,7 @@ export class DataManager {
    */
   constructor(dataLoaderParams: DataLoaderParams = {}) {
     //The city is set as the default role
-    this.currentRole = Role.city;
+    this.currentRole = Role.City;
     this.dataLoader = new DataLoader(dataLoaderParams);
     this.riskManager = new RiskManager();
     this.companies = [];
