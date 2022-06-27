@@ -30,7 +30,7 @@ export class CreditCard extends NonCash {
     tripId: string,
     trip?: Trip
   ) {
-    super(PaymentType.creditcard, id, tripId, trip);
+    super(PaymentType.CreditCard, id, tripId, trip);
     this.provider = provider;
     this.cardNumber = cardNumber;
     this.ccv = ccv;

@@ -1,4 +1,4 @@
-import { Expose, Type } from "class-transformer";
+import { Expose } from "class-transformer";
 import "reflect-metadata";
 import type { Company } from "../Company";
 import { VehicleStatus, VehicleType } from "../types";
@@ -27,7 +27,7 @@ export class EScooter extends IndividualVehicle {
 
     company?: Company
   ) {
-    super(id, companyId, VehicleType.escooter, status, company);
+    super(id, companyId, VehicleType.EScooter, status, company);
     this.condition = condition;
     this.batteryCondition = batteryCondition;
     this.batteryLevel = batteryLevel;

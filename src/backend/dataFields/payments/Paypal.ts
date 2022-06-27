@@ -11,7 +11,7 @@ export class PayPal extends NonCash {
   readonly userName: string;
 
   constructor(userName: string, id: string, tripId: string, trip?: Trip) {
-    super(PaymentType.paypal, id, tripId, trip);
+    super(PaymentType.PayPal, id, tripId, trip);
     this.userName = userName;
   }
 }

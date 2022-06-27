@@ -3,7 +3,7 @@
  * particular Bootstrap keys for colors.
  */
 
-export enum RiskColors {
+export enum RiskColor {
   Green = "btn btn-success",
   Yellow = "btn btn-warning",
   Red = "btn btn-danger",

@@ -9,9 +9,9 @@ import type {
 import type { Route } from "./dataFields/Route";
 import { DataLoader, type DataLoaderParams } from "./DataLoader";
 import { DataPackage } from "./DataPackage";
-import type { RiskDefinition } from "./riskManager/RiskDefinition";
+import type { Risk } from "./riskManager/Risk";
 import { RiskManager } from "./riskManager/RiskManager";
-import { Role } from "./roles";
+import { Role } from "./Role";
 
 export class DataManager {
   currentRole: Role;
@@ -35,7 +35,7 @@ export class DataManager {
    */
   constructor(dataLoaderParams: DataLoaderParams = {}) {
     //The city is set as the default role
-    this.currentRole = Role.city;
+    this.currentRole = Role.City;
     this.dataLoader = new DataLoader(dataLoaderParams);
     this.riskManager = new RiskManager();
     this.companies = [];
@@ -60,7 +60,7 @@ export class DataManager {
    * This method initializes the data manager by asynchronously loading all data.
    */
   async init() {
-    let riskDefinitions: RiskDefinition[];
+    let risks: Risk[];
     [
       this.users,
       this.companies,
@@ -68,9 +68,9 @@ export class DataManager {
       this.vehicles,
       this.routes,
       this.payments,
-      riskDefinitions,
+      risks,
     ] = await this.dataLoader.loadAllData();
-    this.riskManager.riskDefinitions = riskDefinitions;
+    this.riskManager.risks = risks;
     this.setAllReferences();
     this.trips.map((trip) => trip.setVehicleStartPosition());
   }
