@@ -94,13 +94,13 @@ export const trips: Trip[] = [
   ),
 ];
 export const risks: Risk[] = [
-  new Risk(DataType.UserForename, RiskLevel.low, [Role.Company, Role.User]),
-  new Risk(DataType.UserSurname, RiskLevel.low, [Role.Company, Role.User]),
-  new Risk(DataType.UserPhoneNumber, RiskLevel.medium, [
+  new Risk(DataType.UserForename, RiskLevel.Low, [Role.Company, Role.User]),
+  new Risk(DataType.UserSurname, RiskLevel.Low, [Role.Company, Role.User]),
+  new Risk(DataType.UserPhoneNumber, RiskLevel.Medium, [
     Role.Company,
     Role.User,
   ]),
-  new Risk(DataType.UserEmail, RiskLevel.medium, [Role.Company, Role.User]),
+  new Risk(DataType.UserEmail, RiskLevel.Medium, [Role.Company, Role.User]),
 ];
 export const vehicles: Vehicle[] = [
   new EScooter("V01", "C01", 84, 89, VehicleStatus.active, 74),

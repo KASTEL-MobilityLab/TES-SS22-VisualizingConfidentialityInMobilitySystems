@@ -1,22 +1,22 @@
 [
   {
     "dataType": "UserForename",
-    "riskLevel": "low",
+    "riskLevel": "Low",
     "roleVisibility": ["Company", "User"]
   },
   {
     "dataType": "UserSurname",
-    "riskLevel": "low",
+    "riskLevel": "Low",
     "roleVisibility": ["Company", "User"]
   },
   {
     "dataType": "UserPhoneNumber",
-    "riskLevel": "medium",
+    "riskLevel": "Medium",
     "roleVisibility": ["Company", "User"]
   },
   {
     "dataType": "UserEmail",
-    "riskLevel": "medium",
+    "riskLevel": "Medium",
     "roleVisibility": ["Company", "User"]
   }
 ]

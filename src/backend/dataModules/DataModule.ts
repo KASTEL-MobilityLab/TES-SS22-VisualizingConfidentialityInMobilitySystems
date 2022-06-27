@@ -86,13 +86,13 @@ export class DataModule {
     for (const fieldName of fieldNames) {
       const riskLevel = risks[fieldName];
       switch (riskLevel) {
-        case RiskLevel.low:
+        case RiskLevel.Low:
           risks[fieldName] = RiskColor.Green;
           break;
-        case RiskLevel.medium:
+        case RiskLevel.Medium:
           risks[fieldName] = RiskColor.Yellow;
           break;
-        case RiskLevel.high:
+        case RiskLevel.High:
           risks[fieldName] = RiskColor.Red;
           break;
       }
