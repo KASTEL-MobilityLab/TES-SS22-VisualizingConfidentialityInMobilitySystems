@@ -1,5 +1,5 @@
 import type { DataField } from "../dataFields";
-import { DataType } from "../dataType";
+import { DataType } from "../DataType";
 import { RiskColor } from "../riskManager/RiskColor";
 import { RiskLevel } from "../riskManager/RiskLevel";
 import type { RiskManager } from "../riskManager/RiskManager";

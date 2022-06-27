@@ -11,7 +11,7 @@ import {
   Vehicle,
 } from "@/backend/dataFields";
 import { VehicleStatus } from "@/backend/dataFields/types";
-import { DataType } from "@/backend/dataType";
+import { DataType } from "@/backend/DataType";
 import { Risk } from "@/backend/riskManager/Risk";
 import { RiskLevel } from "@/backend/riskManager/RiskLevel";
 import { Role } from "@/backend/roles";

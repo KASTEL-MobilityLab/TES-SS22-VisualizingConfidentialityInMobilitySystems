@@ -1,5 +1,5 @@
 import { Expose, Transform, Type } from "class-transformer";
-import { DataType } from "../dataType";
+import { DataType } from "../DataType";
 import { Role } from "../roles";
 import { RiskLevel } from "./RiskLevel";
 
