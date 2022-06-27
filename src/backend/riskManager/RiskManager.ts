@@ -1,4 +1,4 @@
-import type { Role } from "../roles";
+import type { Role } from "../Role";
 import type { Risk } from "./Risk";
 import type { RiskExplanation } from "./RiskExplanation";
 import type { RiskLevel } from "./RiskLevel";

@@ -11,7 +11,7 @@ import { DataLoader, type DataLoaderParams } from "./DataLoader";
 import { DataPackage } from "./DataPackage";
 import type { Risk } from "./riskManager/Risk";
 import { RiskManager } from "./riskManager/RiskManager";
-import { Role } from "./roles";
+import { Role } from "./Role";
 
 export class DataManager {
   currentRole: Role;
