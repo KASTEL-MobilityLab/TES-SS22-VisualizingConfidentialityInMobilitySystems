@@ -57,6 +57,6 @@ export abstract class Vehicle extends DataField {
    * @returns true if the vehicle is currently in use, false otherwise.
    */
   isActive(): boolean {
-    return this.status === VehicleStatus.active;
+    return this.status === VehicleStatus.Active;
   }
 }

@@ -36,7 +36,7 @@ interface VehicleIcon {
  * Defines all possible markers for each vehicle type.
  */
 export const VehicleMarkers: VehicleIcon[] = [
-  { type: VehicleType.escooter, icon: bikeIcon }, // search escooter icon
+  { type: VehicleType.EScooter, icon: bikeIcon }, // search escooter icon
   { type: VehicleType.bus, icon: busIcon },
   { type: VehicleType.train, icon: trainIcon },
 ];

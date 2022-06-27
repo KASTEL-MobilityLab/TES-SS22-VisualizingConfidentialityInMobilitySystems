@@ -103,6 +103,6 @@ export const risks: Risk[] = [
   new Risk(DataType.UserEmail, RiskLevel.Medium, [Role.Company, Role.User]),
 ];
 export const vehicles: Vehicle[] = [
-  new EScooter("V01", "C01", 84, 89, VehicleStatus.active, 74),
-  new Train("V02", "C02", VehicleStatus.inactive),
+  new EScooter("V01", "C01", 84, 89, VehicleStatus.Active, 74),
+  new Train("V02", "C02", VehicleStatus.Inactive),
 ];

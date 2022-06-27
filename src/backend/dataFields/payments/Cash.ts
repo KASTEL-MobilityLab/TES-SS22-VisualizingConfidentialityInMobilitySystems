@@ -7,6 +7,6 @@ import { PaymentType } from "../types";
  */
 export class Cash extends Payment {
   constructor(id: string, tripId: string, trip?: Trip) {
-    super(PaymentType.cash, id, tripId, trip);
+    super(PaymentType.Cash, id, tripId, trip);
   }
 }

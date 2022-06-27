@@ -165,7 +165,7 @@ export class DataLoader {
       EScooter,
       vehicleJson,
       this.classTransformerOptions
-    ).filter((vehicle) => vehicle.type === VehicleType.escooter);
+    ).filter((vehicle) => vehicle.type === VehicleType.EScooter);
 
     //Push all e-scooters
     transformedVehicleData.push(...escooters);
@@ -195,7 +195,7 @@ export class DataLoader {
     //Filter the cash payments from all payments
     let cashPayments = await this.loadTransformedData(Cash, paymentJson);
     cashPayments = cashPayments.filter(
-      (payment) => payment.paymentType === PaymentType.cash
+      (payment) => payment.paymentType === PaymentType.Cash
     );
 
     //Filter the credit card payments from all payments
@@ -204,13 +204,13 @@ export class DataLoader {
       paymentJson
     );
     creditCardPayments = creditCardPayments.filter(
-      (payment) => payment.paymentType === PaymentType.creditcard
+      (payment) => payment.paymentType === PaymentType.CreditCard
     );
 
     //Filter the PayPal payments from all payments
     let payPalPayments = await this.loadTransformedData(PayPal, paymentJson);
     payPalPayments = payPalPayments.filter(
-      (payment) => payment.paymentType === PaymentType.paypal
+      (payment) => payment.paymentType === PaymentType.PayPal
     );
 
     //Push all PayPal payments
