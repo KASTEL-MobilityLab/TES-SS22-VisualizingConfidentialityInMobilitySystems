@@ -60,7 +60,7 @@ export class DataManager {
    * This method initializes the data manager by asynchronously loading all data.
    */
   async init() {
-    let riskDefinitions: Risk[];
+    let risks: Risk[];
     [
       this.users,
       this.companies,
@@ -68,9 +68,9 @@ export class DataManager {
       this.vehicles,
       this.routes,
       this.payments,
-      riskDefinitions,
+      risks,
     ] = await this.dataLoader.loadAllData();
-    this.riskManager.riskDefinitions = riskDefinitions;
+    this.riskManager.risks = risks;
     this.setAllReferences();
     this.trips.map((trip) => trip.setVehicleStartPosition());
   }

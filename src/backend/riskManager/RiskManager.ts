@@ -7,28 +7,26 @@ import type { RiskLevel } from "./RiskLevel";
  * The riskManager class.
  * */
 export class RiskManager {
-  riskDefinitions?: Risk[];
+  risks?: Risk[];
 
-  constructor(riskDefinitions?: Risk[]) {
-    this.riskDefinitions = riskDefinitions;
+  constructor(risks?: Risk[]) {
+    this.risks = risks;
   }
 
   /**
-   * Returns the correct RiskDefinition instance in the array.
+   * Returns the correct Risk instance in the array.
    *
-   * Checks whether the array of RiskDefinitions has been set already
+   * Checks whether the array of Risks has been set already
    * and then tries to find the correct instance. If none is found or the
    * array is not initialized yet, it throws an error.
    *
    * @param dataType the string of the DataType
    */
-  findRiskDefinition(dataType: string) {
-    if (!this.riskDefinitions) {
+  findRisk(dataType: string) {
+    if (!this.risks) {
       throw Error("RiskDefinitions are not set yet");
     }
-    const riskDef = this.riskDefinitions.find(
-      (element) => element.dataType === dataType
-    );
+    const riskDef = this.risks.find((element) => element.dataType === dataType);
     if (!riskDef) {
       throw Error("Cannot find RiskDefinition for datatype: " + dataType);
     }
@@ -41,7 +39,7 @@ export class RiskManager {
    * @returns low, medium or high
    * */
   getRiskLevel(dataType: string): RiskLevel {
-    return this.findRiskDefinition(dataType).riskLevel;
+    return this.findRisk(dataType).riskLevel;
   }
 
   /**
@@ -51,7 +49,7 @@ export class RiskManager {
    * @returns boolean with the visibility
    */
   getVisibility(dataType: string, role: Role): boolean {
-    const riskDef = this.findRiskDefinition(dataType);
+    const riskDef = this.findRisk(dataType);
     return riskDef.isVisible(role);
   }
 
