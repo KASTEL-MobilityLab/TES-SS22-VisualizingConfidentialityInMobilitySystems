@@ -1,6 +1,7 @@
 import type { Vehicle } from "@/backend/dataFields";
 import { VehicleType } from "@/backend/dataFields/types";
 import L from "leaflet";
+import { toLeafletLatLng } from "./latLngUtils";
 import type { VehicleMarker } from "./leafletExtension";
 
 const iconAnchor: L.PointExpression = [24, 24];
@@ -58,7 +59,7 @@ export function createMarker(vehicle: Vehicle): VehicleMarker {
   if (!position) {
     throw Error("Current Position of Vehicle " + vehicle.id + " is undefined");
   }
-  const marker = <VehicleMarker>L.marker(position.toLeafletLatLng(), {
+  const marker = <VehicleMarker>L.marker(toLeafletLatLng(position), {
     icon: vehicleIcon.icon,
   });
   marker.vehicle = vehicle;
