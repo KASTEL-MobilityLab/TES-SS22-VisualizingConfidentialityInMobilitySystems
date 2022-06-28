@@ -39,7 +39,7 @@ export abstract class Vehicle extends DataField {
     this.currentPosition = currentPosition;
   }
 
-  get company(): Company | undefined {
+  get company() {
     return this._company;
   }
 

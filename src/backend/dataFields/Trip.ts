@@ -99,49 +99,49 @@ export class Trip extends DataField {
   }
 
   get vehicle() {
-    if (this._vehicle === undefined) {
-      throw Error("Vehicle has not been set yet.");
-    }
     return this._vehicle;
   }
 
-  set vehicle(vehicle: Vehicle) {
+  set vehicle(vehicle: Vehicle | undefined) {
+    if (!vehicle) {
+      throw new Error("Cannot set the vehicle of this trip to undefined.");
+    }
     this.checkForeignKeyReferences(vehicle, this.vehicleId);
     this._vehicle = vehicle;
   }
 
   get user() {
-    if (this._user === undefined) {
-      throw Error("User has not been set yet.");
-    }
     return this._user;
   }
 
-  set user(user: User) {
+  set user(user: User | undefined) {
+    if (!user) {
+      throw new Error("Cannot set the user of this trip to undefined.");
+    }
     this.checkForeignKeyReferences(user, this.userId);
     this._user = user;
   }
 
   get payment() {
-    if (this._payment === undefined) {
-      throw Error("Payment has not been set yet.");
-    }
     return this._payment;
   }
 
-  set payment(payment: Payment) {
+  set payment(payment: Payment | undefined) {
+    if (!payment) {
+      throw new Error("Cannot set the payment of this trip to undefined.");
+    }
     this.checkForeignKeyReferences(payment, this.paymentId);
     this._payment = payment;
   }
 
   get route() {
-    if (this._route === undefined) {
-      throw Error("Route has not been set yet.");
-    }
     return this._route;
   }
 
-  set route(route: Route) {
+  set route(route: Route | undefined) {
+    if (!route) {
+      throw new Error("Cannot set the route of this trip to undefined.");
+    }
     this.checkForeignKeyReferences(route, this.routeId);
     this._route = route;
   }
