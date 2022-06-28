@@ -16,7 +16,16 @@ export abstract class DataField {
    * @param storedDataField An implementation of a DataField (e.g. an User, a Trip, ...) that is stored within an other DataField
    * @param dataFieldId Id that is stored within a DataField and that is tested
    */
-  checkForeignKeyReferences(storedDataField: DataField, dataFieldId: string) {
+  checkForeignKeyReferences(
+    storedDataField: DataField | undefined,
+    dataFieldId: string
+  ) {
+    if (!storedDataField) {
+      throw new Error(
+        "Given DataField is undefined. Cannot check foreign key references for id " +
+          dataFieldId
+      );
+    }
     if (storedDataField.id !== dataFieldId) {
       throw Error(
         `Cannot set ${storedDataField.constructor.name} with ${storedDataField.constructor.name} Id ${storedDataField.id}:

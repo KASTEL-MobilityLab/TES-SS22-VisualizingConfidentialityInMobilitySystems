@@ -39,14 +39,14 @@ export abstract class Vehicle extends DataField {
     this.currentPosition = currentPosition;
   }
 
-  get company() {
-    if (!this._company) {
-      throw Error("Company has not been set yet.");
-    }
+  get company(): Company | undefined {
     return this._company;
   }
 
-  set company(company: Company) {
+  set company(company: Company | undefined) {
+    if (!company) {
+      throw new Error("Cannot set the company of this vehicle to undefined.");
+    }
     this.checkForeignKeyReferences(company, this.companyId);
     this._company = company;
   }
