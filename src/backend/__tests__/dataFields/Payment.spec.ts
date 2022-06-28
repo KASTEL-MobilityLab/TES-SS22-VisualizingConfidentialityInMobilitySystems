@@ -7,9 +7,9 @@ describe("Test Payment Subclasses", () => {
   const trip = trips[0];
   const payment = payments[0];
 
-  it("try to retrieve undefined trip of payment", async () => {
+  it("try to set undefined trip of payment", async () => {
     const payment = new PayPal("max.mustermann@gmail.com", "P02", "T04");
-    expect(() => payment.trip).toThrowError();
+    expect(() => (payment.trip = undefined)).toThrowError();
   });
 
   it("assign invalid reference assignment", async () => {

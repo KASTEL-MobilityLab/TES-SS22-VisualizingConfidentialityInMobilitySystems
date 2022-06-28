@@ -16,9 +16,9 @@ describe.concurrent("Test Vehicle Subclasses", async () => {
     fireRunnerCompany
   );
 
-  it("try to retrieve undefined company of vehicle", async () => {
+  it("try to set undefined company of vehicle", async () => {
     const train = new Train("V01", "C01", VehicleStatus.Inactive);
-    expect(() => train.company).toThrowError();
+    expect(() => (train.company = undefined)).toThrowError();
   });
 
   it("assign invalid company", async () => {

@@ -4,9 +4,9 @@ import { dataManagerKey } from "@/keys";
 import type { VehicleMarker } from "@/utils/leafletExtension";
 import { generateAllVehicleMarkers } from "@/utils/markerUtils";
 import L, { type LeafletEvent } from "leaflet";
-import { inject, onMounted } from "vue";
+import { inject, onMounted, type Ref } from "vue";
 
-const $dm = inject(dataManagerKey) as DataManager;
+const $dm = inject(dataManagerKey) as Ref<DataManager>;
 
 // setup the map and generate markers, when this component is mounted
 onMounted(() => {
@@ -56,7 +56,7 @@ function setupMarkers(map: L.Map) {
   // add this event listener to each marker in the feature group
   markersLayer.on("click", vehicleMarkerClicked);
 
-  const vehicles = $dm.vehicles;
+  const vehicles = $dm.value.vehicles;
   const markers = generateAllVehicleMarkers(vehicles);
   markers.forEach((marker) => {
     marker.addTo(markersLayer);
@@ -77,7 +77,7 @@ function vehicleMarkerClicked(event: LeafletEvent) {
       " at position " +
       marker.getLatLng()
   );
-  $dm.updateByVehicle(vehicle);
+  $dm.value.updateByVehicle(vehicle);
 }
 </script>
 

@@ -2,11 +2,11 @@
 import type { DataManager } from "@/backend/DataManager";
 import MapComponent from "@/components/MapComponent.vue";
 import { dataManagerKey } from "@/keys";
-import { inject } from "vue";
+import { inject, type Ref } from "vue";
 import { RouterView } from "vue-router";
 
-const $dm = inject(dataManagerKey) as DataManager;
-await $dm.init();
+const $dm = inject(dataManagerKey) as Ref<DataManager>;
+await $dm.value.init();
 </script>
 <template>
   <MapComponent />

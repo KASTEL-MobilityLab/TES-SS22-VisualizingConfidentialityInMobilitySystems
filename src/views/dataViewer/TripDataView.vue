@@ -2,11 +2,11 @@
 import type { DataManager } from "@/backend/DataManager";
 import { DataModule } from "@/backend/dataModules/DataModule";
 import { dataManagerKey } from "@/keys";
-import { inject } from "vue";
+import { inject, type Ref } from "vue";
 
-const $dm = inject(dataManagerKey) as DataManager;
-var dmUsers = $dm?.users;
-var dmDataModule = new DataModule(dmUsers![0], $dm.riskManager);
+const $dm = inject(dataManagerKey) as Ref<DataManager>;
+var dmUsers = $dm.value.users;
+var dmDataModule = new DataModule(dmUsers[0], $dm.value.riskManager);
 </script>
 
 <template>
