@@ -3,7 +3,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/js/bootstrap.js";
 import "leaflet/dist/leaflet.css";
 import "reflect-metadata";
-import { createApp } from "vue";
+import { createApp, ref } from "vue";
 import App from "./App.vue";
 import { DataManager } from "./backend/DataManager";
 import { i18n } from "./i18n";
@@ -18,9 +18,9 @@ app.use(i18n);
 /**
  * provide DataManager instance globally to all components
  * note: a component that needs access, has to inject it
- * with `const $dm = inject(dataManagerKey) as DataManager`;
+ * with `const $dm = inject(dataManagerKey) as Ref<DataManager>`;
  */
 const dm: DataManager = new DataManager();
-app.provide(dataManagerKey, dm);
+app.provide(dataManagerKey, ref(dm));
 
 app.mount("#app");
