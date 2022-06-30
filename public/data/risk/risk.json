@@ -57,12 +57,18 @@
   {
     "dataType": "UserForename",
     "riskLevel": "Low",
-    "roleVisibility": ["Company", "User"]
+    "roleVisibility": ["Company", "User"],
+    "explanation": {
+      "retentionPeriod": "until_user_deleted"
+    }
   },
   {
     "dataType": "UserSurname",
     "riskLevel": "Low",
-    "roleVisibility": ["Company", "User"]
+    "roleVisibility": ["Company", "User"],
+    "explanation": {
+      "retentionPeriod": 365
+    }
   },
   {
     "dataType": "UserPhoneNumber",

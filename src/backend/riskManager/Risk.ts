@@ -1,6 +1,7 @@
 import { Expose, Transform, Type } from "class-transformer";
 import { DataType } from "../DataType";
 import { Role } from "../Role";
+import { RiskExplanation } from "./RiskExplanation";
 import { RiskLevel } from "./RiskLevel";
 
 /**
@@ -24,14 +25,20 @@ export class Risk {
   @Expose()
   roleVisibility: Role[];
 
+  @Expose()
+  @Type(() => RiskExplanation)
+  explanation?: RiskExplanation;
+
   constructor(
     dataType: DataType,
     riskLevel: RiskLevel,
-    roleVisibility: Role[]
+    roleVisibility: Role[],
+    explanation?: RiskExplanation
   ) {
     this.dataType = dataType;
     this.riskLevel = riskLevel;
     this.roleVisibility = roleVisibility;
+    this.explanation = explanation;
   }
 
   /**
