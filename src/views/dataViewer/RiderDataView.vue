@@ -11,18 +11,20 @@ var dataModule = new DataModule(users[0], $dm.value.riskManager);
 <template>
   <h4 class="text-center m-2">Rider Data</h4>
   <template v-for="(value, key) in dataModule.displayedData" :key="key">
-    <div classs="my-buttons">
-      <div class>
-        <div class="row m-2 p-2">
-          <div class="col m-2 fw-bold">
-            <button type="button" :class="dataModule.risks[key]">
-              {{ $t(key) }}
-            </button>
-          </div>
-          <div class="col m-2">
-            {{ value }}
-          </div>
-        </div>
+    <div class="row m-2 p-2">
+      <div class="col m-2 fw-bold">
+        <button
+          type="button"
+          :class="dataModule.risks[key]"
+          data-bs-toggle="modal"
+          data-bs-target="#explanationModal"
+          :data-bs-origin="key"
+        >
+          {{ $t(key) }}
+        </button>
+      </div>
+      <div class="col m-2">
+        {{ value }}
       </div>
     </div>
   </template>
