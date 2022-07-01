@@ -121,14 +121,16 @@ export class DataManager {
   }
 
   /**
-   * Sets the specific company reference of a vehicle.
+   * Sets the specific company reference of a vehicle and its ownerName.
    */
   private setVehicleReferences() {
     for (const vehicle of this.vehicles) {
-      vehicle.company = this.getForeignKeyReference<Company>(
+      const company: Company = this.getForeignKeyReference<Company>(
         vehicle.companyId,
         this.companies
       );
+      vehicle.company = company;
+      vehicle.ownerName = company.name;
     }
   }
 
