@@ -45,6 +45,7 @@ export class DataModule {
       // Find specific value within DataType
       dataTypes.forEach((dataType) => {
         if (fieldName === dataType) {
+          console.log(fieldName);
           this.displayedData[`data.${fieldName}`] = values[index];
         }
       });

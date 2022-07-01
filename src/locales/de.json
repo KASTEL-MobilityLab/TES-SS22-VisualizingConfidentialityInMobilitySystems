@@ -21,6 +21,9 @@
     "email": "E-Mail",
     "phoneNumber": "Telefonnummer",
     "birthday": "Geburtstag",
-    "address": "Adresse"
+    "address": "Adresse",
+    "type": "Typ",
+    "status": "Status",
+    "batteryLevel": "Batteriestand"
   }
 }

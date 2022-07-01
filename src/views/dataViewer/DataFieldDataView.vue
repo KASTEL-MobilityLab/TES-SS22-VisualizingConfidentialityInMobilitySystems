@@ -6,10 +6,16 @@ import { inject, type Ref } from "vue";
 const $dm = inject(dataManagerKey) as Ref<DataManager>;
 var users = $dm.value.users;
 var dataModule = new DataModule(users[0], $dm.value.riskManager);
+var dataFieldName: string;
+// eslint-disable-next-line vue/no-export-in-script-setup
+export default {
+  name: "DataFieldDataView",
+  props: ["dataFieldName"],
+};
 </script>
 
 <template>
-  <h4 class="text-center m-2">Rider Data</h4>
+  <h4 class="text-center m-2">{{ dataFieldName }}</h4>
   <template v-for="(value, key) in dataModule.displayedData" :key="key">
     <div classs="my-buttons">
       <div class>
