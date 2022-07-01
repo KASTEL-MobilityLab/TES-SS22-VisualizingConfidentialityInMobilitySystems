@@ -7,11 +7,13 @@ const $dm = inject(dataManagerKey) as Ref<DataManager>;
 var users = $dm.value.users;
 var dataModule = new DataModule(users[0], $dm.value.riskManager);
 var dataFieldName: string;
+/*
 // eslint-disable-next-line vue/no-export-in-script-setup
 export default {
   name: "DataFieldDataView",
   props: ["dataFieldName"],
 };
+*/
 </script>
 
 <template>
