@@ -24,6 +24,11 @@
     "address": "Adresse",
     "type": "Typ",
     "status": "Status",
-    "batteryLevel": "Batteriestand"
+    "batteryLevel": "Batteriestand",
+    "ownerName": "Eigentümer",
+    "startTime": "Startzeit",
+    "endTime": "Endzeit",
+    "averageSpeed": "Durchschnittsgeschwindigkeit",
+    "price": "Preis"
   }
 }

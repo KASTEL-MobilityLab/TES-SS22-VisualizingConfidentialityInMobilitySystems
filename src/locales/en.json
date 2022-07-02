@@ -20,6 +20,14 @@
     "surname": "Surname",
     "email": "E-Mail",
     "phoneNumber": "Phone Number",
-    "address": "Address"
+    "address": "Address",
+    "type": "Type",
+    "status": "Status",
+    "batteryLevel": "Battery",
+    "ownerName": "Owner",
+    "startTime": "Start Time",
+    "endTime": "End Time",
+    "averageSpeed": "Average speed",
+    "price": "Price"
   }
 }

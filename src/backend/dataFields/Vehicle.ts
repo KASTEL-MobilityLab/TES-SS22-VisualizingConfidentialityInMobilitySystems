@@ -16,6 +16,9 @@ export abstract class Vehicle extends DataField {
   readonly status: VehicleStatus;
   @Exclude()
   private _company?: Company;
+  //Possibly undefined name of the company that owns this vehicle.
+  @Exclude()
+  ownerName?: string;
 
   @Type(() => LatLng)
   @Expose()
@@ -33,6 +36,7 @@ export abstract class Vehicle extends DataField {
     this.companyId = companyId;
     this.type = type;
     this.status = status;
+    console.log("hi");
     if (company !== undefined) {
       this._company = company;
     }

@@ -11,4 +11,10 @@ export enum DataType {
   VehicleType = "type",
   VehicleStatus = "status",
   VehicleBatteryLevel = "batteryLevel",
+  VehicleOwnerName = "ownerName",
+  //Trip
+  TripStartTime = "startTime",
+  TripEndTime = "endTime",
+  TripAverageSpeed = "averageSpeed",
+  TripPrice = "price",
 }
