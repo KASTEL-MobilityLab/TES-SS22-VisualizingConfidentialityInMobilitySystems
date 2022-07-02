@@ -21,13 +21,19 @@
     "email": "E-Mail",
     "phoneNumber": "Phone Number",
     "address": "Address",
-    "type": "Type",
+    "vehicleType": "Type",
     "status": "Status",
     "batteryLevel": "Battery",
     "ownerName": "Owner",
     "startTime": "Start Time",
     "endTime": "End Time",
     "averageSpeed": "Average speed",
-    "price": "Price"
+    "price": "Price",
+    "paymentType": "Payment Type",
+    "cardNumber": "Card Number",
+    "ccv": "CCV",
+    "expiryDate": "Expiry Date",
+    "provider": "Provider",
+    "userName": "Username"
   }
 }

@@ -22,13 +22,19 @@
     "phoneNumber": "Telefonnummer",
     "birthday": "Geburtstag",
     "address": "Adresse",
-    "type": "Typ",
+    "vehicleType": "Typ",
     "status": "Status",
     "batteryLevel": "Batteriestand",
     "ownerName": "Eigentümer",
     "startTime": "Startzeit",
     "endTime": "Endzeit",
     "averageSpeed": "Durchschnittsgeschwindigkeit",
-    "price": "Preis"
+    "price": "Preis",
+    "paymentType": "Zahlungstyp",
+    "cardNumber": "Kartennummer",
+    "ccv": "CCV",
+    "expiryDate": "Auslaufdatum",
+    "provider": "Anbieter",
+    "userName": "Nutzername"
   }
 }

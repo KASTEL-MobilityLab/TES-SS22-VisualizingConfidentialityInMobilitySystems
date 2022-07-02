@@ -8,7 +8,7 @@ export enum DataType {
   UserPhoneNumber = "phoneNumber",
   UserEmail = "email",
   //Vehicle
-  VehicleType = "type",
+  VehicleType = "vehicleType",
   VehicleStatus = "status",
   VehicleBatteryLevel = "batteryLevel",
   VehicleOwnerName = "ownerName",
@@ -17,4 +17,11 @@ export enum DataType {
   TripEndTime = "endTime",
   TripAverageSpeed = "averageSpeed",
   TripPrice = "price",
+  //Payment
+  PaymentType = "paymentType",
+  PaymentCardNumber = "cardNumber",
+  PaymentCcv = "ccv",
+  PaymentExpiryDate = "expiryDate",
+  PaymentProvider = "provider",
+  PaymentUsername = "userName",
 }
