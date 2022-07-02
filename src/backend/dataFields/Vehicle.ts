@@ -36,7 +36,6 @@ export abstract class Vehicle extends DataField {
     this.companyId = companyId;
     this.type = type;
     this.status = status;
-    console.log("hi");
     if (company !== undefined) {
       this._company = company;
     }
