@@ -29,7 +29,7 @@
     "endTime": "End Time",
     "averageSpeed": "Average speed",
     "price": "Price",
-    "paymentType": "Payment Type",
+    "paymentType": "Payment Method",
     "cardNumber": "Card Number",
     "ccv": "CCV",
     "expiryDate": "Expiry Date",
