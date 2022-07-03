@@ -3,27 +3,16 @@ import type { DataManager } from "@/backend/DataManager";
 import { DataModule } from "@/backend/dataModules/DataModule";
 import { dataManagerKey } from "@/keys";
 import { inject, type Ref } from "vue";
+import DataModuleVue from "../../components/DataModule.vue";
 const $dm = inject(dataManagerKey) as Ref<DataManager>;
+const PAYMENT_DATA_VIEW_DECLARATION = "Payment Data View";
 var payments = $dm.value.payments;
-var dataModule = new DataModule(payments[0], $dm.value.riskManager);
+var dataModule1 = new DataModule(payments[0], $dm.value.riskManager);
 </script>
 
 <template>
-  <h4 class="text-center m-2">Payment Data View</h4>
-  <template v-for="(value, key) in dataModule.displayedData" :key="key">
-    <div classs="my-buttons">
-      <div class>
-        <div class="row m-2 p-2">
-          <div class="col m-2 fw-bold">
-            <button type="button" :class="dataModule.risks[key]">
-              {{ $t(key) }}
-            </button>
-          </div>
-          <div class="col m-2">
-            {{ value }}
-          </div>
-        </div>
-      </div>
-    </div>
-  </template>
+  <DataModuleVue
+    :data-module="dataModule1"
+    :data-field-name="PAYMENT_DATA_VIEW_DECLARATION"
+  />
 </template>
