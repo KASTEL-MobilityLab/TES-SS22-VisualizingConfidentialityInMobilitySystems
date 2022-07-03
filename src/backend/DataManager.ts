@@ -47,7 +47,6 @@ export class DataManager {
     this.vehicles = [];
     this.routes = [];
     this.currentData = new DataPackage();
-    this.currentRisk = undefined;
   }
 
   /**

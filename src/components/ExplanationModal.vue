@@ -1,8 +1,11 @@
 <script setup lang="ts">
 import type { DataManager } from "@/backend/DataManager";
+import { getRiskColor } from "@/backend/riskManager/RiskColor";
+import { RiskLevel } from "@/backend/riskManager/RiskLevel";
 import { dataManagerKey } from "@/keys";
 import { getTranslationKeyForDataType } from "@/utils/translationUtils";
 import { inject, type Ref } from "vue";
+import ExplanationContent from "./ExplanationContent.vue";
 
 const $dm = inject(dataManagerKey) as Ref<DataManager>;
 </script>
@@ -20,6 +23,9 @@ const $dm = inject(dataManagerKey) as Ref<DataManager>;
                 ),
               })
             }}
+            <span class="badge" :class="`bg-${getRiskColor(RiskLevel.Low)}`">{{
+              $dm.currentRisk?.riskLevel
+            }}</span>
           </h5>
           <button
             type="button"
@@ -27,12 +33,8 @@ const $dm = inject(dataManagerKey) as Ref<DataManager>;
             data-bs-dismiss="modal"
           ></button>
         </div>
-        <div class="modal-body">
-          <span>
-            <p class="value">
-              {{ $t("explanation.risk_of_rider_identification") }}
-            </p>
-          </span>
+        <div v-if="$dm.currentRisk" class="modal-body">
+          <ExplanationContent :risk="$dm.currentRisk" />
         </div>
         <div class="modal-footer">
           <button

@@ -1,6 +1,6 @@
 import type { DataField } from "../dataFields";
 import { DataType } from "../DataType";
-import { RiskColor } from "../riskManager/RiskColor";
+import { getRiskColor } from "../riskManager/RiskColor";
 import { RiskLevel } from "../riskManager/RiskLevel";
 import type { RiskManager } from "../riskManager/RiskManager";
 
@@ -85,17 +85,9 @@ export class DataModule {
     const fieldNames = Object.keys(risks);
     for (const fieldName of fieldNames) {
       const riskLevel = risks[fieldName];
-      switch (riskLevel) {
-        case RiskLevel.Low:
-          risks[fieldName] = RiskColor.Green;
-          break;
-        case RiskLevel.Medium:
-          risks[fieldName] = RiskColor.Yellow;
-          break;
-        case RiskLevel.High:
-          risks[fieldName] = RiskColor.Red;
-          break;
-      }
+      risks[fieldName] = `btn btn-${getRiskColor(
+        RiskLevel[riskLevel as keyof typeof RiskLevel]
+      )}`;
     }
     return risks;
   }
