@@ -1,25 +1,26 @@
 {
   "app": {
-    "help": "Help",
-    "confidentiality-visualizer": "Confidentiality Visualizer",
-    "welcome": "Welcome to our @:app.confidentiality-visualizer",
-    "dataViewer": "Data Viewer",
-    "user": "User",
-    "company": "Company",
     "city": "City",
+    "close": "Close",
+    "company": "Company",
+    "confidentiality-visualizer": "Confidentiality Visualizer",
+    "dataViewer": "Data Viewer",
+    "day": "no day | one day | {count} days",
+    "help": "Help",
     "month": "no month | one month | {count} months",
-    "year": "no year | one year | {count} years",
-    "day": "no day | one day | {count} days"
+    "user": "User",
+    "welcome": "Welcome to our @:app.confidentiality-visualizer",
+    "year": "no year | one year | {count} years"
   },
   "data": {
-    "riderData": "Rider Data",
-    "vehicleData": "Vehicle Data",
-    "tripData": "Trip Data",
-    "paymentData": "Payment Data",
-    "forename": "Forename",
-    "surname": "Surname",
+    "address": "Address",
     "email": "E-Mail",
+    "forename": "Forename",
+    "paymentData": "Payment Data",
     "phoneNumber": "Phone Number",
-    "address": "Address"
+    "riderData": "Rider Data",
+    "surname": "Surname",
+    "tripData": "Trip Data",
+    "vehicleData": "Vehicle Data"
   }
 }

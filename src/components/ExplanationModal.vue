@@ -1,17 +1,10 @@
 <script setup lang="ts">
 import type { DataManager } from "@/backend/DataManager";
-import type { DataType } from "@/backend/DataType";
 import { dataManagerKey } from "@/keys";
+import { getTranslationKeyForDataType } from "@/utils/translationUtils";
 import { inject, type Ref } from "vue";
 
 const $dm = inject(dataManagerKey) as Ref<DataManager>;
-
-function getTranslationKeyForDataType(dataType: DataType | undefined): string {
-  if (!dataType) {
-    return "";
-  }
-  return `data.${dataType}`;
-}
 </script>
 
 <template>
@@ -20,8 +13,13 @@ function getTranslationKeyForDataType(dataType: DataType | undefined): string {
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title">
-            Explanation for DataType
-            {{ $t(getTranslationKeyForDataType($dm.currentRisk?.dataType)) }}
+            {{
+              $t("explanation.title", {
+                dataType: $t(
+                  getTranslationKeyForDataType($dm.currentRisk?.dataType)
+                ),
+              })
+            }}
           </h5>
           <button
             type="button"
@@ -31,7 +29,9 @@ function getTranslationKeyForDataType(dataType: DataType | undefined): string {
         </div>
         <div class="modal-body">
           <span>
-            <p class="value">Risk of Rider Identification</p>
+            <p class="value">
+              {{ $t("explanation.risk_of_rider_identification") }}
+            </p>
           </span>
         </div>
         <div class="modal-footer">
@@ -40,7 +40,7 @@ function getTranslationKeyForDataType(dataType: DataType | undefined): string {
             class="btn btn-secondary"
             data-bs-dismiss="modal"
           >
-            Close
+            {{ $t("app.close") }}
           </button>
         </div>
       </div>

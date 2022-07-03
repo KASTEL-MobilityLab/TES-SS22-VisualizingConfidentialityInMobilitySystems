@@ -1,5 +1,7 @@
 {
   "explanation": {
+    "title": "Risiko-Erklärung für Datentyp {dataType}",
+    "risk_of_rider_identification": "Risiko der Identifizierung des Fahrers",
     "durationStored": "Die Daten werden für {duration} gespeichert."
   }
 }

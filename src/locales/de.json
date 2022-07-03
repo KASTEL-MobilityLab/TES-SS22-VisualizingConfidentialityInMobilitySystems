@@ -1,6 +1,7 @@
 {
   "app": {
     "help": "Hilfe",
+    "close": "Schließen",
     "confidentiality-visualizer": "Vertraulichkeits-Visualisierer",
     "welcome": "Willkommen zu unserem @:app.confidentiality-visualizer",
     "dataViewer": "Daten-Anzeiger",

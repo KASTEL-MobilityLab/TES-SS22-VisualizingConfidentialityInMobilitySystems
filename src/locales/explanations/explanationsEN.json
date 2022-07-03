@@ -1,5 +1,7 @@
 {
   "explanation": {
+    "title": "Risk Explanation for data type {dataType}",
+    "risk_of_rider_identification": "Risk of Rider Identification",
     "durationStored": "The data will be stored for {duration}."
   }
 }
