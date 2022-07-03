@@ -5,7 +5,8 @@ import { RiskExplanation } from "./RiskExplanation";
 import { RiskLevel } from "./RiskLevel";
 
 /**
- * The riskDefinition class.
+ * The Risk class contains the DataType (e.g. Forename), the associated Risk Level (low, medium, high)
+ * the visibility of the data for each and role and a respective explanation why it is or is not visible in the specified Role.
  */
 export class Risk {
   @Transform(({ value }) => DataType[value as keyof typeof DataType])

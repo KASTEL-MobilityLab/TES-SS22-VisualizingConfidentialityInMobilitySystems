@@ -1,3 +1,4 @@
+import type { DataType } from "../DataType";
 import type { Role } from "../Role";
 import type { Risk } from "./Risk";
 import type { RiskExplanation } from "./RiskExplanation";
@@ -22,7 +23,7 @@ export class RiskManager {
    *
    * @param dataType the string of the DataType
    */
-  findRisk(dataType: string) {
+  findRisk(dataType: DataType) {
     if (!this.risks) {
       throw Error("RiskDefinitions are not set yet");
     }
@@ -38,7 +39,7 @@ export class RiskManager {
    * @param dataType the type of the specific data
    * @returns low, medium or high
    * */
-  getRiskLevel(dataType: string): RiskLevel {
+  getRiskLevel(dataType: DataType): RiskLevel {
     return this.findRisk(dataType).riskLevel;
   }
 
@@ -48,7 +49,7 @@ export class RiskManager {
    * @param dataType the type of the specific data
    * @returns boolean with the visibility
    */
-  getVisibility(dataType: string, role: Role): boolean {
+  getVisibility(dataType: DataType, role: Role): boolean {
     const riskDef = this.findRisk(dataType);
     return riskDef.isVisible(role);
   }
@@ -58,7 +59,7 @@ export class RiskManager {
    * @param dataType the type of the specific data
    * @returns a sting with detailed infos
    * */
-  getExplanation(dataType: string, role: Role): RiskExplanation {
+  getExplanation(dataType: DataType, role: Role): RiskExplanation {
     throw Error("Not implemented yet");
   }
 }

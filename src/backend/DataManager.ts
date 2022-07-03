@@ -9,6 +9,7 @@ import type {
 import type { Route } from "./dataFields/Route";
 import { DataLoader, type DataLoaderParams } from "./DataLoader";
 import { DataPackage } from "./DataPackage";
+import type { DataType } from "./DataType";
 import type { Risk } from "./riskManager/Risk";
 import { RiskManager } from "./riskManager/RiskManager";
 import { Role } from "./Role";
@@ -29,6 +30,7 @@ export class DataManager {
   //The currently selected DataPackage
   currentData: DataPackage;
   riskManager: RiskManager;
+  currentRisk?: Risk;
 
   /**
    * Construct a new DataManager.
@@ -45,6 +47,7 @@ export class DataManager {
     this.vehicles = [];
     this.routes = [];
     this.currentData = new DataPackage();
+    this.currentRisk = undefined;
   }
 
   /**
@@ -207,5 +210,18 @@ export class DataManager {
       throw Error(`No trip is found for vehicle ${vehicle.id}`);
     }
     return trip;
+  }
+
+  setCurrentRisk(risk: string | Risk) {
+    if (typeof risk === "string") {
+      try {
+        const dataType = <DataType>risk;
+        this.currentRisk = this.riskManager.findRisk(dataType);
+      } catch (e) {
+        throw Error(`Could not convert string ${risk} to DataType`);
+      }
+    } else {
+      this.currentRisk = risk;
+    }
   }
 }
