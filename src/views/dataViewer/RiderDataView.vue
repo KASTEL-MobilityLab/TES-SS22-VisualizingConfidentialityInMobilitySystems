@@ -6,6 +6,11 @@ import { inject, type Ref } from "vue";
 const $dm = inject(dataManagerKey) as Ref<DataManager>;
 var users = $dm.value.users;
 var dataModule = new DataModule(users[0], $dm.value.riskManager);
+
+function setCurrentRisk(key: string) {
+  const datatype: string = key.split(".")[1];
+  $dm.value.setCurrentRisk(datatype);
+}
 </script>
 
 <template>
@@ -18,7 +23,7 @@ var dataModule = new DataModule(users[0], $dm.value.riskManager);
           :class="dataModule.risks[key]"
           data-bs-toggle="modal"
           data-bs-target="#explanationModal"
-          :data-bs-origin="key"
+          @click="setCurrentRisk(key)"
         >
           {{ $t(key) }}
         </button>
