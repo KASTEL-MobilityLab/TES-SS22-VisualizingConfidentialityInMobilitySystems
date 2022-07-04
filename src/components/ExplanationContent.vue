@@ -52,9 +52,10 @@ const riskOfIdentificationString: ComputedRef<string> = computed(() => {
       </div>
       <div v-if="retentionPeriodString" class="col">
         <ExplanationCard
-          :title="$t(getTranslationKeyForExplanation('retentionPeriod'))"
+          :title="$t(getTranslationKeyForExplanation('retention_period'))"
           :content="retentionPeriodString"
         />
+        <!-- Instead of props, we could use slots to be able to customize it further. -->
       </div>
     </div>
   </div>

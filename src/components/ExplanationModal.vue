@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import type { DataManager } from "@/backend/DataManager";
 import { getRiskColor } from "@/backend/riskManager/RiskColor";
-import { RiskLevel } from "@/backend/riskManager/RiskLevel";
 import { dataManagerKey } from "@/keys";
 import { getTranslationKeyForDataType } from "@/utils/translationUtils";
 import { inject, type Ref } from "vue";
@@ -23,9 +22,12 @@ const $dm = inject(dataManagerKey) as Ref<DataManager>;
                 ),
               })
             }}
-            <span class="badge" :class="`bg-${getRiskColor(RiskLevel.Low)}`">{{
-              $dm.currentRisk?.riskLevel
-            }}</span>
+            <span
+              v-if="$dm.currentRisk"
+              class="badge"
+              :class="`bg-${getRiskColor($dm.currentRisk?.riskLevel)}`"
+              >{{ $dm.currentRisk?.riskLevel }}</span
+            >
           </h5>
           <button
             type="button"
