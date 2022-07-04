@@ -18,3 +18,12 @@ export function getTranslationKeyForDataType(
   }
   return concatenatePrefixWithKey(DataTypePrefix, key);
 }
+
+export function getTranslationKeyForExplanation(
+  key: string | undefined
+): string {
+  if (!key) {
+    return "";
+  }
+  return concatenatePrefixWithKey(ExplanationPrefix, key);
+}
