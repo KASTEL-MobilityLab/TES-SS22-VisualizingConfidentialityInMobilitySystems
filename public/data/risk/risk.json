@@ -67,18 +67,24 @@
     "riskLevel": "Low",
     "roleVisibility": ["Company", "User"],
     "explanation": {
-      "retentionPeriod": 365
+      "retentionPeriod": "until_user_deleted"
     }
   },
   {
     "dataType": "UserPhoneNumber",
     "riskLevel": "Medium",
-    "roleVisibility": ["Company", "User"]
+    "roleVisibility": ["Company", "User"],
+    "explanation": {
+      "retentionPeriod": 365
+    }
   },
   {
     "dataType": "UserEmail",
     "riskLevel": "Medium",
-    "roleVisibility": ["Company", "User"]
+    "roleVisibility": ["Company", "User"],
+    "explanation": {
+      "retentionPeriod": "stored_until_no_longer_necessary"
+    }
   },
   {
     "dataType": "VehicleId",
