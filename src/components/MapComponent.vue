@@ -3,6 +3,7 @@ import type { DataManager } from "@/backend/DataManager";
 import { dataManagerKey } from "@/keys";
 import type { VehicleMarker } from "@/utils/leafletExtension";
 import { generateAllVehicleMarkers } from "@/utils/markerUtils";
+import { createRoute } from "@/utils/routing";
 import L, { type LeafletEvent } from "leaflet";
 import { inject, onMounted, type Ref } from "vue";
 
@@ -12,6 +13,7 @@ const $dm = inject(dataManagerKey) as Ref<DataManager>;
 onMounted(() => {
   const map = setupMap();
   setupMarkers(map);
+  setupRoute(map);
 });
 
 /**
@@ -78,6 +80,14 @@ function vehicleMarkerClicked(event: LeafletEvent) {
       marker.getLatLng()
   );
   $dm.value.updateByVehicle(vehicle);
+}
+
+function setupRoute(map: L.Map) {
+  createRoute(
+    new L.LatLng(49.007478, 8.385981),
+    new L.LatLng(49.0075, 8.381111),
+    map
+  );
 }
 </script>
 

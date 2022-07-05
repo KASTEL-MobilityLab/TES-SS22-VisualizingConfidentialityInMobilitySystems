@@ -10,7 +10,9 @@ export function createRoute(
     waypoints: [L.latLng(latLngStart), L.latLng(latLngEnd)],
     routeWhileDragging: true,
   }).addTo(map);
-  route.routing._container.style.display = "none";
-  //map.removeControl(route);
-  //L.Routing.control.remove();
+  route.control.hide;
+}
+
+export function removeRoute(map: L.Map) {
+  map.removeControl(routingControl);
 }
