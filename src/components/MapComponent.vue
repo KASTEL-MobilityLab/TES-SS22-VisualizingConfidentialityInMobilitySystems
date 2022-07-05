@@ -6,6 +6,7 @@ import {
 } from "@/utils/markerUtils";
 import L from "leaflet";
 import { onMounted } from "vue";
+import { createRoute } from "@/utils/routing";
 
 const topLeft = new L.LatLng(49.036357, 8.334785);
 const bottomRight = new L.LatLng(48.977558, 8.469264);
@@ -44,6 +45,7 @@ onMounted(() => {
   createBikeMarker(bikePositionV01).addTo(map);
   createBusMarker(busPositionV03).addTo(map);
   createTrainMarker(trainPositionV02).addTo(map);
+  createRoute(bikePositionV01, trainPositionV02, map);
 });
 </script>
 
