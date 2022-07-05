@@ -2,9 +2,10 @@
  * Vehicle Type defines the specific types of a Vehicle (e.g. E-Scooter).
  */
 export enum VehicleType {
-  escooter = "E-Scooter",
-  bike = "Bicycle",
+  EScooter = "E-Scooter",
+  Bike = "Bicycle",
   train = "Train",
+  bus = "Bus",
 }
 
 /**
@@ -12,8 +13,8 @@ export enum VehicleType {
  * or not (inactive).
  */
 export enum VehicleStatus {
-  active = "Active",
-  inactive = "Inactive",
+  Active = "Active",
+  Inactive = "Inactive",
 }
 
 export type VehicleStatusString = keyof typeof VehicleStatus;
@@ -22,7 +23,7 @@ export type VehicleStatusString = keyof typeof VehicleStatus;
  * PaymentType specifies with which type of payment the user paid.
  */
 export enum PaymentType {
-  cash = "Cash",
-  creditcard = "Credit Card",
-  paypal = "PayPal",
+  Cash = "Cash",
+  CreditCard = "Credit Card",
+  PayPal = "PayPal",
 }

@@ -6,17 +6,17 @@ import type {
   User,
   Vehicle,
 } from "./dataFields";
-import { DataLoader } from "./DataLoader";
+import type { Route } from "./dataFields/Route";
+import { DataLoader, type DataLoaderParams } from "./DataLoader";
 import { DataPackage } from "./DataPackage";
-import { Role } from "./roles";
-import type { Route } from "./Route";
+import type { Risk } from "./riskManager/Risk";
+import { RiskManager } from "./riskManager/RiskManager";
+import { Role } from "./Role";
 
 export class DataManager {
   currentRole: Role;
-  currentUser?: User;
-  currentCompany?: Company;
-  currentVehicle?: Vehicle;
-  currentTrip?: Trip;
+  roleUser?: User;
+  roleCompany?: Company;
 
   companies: Company[];
   payments: Payment[];
@@ -27,21 +27,24 @@ export class DataManager {
 
   dataLoader: DataLoader;
   //The currently selected DataPackage
-  currentDataPackage?: DataPackage;
+  currentData: DataPackage;
+  riskManager: RiskManager;
 
   /**
    * Construct a new DataManager.
    */
-  constructor() {
+  constructor(dataLoaderParams: DataLoaderParams = {}) {
     //The city is set as the default role
-    this.currentRole = Role.city;
-    this.dataLoader = new DataLoader();
+    this.currentRole = Role.City;
+    this.dataLoader = new DataLoader(dataLoaderParams);
+    this.riskManager = new RiskManager();
     this.companies = [];
     this.payments = [];
     this.trips = [];
     this.users = [];
     this.vehicles = [];
     this.routes = [];
+    this.currentData = new DataPackage();
   }
 
   /**
@@ -57,6 +60,7 @@ export class DataManager {
    * This method initializes the data manager by asynchronously loading all data.
    */
   async init() {
+    let risks: Risk[];
     [
       this.users,
       this.companies,
@@ -64,17 +68,31 @@ export class DataManager {
       this.vehicles,
       this.routes,
       this.payments,
-    ] = await Promise.all([
-      this.dataLoader.loadAllUsers(),
-      this.dataLoader.loadAllCompanies(),
-      this.dataLoader.loadAllTrips(),
-      this.dataLoader.loadAllVehicles(),
-      this.dataLoader.loadAllRoutes(),
-      this.dataLoader.loadAllPayments(),
-    ]);
+      risks,
+    ] = await this.dataLoader.loadAllData();
+    this.riskManager.risks = risks;
     this.setAllReferences();
+    this.trips.map((trip) => trip.setVehicleStartPosition());
   }
 
+  /**
+   * Updates the selected references by the given vehicle.
+   * If the vehicle is inactive, only the vehicle (and therefore company) will be changed.
+   * If it is active, the vehicle and the trip will be changed, causing the data package
+   * to update user and payment as well.
+   *
+   * @param vehicle the new selected vehicle
+   */
+  updateByVehicle(vehicle: Vehicle) {
+    let trip: Trip | undefined = undefined;
+
+    // check if vehicle is stationary or associated to a trip (active)
+    if (vehicle.isActive()) {
+      // vehicle is not stationary
+      trip = this.getTripByVehicle(vehicle);
+    }
+    this.currentData.update(vehicle, trip);
+  }
   /**
    * Searches for a given DataField in the particular referenceArray.
    * If the given id does not match any DataField in the array, an error will be thrown.
@@ -171,7 +189,7 @@ export class DataManager {
    * @param userId The user of the selected user.
    */
   private changeUser(userId: string) {
-    this.currentUser = <User>this.getDataById(userId, this.users);
+    this.roleUser = <User>this.getDataById(userId, this.users);
   }
 
   /**
@@ -179,43 +197,15 @@ export class DataManager {
    * @param companyId The user of the selected company.
    */
   private changeCompany(companyId: string) {
-    this.currentCompany = <Company>this.getDataById(companyId, this.companies);
+    this.roleCompany = <Company>this.getDataById(companyId, this.companies);
   }
 
-  /**
-   * Change the current vehicle.
-   * @param vehicleId The user of the selected vehicle.
-   */
-  private changeVehicle(vehicleId: string) {
-    this.currentVehicle = <Vehicle>this.getDataById(vehicleId, this.vehicles);
-  }
-
-  /**
-   * Change the current trip.
-   * @param tripId The user of the selected trip.
-   */
-  private changeTrip(tripId: string) {
-    this.currentTrip = <Trip>this.getDataById(tripId, this.trips);
-  }
-
-  /**
-   * Changes the current DataPackage to a new DataPackage
-   * @param vehicle The vehicle that is selected.
-   * @param user The user that is driving the trip.
-   * @param payment The payment with which the trip is paid.
-   * @param trip The trip that is driven by the user.
-   */
-  private changeDataPackage(
-    vehicle: Vehicle,
-    user?: User,
-    payment?: Payment,
-    trip?: Trip
-  ) {
-    const newDataPackage = new DataPackage(vehicle, user, payment, trip);
-    if (newDataPackage.checkValidity()) {
-      this.currentDataPackage = newDataPackage;
-    } else {
-      throw Error(`The DataPackage to creation is not valid.`);
+  // find a trip by its vehicle.
+  private getTripByVehicle(vehicle: Vehicle): Trip {
+    const trip = this.trips.find((trip) => trip.vehicleId === vehicle.id);
+    if (!trip) {
+      throw Error(`No trip is found for vehicle ${vehicle.id}`);
     }
+    return trip;
   }
 }

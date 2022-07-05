@@ -11,14 +11,14 @@ describe.concurrent("Test Vehicle Subclasses", async () => {
     fireRunnerCompany.id,
     84,
     89,
-    VehicleStatus.active,
+    VehicleStatus.Active,
     74,
     fireRunnerCompany
   );
 
-  it("try to retrieve undefined company of vehicle", async () => {
-    const train = new Train("V01", "C01", VehicleStatus.inactive);
-    expect(() => train.company).toThrowError();
+  it("try to set undefined company of vehicle", async () => {
+    const train = new Train("V01", "C01", VehicleStatus.Inactive);
+    expect(() => (train.company = undefined)).toThrowError();
   });
 
   it("assign invalid company", async () => {

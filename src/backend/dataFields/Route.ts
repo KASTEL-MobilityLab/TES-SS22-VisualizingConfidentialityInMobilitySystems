@@ -1,6 +1,6 @@
 import { Expose, Type } from "class-transformer";
-import { DataField } from "./dataFields/DataField";
-import { LatLng } from "./utils/LatLng";
+import { DataField } from "./DataField";
+import { LatLng } from "../utils/LatLng";
 
 /**
  * The Route class.

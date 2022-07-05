@@ -29,13 +29,13 @@ export abstract class Payment extends DataField {
   }
 
   get trip() {
-    if (this._trip === undefined) {
-      throw Error("Trip has not been set yet.");
-    }
     return this._trip;
   }
 
-  set trip(trip: Trip) {
+  set trip(trip: Trip | undefined) {
+    if (!trip) {
+      throw new Error("Cannot set the trip of this payment to undefined.");
+    }
     this.checkForeignKeyReferences(trip, this.tripId);
     this._trip = trip;
   }

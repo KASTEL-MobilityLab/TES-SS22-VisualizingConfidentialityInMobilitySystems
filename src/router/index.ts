@@ -5,10 +5,10 @@ import RiderDataView from "@/views/dataViewer/RiderDataView.vue";
 import TripDataView from "@/views/dataViewer/TripDataView.vue";
 import VehicleDataView from "@/views/dataViewer/VehicleDataView.vue";
 import WelcomeView from "@/views/dataViewer/WelcomeView.vue";
-import { createRouter, createWebHistory } from "vue-router";
+import { createRouter, createWebHashHistory } from "vue-router";
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
+  history: createWebHashHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: "/",
@@ -59,6 +59,11 @@ const router = createRouter({
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
       component: () => import("../views/HelpView.vue"),
+    },
+    {
+      path: "/:pathMatch(.*)*",
+      name: "NotFound",
+      redirect: "/",
     },
   ],
 });

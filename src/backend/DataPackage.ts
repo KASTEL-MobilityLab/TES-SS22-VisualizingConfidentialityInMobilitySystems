@@ -1,38 +1,93 @@
-import type { Payment, Trip, User, Vehicle } from "./dataFields";
-import { VehicleStatus } from "./dataFields/types";
+import type {
+  Company,
+  Payment,
+  Route,
+  Trip,
+  User,
+  Vehicle,
+} from "./dataFields";
 
 /**
- * Class that contains all the data that can be dispalyed in the DataViewer after clicking on an icon in the user interface.
- * A DataPackage can be created either for a trip after clicking on driven trip or for a vehicle that is currently not active.
+ * The DataPackages maintains the the currently selected data which can be undefined if the user
+ * clicks on an empty spot on the map.
+ *
+ * It stores the vehicle and the trip. With those classes, user, payment, route and company can be retrieved
+ * by cross references.
  */
 export class DataPackage {
-  vehicle: Vehicle;
-  user?: User;
-  payment?: Payment;
-  trip?: Trip;
+  private vehicle?: Vehicle;
+  private trip?: Trip;
 
   /**
-   * Construct a new DataPackage.
-   * @param user The user of the DataPackage.
-   * @param payment The payment of the DataPackage.
-   * @param trip The trip of the dataPackage.
-   * @param vehicle The Vehicle of the DataPackage.
+   * Returns the current user or undefined if none is selected.
+   *
+   * @returns the currently selected user
    */
-  constructor(vehicle: Vehicle, user?: User, payment?: Payment, trip?: Trip) {
-    this.vehicle = vehicle;
-    if (vehicle.status === VehicleStatus.active) {
-      this.user = user;
-      this.payment = payment;
-      this.trip = trip;
-    }
+  getUser(): User | undefined {
+    return this.trip?.user;
   }
 
-  checkValidity(): boolean {
-    let valid = false;
-    if (this.vehicle.company === this.trip?.vehicle.company) {
-      valid = true;
-    }
-    // more checks ...
-    return valid;
+  /**
+   * Returns the current payment or undefined if none is selected.
+   *
+   * @returns the currently selected payment
+   */
+  getPayment(): Payment | undefined {
+    return this.trip?.payment;
+  }
+
+  /**
+   * Returns the current route or undefined if none is selected.
+   *
+   * @returns the currently selected route
+   */
+  getRoute(): Route | undefined {
+    return this.trip?.route;
+  }
+
+  /**
+   * Returns the current vehicle or undefined if none is selected.
+   *
+   * @returns the currently selected vehicle
+   */
+  getVehicle(): Vehicle | undefined {
+    return this.vehicle;
+  }
+
+  /**
+   * Returns the current trip or undefined if none is selected.
+   *
+   * @returns the currently selected trip
+   */
+  getTrip(): Trip | undefined {
+    return this.trip;
+  }
+
+  /**
+   * Returns the current company or undefined if none is selected.
+   *
+   * @returns the currently selected company
+   */
+  getCompany(): Company | undefined {
+    return this.vehicle?.company;
+  }
+
+  /**
+   * Unsets the current references.
+   */
+  unsetReferences() {
+    this.vehicle = undefined;
+    this.trip = undefined;
+  }
+
+  /**
+   * Updates the current references to vehicle and trip. Trip can be undefined, if the vehicle is inactive.
+   *
+   * @param vehicle the newly selected vehicle
+   * @param trip the newly selected trip that is associated with the vehicle or undefined if vehicle is stationary
+   */
+  update(vehicle: Vehicle, trip?: Trip) {
+    this.vehicle = vehicle;
+    this.trip = trip;
   }
 }
