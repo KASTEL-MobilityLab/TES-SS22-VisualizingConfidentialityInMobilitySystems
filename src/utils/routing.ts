@@ -6,8 +6,11 @@ export function createRoute(
   latLngEnd: L.LatLngExpression,
   map: L.Map
 ): void {
-  L.Routing.control({
-    waypoints: [L.latLng(57.74, 11.94), L.latLng(57.6792, 11.949)],
+  const route = L.Routing.control({
+    waypoints: [L.latLng(latLngStart), L.latLng(latLngEnd)],
+    routeWhileDragging: true,
   }).addTo(map);
-  L.Routing.control.remove();
+  route.routing._container.style.display = "none";
+  //map.removeControl(route);
+  //L.Routing.control.remove();
 }
