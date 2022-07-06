@@ -30,6 +30,6 @@ export class EScooter extends IndividualVehicle {
     super(id, companyId, VehicleType.EScooter, status, company);
     this.condition = condition;
     this.batteryCondition = batteryCondition;
-    this.batteryLevel = String(batteryLevel) + "%";
+    this.batteryLevel = String(batteryLevel);
   }
 }
