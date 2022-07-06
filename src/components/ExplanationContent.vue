@@ -9,6 +9,7 @@ import { useI18n } from "vue-i18n";
 import ExplanationCard from "./ExplanationCard.vue";
 
 const $dm = inject(dataManagerKey) as Ref<DataManager>;
+console.table($dm.value.currentRisk?.explanation?.isNotVisibleExplanation);
 
 // must use this if we want to use the translation function inside script setup
 const { t } = useI18n();
@@ -31,12 +32,29 @@ const retentionPeriodString: ComputedRef<string> = computed(() => {
   }
 });
 
-const riskOfIdentificationString: ComputedRef<string> = computed(() => {
-  const currentRole = $dm.value.currentRole;
-  const isVisible = props.risk.isVisible(currentRole);
-  const key = `data_is${isVisible ? "" : "_not"}_visible`;
-  return t(getTranslationKeyForExplanation(key), { role: currentRole });
+const roleVisibilityExplanation: ComputedRef<string> = computed(() => {
+  const explanation = getCurrentExplanation();
+  if (explanation) {
+    return t(getTranslationKeyForExplanation(explanation.translationKey));
+  } else {
+    return "";
+  }
 });
+
+const sourceString: ComputedRef<string> = computed(() => {
+  const explanation = getCurrentExplanation();
+  if (explanation && explanation.source) {
+    return explanation.source;
+  } else {
+    return "";
+  }
+});
+
+// gets the current explanation for the selected role and visibility
+function getCurrentExplanation() {
+  const currentRole = $dm.value.currentRole;
+  return $dm.value.currentRisk?.getExplanation(currentRole);
+}
 </script>
 
 <template>
@@ -47,7 +65,8 @@ const riskOfIdentificationString: ComputedRef<string> = computed(() => {
           :title="
             $t(getTranslationKeyForExplanation('risk_of_rider_identification'))
           "
-          :content="riskOfIdentificationString"
+          :content="roleVisibilityExplanation"
+          :source="sourceString"
         />
       </div>
       <div v-if="retentionPeriodString" class="col">
@@ -55,7 +74,6 @@ const riskOfIdentificationString: ComputedRef<string> = computed(() => {
           :title="$t(getTranslationKeyForExplanation('retention_period'))"
           :content="retentionPeriodString"
         />
-        <!-- Instead of props, we could use slots to be able to customize it further. -->
       </div>
     </div>
   </div>
