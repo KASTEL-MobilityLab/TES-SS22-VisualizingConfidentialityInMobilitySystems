@@ -6,8 +6,10 @@ import { inject, type Ref } from "vue";
 import DataModuleVue from "../../components/DataModule.vue";
 const $dm = inject(dataManagerKey) as Ref<DataManager>;
 const TRIP_DATA_VIEW_KEY = "app.dataViews.tripDataView";
-var trips = $dm.value.trips;
-var dataModule = new DataModule(trips[0], $dm.value.riskManager);
+var dataModule = new DataModule(
+  $dm.value.currentData.getTrip()!,
+  $dm.value.riskManager
+);
 </script>
 
 <template>
