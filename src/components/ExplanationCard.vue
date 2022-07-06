@@ -3,6 +3,7 @@ defineProps<{
   title: string;
   subtitle?: string;
   content: string;
+  source?: string;
 }>();
 </script>
 
@@ -10,12 +11,15 @@ defineProps<{
   <div class="card text-center rounded">
     <div class="card-body">
       <h5 class="card-title">{{ title }}</h5>
-      <h6 v-if="subtitle" class="card-subtitle mb-2 text-muted">
+      <h6 v-show="subtitle" class="card-subtitle mb-2 text-muted">
         {{ subtitle }}
       </h6>
       <p class="card-text">
         {{ content }}
       </p>
+    </div>
+    <div v-show="source" class="card-footer text-muted">
+      <a :href="source">{{ $t("app.source") }}</a>
     </div>
   </div>
 </template>
