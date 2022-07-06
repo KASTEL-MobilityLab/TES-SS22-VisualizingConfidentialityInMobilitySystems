@@ -5,7 +5,7 @@ import { dataManagerKey } from "@/keys";
 import { inject, type Ref } from "vue";
 import DataModuleVue from "../../components/DataModule.vue";
 const $dm = inject(dataManagerKey) as Ref<DataManager>;
-const VEHICLE_DATA_VIEW_DECLARATION = "Vehicle Data View";
+const VEHICLE_DATA_VIEW_KEY = "app.dataViews.vehicleDataView";
 var vehicles = $dm.value.vehicles;
 var dataModule = new DataModule(vehicles[0], $dm.value.riskManager);
 </script>
@@ -13,6 +13,6 @@ var dataModule = new DataModule(vehicles[0], $dm.value.riskManager);
 <template>
   <DataModuleVue
     :data-module="dataModule"
-    :data-field-name="VEHICLE_DATA_VIEW_DECLARATION"
+    :data-field-name="VEHICLE_DATA_VIEW_KEY"
   />
 </template>

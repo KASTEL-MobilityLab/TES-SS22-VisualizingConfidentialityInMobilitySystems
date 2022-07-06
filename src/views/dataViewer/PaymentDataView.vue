@@ -5,7 +5,7 @@ import { dataManagerKey } from "@/keys";
 import { inject, type Ref } from "vue";
 import DataModuleVue from "../../components/DataModule.vue";
 const $dm = inject(dataManagerKey) as Ref<DataManager>;
-const PAYMENT_DATA_VIEW_DECLARATION = "Payment Data View";
+const PAYMENT_DATA_VIEW_KEY = "app.dataViews.paymentDataView";
 var payments = $dm.value.payments;
 var dataModule1 = new DataModule(payments[0], $dm.value.riskManager);
 </script>
@@ -13,6 +13,6 @@ var dataModule1 = new DataModule(payments[0], $dm.value.riskManager);
 <template>
   <DataModuleVue
     :data-module="dataModule1"
-    :data-field-name="PAYMENT_DATA_VIEW_DECLARATION"
+    :data-field-name="PAYMENT_DATA_VIEW_KEY"
   />
 </template>

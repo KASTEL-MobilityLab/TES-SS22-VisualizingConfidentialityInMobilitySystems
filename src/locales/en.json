@@ -9,7 +9,13 @@
     "city": "City",
     "month": "no month | one month | {count} months",
     "year": "no year | one year | {count} years",
-    "day": "no day | one day | {count} days"
+    "day": "no day | one day | {count} days",
+    "dataViews": {
+      "paymentDataView": "Payment Data",
+      "riderDataView": "Rider Data",
+      "tripDataView": "Trip Data",
+      "vehicleDataView": "Vehicle Data"
+    }
   },
   "data": {
     "riderData": "Rider Data",

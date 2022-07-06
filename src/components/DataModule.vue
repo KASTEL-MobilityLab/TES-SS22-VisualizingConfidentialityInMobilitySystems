@@ -16,7 +16,7 @@ const $dm = inject(dataManagerKey) as Ref<DataManager>;
 </script>
 
 <template>
-  <h4 class="text-center m-2">{{ dataFieldName }}</h4>
+  <h4 class="text-center m-2">{{ $t(dataFieldName) }}</h4>
   <template v-for="(value, key) in dataModule.displayedData" :key="key">
     <div classs="my-buttons">
       <div class>
