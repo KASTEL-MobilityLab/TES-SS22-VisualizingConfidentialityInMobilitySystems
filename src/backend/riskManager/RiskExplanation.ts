@@ -39,36 +39,25 @@ export class RiskExplanation {
     this.isNotVisibleExplanation = isNotVisibleExplanation;
     this.isVisibleExplanation = isVisibleExplanation;
     this.riskLevelExplanation = riskLevelExplanation;
-    // this.setRoleExplanationTranslationKeys(
-    //   "isNotVisible",
-    //   false,
-    //   isNotVisibleExplanation
-    // );
-    // this.setRoleExplanationTranslationKeys(
-    //   "isVisible",
-    //   true,
-    //   isVisibleExplanation
-    // );
-    if (!this.retentionPeriod) {
-      // set default values as a temporary workaround
-      this.retentionPeriod = 365;
+    if (!this.isNotVisibleExplanation) {
+      // construct the objects manually and then set the keys afterwards
       this.isNotVisibleExplanation = {
-        Company: { translationKey: "NOT_SET" },
-        User: { translationKey: "NOT_SET" },
-        City: { translationKey: "NOT_SET" },
+        Company: { translationKey: "" },
+        User: { translationKey: "" },
+        City: { translationKey: "" },
       };
       this.isVisibleExplanation = {
-        Company: { translationKey: "NOT_SET" },
-        User: { translationKey: "NOT_SET" },
-        City: { translationKey: "NOT_SET" },
+        Company: { translationKey: "" },
+        User: { translationKey: "" },
+        City: { translationKey: "" },
       };
-      this.riskLevelExplanation = {
-        translationKey: "NOT_SET",
-      };
+      this.setRoleExplanationTranslationKeys("isNotVisible", false);
+      this.setRoleExplanationTranslationKeys("isVisible", true);
     }
   }
 
   /**
+   * Returns the explanation for the given role and the given visibility.
    *
    * @param isVisible if true, the corresponding explanation is returned
    * @returns
@@ -90,13 +79,19 @@ export class RiskExplanation {
     }
   }
 
+  // sets the translation key for each role, so that we do not have to do it manually in the json file
   private setRoleExplanationTranslationKeys(
     prefix: string,
-    isVisible: boolean,
-    explanations: RoleExplanation
+    isVisible: boolean
   ) {
+    let explanations: RoleExplanation;
+    if (isVisible) {
+      explanations = this.isVisibleExplanation;
+    } else {
+      explanations = this.isNotVisibleExplanation;
+    }
     for (const key in explanations) {
-      explanations[key].translationKey = prefix + "_" + key;
+      explanations[key].translationKey = prefix + "_" + key.toLowerCase();
     }
   }
 }
