@@ -59,6 +59,6 @@ export class Risk {
    * @returns the Explanation for the role
    */
   getExplanation(role: Role) {
-    return this.explanation?.getExplanation(this.isVisible(role), role);
+    return this.explanation?.getRoleExplanation(this.isVisible(role), role);
   }
 }

@@ -75,7 +75,18 @@
     "riskLevel": "Medium",
     "roleVisibility": ["Company", "User"],
     "explanation": {
-      "retentionPeriod": 365
+      "retentionPeriod": 365,
+      "riskLevelExplanation": "medium_risk_explanation",
+      "isNotVisibleExplanation": {
+        "Company": { "source": "https://dsgvo-gesetz.de/art-4-dsgvo/" },
+        "User": { "source": "https://dsgvo-gesetz.de/art-4-dsgvo/" },
+        "City": { "source": "https://dsgvo-gesetz.de/art-4-dsgvo/" }
+      },
+      "isVisibleExplanation": {
+        "Company": { "source": "https://dsgvo-gesetz.de/art-4-dsgvo/" },
+        "User": { "source": "https://dsgvo-gesetz.de/art-4-dsgvo/" },
+        "City": { "source": "https://dsgvo-gesetz.de/art-4-dsgvo/" }
+      }
     }
   },
   {
@@ -83,7 +94,38 @@
     "riskLevel": "Medium",
     "roleVisibility": ["Company", "User"],
     "explanation": {
-      "retentionPeriod": "stored_until_no_longer_necessary"
+      "retentionPeriod": "stored_until_no_longer_necessary",
+      "isNotVisibleExplanation": {
+        "Company": {
+          "translationKey": "isNotVisible_company",
+          "source": "https://dsgvo-gesetz.de/art-4-dsgvo/"
+        },
+        "User": {
+          "translationKey": "isNotVisible_user",
+          "source": "https://dsgvo-gesetz.de/art-4-dsgvo/"
+        },
+        "City": {
+          "translationKey": "isNotVisible_city",
+          "source": "https://dsgvo-gesetz.de/art-4-dsgvo/"
+        }
+      },
+      "isVisibleExplanation": {
+        "Company": {
+          "translationKey": "isVisible_company",
+          "source": "https://dsgvo-gesetz.de/art-4-dsgvo/"
+        },
+        "User": {
+          "translationKey": "isVisible_user",
+          "source": "https://dsgvo-gesetz.de/art-4-dsgvo/"
+        },
+        "City": {
+          "translationKey": "isVisible_city",
+          "source": "https://dsgvo-gesetz.de/art-4-dsgvo/"
+        }
+      },
+      "riskLevelExplanation": {
+        "translationKey": "medium_risk_explanation"
+      }
     }
   },
   {

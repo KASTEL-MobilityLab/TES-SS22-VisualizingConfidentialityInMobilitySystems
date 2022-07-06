@@ -1,27 +1,28 @@
 {
   "app": {
-    "help": "Hilfe",
-    "close": "Schließen",
-    "confidentiality-visualizer": "Vertraulichkeits-Visualisierer",
-    "welcome": "Willkommen zu unserem @:app.confidentiality-visualizer",
-    "dataViewer": "Daten-Anzeiger",
-    "user": "Benutzer",
-    "company": "Unternehmen",
     "city": "Stadt",
+    "close": "Schließen",
+    "company": "Unternehmen",
+    "confidentiality-visualizer": "Vertraulichkeits-Visualisierer",
+    "dataViewer": "Daten-Anzeiger",
+    "day": "kein Tag | ein Tag | {count} Tage",
+    "help": "Hilfe",
     "month": "kein Monat | ein Monat | {count} Monate",
-    "year": "kein Jahr | ein Jahr | {count} Jahre",
-    "day": "kein Tag | ein Tag | {count} Tage"
+    "source": "Quelle",
+    "user": "Benutzer",
+    "welcome": "Willkommen zu unserem @:app.confidentiality-visualizer",
+    "year": "kein Jahr | ein Jahr | {count} Jahre"
   },
   "data": {
-    "riderData": "Fahrerdaten",
-    "vehicleData": "Fahrzeugdaten",
-    "tripData": "Trip-Daten",
-    "paymentData": "Bezahlungsdaten",
-    "forename": "Vorname",
-    "surname": "Nachname",
-    "email": "E-Mail",
-    "phoneNumber": "Telefonnummer",
+    "address": "Adresse",
     "birthday": "Geburtstag",
-    "address": "Adresse"
+    "email": "E-Mail",
+    "forename": "Vorname",
+    "paymentData": "Bezahlungsdaten",
+    "phoneNumber": "Telefonnummer",
+    "riderData": "Fahrerdaten",
+    "surname": "Nachname",
+    "tripData": "Trip-Daten",
+    "vehicleData": "Fahrzeugdaten"
   }
 }

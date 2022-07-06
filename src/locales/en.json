@@ -10,7 +10,8 @@
     "month": "no month | one month | {count} months",
     "user": "User",
     "welcome": "Welcome to our @:app.confidentiality-visualizer",
-    "year": "no year | one year | {count} years"
+    "year": "no year | one year | {count} years",
+    "source": "Source"
   },
   "data": {
     "address": "Address",

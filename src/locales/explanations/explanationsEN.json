@@ -2,6 +2,12 @@
   "explanation": {
     "title": "Risk Explanation for data type {dataType}",
     "risk_of_rider_identification": "Risk of Rider Identification",
+    "why_is_this_not_visible_to_me": "Why is this data not visible to me as a {role}?",
+    "why_is_this_visible_to_me": "Why is this data visible to me as a {role}?",
+    "risk_level_explanation": "Risk Level Explanation",
+    "medium_risk_explanation": "This Data has medium risk because ...",
+    "low_risk_explanation": "This Data has low risk because ...",
+    "high_risk_explanation": "This Data has high risk because ...",
     "gdpr": "General Data Protection Regulation",
     "personal_information": "Personal Information",
     "data_stored": "The data will be stored",
@@ -10,6 +16,14 @@
     "until_user_deleted": "@:explanation.data_stored until the user is deleted.",
     "stored_until_no_longer_necessary": "@:explanation.data_stored until it is no longer necessary for the maintainer to further keep the data. The @:explanation.retention_period can vary depending on the risk of the data.",
     "data_is_visible": "It is not possible to identify a rider with this information and thus it is not @:explanation.personal_information according to the @:explanation.gdpr (GDPR). Therefore it is visible to you as a {role}.",
-    "data_is_not_visible": "According to the risk of the data, it is possible to identify a rider with this information. Therefore it qualifies as @:explanation.personal_information according to the @:explanation.gdpr (GDPR). As a {role} you are not allowed to see this data."
+    "data_is_not_visible": "According to the risk of the data, it is possible to identify a rider with this information. Therefore it qualifies as @:explanation.personal_information according to the @:explanation.gdpr (GDPR). As a {role} you are not allowed to see this data.",
+    "email": {
+      "isVisible_company": "The forename is visible to the company.",
+      "isVisible_user": "The forename is visible to the user.",
+      "isVisible_city": "The forename is not visible to the city.",
+      "isNotVisible_city": "The forename is not visible to the city.",
+      "isNotVisible_company": "The forename is not visible to the company.",
+      "isNotVisible_user": "The forename is not visible to the user."
+    }
   }
 }
