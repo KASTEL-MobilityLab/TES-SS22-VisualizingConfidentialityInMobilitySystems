@@ -51,4 +51,14 @@ export class Risk {
   isVisible(role: Role): boolean {
     return this.roleVisibility.includes(role);
   }
+
+  /**
+   * Returns the correct explanation for the given role. The result depends on the visibility of this datatype in the given role.
+   *
+   * @param role the role to get the explanation for.
+   * @returns the Explanation for the role
+   */
+  getExplanation(role: Role) {
+    return this.explanation?.getExplanation(this.isVisible(role), role);
+  }
 }
