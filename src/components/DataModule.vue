@@ -5,8 +5,8 @@ import type { DataModule } from "@/backend/dataModules/DataModule";
 import { dataManagerKey } from "@/keys";
 import { inject, type Ref } from "vue";
 defineProps<{
-  //DataModule übergeben
   dataModule: DataModule;
+  //Hab es als Variable gelassen, da man im Nachhinein auch nur einen Enum oder Ähnliches dafür einsetzen könnte.
   dataFieldName: string;
 }>();
 
