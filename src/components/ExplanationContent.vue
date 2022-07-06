@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { DataManager } from "@/backend/DataManager";
+import type { Explanation } from "@/backend/riskManager";
 import type { Risk } from "@/backend/riskManager/Risk";
 import { dataManagerKey } from "@/keys";
 import { getTranslationKeyForExplanation } from "@/utils/translationUtils";
@@ -51,7 +52,7 @@ const sourceString: ComputedRef<string> = computed(() => {
 });
 
 // gets the current explanation for the selected role and visibility
-function getCurrentExplanation() {
+function getCurrentExplanation(): Explanation | undefined {
   const currentRole = $dm.value.currentRole;
   return $dm.value.currentRisk?.getExplanation(currentRole);
 }

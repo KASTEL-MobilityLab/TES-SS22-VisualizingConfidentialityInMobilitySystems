@@ -55,11 +55,17 @@ export class RiskManager {
   }
 
   /**
-   * Returns a string with detailed information about a specific data
+   * Returns a RiskExplanation with detailed information about a specific data type.
+   *
    * @param dataType the type of the specific data
    * @returns a sting with detailed infos
    * */
-  getExplanation(dataType: DataType, role: Role): RiskExplanation {
-    throw Error("Not implemented yet");
+  getRiskExplanation(dataType: DataType): RiskExplanation {
+    const riskDef = this.findRisk(dataType);
+    const explanation = riskDef.explanation;
+    if (!explanation) {
+      throw Error("No RiskExplanation found for dataType: " + dataType);
+    }
+    return explanation;
   }
 }
