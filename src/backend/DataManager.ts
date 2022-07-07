@@ -179,7 +179,7 @@ export class DataManager {
    * Change the current role.
    * @param role The selected role from the enum roles.
    */
-  private changeRole(role: string) {
+  changeRole(role: string) {
     if (!(role in Role)) {
       throw Error(`Could not change role to ${role}`);
     }

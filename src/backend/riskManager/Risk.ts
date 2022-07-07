@@ -41,6 +41,7 @@ export class Risk {
    * @returns true if this datatype is visible in the given role, false otherwise
    */
   isVisible(role: Role): boolean {
+    console.log(this.roleVisibility.includes(role));
     return this.roleVisibility.includes(role);
   }
 }

@@ -1,5 +1,6 @@
 import type { DataField } from "../dataFields";
 import { DataType } from "../DataType";
+import type { Risk } from "../riskManager/Risk";
 import { RiskColor } from "../riskManager/RiskColor";
 import { RiskLevel } from "../riskManager/RiskLevel";
 import type { RiskManager } from "../riskManager/RiskManager";
@@ -14,8 +15,10 @@ export class DataModule {
   public static readonly PREFIX_OF_NON_DISPLAYED_DATA = "_";
   //Stores the data that is shown to the user
   public displayedData: Record<string, string>;
+  //Stores the risk levels of the shown data
+  public riskLevels: Record<string, string>;
   //Stores the risks of the shown data
-  public risks: Record<string, string>;
+  public risks: Record<string, Risk>;
   //The excludedProperties contain every property that are not displayed in the DataViewer.
   private excludedProperties = ["id", "type"];
 
@@ -26,9 +29,10 @@ export class DataModule {
    */
   constructor(dataField: DataField, riskManager: RiskManager) {
     this.displayedData = this.assignDataFieldToDisplayedData(dataField);
-    this.risks = this.convertRisks(
+    this.riskLevels = this.convertRisks(
       this.assignRiskToDisplayedData(dataField, riskManager)
     );
+    this.risks = this.assignRiskToDisplayedData(dataField, riskManager);
   }
 
   /**
@@ -67,7 +71,7 @@ export class DataModule {
   assignRiskToDisplayedData(
     dataField: DataField,
     riskManager: RiskManager
-  ): Record<string, string> {
+  ): Record<string, Risk> {
     const fieldNames = Object.keys(dataField);
     const dataTypes = Object.values(DataType);
 
@@ -76,7 +80,8 @@ export class DataModule {
       //Find specific value within DataType
       dataTypes.forEach((dataType) => {
         if (fieldName === dataType) {
-          this.risks[`data.${fieldName}`] = riskManager.getRiskLevel(dataType);
+          //Statt RiskLevel hier die Risk abspeichern und dann über isVisible prüfen
+          this.risks[`data.${fieldName}`] = riskManager.findRisk(dataType);
         }
       });
     }
@@ -88,22 +93,23 @@ export class DataModule {
    * @param risks A Record<string, string> with the values of DataType as the keys and the risk property values of the dataField as values.
    * @returns A Record<string, string> with the values of DataType as the keys and the risk color of the property values of the dataField as values.
    */
-  convertRisks(risks: Record<string, string>): Record<string, string> {
+  convertRisks(risks: Record<string, Risk>): Record<string, string> {
     const fieldNames = Object.keys(risks);
+    this.riskLevels = {};
     for (const fieldName of fieldNames) {
-      const riskLevel = risks[fieldName];
+      const riskLevel = risks[fieldName].riskLevel;
       switch (riskLevel) {
         case RiskLevel.Low:
-          risks[fieldName] = RiskColor.Green;
+          this.riskLevels[fieldName] = RiskColor.Green;
           break;
         case RiskLevel.Medium:
-          risks[fieldName] = RiskColor.Yellow;
+          this.riskLevels[fieldName] = RiskColor.Yellow;
           break;
         case RiskLevel.High:
-          risks[fieldName] = RiskColor.Red;
+          this.riskLevels[fieldName] = RiskColor.Red;
           break;
       }
     }
-    return risks;
+    return this.riskLevels;
   }
 }

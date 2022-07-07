@@ -1,6 +1,14 @@
 <script setup lang="ts">
+import type { DataManager } from "@/backend/DataManager";
+import { dataManagerKey } from "@/keys";
+import { inject, type Ref } from "vue";
 import { RouterLink } from "vue-router";
 import LocaleChanger from "./LocaleChanger.vue";
+
+const $dm = inject(dataManagerKey) as Ref<DataManager>;
+function logging() {
+  console.log("Hi");
+}
 </script>
 
 <template>
@@ -30,8 +38,26 @@ import LocaleChanger from "./LocaleChanger.vue";
         <li class="nav-item">
           <span class="nav-link active">{{ $t("app.city") }}</span>
         </li>
-        <li class="nav-item">
-          <span class="nav-link active">{{ $t("app.company") }}</span>
+
+        <li class="nav-item active dropdown">
+          <a
+            id="navbarDropdown"
+            class="nav-link active dropdown-toggle"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+          >
+            {{ $t("app.company") }}
+          </a>
+          <ul class="dropdown-menu">
+            <li>
+              <a class="dropdown-item" href="#"
+                ><button :onclick="$dm.changeRole('Company')">
+                  Company 1
+                </button></a
+              >
+            </li>
+          </ul>
         </li>
       </ul>
       <div class="d-flex-inline">
