@@ -708,5 +708,38 @@
         }
       }
     }
+  },
+  {
+    "dataType": "VehicleOwnerName",
+    "riskLevel": "Low",
+    "roleVisibility": ["Company", "User"],
+    "explanation": {
+      "retentionPeriod": "stored_until_no_longer_necessary",
+      "riskLevelExplanation": {
+        "translation_key": "low_risk_explanation"
+      },
+      "isNotVisibleExplanation": {
+        "Company": {
+          "translationKey": "isNotVisible_city"
+        },
+        "User": {
+          "translationKey": "isNotVisible_city"
+        },
+        "City": {
+          "translationKey": "isNotVisible_city"
+        }
+      },
+      "isVisibleExplanation": {
+        "Company": {
+          "translationKey": "isVisible_city"
+        },
+        "User": {
+          "translationKey": "isVisible_city"
+        },
+        "City": {
+          "translationKey": "isVisible_city"
+        }
+      }
+    }
   }
 ]

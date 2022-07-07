@@ -5,24 +5,36 @@
     "company": "Unternehmen",
     "confidentiality-visualizer": "Vertraulichkeits-Visualisierer",
     "dataViewer": "Daten-Anzeiger",
-    "day": "kein Tag | ein Tag | {count} Tage",
     "help": "Hilfe",
     "month": "kein Monat | ein Monat | {count} Monate",
     "source": "Quelle",
     "user": "Benutzer",
     "welcome": "Willkommen zu unserem @:app.confidentiality-visualizer",
-    "year": "kein Jahr | ein Jahr | {count} Jahre"
+    "year": "kein Jahr | ein Jahr | {count} Jahre",
+    "day": "kein Tag | ein Tag | {count} Tage",
+    "dataViews": {
+      "paymentDataView": "Zahlungsdaten",
+      "riderDataView": "Fahrerdaten",
+      "tripDataView": "Tripdaten",
+      "vehicleDataView": "Fahrzeugdaten"
+    }
   },
   "data": {
     "address": "Adresse",
     "birthday": "Geburtstag",
-    "email": "E-Mail",
-    "forename": "Vorname",
-    "paymentData": "Bezahlungsdaten",
-    "phoneNumber": "Telefonnummer",
-    "riderData": "Fahrerdaten",
-    "surname": "Nachname",
-    "tripData": "Trip-Daten",
-    "vehicleData": "Fahrzeugdaten"
+    "vehicleType": "Typ",
+    "status": "Status",
+    "batteryLevel": "Batteriestand",
+    "ownerName": "Eigentümer",
+    "startTime": "Startzeit",
+    "endTime": "Endzeit",
+    "averageSpeed": "Durchschnittsgeschwindigkeit",
+    "price": "Preis",
+    "paymentType": "Zahlungsart",
+    "cardNumber": "Kartennummer",
+    "ccv": "CCV",
+    "expiryDate": "Auslaufdatum",
+    "provider": "Anbieter",
+    "userName": "Nutzername"
   }
 }

@@ -11,7 +11,13 @@
     "user": "User",
     "welcome": "Welcome to our @:app.confidentiality-visualizer",
     "year": "no year | one year | {count} years",
-    "source": "Source"
+    "source": "Source",
+    "dataViews": {
+      "paymentDataView": "Payment Data",
+      "riderDataView": "Rider Data",
+      "tripDataView": "Trip Data",
+      "vehicleDataView": "Vehicle Data"
+    }
   },
   "data": {
     "address": "Address",
@@ -19,9 +25,19 @@
     "forename": "Forename",
     "paymentData": "Payment Data",
     "phoneNumber": "Phone Number",
-    "riderData": "Rider Data",
-    "surname": "Surname",
-    "tripData": "Trip Data",
-    "vehicleData": "Vehicle Data"
+    "vehicleType": "Type",
+    "status": "Status",
+    "batteryLevel": "Battery",
+    "ownerName": "Owner",
+    "startTime": "Start Time",
+    "endTime": "End Time",
+    "averageSpeed": "Average speed",
+    "price": "Price",
+    "paymentType": "Payment Method",
+    "cardNumber": "Card Number",
+    "ccv": "CCV",
+    "expiryDate": "Expiry Date",
+    "provider": "Provider",
+    "userName": "Username"
   }
 }

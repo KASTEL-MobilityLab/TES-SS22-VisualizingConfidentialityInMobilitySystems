@@ -16,6 +16,9 @@ export abstract class Vehicle extends DataField {
   readonly status: VehicleStatus;
   @Exclude()
   private _company?: Company;
+  //Possibly undefined name of the company that owns this vehicle.
+  @Exclude()
+  ownerName?: string;
 
   @Type(() => LatLng)
   @Expose()
