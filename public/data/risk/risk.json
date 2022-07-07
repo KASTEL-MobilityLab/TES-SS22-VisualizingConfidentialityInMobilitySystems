@@ -102,7 +102,7 @@
   {
     "dataType": "VehicleStatus",
     "riskLevel": "Medium",
-    "roleVisibility": ["User"]
+    "roleVisibility": ["User", "City"]
   },
   {
     "dataType": "VehicleBatteryLevel",

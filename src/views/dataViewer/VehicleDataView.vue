@@ -14,6 +14,7 @@ const currentVehicle: ComputedRef<DataModule | undefined> = computed(() => {
     return new DataModule(vehicle, $dm.value.riskManager);
   }
 });
+console.log($dm.value.currentRole);
 </script>
 
 <template>

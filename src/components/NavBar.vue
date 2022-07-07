@@ -6,9 +6,6 @@ import { RouterLink } from "vue-router";
 import LocaleChanger from "./LocaleChanger.vue";
 
 const $dm = inject(dataManagerKey) as Ref<DataManager>;
-function logging() {
-  console.log("Hi");
-}
 </script>
 
 <template>
@@ -30,11 +27,14 @@ function logging() {
             {{ $t("app.user") }}
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">User1</a></li>
-            <li><a class="dropdown-item" href="#">User2</a></li>
-            <li><a class="dropdown-item" href="#">User3</a></li>
+            <li>
+              <a class="dropdown-item" href="#"
+                ><button @click="$dm.changeRole('User')">User 1</button></a
+              >
+            </li>
           </ul>
         </li>
+
         <li class="nav-item">
           <span class="nav-link active">{{ $t("app.city") }}</span>
         </li>
@@ -52,7 +52,7 @@ function logging() {
           <ul class="dropdown-menu">
             <li>
               <a class="dropdown-item" href="#"
-                ><button :onclick="$dm.changeRole('Company')">
+                ><button @click="$dm.changeRole('Company')">
                   Company 1
                 </button></a
               >

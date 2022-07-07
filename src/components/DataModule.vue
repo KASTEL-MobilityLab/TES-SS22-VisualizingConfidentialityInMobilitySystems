@@ -26,7 +26,6 @@ const $dm = inject(dataManagerKey) as Ref<DataManager>;
               {{ $t(key) }}
             </button>
           </div>
-          <!--<div class="col m-2">-->
           <div
             v-if="dataModule?.risks[key].isVisible($dm.currentRole)"
             class="col m-2"
@@ -34,11 +33,9 @@ const $dm = inject(dataManagerKey) as Ref<DataManager>;
             {{ value }}
           </div>
           <div v-else id="blur" class="col m-2">{{ value }}</div>
-          <!--   {{ value }}-->
         </div>
       </div>
     </div>
-    <!--  </div>-->
   </template>
 </template>
 
