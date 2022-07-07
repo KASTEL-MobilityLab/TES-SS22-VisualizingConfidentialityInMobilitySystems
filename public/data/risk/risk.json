@@ -10,10 +10,10 @@
       },
       "isNotVisibleExplanation": {
         "Company": {
-          "translationKey": "isNotVisible_city"
+          "translationKey": "isNotVisible_company"
         },
         "User": {
-          "translationKey": "isNotVisible_city"
+          "translationKey": "isNotVisible_user"
         },
         "City": {
           "translationKey": "isNotVisible_city"
@@ -21,10 +21,10 @@
       },
       "isVisibleExplanation": {
         "Company": {
-          "translationKey": "isVisible_city"
+          "translationKey": "isVisible_company"
         },
         "User": {
-          "translationKey": "isVisible_city"
+          "translationKey": "isVisible_user"
         },
         "City": {
           "translationKey": "isVisible_city"
@@ -43,10 +43,10 @@
       },
       "isNotVisibleExplanation": {
         "Company": {
-          "translationKey": "isNotVisible_city"
+          "translationKey": "isNotVisible_company"
         },
         "User": {
-          "translationKey": "isNotVisible_city"
+          "translationKey": "isNotVisible_user"
         },
         "City": {
           "translationKey": "isNotVisible_city"
@@ -54,10 +54,10 @@
       },
       "isVisibleExplanation": {
         "Company": {
-          "translationKey": "isVisible_city"
+          "translationKey": "isVisible_company"
         },
         "User": {
-          "translationKey": "isVisible_city"
+          "translationKey": "isVisible_user"
         },
         "City": {
           "translationKey": "isVisible_city"
@@ -76,10 +76,10 @@
       },
       "isNotVisibleExplanation": {
         "Company": {
-          "translationKey": "isNotVisible_city"
+          "translationKey": "isNotVisible_company"
         },
         "User": {
-          "translationKey": "isNotVisible_city"
+          "translationKey": "isNotVisible_user"
         },
         "City": {
           "translationKey": "isNotVisible_city"
@@ -87,10 +87,10 @@
       },
       "isVisibleExplanation": {
         "Company": {
-          "translationKey": "isVisible_city"
+          "translationKey": "isVisible_company"
         },
         "User": {
-          "translationKey": "isVisible_city"
+          "translationKey": "isVisible_user"
         },
         "City": {
           "translationKey": "isVisible_city"
@@ -109,10 +109,10 @@
       },
       "isNotVisibleExplanation": {
         "Company": {
-          "translationKey": "isNotVisible_city"
+          "translationKey": "isNotVisible_company"
         },
         "User": {
-          "translationKey": "isNotVisible_city"
+          "translationKey": "isNotVisible_user"
         },
         "City": {
           "translationKey": "isNotVisible_city"
@@ -120,10 +120,10 @@
       },
       "isVisibleExplanation": {
         "Company": {
-          "translationKey": "isVisible_city"
+          "translationKey": "isVisible_company"
         },
         "User": {
-          "translationKey": "isVisible_city"
+          "translationKey": "isVisible_user"
         },
         "City": {
           "translationKey": "isVisible_city"
@@ -142,10 +142,10 @@
       },
       "isNotVisibleExplanation": {
         "Company": {
-          "translationKey": "isNotVisible_city"
+          "translationKey": "isNotVisible_company"
         },
         "User": {
-          "translationKey": "isNotVisible_city"
+          "translationKey": "isNotVisible_user"
         },
         "City": {
           "translationKey": "isNotVisible_city"
@@ -153,10 +153,10 @@
       },
       "isVisibleExplanation": {
         "Company": {
-          "translationKey": "isVisible_city"
+          "translationKey": "isVisible_company"
         },
         "User": {
-          "translationKey": "isVisible_city"
+          "translationKey": "isVisible_user"
         },
         "City": {
           "translationKey": "isVisible_city"
@@ -175,10 +175,10 @@
       },
       "isNotVisibleExplanation": {
         "Company": {
-          "translationKey": "isNotVisible_city"
+          "translationKey": "isNotVisible_company"
         },
         "User": {
-          "translationKey": "isNotVisible_city"
+          "translationKey": "isNotVisible_user"
         },
         "City": {
           "translationKey": "isNotVisible_city"
@@ -186,10 +186,10 @@
       },
       "isVisibleExplanation": {
         "Company": {
-          "translationKey": "isVisible_city"
+          "translationKey": "isVisible_company"
         },
         "User": {
-          "translationKey": "isVisible_city"
+          "translationKey": "isVisible_user"
         },
         "City": {
           "translationKey": "isVisible_city"
@@ -208,10 +208,10 @@
       },
       "isNotVisibleExplanation": {
         "Company": {
-          "translationKey": "isNotVisible_city"
+          "translationKey": "isNotVisible_company"
         },
         "User": {
-          "translationKey": "isNotVisible_city"
+          "translationKey": "isNotVisible_user"
         },
         "City": {
           "translationKey": "isNotVisible_city"
@@ -219,10 +219,10 @@
       },
       "isVisibleExplanation": {
         "Company": {
-          "translationKey": "isVisible_city"
+          "translationKey": "isVisible_company"
         },
         "User": {
-          "translationKey": "isVisible_city"
+          "translationKey": "isVisible_user"
         },
         "City": {
           "translationKey": "isVisible_city"
@@ -241,10 +241,10 @@
       },
       "isNotVisibleExplanation": {
         "Company": {
-          "translationKey": "isNotVisible_city"
+          "translationKey": "isNotVisible_company"
         },
         "User": {
-          "translationKey": "isNotVisible_city"
+          "translationKey": "isNotVisible_user"
         },
         "City": {
           "translationKey": "isNotVisible_city"
@@ -252,10 +252,10 @@
       },
       "isVisibleExplanation": {
         "Company": {
-          "translationKey": "isVisible_city"
+          "translationKey": "isVisible_company"
         },
         "User": {
-          "translationKey": "isVisible_city"
+          "translationKey": "isVisible_user"
         },
         "City": {
           "translationKey": "isVisible_city"
@@ -274,10 +274,10 @@
       },
       "isNotVisibleExplanation": {
         "Company": {
-          "translationKey": "isNotVisible_city"
+          "translationKey": "isNotVisible_company"
         },
         "User": {
-          "translationKey": "isNotVisible_city"
+          "translationKey": "isNotVisible_user"
         },
         "City": {
           "translationKey": "isNotVisible_city"
@@ -285,10 +285,10 @@
       },
       "isVisibleExplanation": {
         "Company": {
-          "translationKey": "isVisible_city"
+          "translationKey": "isVisible_company"
         },
         "User": {
-          "translationKey": "isVisible_city"
+          "translationKey": "isVisible_user"
         },
         "City": {
           "translationKey": "isVisible_city"
@@ -307,10 +307,10 @@
       },
       "isNotVisibleExplanation": {
         "Company": {
-          "translationKey": "isNotVisible_city"
+          "translationKey": "isNotVisible_company"
         },
         "User": {
-          "translationKey": "isNotVisible_city"
+          "translationKey": "isNotVisible_user"
         },
         "City": {
           "translationKey": "isNotVisible_city"
@@ -318,10 +318,10 @@
       },
       "isVisibleExplanation": {
         "Company": {
-          "translationKey": "isVisible_city"
+          "translationKey": "isVisible_company"
         },
         "User": {
-          "translationKey": "isVisible_city"
+          "translationKey": "isVisible_user"
         },
         "City": {
           "translationKey": "isVisible_city"
@@ -340,10 +340,10 @@
       },
       "isNotVisibleExplanation": {
         "Company": {
-          "translationKey": "isNotVisible_city"
+          "translationKey": "isNotVisible_company"
         },
         "User": {
-          "translationKey": "isNotVisible_city"
+          "translationKey": "isNotVisible_user"
         },
         "City": {
           "translationKey": "isNotVisible_city"
@@ -351,10 +351,10 @@
       },
       "isVisibleExplanation": {
         "Company": {
-          "translationKey": "isVisible_city"
+          "translationKey": "isVisible_company"
         },
         "User": {
-          "translationKey": "isVisible_city"
+          "translationKey": "isVisible_user"
         },
         "City": {
           "translationKey": "isVisible_city"
@@ -373,10 +373,10 @@
       },
       "isNotVisibleExplanation": {
         "Company": {
-          "translationKey": "isNotVisible_city"
+          "translationKey": "isNotVisible_company"
         },
         "User": {
-          "translationKey": "isNotVisible_city"
+          "translationKey": "isNotVisible_user"
         },
         "City": {
           "translationKey": "isNotVisible_city"
@@ -384,10 +384,10 @@
       },
       "isVisibleExplanation": {
         "Company": {
-          "translationKey": "isVisible_city"
+          "translationKey": "isVisible_company"
         },
         "User": {
-          "translationKey": "isVisible_city"
+          "translationKey": "isVisible_user"
         },
         "City": {
           "translationKey": "isVisible_city"
@@ -406,10 +406,10 @@
       },
       "isNotVisibleExplanation": {
         "Company": {
-          "translationKey": "isNotVisible_city"
+          "translationKey": "isNotVisible_company"
         },
         "User": {
-          "translationKey": "isNotVisible_city"
+          "translationKey": "isNotVisible_user"
         },
         "City": {
           "translationKey": "isNotVisible_city"
@@ -417,10 +417,10 @@
       },
       "isVisibleExplanation": {
         "Company": {
-          "translationKey": "isVisible_city"
+          "translationKey": "isVisible_company"
         },
         "User": {
-          "translationKey": "isVisible_city"
+          "translationKey": "isVisible_user"
         },
         "City": {
           "translationKey": "isVisible_city"
@@ -522,10 +522,10 @@
       },
       "isNotVisibleExplanation": {
         "Company": {
-          "translationKey": "isNotVisible_city"
+          "translationKey": "isNotVisible_company"
         },
         "User": {
-          "translationKey": "isNotVisible_city"
+          "translationKey": "isNotVisible_user"
         },
         "City": {
           "translationKey": "isNotVisible_city"
@@ -533,10 +533,10 @@
       },
       "isVisibleExplanation": {
         "Company": {
-          "translationKey": "isVisible_city"
+          "translationKey": "isVisible_company"
         },
         "User": {
-          "translationKey": "isVisible_city"
+          "translationKey": "isVisible_user"
         },
         "City": {
           "translationKey": "isVisible_city"
@@ -555,10 +555,10 @@
       },
       "isNotVisibleExplanation": {
         "Company": {
-          "translationKey": "isNotVisible_city"
+          "translationKey": "isNotVisible_company"
         },
         "User": {
-          "translationKey": "isNotVisible_city"
+          "translationKey": "isNotVisible_user"
         },
         "City": {
           "translationKey": "isNotVisible_city"
@@ -566,10 +566,10 @@
       },
       "isVisibleExplanation": {
         "Company": {
-          "translationKey": "isVisible_city"
+          "translationKey": "isVisible_company"
         },
         "User": {
-          "translationKey": "isVisible_city"
+          "translationKey": "isVisible_user"
         },
         "City": {
           "translationKey": "isVisible_city"
@@ -588,10 +588,10 @@
       },
       "isNotVisibleExplanation": {
         "Company": {
-          "translationKey": "isNotVisible_city"
+          "translationKey": "isNotVisible_company"
         },
         "User": {
-          "translationKey": "isNotVisible_city"
+          "translationKey": "isNotVisible_user"
         },
         "City": {
           "translationKey": "isNotVisible_city"
@@ -599,10 +599,10 @@
       },
       "isVisibleExplanation": {
         "Company": {
-          "translationKey": "isVisible_city"
+          "translationKey": "isVisible_company"
         },
         "User": {
-          "translationKey": "isVisible_city"
+          "translationKey": "isVisible_user"
         },
         "City": {
           "translationKey": "isVisible_city"
@@ -621,10 +621,10 @@
       },
       "isNotVisibleExplanation": {
         "Company": {
-          "translationKey": "isNotVisible_city"
+          "translationKey": "isNotVisible_company"
         },
         "User": {
-          "translationKey": "isNotVisible_city"
+          "translationKey": "isNotVisible_user"
         },
         "City": {
           "translationKey": "isNotVisible_city"
@@ -632,10 +632,10 @@
       },
       "isVisibleExplanation": {
         "Company": {
-          "translationKey": "isVisible_city"
+          "translationKey": "isVisible_company"
         },
         "User": {
-          "translationKey": "isVisible_city"
+          "translationKey": "isVisible_user"
         },
         "City": {
           "translationKey": "isVisible_city"
@@ -654,10 +654,10 @@
       },
       "isNotVisibleExplanation": {
         "Company": {
-          "translationKey": "isNotVisible_city"
+          "translationKey": "isNotVisible_company"
         },
         "User": {
-          "translationKey": "isNotVisible_city"
+          "translationKey": "isNotVisible_user"
         },
         "City": {
           "translationKey": "isNotVisible_city"
@@ -665,10 +665,10 @@
       },
       "isVisibleExplanation": {
         "Company": {
-          "translationKey": "isVisible_city"
+          "translationKey": "isVisible_company"
         },
         "User": {
-          "translationKey": "isVisible_city"
+          "translationKey": "isVisible_user"
         },
         "City": {
           "translationKey": "isVisible_city"
@@ -687,10 +687,10 @@
       },
       "isNotVisibleExplanation": {
         "Company": {
-          "translationKey": "isNotVisible_city"
+          "translationKey": "isNotVisible_company"
         },
         "User": {
-          "translationKey": "isNotVisible_city"
+          "translationKey": "isNotVisible_user"
         },
         "City": {
           "translationKey": "isNotVisible_city"
@@ -698,10 +698,10 @@
       },
       "isVisibleExplanation": {
         "Company": {
-          "translationKey": "isVisible_city"
+          "translationKey": "isVisible_company"
         },
         "User": {
-          "translationKey": "isVisible_city"
+          "translationKey": "isVisible_user"
         },
         "City": {
           "translationKey": "isVisible_city"
@@ -720,10 +720,10 @@
       },
       "isNotVisibleExplanation": {
         "Company": {
-          "translationKey": "isNotVisible_city"
+          "translationKey": "isNotVisible_company"
         },
         "User": {
-          "translationKey": "isNotVisible_city"
+          "translationKey": "isNotVisible_user"
         },
         "City": {
           "translationKey": "isNotVisible_city"
@@ -731,10 +731,10 @@
       },
       "isVisibleExplanation": {
         "Company": {
-          "translationKey": "isVisible_city"
+          "translationKey": "isVisible_company"
         },
         "User": {
-          "translationKey": "isVisible_city"
+          "translationKey": "isVisible_user"
         },
         "City": {
           "translationKey": "isVisible_city"

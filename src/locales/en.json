@@ -23,6 +23,7 @@
     "address": "Address",
     "email": "E-Mail",
     "forename": "Forename",
+    "surname": "Surname",
     "paymentData": "Payment Data",
     "phoneNumber": "Phone Number",
     "vehicleType": "Type",
