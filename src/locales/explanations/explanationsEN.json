@@ -18,12 +18,36 @@
     "data_is_visible": "It is not possible to identify a rider with this information and thus it is not @:explanation.personal_information according to the @:explanation.gdpr (GDPR). Therefore it is visible to you as a {role}.",
     "data_is_not_visible": "According to the risk of the data, it is possible to identify a rider with this information. Therefore it qualifies as @:explanation.personal_information according to the @:explanation.gdpr (GDPR). As a {role} you are not allowed to see this data.",
     "email": {
-      "isVisible_company": "The forename is visible to the company. TODO",
-      "isVisible_user": "The forename is visible to the user.",
-      "isVisible_city": "The forename is not visible to the city.",
-      "isNotVisible_city": "The forename is not visible to the city.",
-      "isNotVisible_company": "The forename is not visible to the company.",
-      "isNotVisible_user": "The forename is not visible to the user."
+      "isVisible_company": "@:explanation.data_is_visible",
+      "isVisible_user": "@:explanation.data_is_visible",
+      "isVisible_city": "@:explanation.data_is_visible",
+      "isNotVisible_city": "@:explanation.data_is_not_visible",
+      "isNotVisible_company": "@:explanation.data_is_not_visible",
+      "isNotVisible_user": "@:explanation.data_is_not_visible"
+    },
+    "phoneNumber": {
+      "isVisible_company": "@:explanation.data_is_visible",
+      "isVisible_user": "@:explanation.data_is_visible",
+      "isVisible_city": "@:explanation.data_is_visible",
+      "isNotVisible_city": "@:explanation.data_is_not_visible",
+      "isNotVisible_company": "@:explanation.data_is_not_visible",
+      "isNotVisible_user": "@:explanation.data_is_not_visible"
+    },
+    "surname": {
+      "isVisible_company": "@:explanation.data_is_visible",
+      "isVisible_user": "@:explanation.data_is_visible",
+      "isVisible_city": "@:explanation.data_is_visible",
+      "isNotVisible_city": "@:explanation.data_is_not_visible",
+      "isNotVisible_company": "@:explanation.data_is_not_visible",
+      "isNotVisible_user": "@:explanation.data_is_not_visible"
+    },
+    "forename": {
+      "isVisible_company": "@:explanation.data_is_visible",
+      "isVisible_user": "@:explanation.data_is_visible",
+      "isVisible_city": "@:explanation.data_is_visible",
+      "isNotVisible_city": "@:explanation.data_is_not_visible",
+      "isNotVisible_company": "@:explanation.data_is_not_visible",
+      "isNotVisible_user": "@:explanation.data_is_not_visible"
     }
   }
 }
