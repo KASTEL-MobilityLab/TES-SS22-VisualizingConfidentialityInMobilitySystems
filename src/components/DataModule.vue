@@ -5,7 +5,7 @@ import type { DataModule } from "@/backend/dataModules/DataModule";
 import { dataManagerKey } from "@/keys";
 import { inject, type Ref } from "vue";
 defineProps<{
-  dataModule: DataModule;
+  dataModule?: DataModule;
   //Hab es als Variable gelassen, da man im Nachhinein auch nur einen Enum oder Ähnliches dafür einsetzen könnte.
   dataFieldName: string;
 }>();
@@ -15,14 +15,14 @@ defineProps<{
 const $dm = inject(dataManagerKey) as Ref<DataManager>;
 </script>
 
-<template>
+<template v-show="dataModule !== undefined">
   <h4 class="text-center m-2">{{ $t(dataFieldName) }}</h4>
-  <template v-for="(value, key) in dataModule.displayedData" :key="key">
+  <template v-for="(value, key) in dataModule?.displayedData" :key="key">
     <div classs="my-buttons">
       <div class>
         <div class="row m-2 p-2">
           <div class="col m-2 fw-bold">
-            <button type="button" :class="dataModule.risks[key]">
+            <button type="button" :class="dataModule?.risks[key]">
               {{ $t(key) }}
             </button>
           </div>
