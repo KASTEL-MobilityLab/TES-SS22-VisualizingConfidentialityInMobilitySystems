@@ -2,64 +2,397 @@
   {
     "dataType": "PaymentType",
     "riskLevel": "Low",
-    "roleVisibility": ["Company", "User"]
+    "roleVisibility": ["Company", "User"],
+    "explanation": {
+      "retentionPeriod": "stored_until_no_longer_necessary",
+      "riskLevelExplanation": {
+        "translation_key": "low_risk_explanation"
+      },
+      "isNotVisibleExplanation": {
+        "Company": {
+          "translationKey": "isNotVisible_city"
+        },
+        "User": {
+          "translationKey": "isNotVisible_city"
+        },
+        "City": {
+          "translationKey": "isNotVisible_city"
+        }
+      },
+      "isVisibleExplanation": {
+        "Company": {
+          "translationKey": "isVisible_city"
+        },
+        "User": {
+          "translationKey": "isVisible_city"
+        },
+        "City": {
+          "translationKey": "isVisible_city"
+        }
+      }
+    }
   },
   {
     "dataType": "PaymentProvider",
     "riskLevel": "Low",
-    "roleVisibility": ["Company", "User"]
+    "roleVisibility": ["Company", "User"],
+    "explanation": {
+      "retentionPeriod": "stored_until_no_longer_necessary",
+      "riskLevelExplanation": {
+        "translation_key": "low_risk_explanation"
+      },
+      "isNotVisibleExplanation": {
+        "Company": {
+          "translationKey": "isNotVisible_city"
+        },
+        "User": {
+          "translationKey": "isNotVisible_city"
+        },
+        "City": {
+          "translationKey": "isNotVisible_city"
+        }
+      },
+      "isVisibleExplanation": {
+        "Company": {
+          "translationKey": "isVisible_city"
+        },
+        "User": {
+          "translationKey": "isVisible_city"
+        },
+        "City": {
+          "translationKey": "isVisible_city"
+        }
+      }
+    }
   },
   {
     "dataType": "PaymentCardNumber",
     "riskLevel": "High",
-    "roleVisibility": ["Company", "User"]
+    "roleVisibility": ["Company", "User"],
+    "explanation": {
+      "retentionPeriod": "stored_until_no_longer_necessary",
+      "riskLevelExplanation": {
+        "translation_key": "high_risk_explanation"
+      },
+      "isNotVisibleExplanation": {
+        "Company": {
+          "translationKey": "isNotVisible_city"
+        },
+        "User": {
+          "translationKey": "isNotVisible_city"
+        },
+        "City": {
+          "translationKey": "isNotVisible_city"
+        }
+      },
+      "isVisibleExplanation": {
+        "Company": {
+          "translationKey": "isVisible_city"
+        },
+        "User": {
+          "translationKey": "isVisible_city"
+        },
+        "City": {
+          "translationKey": "isVisible_city"
+        }
+      }
+    }
   },
   {
     "dataType": "PaymentCcv",
     "riskLevel": "High",
-    "roleVisibility": ["Company", "User"]
+    "roleVisibility": ["Company", "User"],
+    "explanation": {
+      "retentionPeriod": "stored_until_no_longer_necessary",
+      "riskLevelExplanation": {
+        "translation_key": "high_risk_explanation"
+      },
+      "isNotVisibleExplanation": {
+        "Company": {
+          "translationKey": "isNotVisible_city"
+        },
+        "User": {
+          "translationKey": "isNotVisible_city"
+        },
+        "City": {
+          "translationKey": "isNotVisible_city"
+        }
+      },
+      "isVisibleExplanation": {
+        "Company": {
+          "translationKey": "isVisible_city"
+        },
+        "User": {
+          "translationKey": "isVisible_city"
+        },
+        "City": {
+          "translationKey": "isVisible_city"
+        }
+      }
+    }
   },
   {
     "dataType": "PaymentExpiryDate",
     "riskLevel": "Medium",
-    "roleVisibility": ["Company", "User"]
+    "roleVisibility": ["Company", "User"],
+    "explanation": {
+      "retentionPeriod": "stored_until_no_longer_necessary",
+      "riskLevelExplanation": {
+        "translation_key": "medium_risk_explanation"
+      },
+      "isNotVisibleExplanation": {
+        "Company": {
+          "translationKey": "isNotVisible_city"
+        },
+        "User": {
+          "translationKey": "isNotVisible_city"
+        },
+        "City": {
+          "translationKey": "isNotVisible_city"
+        }
+      },
+      "isVisibleExplanation": {
+        "Company": {
+          "translationKey": "isVisible_city"
+        },
+        "User": {
+          "translationKey": "isVisible_city"
+        },
+        "City": {
+          "translationKey": "isVisible_city"
+        }
+      }
+    }
   },
   {
     "dataType": "RouteStart",
     "riskLevel": "Medium",
-    "roleVisibility": ["Company", "User"]
+    "roleVisibility": ["Company", "User"],
+    "explanation": {
+      "retentionPeriod": "stored_until_no_longer_necessary",
+      "riskLevelExplanation": {
+        "translation_key": "medium_risk_explanation"
+      },
+      "isNotVisibleExplanation": {
+        "Company": {
+          "translationKey": "isNotVisible_city"
+        },
+        "User": {
+          "translationKey": "isNotVisible_city"
+        },
+        "City": {
+          "translationKey": "isNotVisible_city"
+        }
+      },
+      "isVisibleExplanation": {
+        "Company": {
+          "translationKey": "isVisible_city"
+        },
+        "User": {
+          "translationKey": "isVisible_city"
+        },
+        "City": {
+          "translationKey": "isVisible_city"
+        }
+      }
+    }
   },
   {
     "dataType": "RouteEnd",
     "riskLevel": "Medium",
-    "roleVisibility": ["Company", "User"]
+    "roleVisibility": ["Company", "User"],
+    "explanation": {
+      "retentionPeriod": "stored_until_no_longer_necessary",
+      "riskLevelExplanation": {
+        "translation_key": "medium_risk_explanation"
+      },
+      "isNotVisibleExplanation": {
+        "Company": {
+          "translationKey": "isNotVisible_city"
+        },
+        "User": {
+          "translationKey": "isNotVisible_city"
+        },
+        "City": {
+          "translationKey": "isNotVisible_city"
+        }
+      },
+      "isVisibleExplanation": {
+        "Company": {
+          "translationKey": "isVisible_city"
+        },
+        "User": {
+          "translationKey": "isVisible_city"
+        },
+        "City": {
+          "translationKey": "isVisible_city"
+        }
+      }
+    }
   },
   {
     "dataType": "TripAvgSpeed",
     "riskLevel": "Low",
-    "roleVisibility": ["Company", "User"]
+    "roleVisibility": ["Company", "User"],
+    "explanation": {
+      "retentionPeriod": "stored_until_no_longer_necessary",
+      "riskLevelExplanation": {
+        "translation_key": "low_risk_explanation"
+      },
+      "isNotVisibleExplanation": {
+        "Company": {
+          "translationKey": "isNotVisible_city"
+        },
+        "User": {
+          "translationKey": "isNotVisible_city"
+        },
+        "City": {
+          "translationKey": "isNotVisible_city"
+        }
+      },
+      "isVisibleExplanation": {
+        "Company": {
+          "translationKey": "isVisible_city"
+        },
+        "User": {
+          "translationKey": "isVisible_city"
+        },
+        "City": {
+          "translationKey": "isVisible_city"
+        }
+      }
+    }
   },
   {
     "dataType": "TripPrice",
     "riskLevel": "Low",
-    "roleVisibility": ["Company", "User"]
+    "roleVisibility": ["Company", "User"],
+    "explanation": {
+      "retentionPeriod": "stored_until_no_longer_necessary",
+      "riskLevelExplanation": {
+        "translation_key": "low_risk_explanation"
+      },
+      "isNotVisibleExplanation": {
+        "Company": {
+          "translationKey": "isNotVisible_city"
+        },
+        "User": {
+          "translationKey": "isNotVisible_city"
+        },
+        "City": {
+          "translationKey": "isNotVisible_city"
+        }
+      },
+      "isVisibleExplanation": {
+        "Company": {
+          "translationKey": "isVisible_city"
+        },
+        "User": {
+          "translationKey": "isVisible_city"
+        },
+        "City": {
+          "translationKey": "isVisible_city"
+        }
+      }
+    }
   },
   {
     "dataType": "TripStartTime",
     "riskLevel": "Low",
-    "roleVisibility": ["Company", "User"]
+    "roleVisibility": ["Company", "User"],
+    "explanation": {
+      "retentionPeriod": "stored_until_no_longer_necessary",
+      "riskLevelExplanation": {
+        "translation_key": "low_risk_explanation"
+      },
+      "isNotVisibleExplanation": {
+        "Company": {
+          "translationKey": "isNotVisible_city"
+        },
+        "User": {
+          "translationKey": "isNotVisible_city"
+        },
+        "City": {
+          "translationKey": "isNotVisible_city"
+        }
+      },
+      "isVisibleExplanation": {
+        "Company": {
+          "translationKey": "isVisible_city"
+        },
+        "User": {
+          "translationKey": "isVisible_city"
+        },
+        "City": {
+          "translationKey": "isVisible_city"
+        }
+      }
+    }
   },
   {
     "dataType": "TripEndTime",
     "riskLevel": "Low",
-    "roleVisibility": ["Company", "User"]
+    "roleVisibility": ["Company", "User"],
+    "explanation": {
+      "retentionPeriod": "stored_until_no_longer_necessary",
+      "riskLevelExplanation": {
+        "translation_key": "low_risk_explanation"
+      },
+      "isNotVisibleExplanation": {
+        "Company": {
+          "translationKey": "isNotVisible_city"
+        },
+        "User": {
+          "translationKey": "isNotVisible_city"
+        },
+        "City": {
+          "translationKey": "isNotVisible_city"
+        }
+      },
+      "isVisibleExplanation": {
+        "Company": {
+          "translationKey": "isVisible_city"
+        },
+        "User": {
+          "translationKey": "isVisible_city"
+        },
+        "City": {
+          "translationKey": "isVisible_city"
+        }
+      }
+    }
   },
   {
     "dataType": "UserForename",
     "riskLevel": "Low",
     "roleVisibility": ["Company", "User"],
     "explanation": {
-      "retentionPeriod": "until_user_deleted"
+      "retentionPeriod": "stored_until_no_longer_necessary",
+      "riskLevelExplanation": {
+        "translation_key": "low_risk_explanation"
+      },
+      "isNotVisibleExplanation": {
+        "Company": {
+          "translationKey": "isNotVisible_city"
+        },
+        "User": {
+          "translationKey": "isNotVisible_city"
+        },
+        "City": {
+          "translationKey": "isNotVisible_city"
+        }
+      },
+      "isVisibleExplanation": {
+        "Company": {
+          "translationKey": "isVisible_city"
+        },
+        "User": {
+          "translationKey": "isVisible_city"
+        },
+        "City": {
+          "translationKey": "isVisible_city"
+        }
+      }
     }
   },
   {
@@ -67,7 +400,32 @@
     "riskLevel": "Low",
     "roleVisibility": ["Company", "User"],
     "explanation": {
-      "retentionPeriod": "until_user_deleted"
+      "retentionPeriod": "stored_until_no_longer_necessary",
+      "riskLevelExplanation": {
+        "translation_key": "low_risk_explanation"
+      },
+      "isNotVisibleExplanation": {
+        "Company": {
+          "translationKey": "isNotVisible_city"
+        },
+        "User": {
+          "translationKey": "isNotVisible_city"
+        },
+        "City": {
+          "translationKey": "isNotVisible_city"
+        }
+      },
+      "isVisibleExplanation": {
+        "Company": {
+          "translationKey": "isVisible_city"
+        },
+        "User": {
+          "translationKey": "isVisible_city"
+        },
+        "City": {
+          "translationKey": "isVisible_city"
+        }
+      }
     }
   },
   {
@@ -76,16 +434,36 @@
     "roleVisibility": ["Company", "User"],
     "explanation": {
       "retentionPeriod": 365,
-      "riskLevelExplanation": "medium_risk_explanation",
+      "riskLevelExplanation": {
+        "translation_key": "medium_risk_explanation"
+      },
       "isNotVisibleExplanation": {
-        "Company": { "source": "https://dsgvo-gesetz.de/art-4-dsgvo/" },
-        "User": { "source": "https://dsgvo-gesetz.de/art-4-dsgvo/" },
-        "City": { "source": "https://dsgvo-gesetz.de/art-4-dsgvo/" }
+        "Company": {
+          "translationKey": "isNotVisible_city",
+          "source": "https://dsgvo-gesetz.de/art-4-dsgvo/"
+        },
+        "User": {
+          "translationKey": "isNotVisible_city",
+          "source": "https://dsgvo-gesetz.de/art-4-dsgvo/"
+        },
+        "City": {
+          "translationKey": "isNotVisible_city",
+          "source": "https://dsgvo-gesetz.de/art-4-dsgvo/"
+        }
       },
       "isVisibleExplanation": {
-        "Company": { "source": "https://dsgvo-gesetz.de/art-4-dsgvo/" },
-        "User": { "source": "https://dsgvo-gesetz.de/art-4-dsgvo/" },
-        "City": { "source": "https://dsgvo-gesetz.de/art-4-dsgvo/" }
+        "Company": {
+          "translationKey": "isVisible_city",
+          "source": "https://dsgvo-gesetz.de/art-4-dsgvo/"
+        },
+        "User": {
+          "translationKey": "isVisible_city",
+          "source": "https://dsgvo-gesetz.de/art-4-dsgvo/"
+        },
+        "City": {
+          "translationKey": "isVisible_city",
+          "source": "https://dsgvo-gesetz.de/art-4-dsgvo/"
+        }
       }
     }
   },
@@ -136,31 +514,199 @@
   {
     "dataType": "VehicleType",
     "riskLevel": "Low",
-    "roleVisibility": ["Company", "User"]
+    "roleVisibility": ["Company", "User"],
+    "explanation": {
+      "retentionPeriod": "stored_until_no_longer_necessary",
+      "riskLevelExplanation": {
+        "translation_key": "low_risk_explanation"
+      },
+      "isNotVisibleExplanation": {
+        "Company": {
+          "translationKey": "isNotVisible_city"
+        },
+        "User": {
+          "translationKey": "isNotVisible_city"
+        },
+        "City": {
+          "translationKey": "isNotVisible_city"
+        }
+      },
+      "isVisibleExplanation": {
+        "Company": {
+          "translationKey": "isVisible_city"
+        },
+        "User": {
+          "translationKey": "isVisible_city"
+        },
+        "City": {
+          "translationKey": "isVisible_city"
+        }
+      }
+    }
   },
   {
     "dataType": "VehicleCompanyId",
     "riskLevel": "Low",
-    "roleVisibility": ["Company", "User"]
+    "roleVisibility": ["Company", "User"],
+    "explanation": {
+      "retentionPeriod": "stored_until_no_longer_necessary",
+      "riskLevelExplanation": {
+        "translation_key": "low_risk_explanation"
+      },
+      "isNotVisibleExplanation": {
+        "Company": {
+          "translationKey": "isNotVisible_city"
+        },
+        "User": {
+          "translationKey": "isNotVisible_city"
+        },
+        "City": {
+          "translationKey": "isNotVisible_city"
+        }
+      },
+      "isVisibleExplanation": {
+        "Company": {
+          "translationKey": "isVisible_city"
+        },
+        "User": {
+          "translationKey": "isVisible_city"
+        },
+        "City": {
+          "translationKey": "isVisible_city"
+        }
+      }
+    }
   },
   {
     "dataType": "VehicleCondition",
     "riskLevel": "Low",
-    "roleVisibility": ["Company", "User"]
+    "roleVisibility": ["Company", "User"],
+    "explanation": {
+      "retentionPeriod": "stored_until_no_longer_necessary",
+      "riskLevelExplanation": {
+        "translation_key": "low_risk_explanation"
+      },
+      "isNotVisibleExplanation": {
+        "Company": {
+          "translationKey": "isNotVisible_city"
+        },
+        "User": {
+          "translationKey": "isNotVisible_city"
+        },
+        "City": {
+          "translationKey": "isNotVisible_city"
+        }
+      },
+      "isVisibleExplanation": {
+        "Company": {
+          "translationKey": "isVisible_city"
+        },
+        "User": {
+          "translationKey": "isVisible_city"
+        },
+        "City": {
+          "translationKey": "isVisible_city"
+        }
+      }
+    }
   },
   {
     "dataType": "VehicleBatteryCondition",
     "riskLevel": "Low",
-    "roleVisibility": ["Company", "User"]
+    "roleVisibility": ["Company", "User"],
+    "explanation": {
+      "retentionPeriod": "stored_until_no_longer_necessary",
+      "riskLevelExplanation": {
+        "translation_key": "low_risk_explanation"
+      },
+      "isNotVisibleExplanation": {
+        "Company": {
+          "translationKey": "isNotVisible_city"
+        },
+        "User": {
+          "translationKey": "isNotVisible_city"
+        },
+        "City": {
+          "translationKey": "isNotVisible_city"
+        }
+      },
+      "isVisibleExplanation": {
+        "Company": {
+          "translationKey": "isVisible_city"
+        },
+        "User": {
+          "translationKey": "isVisible_city"
+        },
+        "City": {
+          "translationKey": "isVisible_city"
+        }
+      }
+    }
   },
   {
     "dataType": "VehicleStatus",
     "riskLevel": "Medium",
-    "roleVisibility": ["Company", "User"]
+    "roleVisibility": ["Company", "User"],
+    "explanation": {
+      "retentionPeriod": "stored_until_no_longer_necessary",
+      "riskLevelExplanation": {
+        "translation_key": "medium_risk_explanation"
+      },
+      "isNotVisibleExplanation": {
+        "Company": {
+          "translationKey": "isNotVisible_city"
+        },
+        "User": {
+          "translationKey": "isNotVisible_city"
+        },
+        "City": {
+          "translationKey": "isNotVisible_city"
+        }
+      },
+      "isVisibleExplanation": {
+        "Company": {
+          "translationKey": "isVisible_city"
+        },
+        "User": {
+          "translationKey": "isVisible_city"
+        },
+        "City": {
+          "translationKey": "isVisible_city"
+        }
+      }
+    }
   },
   {
     "dataType": "VehicleBatteryLevel",
     "riskLevel": "Low",
-    "roleVisibility": ["Company", "User"]
+    "roleVisibility": ["Company", "User"],
+    "explanation": {
+      "retentionPeriod": "stored_until_no_longer_necessary",
+      "riskLevelExplanation": {
+        "translation_key": "low_risk_explanation"
+      },
+      "isNotVisibleExplanation": {
+        "Company": {
+          "translationKey": "isNotVisible_city"
+        },
+        "User": {
+          "translationKey": "isNotVisible_city"
+        },
+        "City": {
+          "translationKey": "isNotVisible_city"
+        }
+      },
+      "isVisibleExplanation": {
+        "Company": {
+          "translationKey": "isVisible_city"
+        },
+        "User": {
+          "translationKey": "isVisible_city"
+        },
+        "City": {
+          "translationKey": "isVisible_city"
+        }
+      }
+    }
   }
 ]
