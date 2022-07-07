@@ -25,35 +25,20 @@ export class RiskExplanation {
    * Constructs a new RiskExplanation for a data type.
    *
    * @param retentionPeriod the number of days that the data is stored or a translation key
+   * @param riskLevelExplanation explains the risk level of this data
    * @param isNotVisibleExplanation explains for each role why this data is not visible
    * @param isVisibleExplanation explains for each role why this data is visible
-   * @param riskLevelExplanation explains the risk level of this data
    */
   constructor(
     retentionPeriod: RetentionPeriod,
+    riskLevelExplanation: Explanation,
     isNotVisibleExplanation: RoleExplanation,
-    isVisibleExplanation: RoleExplanation,
-    riskLevelExplanation: Explanation
+    isVisibleExplanation: RoleExplanation
   ) {
     this.retentionPeriod = retentionPeriod;
-    this.isNotVisibleExplanation = isNotVisibleExplanation;
-    this.isVisibleExplanation = isVisibleExplanation;
     this.riskLevelExplanation = riskLevelExplanation;
-    if (!this.isNotVisibleExplanation) {
-      // construct the objects manually and then set the keys afterwards
-      this.isNotVisibleExplanation = {
-        Company: { translationKey: "" },
-        User: { translationKey: "" },
-        City: { translationKey: "" },
-      };
-      this.isVisibleExplanation = {
-        Company: { translationKey: "" },
-        User: { translationKey: "" },
-        City: { translationKey: "" },
-      };
-      this.setRoleExplanationTranslationKeys("isNotVisible", false);
-      this.setRoleExplanationTranslationKeys("isVisible", true);
-    }
+    this.isVisibleExplanation = isVisibleExplanation;
+    this.isNotVisibleExplanation = isNotVisibleExplanation;
   }
 
   /**
@@ -63,7 +48,7 @@ export class RiskExplanation {
    * @returns
    */
   getRoleExplanation(isVisible: boolean, role: Role): Explanation {
-    let roleExplanation: RoleExplanation | undefined;
+    let roleExplanation: RoleExplanation;
     if (isVisible) {
       roleExplanation = this.isVisibleExplanation;
     } else {
@@ -72,26 +57,9 @@ export class RiskExplanation {
     if (roleExplanation) {
       return roleExplanation[role];
     } else {
-      return { translationKey: "" };
-      // throw new Error(
-      //   `Explanation for role ${role} and visibility ${isVisible} not found`
-      // );
-    }
-  }
-
-  // sets the translation key for each role, so that we do not have to do it manually in the json file
-  private setRoleExplanationTranslationKeys(
-    prefix: string,
-    isVisible: boolean
-  ) {
-    let explanations: RoleExplanation;
-    if (isVisible) {
-      explanations = this.isVisibleExplanation;
-    } else {
-      explanations = this.isNotVisibleExplanation;
-    }
-    for (const key in explanations) {
-      explanations[key].translationKey = prefix + "_" + key.toLowerCase();
+      throw new Error(
+        `Explanation for role ${role} and visibility ${isVisible} not found.`
+      );
     }
   }
 }
