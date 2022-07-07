@@ -9,7 +9,13 @@
     "city": "Stadt",
     "month": "kein Monat | ein Monat | {count} Monate",
     "year": "kein Jahr | ein Jahr | {count} Jahre",
-    "day": "kein Tag | ein Tag | {count} Tage"
+    "day": "kein Tag | ein Tag | {count} Tage",
+    "dataViews": {
+      "paymentDataView": "Zahlungsdaten",
+      "riderDataView": "Fahrerdaten",
+      "tripDataView": "Tripdaten",
+      "vehicleDataView": "Fahrzeugdaten"
+    }
   },
   "data": {
     "riderData": "Fahrerdaten",
@@ -21,6 +27,20 @@
     "email": "E-Mail",
     "phoneNumber": "Telefonnummer",
     "birthday": "Geburtstag",
-    "address": "Adresse"
+    "address": "Adresse",
+    "vehicleType": "Typ",
+    "status": "Status",
+    "batteryLevel": "Batteriestand",
+    "ownerName": "Eigentümer",
+    "startTime": "Startzeit",
+    "endTime": "Endzeit",
+    "averageSpeed": "Durchschnittsgeschwindigkeit",
+    "price": "Preis",
+    "paymentType": "Zahlungsart",
+    "cardNumber": "Kartennummer",
+    "ccv": "CCV",
+    "expiryDate": "Auslaufdatum",
+    "provider": "Anbieter",
+    "userName": "Nutzername"
   }
 }

@@ -15,7 +15,7 @@ export class EScooter extends IndividualVehicle {
   readonly batteryCondition: number;
 
   @Expose()
-  readonly batteryLevel: number;
+  readonly batteryLevel: string;
 
   constructor(
     id: string,
@@ -30,6 +30,6 @@ export class EScooter extends IndividualVehicle {
     super(id, companyId, VehicleType.EScooter, status, company);
     this.condition = condition;
     this.batteryCondition = batteryCondition;
-    this.batteryLevel = batteryLevel;
+    this.batteryLevel = String(batteryLevel);
   }
 }
