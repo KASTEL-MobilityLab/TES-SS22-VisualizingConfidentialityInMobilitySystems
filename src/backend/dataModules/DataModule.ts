@@ -45,7 +45,14 @@ export class DataModule {
       // Find specific value within DataType
       dataTypes.forEach((dataType) => {
         if (fieldName === dataType) {
-          this.displayedData[`data.${fieldName}`] = values[index];
+          //Wird als Methode ausgelagert
+          if (fieldName === "price") {
+            this.displayedData[`data.${fieldName}`] = values[index] + "€";
+          } else if (fieldName === "batteryLevel") {
+            this.displayedData[`data.${fieldName}`] = values[index] + "%";
+          } else {
+            this.displayedData[`data.${fieldName}`] = values[index];
+          }
         }
       });
     });
