@@ -7,28 +7,6 @@
       "retentionPeriod": "stored_until_no_longer_necessary",
       "riskLevelExplanation": {
         "translation_key": "low_risk_explanation"
-      },
-      "isNotVisibleExplanation": {
-        "Company": {
-          "translationKey": "isNotVisible_company"
-        },
-        "User": {
-          "translationKey": "isNotVisible_user"
-        },
-        "City": {
-          "translationKey": "isNotVisible_city"
-        }
-      },
-      "isVisibleExplanation": {
-        "Company": {
-          "translationKey": "isVisible_company"
-        },
-        "User": {
-          "translationKey": "isVisible_user"
-        },
-        "City": {
-          "translationKey": "isVisible_city"
-        }
       }
     }
   },
@@ -40,28 +18,6 @@
       "retentionPeriod": "stored_until_no_longer_necessary",
       "riskLevelExplanation": {
         "translation_key": "low_risk_explanation"
-      },
-      "isNotVisibleExplanation": {
-        "Company": {
-          "translationKey": "isNotVisible_company"
-        },
-        "User": {
-          "translationKey": "isNotVisible_user"
-        },
-        "City": {
-          "translationKey": "isNotVisible_city"
-        }
-      },
-      "isVisibleExplanation": {
-        "Company": {
-          "translationKey": "isVisible_company"
-        },
-        "User": {
-          "translationKey": "isVisible_user"
-        },
-        "City": {
-          "translationKey": "isVisible_city"
-        }
       }
     }
   },
@@ -73,28 +29,6 @@
       "retentionPeriod": "stored_until_no_longer_necessary",
       "riskLevelExplanation": {
         "translation_key": "high_risk_explanation"
-      },
-      "isNotVisibleExplanation": {
-        "Company": {
-          "translationKey": "isNotVisible_company"
-        },
-        "User": {
-          "translationKey": "isNotVisible_user"
-        },
-        "City": {
-          "translationKey": "isNotVisible_city"
-        }
-      },
-      "isVisibleExplanation": {
-        "Company": {
-          "translationKey": "isVisible_company"
-        },
-        "User": {
-          "translationKey": "isVisible_user"
-        },
-        "City": {
-          "translationKey": "isVisible_city"
-        }
       }
     }
   },
@@ -106,28 +40,6 @@
       "retentionPeriod": "stored_until_no_longer_necessary",
       "riskLevelExplanation": {
         "translation_key": "high_risk_explanation"
-      },
-      "isNotVisibleExplanation": {
-        "Company": {
-          "translationKey": "isNotVisible_company"
-        },
-        "User": {
-          "translationKey": "isNotVisible_user"
-        },
-        "City": {
-          "translationKey": "isNotVisible_city"
-        }
-      },
-      "isVisibleExplanation": {
-        "Company": {
-          "translationKey": "isVisible_company"
-        },
-        "User": {
-          "translationKey": "isVisible_user"
-        },
-        "City": {
-          "translationKey": "isVisible_city"
-        }
       }
     }
   },
@@ -139,28 +51,6 @@
       "retentionPeriod": "stored_until_no_longer_necessary",
       "riskLevelExplanation": {
         "translation_key": "medium_risk_explanation"
-      },
-      "isNotVisibleExplanation": {
-        "Company": {
-          "translationKey": "isNotVisible_company"
-        },
-        "User": {
-          "translationKey": "isNotVisible_user"
-        },
-        "City": {
-          "translationKey": "isNotVisible_city"
-        }
-      },
-      "isVisibleExplanation": {
-        "Company": {
-          "translationKey": "isVisible_company"
-        },
-        "User": {
-          "translationKey": "isVisible_user"
-        },
-        "City": {
-          "translationKey": "isVisible_city"
-        }
       }
     }
   },
@@ -172,28 +62,6 @@
       "retentionPeriod": "stored_until_no_longer_necessary",
       "riskLevelExplanation": {
         "translation_key": "medium_risk_explanation"
-      },
-      "isNotVisibleExplanation": {
-        "Company": {
-          "translationKey": "isNotVisible_company"
-        },
-        "User": {
-          "translationKey": "isNotVisible_user"
-        },
-        "City": {
-          "translationKey": "isNotVisible_city"
-        }
-      },
-      "isVisibleExplanation": {
-        "Company": {
-          "translationKey": "isVisible_company"
-        },
-        "User": {
-          "translationKey": "isVisible_user"
-        },
-        "City": {
-          "translationKey": "isVisible_city"
-        }
       }
     }
   },
@@ -205,28 +73,6 @@
       "retentionPeriod": "stored_until_no_longer_necessary",
       "riskLevelExplanation": {
         "translation_key": "medium_risk_explanation"
-      },
-      "isNotVisibleExplanation": {
-        "Company": {
-          "translationKey": "isNotVisible_company"
-        },
-        "User": {
-          "translationKey": "isNotVisible_user"
-        },
-        "City": {
-          "translationKey": "isNotVisible_city"
-        }
-      },
-      "isVisibleExplanation": {
-        "Company": {
-          "translationKey": "isVisible_company"
-        },
-        "User": {
-          "translationKey": "isVisible_user"
-        },
-        "City": {
-          "translationKey": "isVisible_city"
-        }
       }
     }
   },
@@ -238,28 +84,6 @@
       "retentionPeriod": "stored_until_no_longer_necessary",
       "riskLevelExplanation": {
         "translation_key": "low_risk_explanation"
-      },
-      "isNotVisibleExplanation": {
-        "Company": {
-          "translationKey": "isNotVisible_company"
-        },
-        "User": {
-          "translationKey": "isNotVisible_user"
-        },
-        "City": {
-          "translationKey": "isNotVisible_city"
-        }
-      },
-      "isVisibleExplanation": {
-        "Company": {
-          "translationKey": "isVisible_company"
-        },
-        "User": {
-          "translationKey": "isVisible_user"
-        },
-        "City": {
-          "translationKey": "isVisible_city"
-        }
       }
     }
   },
@@ -271,28 +95,6 @@
       "retentionPeriod": "stored_until_no_longer_necessary",
       "riskLevelExplanation": {
         "translation_key": "low_risk_explanation"
-      },
-      "isNotVisibleExplanation": {
-        "Company": {
-          "translationKey": "isNotVisible_company"
-        },
-        "User": {
-          "translationKey": "isNotVisible_user"
-        },
-        "City": {
-          "translationKey": "isNotVisible_city"
-        }
-      },
-      "isVisibleExplanation": {
-        "Company": {
-          "translationKey": "isVisible_company"
-        },
-        "User": {
-          "translationKey": "isVisible_user"
-        },
-        "City": {
-          "translationKey": "isVisible_city"
-        }
       }
     }
   },
@@ -304,28 +106,6 @@
       "retentionPeriod": "stored_until_no_longer_necessary",
       "riskLevelExplanation": {
         "translation_key": "low_risk_explanation"
-      },
-      "isNotVisibleExplanation": {
-        "Company": {
-          "translationKey": "isNotVisible_company"
-        },
-        "User": {
-          "translationKey": "isNotVisible_user"
-        },
-        "City": {
-          "translationKey": "isNotVisible_city"
-        }
-      },
-      "isVisibleExplanation": {
-        "Company": {
-          "translationKey": "isVisible_company"
-        },
-        "User": {
-          "translationKey": "isVisible_user"
-        },
-        "City": {
-          "translationKey": "isVisible_city"
-        }
       }
     }
   },
@@ -337,28 +117,6 @@
       "retentionPeriod": "stored_until_no_longer_necessary",
       "riskLevelExplanation": {
         "translation_key": "low_risk_explanation"
-      },
-      "isNotVisibleExplanation": {
-        "Company": {
-          "translationKey": "isNotVisible_company"
-        },
-        "User": {
-          "translationKey": "isNotVisible_user"
-        },
-        "City": {
-          "translationKey": "isNotVisible_city"
-        }
-      },
-      "isVisibleExplanation": {
-        "Company": {
-          "translationKey": "isVisible_company"
-        },
-        "User": {
-          "translationKey": "isVisible_user"
-        },
-        "City": {
-          "translationKey": "isVisible_city"
-        }
       }
     }
   },
@@ -370,28 +128,6 @@
       "retentionPeriod": "stored_until_no_longer_necessary",
       "riskLevelExplanation": {
         "translation_key": "low_risk_explanation"
-      },
-      "isNotVisibleExplanation": {
-        "Company": {
-          "translationKey": "isNotVisible_company"
-        },
-        "User": {
-          "translationKey": "isNotVisible_user"
-        },
-        "City": {
-          "translationKey": "isNotVisible_city"
-        }
-      },
-      "isVisibleExplanation": {
-        "Company": {
-          "translationKey": "isVisible_company"
-        },
-        "User": {
-          "translationKey": "isVisible_user"
-        },
-        "City": {
-          "translationKey": "isVisible_city"
-        }
       }
     }
   },
@@ -403,28 +139,6 @@
       "retentionPeriod": "stored_until_no_longer_necessary",
       "riskLevelExplanation": {
         "translation_key": "low_risk_explanation"
-      },
-      "isNotVisibleExplanation": {
-        "Company": {
-          "translationKey": "isNotVisible_company"
-        },
-        "User": {
-          "translationKey": "isNotVisible_user"
-        },
-        "City": {
-          "translationKey": "isNotVisible_city"
-        }
-      },
-      "isVisibleExplanation": {
-        "Company": {
-          "translationKey": "isVisible_company"
-        },
-        "User": {
-          "translationKey": "isVisible_user"
-        },
-        "City": {
-          "translationKey": "isVisible_city"
-        }
       }
     }
   },
@@ -436,34 +150,6 @@
       "retentionPeriod": 365,
       "riskLevelExplanation": {
         "translation_key": "medium_risk_explanation"
-      },
-      "isNotVisibleExplanation": {
-        "Company": {
-          "translationKey": "isNotVisible_city",
-          "source": "https://dsgvo-gesetz.de/art-4-dsgvo/"
-        },
-        "User": {
-          "translationKey": "isNotVisible_city",
-          "source": "https://dsgvo-gesetz.de/art-4-dsgvo/"
-        },
-        "City": {
-          "translationKey": "isNotVisible_city",
-          "source": "https://dsgvo-gesetz.de/art-4-dsgvo/"
-        }
-      },
-      "isVisibleExplanation": {
-        "Company": {
-          "translationKey": "isVisible_city",
-          "source": "https://dsgvo-gesetz.de/art-4-dsgvo/"
-        },
-        "User": {
-          "translationKey": "isVisible_city",
-          "source": "https://dsgvo-gesetz.de/art-4-dsgvo/"
-        },
-        "City": {
-          "translationKey": "isVisible_city",
-          "source": "https://dsgvo-gesetz.de/art-4-dsgvo/"
-        }
       }
     }
   },
@@ -473,36 +159,8 @@
     "roleVisibility": ["Company", "User"],
     "explanation": {
       "retentionPeriod": "stored_until_no_longer_necessary",
-      "isNotVisibleExplanation": {
-        "Company": {
-          "translationKey": "isNotVisible_company",
-          "source": "https://dsgvo-gesetz.de/art-4-dsgvo/"
-        },
-        "User": {
-          "translationKey": "isNotVisible_user",
-          "source": "https://dsgvo-gesetz.de/art-4-dsgvo/"
-        },
-        "City": {
-          "translationKey": "isNotVisible_city",
-          "source": "https://dsgvo-gesetz.de/art-4-dsgvo/"
-        }
-      },
-      "isVisibleExplanation": {
-        "Company": {
-          "translationKey": "isVisible_company",
-          "source": "https://dsgvo-gesetz.de/art-4-dsgvo/"
-        },
-        "User": {
-          "translationKey": "isVisible_user",
-          "source": "https://dsgvo-gesetz.de/art-4-dsgvo/"
-        },
-        "City": {
-          "translationKey": "isVisible_city",
-          "source": "https://dsgvo-gesetz.de/art-4-dsgvo/"
-        }
-      },
       "riskLevelExplanation": {
-        "translationKey": "medium_risk_explanation"
+        "translation_key": "medium_risk_explanation"
       }
     }
   },
@@ -519,28 +177,6 @@
       "retentionPeriod": "stored_until_no_longer_necessary",
       "riskLevelExplanation": {
         "translation_key": "low_risk_explanation"
-      },
-      "isNotVisibleExplanation": {
-        "Company": {
-          "translationKey": "isNotVisible_company"
-        },
-        "User": {
-          "translationKey": "isNotVisible_user"
-        },
-        "City": {
-          "translationKey": "isNotVisible_city"
-        }
-      },
-      "isVisibleExplanation": {
-        "Company": {
-          "translationKey": "isVisible_company"
-        },
-        "User": {
-          "translationKey": "isVisible_user"
-        },
-        "City": {
-          "translationKey": "isVisible_city"
-        }
       }
     }
   },
@@ -552,28 +188,6 @@
       "retentionPeriod": "stored_until_no_longer_necessary",
       "riskLevelExplanation": {
         "translation_key": "low_risk_explanation"
-      },
-      "isNotVisibleExplanation": {
-        "Company": {
-          "translationKey": "isNotVisible_company"
-        },
-        "User": {
-          "translationKey": "isNotVisible_user"
-        },
-        "City": {
-          "translationKey": "isNotVisible_city"
-        }
-      },
-      "isVisibleExplanation": {
-        "Company": {
-          "translationKey": "isVisible_company"
-        },
-        "User": {
-          "translationKey": "isVisible_user"
-        },
-        "City": {
-          "translationKey": "isVisible_city"
-        }
       }
     }
   },
@@ -585,28 +199,6 @@
       "retentionPeriod": "stored_until_no_longer_necessary",
       "riskLevelExplanation": {
         "translation_key": "low_risk_explanation"
-      },
-      "isNotVisibleExplanation": {
-        "Company": {
-          "translationKey": "isNotVisible_company"
-        },
-        "User": {
-          "translationKey": "isNotVisible_user"
-        },
-        "City": {
-          "translationKey": "isNotVisible_city"
-        }
-      },
-      "isVisibleExplanation": {
-        "Company": {
-          "translationKey": "isVisible_company"
-        },
-        "User": {
-          "translationKey": "isVisible_user"
-        },
-        "City": {
-          "translationKey": "isVisible_city"
-        }
       }
     }
   },
@@ -618,28 +210,6 @@
       "retentionPeriod": "stored_until_no_longer_necessary",
       "riskLevelExplanation": {
         "translation_key": "low_risk_explanation"
-      },
-      "isNotVisibleExplanation": {
-        "Company": {
-          "translationKey": "isNotVisible_company"
-        },
-        "User": {
-          "translationKey": "isNotVisible_user"
-        },
-        "City": {
-          "translationKey": "isNotVisible_city"
-        }
-      },
-      "isVisibleExplanation": {
-        "Company": {
-          "translationKey": "isVisible_company"
-        },
-        "User": {
-          "translationKey": "isVisible_user"
-        },
-        "City": {
-          "translationKey": "isVisible_city"
-        }
       }
     }
   },
@@ -651,28 +221,6 @@
       "retentionPeriod": "stored_until_no_longer_necessary",
       "riskLevelExplanation": {
         "translation_key": "medium_risk_explanation"
-      },
-      "isNotVisibleExplanation": {
-        "Company": {
-          "translationKey": "isNotVisible_company"
-        },
-        "User": {
-          "translationKey": "isNotVisible_user"
-        },
-        "City": {
-          "translationKey": "isNotVisible_city"
-        }
-      },
-      "isVisibleExplanation": {
-        "Company": {
-          "translationKey": "isVisible_company"
-        },
-        "User": {
-          "translationKey": "isVisible_user"
-        },
-        "City": {
-          "translationKey": "isVisible_city"
-        }
       }
     }
   },
@@ -684,28 +232,6 @@
       "retentionPeriod": "stored_until_no_longer_necessary",
       "riskLevelExplanation": {
         "translation_key": "low_risk_explanation"
-      },
-      "isNotVisibleExplanation": {
-        "Company": {
-          "translationKey": "isNotVisible_company"
-        },
-        "User": {
-          "translationKey": "isNotVisible_user"
-        },
-        "City": {
-          "translationKey": "isNotVisible_city"
-        }
-      },
-      "isVisibleExplanation": {
-        "Company": {
-          "translationKey": "isVisible_company"
-        },
-        "User": {
-          "translationKey": "isVisible_user"
-        },
-        "City": {
-          "translationKey": "isVisible_city"
-        }
       }
     }
   },
@@ -717,28 +243,6 @@
       "retentionPeriod": "stored_until_no_longer_necessary",
       "riskLevelExplanation": {
         "translation_key": "low_risk_explanation"
-      },
-      "isNotVisibleExplanation": {
-        "Company": {
-          "translationKey": "isNotVisible_company"
-        },
-        "User": {
-          "translationKey": "isNotVisible_user"
-        },
-        "City": {
-          "translationKey": "isNotVisible_city"
-        }
-      },
-      "isVisibleExplanation": {
-        "Company": {
-          "translationKey": "isVisible_company"
-        },
-        "User": {
-          "translationKey": "isVisible_user"
-        },
-        "City": {
-          "translationKey": "isVisible_city"
-        }
       }
     }
   }
