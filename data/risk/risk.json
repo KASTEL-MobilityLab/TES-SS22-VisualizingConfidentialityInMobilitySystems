@@ -2,77 +2,173 @@
   {
     "dataType": "PaymentType",
     "riskLevel": "Low",
-    "roleVisibility": ["Company", "User"]
+    "roleVisibility": ["Company", "User"],
+    "explanation": {
+      "retentionPeriod": "stored_until_no_longer_necessary",
+      "riskLevelExplanation": {
+        "translationKey": "low_risk_explanation"
+      }
+    }
   },
   {
     "dataType": "PaymentProvider",
     "riskLevel": "Low",
-    "roleVisibility": ["Company", "User"]
+    "roleVisibility": ["Company", "User"],
+    "explanation": {
+      "retentionPeriod": "stored_until_no_longer_necessary",
+      "riskLevelExplanation": {
+        "translationKey": "low_risk_explanation"
+      }
+    }
   },
   {
     "dataType": "PaymentCardNumber",
     "riskLevel": "High",
-    "roleVisibility": ["Company", "User"]
+    "roleVisibility": ["Company", "User"],
+    "explanation": {
+      "retentionPeriod": "stored_until_no_longer_necessary",
+      "riskLevelExplanation": {
+        "translationKey": "high_risk_explanation"
+      }
+    }
   },
   {
     "dataType": "PaymentCcv",
     "riskLevel": "High",
-    "roleVisibility": ["Company", "User"]
+    "roleVisibility": ["Company", "User"],
+    "explanation": {
+      "retentionPeriod": "stored_until_no_longer_necessary",
+      "riskLevelExplanation": {
+        "translationKey": "high_risk_explanation"
+      }
+    }
   },
   {
     "dataType": "PaymentExpiryDate",
     "riskLevel": "Medium",
-    "roleVisibility": ["Company", "User"]
+    "roleVisibility": ["Company", "User"],
+    "explanation": {
+      "retentionPeriod": "stored_until_no_longer_necessary",
+      "riskLevelExplanation": {
+        "translationKey": "medium_risk_explanation"
+      }
+    }
   },
   {
     "dataType": "RouteStart",
     "riskLevel": "Medium",
-    "roleVisibility": ["Company", "User"]
+    "roleVisibility": ["Company", "User"],
+    "explanation": {
+      "retentionPeriod": "stored_until_no_longer_necessary",
+      "riskLevelExplanation": {
+        "translationKey": "medium_risk_explanation"
+      }
+    }
   },
   {
     "dataType": "RouteEnd",
     "riskLevel": "Medium",
-    "roleVisibility": ["Company", "User"]
+    "roleVisibility": ["Company", "User"],
+    "explanation": {
+      "retentionPeriod": "stored_until_no_longer_necessary",
+      "riskLevelExplanation": {
+        "translationKey": "medium_risk_explanation"
+      }
+    }
   },
   {
     "dataType": "TripAvgSpeed",
     "riskLevel": "Low",
-    "roleVisibility": ["Company", "User"]
+    "roleVisibility": ["Company", "User"],
+    "explanation": {
+      "retentionPeriod": "stored_until_no_longer_necessary",
+      "riskLevelExplanation": {
+        "translationKey": "low_risk_explanation"
+      }
+    }
   },
   {
     "dataType": "TripPrice",
     "riskLevel": "Low",
-    "roleVisibility": ["Company", "User"]
+    "roleVisibility": ["Company", "User"],
+    "explanation": {
+      "retentionPeriod": "stored_until_no_longer_necessary",
+      "riskLevelExplanation": {
+        "translationKey": "low_risk_explanation"
+      }
+    }
   },
   {
     "dataType": "TripStartTime",
     "riskLevel": "Low",
-    "roleVisibility": ["Company", "User"]
+    "roleVisibility": ["Company", "User"],
+    "explanation": {
+      "retentionPeriod": "stored_until_no_longer_necessary",
+      "riskLevelExplanation": {
+        "translationKey": "low_risk_explanation"
+      }
+    }
   },
   {
     "dataType": "TripEndTime",
     "riskLevel": "Low",
-    "roleVisibility": ["Company", "User"]
+    "roleVisibility": ["Company", "User"],
+    "explanation": {
+      "retentionPeriod": "stored_until_no_longer_necessary",
+      "riskLevelExplanation": {
+        "translationKey": "low_risk_explanation"
+      }
+    }
   },
   {
     "dataType": "UserForename",
     "riskLevel": "Low",
-    "roleVisibility": ["Company", "User"]
+    "roleVisibility": ["Company", "User"],
+    "explanation": {
+      "retentionPeriod": "stored_until_no_longer_necessary",
+      "riskLevelExplanation": {
+        "translationKey": "low_risk_explanation",
+        "source": "https://dsgvo-gesetz.de/art-4-dsgvo/"
+      },
+      "visibilitySource": "https://dsgvo-gesetz.de/art-4-dsgvo/"
+    }
   },
   {
     "dataType": "UserSurname",
     "riskLevel": "Low",
-    "roleVisibility": ["Company", "User"]
+    "roleVisibility": ["Company", "User"],
+    "explanation": {
+      "retentionPeriod": "stored_until_no_longer_necessary",
+      "riskLevelExplanation": {
+        "translationKey": "low_risk_explanation",
+        "source": "https://dsgvo-gesetz.de/art-4-dsgvo/"
+      },
+      "visibilitySource": "https://dsgvo-gesetz.de/art-4-dsgvo/"
+    }
   },
   {
     "dataType": "UserPhoneNumber",
     "riskLevel": "Medium",
-    "roleVisibility": ["Company", "User"]
+    "roleVisibility": ["Company", "User"],
+    "explanation": {
+      "retentionPeriod": 365,
+      "riskLevelExplanation": {
+        "translationKey": "medium_risk_explanation",
+        "source": "https://dsgvo-gesetz.de/art-4-dsgvo/"
+      }
+    }
   },
   {
     "dataType": "UserEmail",
     "riskLevel": "Medium",
-    "roleVisibility": ["Company", "User"]
+    "roleVisibility": ["Company", "User"],
+    "explanation": {
+      "retentionPeriod": "stored_until_no_longer_necessary",
+      "riskLevelExplanation": {
+        "translationKey": "medium_risk_explanation",
+        "source": "https://dsgvo-gesetz.de/art-4-dsgvo/"
+      }
+    }
   },
   {
     "dataType": "VehicleId",
@@ -82,36 +178,78 @@
   {
     "dataType": "VehicleType",
     "riskLevel": "Low",
-    "roleVisibility": ["Company", "User"]
+    "roleVisibility": ["Company", "User"],
+    "explanation": {
+      "retentionPeriod": "stored_until_no_longer_necessary",
+      "riskLevelExplanation": {
+        "translationKey": "low_risk_explanation"
+      }
+    }
   },
   {
     "dataType": "VehicleCompanyId",
     "riskLevel": "Low",
-    "roleVisibility": ["Company", "User"]
+    "roleVisibility": ["Company", "User"],
+    "explanation": {
+      "retentionPeriod": "stored_until_no_longer_necessary",
+      "riskLevelExplanation": {
+        "translationKey": "low_risk_explanation"
+      }
+    }
   },
   {
     "dataType": "VehicleCondition",
     "riskLevel": "Low",
-    "roleVisibility": ["Company", "User"]
+    "roleVisibility": ["Company", "User"],
+    "explanation": {
+      "retentionPeriod": "stored_until_no_longer_necessary",
+      "riskLevelExplanation": {
+        "translationKey": "low_risk_explanation"
+      }
+    }
   },
   {
     "dataType": "VehicleBatteryCondition",
     "riskLevel": "Low",
-    "roleVisibility": ["Company", "User"]
+    "roleVisibility": ["Company", "User"],
+    "explanation": {
+      "retentionPeriod": "stored_until_no_longer_necessary",
+      "riskLevelExplanation": {
+        "translationKey": "low_risk_explanation"
+      }
+    }
   },
   {
     "dataType": "VehicleStatus",
     "riskLevel": "Medium",
-    "roleVisibility": ["Company", "User"]
+    "roleVisibility": ["Company", "User"],
+    "explanation": {
+      "retentionPeriod": "stored_until_no_longer_necessary",
+      "riskLevelExplanation": {
+        "translationKey": "medium_risk_explanation"
+      }
+    }
   },
   {
     "dataType": "VehicleBatteryLevel",
     "riskLevel": "Low",
-    "roleVisibility": ["Company", "User"]
+    "roleVisibility": ["Company", "User"],
+    "explanation": {
+      "retentionPeriod": "stored_until_no_longer_necessary",
+      "riskLevelExplanation": {
+        "translationKey": "low_risk_explanation"
+      }
+    }
   },
   {
     "dataType": "VehicleOwnerName",
     "riskLevel": "Low",
-    "roleVisibility": ["Company", "User"]
+    "roleVisibility": ["Company", "User"],
+    "explanation": {
+      "retentionPeriod": "stored_until_no_longer_necessary",
+      "riskLevelExplanation": {
+        "translationKey": "low_risk_explanation"
+      }
+    }
   }
 ]
