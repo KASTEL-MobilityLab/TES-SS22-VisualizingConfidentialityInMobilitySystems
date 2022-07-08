@@ -210,4 +210,40 @@ export class DataManager {
     }
     return trip;
   }
+
+  /**
+   * Updates the Risk, that is currently selected by the user.
+   *
+   * @param risk the risk that is currently selected
+   */
+  setCurrentRisk(risk: string | Risk) {
+    this.riskManager.setCurrentRisk(risk);
+  }
+
+  /**
+   * Returns the currently selected Risk.
+   *
+   * @returns the currently selected Risk
+   */
+  getCurrentRisk() {
+    return this.riskManager.getCurrentRisk();
+  }
+
+  /**
+   * Returns the currently selected Risk Explanations.
+   *
+   * @returns the currently selected Risk Explanation.
+   */
+  getCurrentRiskExplanation() {
+    return this.riskManager.getCurrentRiskExplanation();
+  }
+
+  /**
+   * Returns the visibility of the currently selected Risk.
+   *
+   * @returns the visibility of the currently selected Risk.
+   */
+  getCurrentVisibility() {
+    return this.riskManager.getCurrentVisibility(this.currentRole);
+  }
 }

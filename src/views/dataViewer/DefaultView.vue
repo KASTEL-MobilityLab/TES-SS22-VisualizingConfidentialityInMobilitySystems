@@ -7,28 +7,28 @@ import { RouterLink } from "vue-router";
     <div class="row">
       <div class="col m-5">
         <RouterLink to="rider" class="link-dark">{{
-          $t("data.riderData")
+          $t("app.dataViews.riderDataView")
         }}</RouterLink>
       </div>
     </div>
     <div class="row">
       <div class="col m-5">
         <RouterLink to="payment" class="link-dark">{{
-          $t("data.paymentData")
+          $t("app.dataViews.paymentDataView")
         }}</RouterLink>
       </div>
     </div>
     <div class="row">
       <div class="col m-5">
         <RouterLink to="vehicle" class="link-dark">{{
-          $t("data.vehicleData")
+          $t("app.dataViews.vehicleDataView")
         }}</RouterLink>
       </div>
     </div>
     <div class="row">
       <div class="col m-5">
         <RouterLink to="trip" class="link-dark">{{
-          $t("data.tripData")
+          $t("app.dataViews.tripDataView")
         }}</RouterLink>
       </div>
     </div>

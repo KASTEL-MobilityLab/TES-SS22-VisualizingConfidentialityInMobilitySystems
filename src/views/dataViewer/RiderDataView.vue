@@ -6,6 +6,7 @@ import { computed, type ComputedRef } from "@vue/reactivity";
 import { inject, type Ref } from "vue";
 import DataModuleVue from "../../components/DataModule.vue";
 const $dm = inject(dataManagerKey) as Ref<DataManager>;
+
 const RIDER_DATA_VIEW_KEY = "app.dataViews.riderDataView";
 
 const currentRider: ComputedRef<DataModule | undefined> = computed(() => {

@@ -71,12 +71,6 @@ function setupMarkers(map: L.Map) {
 function vehicleMarkerClicked(event: LeafletEvent) {
   const marker = event.propagatedFrom as VehicleMarker;
   const vehicle = marker.vehicle;
-  console.log(
-    "Clicked on marker of vehicle " +
-      vehicle.id +
-      " at position " +
-      marker.getLatLng()
-  );
   $dm.value.updateByVehicle(vehicle);
 }
 </script>
