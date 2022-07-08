@@ -1,5 +1,11 @@
+import {
+  IS_NOT_VISIBLE_KEY,
+  IS_VISIBLE_KEY,
+  type Explanation,
+  type RetentionPeriod,
+  type VisibilityExplanation,
+} from "@/backend/riskManager";
 import { Exclude, Expose } from "class-transformer";
-import type { Explanation, RetentionPeriod, VisibilityExplanation } from ".";
 
 /**
  *  The RiskExplanation Class that contains the explanations for each risk of a data type (e.g. User Forename)
@@ -33,8 +39,8 @@ export class RiskExplanation {
     this.riskLevelExplanation = riskLevelExplanation;
     this.visibilitySource = visibilitySource;
     this.visibilityExplanation = {
-      isVisibleKey: "isVisible",
-      isNotVisibleKey: "isNotVisible",
+      isVisibleKey: IS_VISIBLE_KEY,
+      isNotVisibleKey: IS_NOT_VISIBLE_KEY,
     };
   }
 
