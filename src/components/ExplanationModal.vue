@@ -9,10 +9,11 @@ import ExplanationContent from "./ExplanationContent.vue";
 
 const $dm = inject(dataManagerKey) as Ref<DataManager>;
 
+const currentRisk = computed(() => $dm.value.getCurrentRisk());
+
 const currentDataType = computed(() => {
-  const risk = $dm.value.getCurrentRisk();
-  if (risk) {
-    return getTranslationKeyForDataType(risk.dataType);
+  if (currentRisk.value) {
+    return getTranslationKeyForDataType(currentRisk.value.dataType);
   } else {
     return "";
   }
@@ -31,10 +32,10 @@ const currentDataType = computed(() => {
               })
             }}
             <span
-              v-if="$dm.getCurrentRisk()"
+              v-if="currentRisk?.dataType"
               class="badge"
-              :class="`bg-${getRiskColor($dm.getCurrentRisk().riskLevel)}`"
-              >{{ $dm.getCurrentRisk().riskLevel }}</span
+              :class="`bg-${getRiskColor(currentRisk.riskLevel)}`"
+              >{{ currentRisk.riskLevel }}</span
             >
           </h5>
           <button
@@ -43,8 +44,8 @@ const currentDataType = computed(() => {
             data-bs-dismiss="modal"
           ></button>
         </div>
-        <div v-if="$dm.getCurrentRisk()" class="modal-body">
-          <ExplanationContent :risk="$dm.getCurrentRisk()" />
+        <div v-if="currentRisk" class="modal-body">
+          <ExplanationContent :risk="currentRisk" />
         </div>
         <div class="modal-footer">
           <button

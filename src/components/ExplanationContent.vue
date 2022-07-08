@@ -20,7 +20,7 @@ const props = defineProps<{
 }>();
 
 const retentionPeriodString: ComputedRef<string> = computed(() => {
-  const period = props.risk?.explanation?.retentionPeriod;
+  const period = props.risk.explanation.retentionPeriod;
   switch (typeof period) {
     case "string":
       return t(getTranslationKeyForExplanation(period));
@@ -50,7 +50,7 @@ const visibilityExplanationTitle: ComputedRef<string> = computed(() => {
 
 const visibilityExplanation: ComputedRef<string> = computed(() => {
   const explanation = getCurrentVisibilityExplanation();
-  const dataType = $dm.value.getCurrentRisk().dataType;
+  const dataType = $dm.value.getCurrentRisk()?.dataType;
   if (explanation && dataType) {
     return t(
       getTranslationKeyForExplanation(dataType, explanation.translationKey),
@@ -72,7 +72,7 @@ const visibilityExplanationSource: ComputedRef<string> = computed(() => {
 
 const riskLevelExplanationSource: ComputedRef<string> = computed(() => {
   const riskLevelExplanation =
-    $dm.value.getCurrentRiskExplanation().riskLevelExplanation;
+    $dm.value.getCurrentRiskExplanation()?.riskLevelExplanation;
   if (riskLevelExplanation && riskLevelExplanation.source) {
     return riskLevelExplanation.source;
   } else {
@@ -86,7 +86,7 @@ const riskLevelExplanation: ComputedRef<string> = computed(() => {
   if (riskExplanation) {
     return t(
       getTranslationKeyForExplanation(
-        riskExplanation.riskLevelExplanation?.translationKey
+        riskExplanation.riskLevelExplanation.translationKey
       )
     );
   } else {
@@ -94,11 +94,10 @@ const riskLevelExplanation: ComputedRef<string> = computed(() => {
   }
 });
 
-function getCurrentVisibilityExplanation(): Explanation {
+function getCurrentVisibilityExplanation(): Explanation | undefined {
   const currentRiskExplanation = $dm.value.getCurrentRiskExplanation();
-  return currentRiskExplanation.getVisibilityExplanation(
-    $dm.value.getCurrentVisibility()
-  );
+  const currentVisibility = $dm.value.getCurrentVisibility() || false;
+  return currentRiskExplanation?.getVisibilityExplanation(currentVisibility);
 }
 </script>
 

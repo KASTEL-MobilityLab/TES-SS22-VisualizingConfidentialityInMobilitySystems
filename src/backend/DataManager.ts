@@ -9,7 +9,6 @@ import type {
 import type { Route } from "./dataFields/Route";
 import { DataLoader, type DataLoaderParams } from "./DataLoader";
 import { DataPackage } from "./DataPackage";
-import type { DataType } from "./DataType";
 import type { Risk } from "./riskManager/Risk";
 import { RiskManager } from "./riskManager/RiskManager";
 import { Role } from "./Role";
@@ -30,7 +29,6 @@ export class DataManager {
   //The currently selected DataPackage
   currentData: DataPackage;
   riskManager: RiskManager;
-  private currentRisk?: Risk;
 
   /**
    * Construct a new DataManager.
@@ -213,17 +211,13 @@ export class DataManager {
     return trip;
   }
 
+  /**
+   * Updates the Risk, that is currently selected by the user.
+   *
+   * @param risk the risk that is currently selected
+   */
   setCurrentRisk(risk: string | Risk) {
-    if (typeof risk === "string") {
-      try {
-        const dataType = <DataType>risk;
-        this.currentRisk = this.riskManager.findRisk(dataType);
-      } catch (e) {
-        throw Error(`Could not convert string ${risk} to DataType`);
-      }
-    } else {
-      this.currentRisk = risk;
-    }
+    this.riskManager.setCurrentRisk(risk);
   }
 
   /**
@@ -231,11 +225,8 @@ export class DataManager {
    *
    * @returns the currently selected Risk
    */
-  getCurrentRisk(): Risk {
-    if (!this.currentRisk) {
-      throw Error("Currently, no risk is selected.");
-    }
-    return this.currentRisk;
+  getCurrentRisk() {
+    return this.riskManager.getCurrentRisk();
   }
 
   /**
@@ -244,8 +235,7 @@ export class DataManager {
    * @returns the currently selected Risk Explanation.
    */
   getCurrentRiskExplanation() {
-    const currentRisk = this.getCurrentRisk();
-    return currentRisk.explanation;
+    return this.riskManager.getCurrentRiskExplanation();
   }
 
   /**
@@ -254,7 +244,6 @@ export class DataManager {
    * @returns the visibility of the currently selected Risk.
    */
   getCurrentVisibility() {
-    const currentRisk = this.getCurrentRisk();
-    return currentRisk.isVisible(this.currentRole);
+    return this.riskManager.getCurrentVisibility(this.currentRole);
   }
 }
