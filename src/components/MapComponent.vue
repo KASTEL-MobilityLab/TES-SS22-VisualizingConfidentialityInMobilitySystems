@@ -89,6 +89,11 @@ function vehicleMarkerClicked(event: LeafletEvent) {
   const marker = event.propagatedFrom as VehicleMarker;
   const vehicle = marker.vehicle;
   $dm.value.updateByVehicle(vehicle);
+
+  // navigate to Default Data View
+  router.push({
+    name: "Default",
+  });
 }
 </script>
 
