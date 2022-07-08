@@ -5,12 +5,15 @@ import type { VehicleMarker } from "@/utils/leafletExtension";
 import { generateAllVehicleMarkers } from "@/utils/markerUtils";
 import L, { type LeafletEvent } from "leaflet";
 import { inject, onMounted, type Ref } from "vue";
+import { useRouter } from "vue-router";
 
 const $dm = inject(dataManagerKey) as Ref<DataManager>;
+const router = useRouter();
 
 // setup the map and generate markers, when this component is mounted
 onMounted(() => {
   const map = setupMap();
+  map.on("click", emptySpotClicked);
   setupMarkers(map);
 });
 
@@ -60,6 +63,20 @@ function setupMarkers(map: L.Map) {
   const markers = generateAllVehicleMarkers(vehicles);
   markers.forEach((marker) => {
     marker.addTo(markersLayer);
+  });
+}
+
+/**
+ * When the user clicks on an empty spot on the map, this will be called.
+ * It deselects the current data references and hides the route of the previously selected vehicle.
+ *
+ * @param e the event that was triggered
+ */
+function emptySpotClicked(e: LeafletEvent) {
+  $dm.value.currentData.unsetReferences();
+  // navigate back to welcome page on data viewer
+  router.push({
+    name: "Welcome",
   });
 }
 
