@@ -6,7 +6,7 @@
     "explanation": {
       "retentionPeriod": "stored_until_no_longer_necessary",
       "riskLevelExplanation": {
-        "translation_key": "low_risk_explanation"
+        "translationKey": "low_risk_explanation"
       }
     }
   },
@@ -17,7 +17,7 @@
     "explanation": {
       "retentionPeriod": "stored_until_no_longer_necessary",
       "riskLevelExplanation": {
-        "translation_key": "low_risk_explanation"
+        "translationKey": "low_risk_explanation"
       }
     }
   },
@@ -28,7 +28,7 @@
     "explanation": {
       "retentionPeriod": "stored_until_no_longer_necessary",
       "riskLevelExplanation": {
-        "translation_key": "high_risk_explanation"
+        "translationKey": "high_risk_explanation"
       }
     }
   },
@@ -39,7 +39,7 @@
     "explanation": {
       "retentionPeriod": "stored_until_no_longer_necessary",
       "riskLevelExplanation": {
-        "translation_key": "high_risk_explanation"
+        "translationKey": "high_risk_explanation"
       }
     }
   },
@@ -50,7 +50,7 @@
     "explanation": {
       "retentionPeriod": "stored_until_no_longer_necessary",
       "riskLevelExplanation": {
-        "translation_key": "medium_risk_explanation"
+        "translationKey": "medium_risk_explanation"
       }
     }
   },
@@ -61,7 +61,7 @@
     "explanation": {
       "retentionPeriod": "stored_until_no_longer_necessary",
       "riskLevelExplanation": {
-        "translation_key": "medium_risk_explanation"
+        "translationKey": "medium_risk_explanation"
       }
     }
   },
@@ -72,7 +72,7 @@
     "explanation": {
       "retentionPeriod": "stored_until_no_longer_necessary",
       "riskLevelExplanation": {
-        "translation_key": "medium_risk_explanation"
+        "translationKey": "medium_risk_explanation"
       }
     }
   },
@@ -83,7 +83,7 @@
     "explanation": {
       "retentionPeriod": "stored_until_no_longer_necessary",
       "riskLevelExplanation": {
-        "translation_key": "low_risk_explanation"
+        "translationKey": "low_risk_explanation"
       }
     }
   },
@@ -94,7 +94,7 @@
     "explanation": {
       "retentionPeriod": "stored_until_no_longer_necessary",
       "riskLevelExplanation": {
-        "translation_key": "low_risk_explanation"
+        "translationKey": "low_risk_explanation"
       }
     }
   },
@@ -105,7 +105,7 @@
     "explanation": {
       "retentionPeriod": "stored_until_no_longer_necessary",
       "riskLevelExplanation": {
-        "translation_key": "low_risk_explanation"
+        "translationKey": "low_risk_explanation"
       }
     }
   },
@@ -116,7 +116,7 @@
     "explanation": {
       "retentionPeriod": "stored_until_no_longer_necessary",
       "riskLevelExplanation": {
-        "translation_key": "low_risk_explanation"
+        "translationKey": "low_risk_explanation"
       }
     }
   },
@@ -127,8 +127,10 @@
     "explanation": {
       "retentionPeriod": "stored_until_no_longer_necessary",
       "riskLevelExplanation": {
-        "translation_key": "low_risk_explanation"
-      }
+        "translationKey": "low_risk_explanation",
+        "source": "https://dsgvo-gesetz.de/art-4-dsgvo/"
+      },
+      "visibilitySource": "https://dsgvo-gesetz.de/art-4-dsgvo/"
     }
   },
   {
@@ -138,8 +140,10 @@
     "explanation": {
       "retentionPeriod": "stored_until_no_longer_necessary",
       "riskLevelExplanation": {
-        "translation_key": "low_risk_explanation"
-      }
+        "translationKey": "low_risk_explanation",
+        "source": "https://dsgvo-gesetz.de/art-4-dsgvo/"
+      },
+      "visibilitySource": "https://dsgvo-gesetz.de/art-4-dsgvo/"
     }
   },
   {
@@ -149,7 +153,8 @@
     "explanation": {
       "retentionPeriod": 365,
       "riskLevelExplanation": {
-        "translation_key": "medium_risk_explanation"
+        "translationKey": "medium_risk_explanation",
+        "source": "https://dsgvo-gesetz.de/art-4-dsgvo/"
       }
     }
   },
@@ -160,7 +165,8 @@
     "explanation": {
       "retentionPeriod": "stored_until_no_longer_necessary",
       "riskLevelExplanation": {
-        "translation_key": "medium_risk_explanation"
+        "translationKey": "medium_risk_explanation",
+        "source": "https://dsgvo-gesetz.de/art-4-dsgvo/"
       }
     }
   },
@@ -176,7 +182,7 @@
     "explanation": {
       "retentionPeriod": "stored_until_no_longer_necessary",
       "riskLevelExplanation": {
-        "translation_key": "low_risk_explanation"
+        "translationKey": "low_risk_explanation"
       }
     }
   },
@@ -187,7 +193,7 @@
     "explanation": {
       "retentionPeriod": "stored_until_no_longer_necessary",
       "riskLevelExplanation": {
-        "translation_key": "low_risk_explanation"
+        "translationKey": "low_risk_explanation"
       }
     }
   },
@@ -198,7 +204,7 @@
     "explanation": {
       "retentionPeriod": "stored_until_no_longer_necessary",
       "riskLevelExplanation": {
-        "translation_key": "low_risk_explanation"
+        "translationKey": "low_risk_explanation"
       }
     }
   },
@@ -209,7 +215,7 @@
     "explanation": {
       "retentionPeriod": "stored_until_no_longer_necessary",
       "riskLevelExplanation": {
-        "translation_key": "low_risk_explanation"
+        "translationKey": "low_risk_explanation"
       }
     }
   },
@@ -220,7 +226,7 @@
     "explanation": {
       "retentionPeriod": "stored_until_no_longer_necessary",
       "riskLevelExplanation": {
-        "translation_key": "medium_risk_explanation"
+        "translationKey": "medium_risk_explanation"
       }
     }
   },
@@ -231,7 +237,7 @@
     "explanation": {
       "retentionPeriod": "stored_until_no_longer_necessary",
       "riskLevelExplanation": {
-        "translation_key": "low_risk_explanation"
+        "translationKey": "low_risk_explanation"
       }
     }
   },
@@ -242,7 +248,7 @@
     "explanation": {
       "retentionPeriod": "stored_until_no_longer_necessary",
       "riskLevelExplanation": {
-        "translation_key": "low_risk_explanation"
+        "translationKey": "low_risk_explanation"
       }
     }
   }
