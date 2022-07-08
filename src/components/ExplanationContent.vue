@@ -33,7 +33,7 @@ const retentionPeriodString: ComputedRef<string> = computed(() => {
   }
 });
 
-const roleVisibilityTitle: ComputedRef<string> = computed(() => {
+const visibilityExplanationTitle: ComputedRef<string> = computed(() => {
   const param = { role: $dm.value.currentRole };
   if (getCurrentVisibility()) {
     return t(
@@ -48,8 +48,8 @@ const roleVisibilityTitle: ComputedRef<string> = computed(() => {
   }
 });
 
-const roleVisibilityExplanation: ComputedRef<string> = computed(() => {
-  const explanation = getCurrentRoleVisibilityExplanation();
+const visibilityExplanation: ComputedRef<string> = computed(() => {
+  const explanation = getCurrentVisibilityExplanation();
   const dataType = $dm.value.currentRisk?.dataType;
   if (explanation && dataType) {
     return t(
@@ -60,8 +60,8 @@ const roleVisibilityExplanation: ComputedRef<string> = computed(() => {
   }
 });
 
-const roleExplanationSource: ComputedRef<string> = computed(() => {
-  const explanation = getCurrentRoleVisibilityExplanation();
+const visibilityExplanationSource: ComputedRef<string> = computed(() => {
+  const explanation = getCurrentVisibilityExplanation();
   if (explanation && explanation.source) {
     return explanation.source;
   } else {
@@ -95,9 +95,6 @@ function getCurrentVisibility() {
   const currentRole = $dm.value.currentRole;
   const isVisible: boolean | undefined =
     $dm.value.currentRisk?.isVisible(currentRole);
-  if (isVisible === undefined) {
-    throw new Error("isVisible is undefined");
-  }
   return isVisible;
 }
 
@@ -106,13 +103,11 @@ function getCurrentExplanation(): RiskExplanation | undefined {
   return $dm.value.currentRisk?.explanation;
 }
 
-function getCurrentRoleVisibilityExplanation(): Explanation | undefined {
-  const explanation: Explanation | undefined =
-    getCurrentExplanation()?.getRoleExplanation(
-      getCurrentVisibility(),
-      $dm.value.currentRole
-    );
-  return explanation;
+function getCurrentVisibilityExplanation(): Explanation | undefined {
+  const currentVisibility = getCurrentVisibility();
+  if (currentVisibility) {
+    return getCurrentExplanation()?.getVisibilityExplanation(currentVisibility);
+  }
 }
 </script>
 
@@ -121,9 +116,9 @@ function getCurrentRoleVisibilityExplanation(): Explanation | undefined {
     <div class="row">
       <div class="col">
         <ExplanationCard
-          :title="roleVisibilityTitle"
-          :content="roleVisibilityExplanation"
-          :source="roleExplanationSource"
+          :title="visibilityExplanationTitle"
+          :content="visibilityExplanation"
+          :source="visibilityExplanationSource"
         />
       </div>
       <div v-if="retentionPeriodString" class="col">

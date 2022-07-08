@@ -28,13 +28,13 @@ export class Risk {
 
   @Expose()
   @Type(() => RiskExplanation)
-  explanation?: RiskExplanation;
+  explanation: RiskExplanation;
 
   constructor(
     dataType: DataType,
     riskLevel: RiskLevel,
     roleVisibility: Role[],
-    explanation?: RiskExplanation
+    explanation: RiskExplanation
   ) {
     this.dataType = dataType;
     this.riskLevel = riskLevel;
@@ -59,6 +59,6 @@ export class Risk {
    * @returns the Explanation for the role
    */
   getExplanation(role: Role) {
-    return this.explanation?.getRoleExplanation(this.isVisible(role), role);
+    return this.explanation.getVisibilityExplanation(this.isVisible(role));
   }
 }

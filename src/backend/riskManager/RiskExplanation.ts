@@ -1,6 +1,5 @@
-import { Expose } from "class-transformer";
-import type { Explanation, RetentionPeriod, RoleExplanation } from ".";
-import type { Role } from "../Role";
+import { Exclude, Expose } from "class-transformer";
+import type { Explanation, RetentionPeriod, VisibilityExplanation } from ".";
 
 /**
  *  The RiskExplanation Class that contains the explanations for each risk of a data type (e.g. User Forename)
@@ -9,14 +8,11 @@ export class RiskExplanation {
   @Expose()
   readonly retentionPeriod: RetentionPeriod;
 
-  /**
-   * Depending on which role is currently selected, this variable stores the explanation, why it is or is not visible.
-   */
-  @Expose()
-  readonly isNotVisibleExplanation: RoleExplanation;
+  @Exclude()
+  private visibilityExplanation: VisibilityExplanation;
 
   @Expose()
-  readonly isVisibleExplanation: RoleExplanation;
+  private readonly visibilitySource?: string;
 
   @Expose()
   readonly riskLevelExplanation: Explanation;
@@ -26,40 +22,40 @@ export class RiskExplanation {
    *
    * @param retentionPeriod the number of days that the data is stored or a translation key
    * @param riskLevelExplanation explains the risk level of this data
-   * @param isNotVisibleExplanation explains for each role why this data is not visible
-   * @param isVisibleExplanation explains for each role why this data is visible
+   * @param visibilitySource the source for the visibility explanation of this data
    */
   constructor(
     retentionPeriod: RetentionPeriod,
     riskLevelExplanation: Explanation,
-    isNotVisibleExplanation: RoleExplanation,
-    isVisibleExplanation: RoleExplanation
+    visibilitySource?: string
   ) {
     this.retentionPeriod = retentionPeriod;
     this.riskLevelExplanation = riskLevelExplanation;
-    this.isVisibleExplanation = isVisibleExplanation;
-    this.isNotVisibleExplanation = isNotVisibleExplanation;
+    this.visibilitySource = visibilitySource;
+    this.visibilityExplanation = {
+      isVisibleKey: "isVisible",
+      isNotVisibleKey: "isNotVisible",
+    };
   }
 
   /**
-   * Returns the explanation for the given role and the given visibility.
+   * Returns the explanation for the given visibility.
    *
    * @param isVisible if true, the corresponding explanation is returned
-   * @returns
+   * @returns the explanation for the given visibility
    */
-  getRoleExplanation(isVisible: boolean, role: Role): Explanation {
-    let roleExplanation: RoleExplanation;
+  getVisibilityExplanation(isVisible: boolean): Explanation {
+    const explanation: Explanation = {
+      translationKey: "",
+    };
+    if (this.visibilitySource) {
+      explanation.source = this.visibilitySource;
+    }
     if (isVisible) {
-      roleExplanation = this.isVisibleExplanation;
+      explanation.translationKey = this.visibilityExplanation.isVisibleKey;
     } else {
-      roleExplanation = this.isNotVisibleExplanation;
+      explanation.translationKey = this.visibilityExplanation.isNotVisibleKey;
     }
-    if (roleExplanation) {
-      return roleExplanation[role];
-    } else {
-      throw new Error(
-        `Explanation for role ${role} and visibility ${isVisible} not found.`
-      );
-    }
+    return explanation;
   }
 }

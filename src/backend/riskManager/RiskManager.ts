@@ -63,9 +63,6 @@ export class RiskManager {
   getRiskExplanation(dataType: DataType): RiskExplanation {
     const riskDef = this.findRisk(dataType);
     const explanation = riskDef.explanation;
-    if (!explanation) {
-      throw Error("No RiskExplanation found for dataType: " + dataType);
-    }
     return explanation;
   }
 }

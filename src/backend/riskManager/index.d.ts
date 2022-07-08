@@ -1,7 +1,11 @@
 /**
  * A RoleExplanation is a Record with the Role as key and an explanation
  */
-export type RoleExplanation = Record<Role, Explanation>;
+export type VisibilityExplanation = {
+  // defines the (translation) keys for each visibility.
+  isVisibleKey: "isVisible";
+  isNotVisibleKey: "isNotVisible";
+};
 
 /**
  * An Explanation has an translation key and optionally a source string (e.g. another website)
