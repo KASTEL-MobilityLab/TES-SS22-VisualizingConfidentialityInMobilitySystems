@@ -9,7 +9,6 @@
     "help": "Help",
     "month": "no month | one month | {count} months",
     "user": "User",
-    "welcome": "Welcome to our @:app.confidentiality-visualizer",
     "year": "no year | one year | {count} years",
     "source": "Source",
     "dataViews": {
@@ -17,6 +16,12 @@
       "riderDataView": "Rider Data",
       "tripDataView": "Trip Data",
       "vehicleDataView": "Vehicle Data"
+    },
+    "welcome": {
+      "title": "Welcome to our @:app.confidentiality-visualizer",
+      "get_help": "Click on the Help button to get further information about our application.",
+      "getting_started": "To begin, choose a role first by selecting one of the icons in the navigation bar.",
+      "click_to_see_data": "Click on one of the vehicle icons on the map to see the collected data about the trip."
     }
   },
   "data": {
