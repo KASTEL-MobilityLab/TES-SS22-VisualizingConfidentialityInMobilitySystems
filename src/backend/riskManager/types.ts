@@ -1,13 +1,13 @@
-export const IS_VISIBLE_KEY: "isVisible";
-export const IS_NOT_VISIBLE_KEY: "isNotVisible";
+export const IS_VISIBLE_KEY = "isVisible";
+export const IS_NOT_VISIBLE_KEY = "isNotVisible";
 
 /**
  * A RoleExplanation is a Record with the Role as key and an explanation
  */
 export type VisibilityExplanation = {
   // defines the (translation) keys for each visibility.
-  isVisibleKey: IS_VISIBLE_KEY;
-  isNotVisibleKey: IS_NOT_VISIBLE_KEY;
+  isVisibleKey: typeof IS_VISIBLE_KEY;
+  isNotVisibleKey: typeof IS_NOT_VISIBLE_KEY;
 };
 
 /**

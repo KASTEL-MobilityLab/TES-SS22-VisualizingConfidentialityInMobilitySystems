@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import type { DataManager } from "@/backend/DataManager";
-import type { Explanation } from "@/backend/riskManager";
 import type { Risk } from "@/backend/riskManager/Risk";
 import type { RiskExplanation } from "@/backend/riskManager/RiskExplanation";
+import type { Explanation } from "@/backend/riskManager/types";
 import { dataManagerKey } from "@/keys";
 import { getTranslationKeyForExplanation } from "@/utils/translationUtils";
 import { computed, type ComputedRef, type Ref } from "@vue/reactivity";

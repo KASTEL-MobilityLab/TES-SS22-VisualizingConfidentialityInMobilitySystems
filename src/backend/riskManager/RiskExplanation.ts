@@ -4,7 +4,7 @@ import {
   type Explanation,
   type RetentionPeriod,
   type VisibilityExplanation,
-} from "@/backend/riskManager";
+} from "@/backend/riskManager/types";
 import { Exclude, Expose } from "class-transformer";
 
 /**
