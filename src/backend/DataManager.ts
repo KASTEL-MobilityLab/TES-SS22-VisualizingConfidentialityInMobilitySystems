@@ -30,7 +30,7 @@ export class DataManager {
   //The currently selected DataPackage
   currentData: DataPackage;
   riskManager: RiskManager;
-  currentRisk?: Risk;
+  private currentRisk?: Risk;
 
   /**
    * Construct a new DataManager.
@@ -224,5 +224,37 @@ export class DataManager {
     } else {
       this.currentRisk = risk;
     }
+  }
+
+  /**
+   * Returns the currently selected Risk.
+   *
+   * @returns the currently selected Risk
+   */
+  getCurrentRisk(): Risk {
+    if (!this.currentRisk) {
+      throw Error("Currently, no risk is selected.");
+    }
+    return this.currentRisk;
+  }
+
+  /**
+   * Returns the currently selected Risk Explanations.
+   *
+   * @returns the currently selected Risk Explanation.
+   */
+  getCurrentRiskExplanation() {
+    const currentRisk = this.getCurrentRisk();
+    return currentRisk.explanation;
+  }
+
+  /**
+   * Returns the visibility of the currently selected Risk.
+   *
+   * @returns the visibility of the currently selected Risk.
+   */
+  getCurrentVisibility() {
+    const currentRisk = this.getCurrentRisk();
+    return currentRisk.isVisible(this.currentRole);
   }
 }

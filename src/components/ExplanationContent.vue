@@ -35,7 +35,7 @@ const retentionPeriodString: ComputedRef<string> = computed(() => {
 
 const visibilityExplanationTitle: ComputedRef<string> = computed(() => {
   const param = { role: $dm.value.currentRole };
-  if (getCurrentVisibility()) {
+  if ($dm.value.getCurrentVisibility()) {
     return t(
       getTranslationKeyForExplanation("why_is_this_visible_to_me"),
       param
@@ -50,10 +50,11 @@ const visibilityExplanationTitle: ComputedRef<string> = computed(() => {
 
 const visibilityExplanation: ComputedRef<string> = computed(() => {
   const explanation = getCurrentVisibilityExplanation();
-  const dataType = $dm.value.currentRisk?.dataType;
+  const dataType = $dm.value.getCurrentRisk().dataType;
   if (explanation && dataType) {
     return t(
-      getTranslationKeyForExplanation(dataType, explanation.translationKey)
+      getTranslationKeyForExplanation(dataType, explanation.translationKey),
+      { role: $dm.value.currentRole }
     );
   } else {
     return "";
@@ -70,16 +71,18 @@ const visibilityExplanationSource: ComputedRef<string> = computed(() => {
 });
 
 const riskLevelExplanationSource: ComputedRef<string> = computed(() => {
-  const explanation = getCurrentExplanation()?.riskLevelExplanation;
-  if (explanation && explanation.source) {
-    return explanation.source;
+  const riskLevelExplanation =
+    $dm.value.getCurrentRiskExplanation().riskLevelExplanation;
+  if (riskLevelExplanation && riskLevelExplanation.source) {
+    return riskLevelExplanation.source;
   } else {
     return "";
   }
 });
 
 const riskLevelExplanation: ComputedRef<string> = computed(() => {
-  const riskExplanation: RiskExplanation | undefined = getCurrentExplanation();
+  const riskExplanation: RiskExplanation | undefined =
+    $dm.value.getCurrentRiskExplanation();
   if (riskExplanation) {
     return t(
       getTranslationKeyForExplanation(
@@ -91,23 +94,11 @@ const riskLevelExplanation: ComputedRef<string> = computed(() => {
   }
 });
 
-function getCurrentVisibility() {
-  const currentRole = $dm.value.currentRole;
-  const isVisible: boolean | undefined =
-    $dm.value.currentRisk?.isVisible(currentRole);
-  return isVisible;
-}
-
-// gets the current risk explanation
-function getCurrentExplanation(): RiskExplanation | undefined {
-  return $dm.value.currentRisk?.explanation;
-}
-
-function getCurrentVisibilityExplanation(): Explanation | undefined {
-  const currentVisibility = getCurrentVisibility();
-  if (currentVisibility) {
-    return getCurrentExplanation()?.getVisibilityExplanation(currentVisibility);
-  }
+function getCurrentVisibilityExplanation(): Explanation {
+  const currentRiskExplanation = $dm.value.getCurrentRiskExplanation();
+  return currentRiskExplanation.getVisibilityExplanation(
+    $dm.value.getCurrentVisibility()
+  );
 }
 </script>
 

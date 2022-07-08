@@ -18,24 +18,30 @@ function setCurrentRisk(key: string) {
 // in the Data Viewer.
 </script>
 
-<template v-if="dataModule !== undefined">
-  <h4 class="text-center m-2">{{ $t(dataFieldName) }}</h4>
-  <template v-for="(value, key) in dataModule?.displayedData" :key="key">
-    <div class="row m-2 p-2">
-      <div class="col m-2 fw-bold">
-        <button
-          type="button"
-          :class="dataModule?.risks[key]"
-          data-bs-toggle="modal"
-          data-bs-target="#explanationModal"
-          @click="setCurrentRisk(key)"
-        >
-          {{ $t(key) }}
-        </button>
+<template>
+  <template v-if="dataModule !== undefined">
+    <h4 class="text-center m-2">{{ $t(dataFieldName) }}</h4>
+    <template v-for="(value, key) in dataModule?.displayedData" :key="key">
+      <div class="row m-2 p-2">
+        <div class="col m-2 fw-bold">
+          <button
+            type="button"
+            :class="dataModule?.risks[key]"
+            data-bs-toggle="modal"
+            data-bs-target="#explanationModal"
+            @click="setCurrentRisk(key)"
+          >
+            {{ $t(key) }}
+          </button>
+        </div>
+        <div class="col m-2">
+          {{ value }}
+        </div>
       </div>
-      <div class="col m-2">
-        {{ value }}
-      </div>
-    </div>
+    </template>
+  </template>
+
+  <template v-else>
+    <span class="lead">Please select a vehicle on the map first!</span>
   </template>
 </template>
