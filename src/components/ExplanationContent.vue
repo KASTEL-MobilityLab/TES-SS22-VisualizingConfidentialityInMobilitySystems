@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import type { DataManager } from "@/backend/DataManager";
 import type { Risk } from "@/backend/riskManager/Risk";
-import type { RiskExplanation } from "@/backend/riskManager/RiskExplanation";
 import type { Explanation } from "@/backend/riskManager/types";
 import { dataManagerKey } from "@/keys";
 import { getTranslationKeyForExplanation } from "@/utils/translationUtils";
@@ -81,13 +80,11 @@ const riskLevelExplanationSource: ComputedRef<string> = computed(() => {
 });
 
 const riskLevelExplanation: ComputedRef<string> = computed(() => {
-  const riskExplanation: RiskExplanation | undefined =
-    $dm.value.getCurrentRiskExplanation();
-  if (riskExplanation) {
+  const riskLevelExplanation: Explanation | undefined =
+    $dm.value.getCurrentRiskExplanation()?.riskLevelExplanation;
+  if (riskLevelExplanation) {
     return t(
-      getTranslationKeyForExplanation(
-        riskExplanation.riskLevelExplanation.translationKey
-      )
+      getTranslationKeyForExplanation(riskLevelExplanation.translationKey)
     );
   } else {
     return "";
