@@ -39,7 +39,7 @@ import LocaleChanger from "./LocaleChanger.vue";
           <LocaleChanger />
         </span>
         <div class="vr"></div>
-        <RouterLink to="/help" class="navbar-brand m-4 display-4"
+        <RouterLink to="/" class="navbar-brand m-4 display-4"
           >{{ $t("app.help") }}<i class="fa-solid fa-question fa-sm fa-fw"></i
         ></RouterLink>
       </div>
