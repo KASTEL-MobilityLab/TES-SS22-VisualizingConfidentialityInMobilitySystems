@@ -9,7 +9,7 @@ const $dm = inject(dataManagerKey) as Ref<DataManager>;
 const PAYMENT_DATA_VIEW_KEY = "app.dataViews.paymentDataView";
 
 const currentPayment: ComputedRef<DataModule | undefined> = computed(() => {
-  const payment = $dm.value.currentData.getVehicle();
+  const payment = $dm.value.currentData.getPayment();
   if (payment) {
     return new DataModule(payment, $dm.value.riskManager);
   }
