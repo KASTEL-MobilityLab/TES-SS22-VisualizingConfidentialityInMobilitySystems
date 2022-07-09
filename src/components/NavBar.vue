@@ -18,52 +18,10 @@ const $dm = inject(dataManagerKey) as Ref<DataManager>;
       >
       <ul class="navbar-nav">
         <UserDropdownVue />
-        <!--
-        <li class="nav-item active dropdown">
-          <a
-            id="navbarDropdown"
-            class="nav-link active dropdown-toggle"
-            href="#"
-            role="button"
-            data-bs-toggle="dropdown"
-          >
-            {{ $t("app.user") }}
-          </a>
-          <ul class="dropdown-menu">
-            <li>
-              <a class="dropdown-item" href="#"
-                ><button @click="$dm.changeRole('User')">User 1</button></a
-              >
-            </li>
-          </ul>
-        </li>
--->
         <li class="nav-item">
           <span class="nav-link active">{{ $t("app.city") }}</span>
         </li>
         <CompanyDropDownVue />
-        <!--
-        <li class="nav-item active dropdown">
-          <a
-            id="navbarDropdown"
-            class="nav-link active dropdown-toggle"
-            href="#"
-            role="button"
-            data-bs-toggle="dropdown"
-          >
-            {{ $t("app.company") }}
-          </a>
-          <ul class="dropdown-menu">
-            <li>
-              <a class="dropdown-item" href="#"
-                ><button @click="$dm.changeRole('Company')">
-                  Company 1
-                </button></a
-              >
-            </li>
-          </ul>
-        </li>
--->
       </ul>
       <div class="d-flex-inline">
         <span class="navbar-brand m-4 display-4">
