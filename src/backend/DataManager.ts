@@ -190,7 +190,7 @@ export class DataManager {
    * Change the current user.
    * @param userId The user of the selected user.
    */
-  private changeUser(userId: string) {
+  changeUser(userId: string) {
     this.roleUser = <User>this.getDataById(userId, this.users);
   }
 
@@ -198,7 +198,7 @@ export class DataManager {
    * Change the current company.
    * @param companyId The user of the selected company.
    */
-  private changeCompany(companyId: string) {
+  changeCompany(companyId: string) {
     this.roleCompany = <Company>this.getDataById(companyId, this.companies);
   }
 

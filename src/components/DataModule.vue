@@ -27,7 +27,15 @@ const $dm = inject(dataManagerKey) as Ref<DataManager>;
             </button>
           </div>
           <div
-            v-if="dataModule?.risks[key].isVisible($dm.currentRole)"
+            v-if="
+              dataModule?.risks[key].isVisible(
+                $dm.currentRole,
+                $dm.roleUser,
+                $dm.currentData.getUser(),
+                $dm.roleCompany,
+                $dm.currentData.getCompany()
+              )
+            "
             class="col m-2"
           >
             {{ value }}

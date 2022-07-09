@@ -1,4 +1,5 @@
 import { Expose, Transform, Type } from "class-transformer";
+import type { Company, User } from "../dataFields";
 import { DataType } from "../DataType";
 import { Role } from "../Role";
 import { RiskLevel } from "./RiskLevel";
@@ -35,13 +36,33 @@ export class Risk {
   }
 
   /**
-   * Returns true, if this datatype is visible in the given role.
+   * Returns true, if this datatype is visible in the given role and current data.
    *
    * @param role the Role to check for visibility
+   * @param roleUser the possible selected user role
+   * @param currentDataUser the possible current selected user
+   * @param roleCompany the possible selected company role
+   * @param currentDataCompany the possible current selected comapny
    * @returns true if this datatype is visible in the given role, false otherwise
    */
-  isVisible(role: Role): boolean {
-    console.log(this.roleVisibility.includes(role));
-    return this.roleVisibility.includes(role);
+  isVisible(
+    role: Role,
+    roleUser?: User,
+    currentDataUser?: User,
+    roleCompany?: Company,
+    currentDataCompany?: Company
+  ): boolean {
+    if (roleUser && currentDataUser) {
+      if (roleUser === currentDataUser) {
+        return this.roleVisibility.includes(role);
+      }
+    } else if (roleCompany && currentDataCompany) {
+      if (roleCompany === currentDataCompany) {
+        return this.roleVisibility.includes(role);
+      }
+    } else if (role === Role.City) {
+      return this.roleVisibility.includes(role);
+    }
+    return false;
   }
 }
