@@ -4,7 +4,8 @@ import { dataManagerKey } from "@/keys";
 import { inject, type Ref } from "vue";
 import { RouterLink } from "vue-router";
 import LocaleChanger from "./LocaleChanger.vue";
-
+import UserDropdownVue from "./navBarComponents/UserDropdown.vue";
+import CompanyDropDownVue from "./navBarComponents/CompanyDropdown.vue";
 const $dm = inject(dataManagerKey) as Ref<DataManager>;
 </script>
 
@@ -16,6 +17,8 @@ const $dm = inject(dataManagerKey) as Ref<DataManager>;
         {{ $t("app.confidentiality-visualizer") }}</RouterLink
       >
       <ul class="navbar-nav">
+        <UserDropdownVue />
+        <!--
         <li class="nav-item active dropdown">
           <a
             id="navbarDropdown"
@@ -34,11 +37,12 @@ const $dm = inject(dataManagerKey) as Ref<DataManager>;
             </li>
           </ul>
         </li>
-
+-->
         <li class="nav-item">
           <span class="nav-link active">{{ $t("app.city") }}</span>
         </li>
-
+        <CompanyDropDownVue />
+        <!--
         <li class="nav-item active dropdown">
           <a
             id="navbarDropdown"
@@ -59,6 +63,7 @@ const $dm = inject(dataManagerKey) as Ref<DataManager>;
             </li>
           </ul>
         </li>
+-->
       </ul>
       <div class="d-flex-inline">
         <span class="navbar-brand m-4 display-4">
