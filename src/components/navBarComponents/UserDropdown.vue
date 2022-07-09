@@ -22,7 +22,14 @@ const $dm = inject(dataManagerKey) as Ref<DataManager>;
     <ul class="dropdown-menu">
       <li>
         <a class="dropdown-item" href="#"
-          ><button @click="$dm.changeRole('User')">User 1</button></a
+          ><button
+            @click="
+              $dm.changeRole('User');
+              $dm.changeUser('U01');
+            "
+          >
+            Theo Schweitzer
+          </button></a
         >
       </li>
     </ul>
