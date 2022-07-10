@@ -9,11 +9,13 @@ import type {
 import type { Route } from "./dataFields/Route";
 import { DataLoader, type DataLoaderParams } from "./DataLoader";
 import { DataPackage } from "./DataPackage";
+import type { DataType } from "./DataType";
 import type { Risk } from "./riskManager/Risk";
 import { RiskManager } from "./riskManager/RiskManager";
 import { Role } from "./Role";
 
 export class DataManager {
+  public static readonly SEPERATOR_SYMBOL_FOR_DATATYPE = ".";
   currentRole: Role;
   roleUser?: User;
   roleCompany?: Company;
@@ -245,5 +247,26 @@ export class DataManager {
    */
   getCurrentVisibility() {
     return this.riskManager.getCurrentVisibility(this.currentRole);
+  }
+
+  getDataType(key: string) {
+    return <DataType>key.split(DataManager.SEPERATOR_SYMBOL_FOR_DATATYPE)[1];
+  }
+
+  getRoleVisibility(dataTypeKey: string): boolean {
+    const dataType: DataType = this.getDataType(dataTypeKey);
+    const risk: Risk = this.riskManager.findRisk(dataType);
+    if (this.roleUser && this.currentData.getUser()) {
+      if (this.roleUser === this.currentData.getUser()) {
+        return risk.isVisible(this.currentRole);
+      }
+    } else if (this.roleCompany && this.currentData.getCompany()) {
+      if (this.roleCompany === this.currentData.getCompany()) {
+        return risk.isVisible(this.currentRole);
+      }
+    } else if (this.currentRole === Role.City) {
+      return risk.isVisible(this.currentRole);
+    }
+    return false;
   }
 }
