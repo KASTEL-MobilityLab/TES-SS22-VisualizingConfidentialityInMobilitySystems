@@ -16,6 +16,7 @@ import { Risk } from "@/backend/riskManager/Risk";
 import { RiskLevel } from "@/backend/riskManager/RiskLevel";
 import { Role } from "@/backend/Role";
 import { LatLng } from "@/backend/utils/LatLng";
+import { explanations } from "./expectedExplanations";
 
 /**
  * Manually defines the expected data.
@@ -94,13 +95,30 @@ export const trips: Trip[] = [
   ),
 ];
 export const risks: Risk[] = [
-  new Risk(DataType.UserForename, RiskLevel.Low, [Role.Company, Role.User]),
-  new Risk(DataType.UserSurname, RiskLevel.Low, [Role.Company, Role.User]),
-  new Risk(DataType.UserPhoneNumber, RiskLevel.Medium, [
-    Role.Company,
-    Role.User,
-  ]),
-  new Risk(DataType.UserEmail, RiskLevel.Medium, [Role.Company, Role.User]),
+  new Risk(
+    DataType.UserForename,
+    RiskLevel.Low,
+    [Role.Company, Role.User],
+    explanations[0]
+  ),
+  new Risk(
+    DataType.UserSurname,
+    RiskLevel.Low,
+    [Role.Company, Role.User],
+    explanations[1]
+  ),
+  new Risk(
+    DataType.UserPhoneNumber,
+    RiskLevel.Medium,
+    [Role.Company, Role.User],
+    explanations[2]
+  ),
+  new Risk(
+    DataType.UserEmail,
+    RiskLevel.Medium,
+    [Role.Company, Role.User],
+    explanations[3]
+  ),
 ];
 export const vehicles: Vehicle[] = [
   new EScooter("V01", "C01", 84, 89, VehicleStatus.Active, 74),

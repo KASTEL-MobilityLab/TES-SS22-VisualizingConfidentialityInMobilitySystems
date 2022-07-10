@@ -1,49 +1,48 @@
 <script setup lang="ts">
-import type { DataField } from "@/backend/dataFields/DataField";
 import type { DataManager } from "@/backend/DataManager";
 import type { DataModule } from "@/backend/dataModules/DataModule";
 import { dataManagerKey } from "@/keys";
 import { inject, type Ref } from "vue";
 defineProps<{
   dataModule?: DataModule;
-  //Hab es als Variable gelassen, da man im Nachhinein auch nur einen Enum oder Ähnliches dafür einsetzen könnte.
   dataFieldName: string;
 }>();
+const $dm = inject(dataManagerKey) as Ref<DataManager>;
+
+function setCurrentRisk(key: string) {
+  const datatype: string = key.split(".")[1];
+  $dm.value.setCurrentRisk(datatype);
+}
 
 // This component takes an instance of DataField and displays all its attributes
 // in the Data Viewer.
-const $dm = inject(dataManagerKey) as Ref<DataManager>;
 </script>
 
-<template v-show="dataModule !== undefined">
-  <h4 class="text-center m-2">{{ $t(dataFieldName) }}</h4>
-  <template v-for="(value, key) in dataModule?.displayedData" :key="key">
-    <div classs="my-buttons">
-      <div class>
-        <div class="row m-2 p-2">
-          <div class="col m-2 fw-bold">
-            <button type="button" :class="dataModule?.riskLevels[key]">
-              {{ $t(key) }}
-            </button>
-          </div>
-          <div
-            v-if="
-              dataModule?.risks[key].isVisible(
-                $dm.currentRole,
-                $dm.roleUser,
-                $dm.currentData.getUser(),
-                $dm.roleCompany,
-                $dm.currentData.getCompany()
-              )
-            "
-            class="col m-2"
+<template>
+  <template v-if="dataModule !== undefined">
+    <h4 class="text-center m-2">{{ $t(dataFieldName) }}</h4>
+    <template v-for="(value, key) in dataModule?.displayedData" :key="key">
+      <div class="row m-2 p-2">
+        <div class="col m-2 fw-bold">
+          <button
+            type="button"
+            :class="dataModule?.risks[key]"
+            data-bs-toggle="modal"
+            data-bs-target="#explanationModal"
+            @click="setCurrentRisk(key)"
           >
-            {{ value }}
-          </div>
-          <div v-else id="blur" class="col m-2">{{ value }}</div>
+            {{ $t(key) }}
+          </button>
+        </div>
+        <div class="col m-2">
+          {{ value }}
         </div>
       </div>
-    </div>
+    </template>
+  </template>
+
+  <template v-else>
+    <span class="lead">Please select a vehicle on the map first!</span>
   </template>
 </template>
 
