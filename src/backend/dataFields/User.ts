@@ -18,9 +18,6 @@ export class User extends DataField {
   @Expose()
   readonly email: string;
 
-  @Exclude()
-  readonly role: Role;
-
   constructor(
     id: string,
     forename: string,
@@ -33,7 +30,6 @@ export class User extends DataField {
     this.surname = surname;
     this.phoneNumber = phoneNumber;
     this.email = email;
-    this.role = Role.User;
   }
 
   getFullName(): string {
