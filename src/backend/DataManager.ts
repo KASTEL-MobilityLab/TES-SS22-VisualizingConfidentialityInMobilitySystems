@@ -256,17 +256,6 @@ export class DataManager {
   getRoleVisibility(dataTypeKey: string): boolean {
     const dataType: DataType = this.getDataType(dataTypeKey);
     const risk: Risk = this.riskManager.findRisk(dataType);
-    if (this.roleUser && this.currentData.getUser()) {
-      if (this.roleUser === this.currentData.getUser()) {
-        return risk.isVisible(this.currentRole);
-      }
-    } else if (this.roleCompany && this.currentData.getCompany()) {
-      if (this.roleCompany === this.currentData.getCompany()) {
-        return risk.isVisible(this.currentRole);
-      }
-    } else if (this.currentRole === Role.City) {
-      return risk.isVisible(this.currentRole);
-    }
-    return false;
+    return risk.isVisible(this.currentRole);
   }
 }
