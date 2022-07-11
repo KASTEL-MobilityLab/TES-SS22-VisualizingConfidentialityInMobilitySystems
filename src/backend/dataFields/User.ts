@@ -1,4 +1,5 @@
-import { Expose } from "class-transformer";
+import { Exclude, Expose } from "class-transformer";
+import { Role } from "../Role";
 import { DataField } from "./DataField";
 
 /**

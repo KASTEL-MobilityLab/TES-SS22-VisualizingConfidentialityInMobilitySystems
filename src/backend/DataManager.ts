@@ -9,12 +9,15 @@ import type {
 import type { Route } from "./dataFields/Route";
 import { DataLoader, type DataLoaderParams } from "./DataLoader";
 import { DataPackage } from "./DataPackage";
+import type { DataType } from "./DataType";
 import type { Risk } from "./riskManager/Risk";
 import { RiskManager } from "./riskManager/RiskManager";
 import { Role } from "./Role";
 
 export class DataManager {
+  public static readonly SEPERATOR_SYMBOL_FOR_DATATYPE = ".";
   currentRole: Role;
+  //Not worked on it yet.
   roleUser?: User;
   roleCompany?: Company;
 
@@ -26,9 +29,9 @@ export class DataManager {
   routes: Route[];
 
   dataLoader: DataLoader;
+  riskManager: RiskManager;
   //The currently selected DataPackage
   currentData: DataPackage;
-  riskManager: RiskManager;
 
   /**
    * Construct a new DataManager.
@@ -179,7 +182,7 @@ export class DataManager {
    * Change the current role.
    * @param role The selected role from the enum roles.
    */
-  private changeRole(role: string) {
+  changeRole(role: string) {
     if (!(role in Role)) {
       throw Error(`Could not change role to ${role}`);
     }
@@ -187,18 +190,18 @@ export class DataManager {
   }
 
   /**
-   * Change the current user.
+   * Under work. Not used yet. Change the current user.
    * @param userId The user of the selected user.
    */
-  private changeUser(userId: string) {
+  changeUser(userId: string) {
     this.roleUser = <User>this.getDataById(userId, this.users);
   }
 
   /**
-   * Change the current company.
+   * Undeer work. Not used yet. Change the current company.
    * @param companyId The user of the selected company.
    */
-  private changeCompany(companyId: string) {
+  changeCompany(companyId: string) {
     this.roleCompany = <Company>this.getDataById(companyId, this.companies);
   }
 
@@ -245,5 +248,15 @@ export class DataManager {
    */
   getCurrentVisibility() {
     return this.riskManager.getCurrentVisibility(this.currentRole);
+  }
+
+  getDataType(key: string) {
+    return <DataType>key.split(DataManager.SEPERATOR_SYMBOL_FOR_DATATYPE)[1];
+  }
+
+  getRoleVisibility(dataTypeKey: string): boolean {
+    const dataType: DataType = this.getDataType(dataTypeKey);
+    const risk: Risk = this.riskManager.findRisk(dataType);
+    return risk.isVisible(this.currentRole);
   }
 }

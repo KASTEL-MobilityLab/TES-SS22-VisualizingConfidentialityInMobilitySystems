@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { DataManager } from "@/backend/DataManager";
 import type { DataModule } from "@/backend/dataModules/DataModule";
+import type { DataType } from "@/backend/DataType";
 import { dataManagerKey } from "@/keys";
 import { inject, type Ref } from "vue";
 defineProps<{
@@ -10,7 +11,7 @@ defineProps<{
 const $dm = inject(dataManagerKey) as Ref<DataManager>;
 
 function setCurrentRisk(key: string) {
-  const datatype: string = key.split(".")[1];
+  const datatype: string = $dm.value.getDataType(key);
   $dm.value.setCurrentRisk(datatype);
 }
 
@@ -34,9 +35,10 @@ function setCurrentRisk(key: string) {
             {{ $t(key) }}
           </button>
         </div>
-        <div class="col m-2">
+        <div v-if="$dm.getRoleVisibility(key)" class="col m-2">
           {{ value }}
         </div>
+        <div v-else id="blur" class="col m-2">{{ value }}</div>
       </div>
     </template>
   </template>
@@ -45,3 +47,11 @@ function setCurrentRisk(key: string) {
     <span class="lead">Please select a vehicle on the map first!</span>
   </template>
 </template>
+
+<style>
+#blur {
+  font-size: 20px;
+  color: transparent;
+  text-shadow: 0 0 8px #000;
+}
+</style>

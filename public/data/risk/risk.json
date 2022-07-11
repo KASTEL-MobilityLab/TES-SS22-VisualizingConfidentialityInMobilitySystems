@@ -24,7 +24,7 @@
   {
     "dataType": "PaymentCardNumber",
     "riskLevel": "High",
-    "roleVisibility": ["Company", "User"],
+    "roleVisibility": ["User"],
     "explanation": {
       "retentionPeriod": "stored_until_no_longer_necessary",
       "riskLevelExplanation": {
@@ -35,7 +35,7 @@
   {
     "dataType": "PaymentCcv",
     "riskLevel": "High",
-    "roleVisibility": ["Company", "User"],
+    "roleVisibility": ["User"],
     "explanation": {
       "retentionPeriod": "stored_until_no_longer_necessary",
       "riskLevelExplanation": {
