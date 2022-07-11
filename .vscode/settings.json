@@ -1,17 +1,17 @@
 {
   "cSpell.words": [
+    "commitlint",
+    "fontawesome",
+    "fortawesome",
     "iconify",
     "intlify",
+    "popperjs",
+    "routesfound",
+    "rushstack",
     "typecheck",
     "Vite",
     "vitejs",
-    "vitest",
-    "fortawesome",
-    "fontawesome",
-    "typecheck",
-    "popperjs",
-    "commitlint",
-    "rushstack"
+    "vitest"
   ],
   "i18n-ally.sourceLanguage": "en",
   "i18n-ally.keystyle": "nested",
