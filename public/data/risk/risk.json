@@ -55,6 +55,17 @@
     }
   },
   {
+    "dataType": "PaymentUsername",
+    "riskLevel": "Low",
+    "roleVisibility": ["Company", "User"],
+    "explanation": {
+      "retentionPeriod": "stored_until_no_longer_necessary",
+      "riskLevelExplanation": {
+        "translationKey": "low_risk_explanation"
+      }
+    }
+  },
+  {
     "dataType": "RouteStart",
     "riskLevel": "Medium",
     "roleVisibility": ["Company", "User"],

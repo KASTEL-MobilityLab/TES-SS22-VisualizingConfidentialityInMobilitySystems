@@ -26,11 +26,11 @@ export class RiskManager {
    */
   findRisk(dataType: DataType) {
     if (!this.risks) {
-      throw Error("RiskDefinitions are not set yet");
+      throw Error("Risks are not set yet");
     }
     const riskDef = this.risks.find((element) => element.dataType === dataType);
     if (!riskDef) {
-      throw Error("Cannot find RiskDefinition for datatype: " + dataType);
+      throw Error("Cannot find Risk for datatype: " + dataType);
     }
     return riskDef;
   }
