@@ -3,9 +3,9 @@ import { Role } from "../Role";
 import { DataField } from "./DataField";
 
 /**
- * The Company class. A Company has an id and a name.
+ * The City class. A City has an id and a name. A City provides aggregated data about the used public and individual vehicle.
  */
-export class Company extends DataField {
+export class City extends DataField {
   @Expose()
   readonly name: string;
 

@@ -2,21 +2,47 @@
   {
     "dataType": "UserForename",
     "riskLevel": "Low",
-    "roleVisibility": ["Company", "User"]
+    "roleVisibility": ["Company", "User"],
+    "explanation": {
+      "retentionPeriod": "stored_until_no_longer_necessary",
+      "riskLevelExplanation": {
+        "translationKey": "low_risk_explanation"
+      }
+    }
   },
   {
     "dataType": "UserSurname",
     "riskLevel": "Low",
-    "roleVisibility": ["Company", "User"]
+    "roleVisibility": ["Company", "User"],
+    "explanation": {
+      "retentionPeriod": "stored_until_no_longer_necessary",
+      "riskLevelExplanation": {
+        "translationKey": "low_risk_explanation"
+      }
+    }
   },
   {
     "dataType": "UserPhoneNumber",
     "riskLevel": "Medium",
-    "roleVisibility": ["Company", "User"]
+    "roleVisibility": ["Company", "User"],
+    "explanation": {
+      "retentionPeriod": "stored_until_no_longer_necessary",
+      "riskLevelExplanation": {
+        "translationKey": "medium_risk_explanation"
+      },
+      "visibilitySource": "https://dsgvo-gesetz.de/art-12-dsgvo/"
+    }
   },
   {
     "dataType": "UserEmail",
     "riskLevel": "Medium",
-    "roleVisibility": ["Company", "User"]
+    "roleVisibility": ["Company", "User"],
+    "explanation": {
+      "retentionPeriod": "stored_until_no_longer_necessary",
+      "riskLevelExplanation": {
+        "translationKey": "medium_risk_explanation"
+      },
+      "visibilitySource": "https://dsgvo-gesetz.de/art-12-dsgvo/"
+    }
   }
 ]

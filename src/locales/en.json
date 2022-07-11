@@ -1,25 +1,49 @@
 {
   "app": {
-    "help": "Help",
-    "confidentiality-visualizer": "Confidentiality Visualizer",
-    "welcome": "Welcome to our @:app.confidentiality-visualizer",
-    "dataViewer": "Data Viewer",
-    "user": "User",
-    "company": "Company",
     "city": "City",
+    "close": "Close",
+    "company": "Company",
+    "confidentiality-visualizer": "Confidentiality Visualizer",
+    "dataViewer": "Data Viewer",
+    "day": "no day | one day | {count} days",
+    "help": "Help",
     "month": "no month | one month | {count} months",
+    "user": "User",
     "year": "no year | one year | {count} years",
-    "day": "no day | one day | {count} days"
+    "source": "Source",
+    "dataViews": {
+      "paymentDataView": "Payment Data",
+      "riderDataView": "Rider Data",
+      "tripDataView": "Trip Data",
+      "vehicleDataView": "Vehicle Data"
+    },
+    "welcome": {
+      "title": "Welcome to our @:app.confidentiality-visualizer",
+      "get_help": "Click on the Help button to get further information about our application.",
+      "getting_started": "To begin, choose a role first by selecting one of the icons in the navigation bar.",
+      "click_to_see_data": "Click on one of the vehicle icons on the map to see the collected data about the trip."
+    }
   },
   "data": {
-    "riderData": "Rider Data",
-    "vehicleData": "Vehicle Data",
-    "tripData": "Trip Data",
-    "paymentData": "Payment Data",
+    "address": "Address",
+    "email": "E-Mail",
     "forename": "Forename",
     "surname": "Surname",
-    "email": "E-Mail",
+    "paymentData": "Payment Data",
     "phoneNumber": "Phone Number",
-    "address": "Address"
+    "vehicleType": "Type",
+    "status": "Status",
+    "batteryLevel": "Battery",
+    "ownerName": "Owner",
+    "startTime": "Start Time",
+    "endTime": "End Time",
+    "averageSpeed": "Average speed",
+    "price": "Price",
+    "paymentType": "Payment Method",
+    "cardNumber": "Card Number",
+    "ccv": "CCV",
+    "expiryDate": "Expiry Date",
+    "provider": "Provider",
+    "userName": "Username"
   }
 }

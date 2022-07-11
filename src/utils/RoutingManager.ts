@@ -1,5 +1,3 @@
-import type { Route, Vehicle } from "@/backend/dataFields";
-import { number } from "@intlify/core-base";
 import type { VehicleMarker } from "./leafletExtension";
 
 import type { Trip } from "@/backend/dataFields";
@@ -7,6 +5,9 @@ import L from "leaflet";
 import "leaflet-routing-machine";
 import { toLeafletLatLng } from "./latLngUtils";
 
+/**
+ * The Routing Manager tak
+ */
 export class RoutingManager {
   private readonly control: L.Routing.Control;
   private routes: Map<string, L.LatLng[]>;
@@ -26,6 +27,9 @@ export class RoutingManager {
     this.control.hide();
   }
 
+  /**
+   * Creates all displayable routes from a list of trips.
+   */
   private createAllRoutes(trips: Trip[]) {
     const routes = new Map();
     for (const trip of trips) {
@@ -39,6 +43,9 @@ export class RoutingManager {
     return routes;
   }
 
+  /**
+   * Shows the route for the given vehicle Id
+   */
   showRoute(vehicleId: string) {
     const waypoints = this.routes.get(vehicleId);
     if (!waypoints) {
@@ -48,6 +55,9 @@ export class RoutingManager {
     this.control.hide();
   }
 
+  /**
+   * Hides the currently displayed route.
+   */
   hideRoute() {
     this.control.setWaypoints([]);
   }

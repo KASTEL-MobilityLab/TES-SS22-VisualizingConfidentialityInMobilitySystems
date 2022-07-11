@@ -2,21 +2,23 @@
 import type { DataManager } from "@/backend/DataManager";
 import { dataManagerKey } from "@/keys";
 import type { VehicleMarker } from "@/utils/leafletExtension";
-import { createMarker, generateAllVehicleMarkers } from "@/utils/markerUtils";
+import { generateAllVehicleMarkers } from "@/utils/markerUtils";
 import { RoutingManager } from "@/utils/RoutingManager";
 import L, { type LeafletEvent } from "leaflet";
 import { inject, onMounted, type Ref } from "vue";
+import { useRouter } from "vue-router";
 
 const $dm = inject(dataManagerKey) as Ref<DataManager>;
 let routingManager: RoutingManager;
+const router = useRouter();
 
 // setup the map and generate markers, when this component is mounted
 onMounted(() => {
   const map = setupMap();
-  routingManager = new RoutingManager(map, $dm.value.trips);
   setupMarkers(map);
+  map.on("click", emptySpotClicked);
+  routingManager = new RoutingManager(map, $dm.value.trips);
 });
-
 /**
  * Setup the map with layers and bounds.
  */
@@ -67,6 +69,21 @@ function setupMarkers(map: L.Map) {
 }
 
 /**
+ * When the user clicks on an empty spot on the map, this will be called.
+ * It deselects the current data references and hides the route of the previously selected vehicle.
+ *
+ * @param e the event that was triggered
+ */
+function emptySpotClicked(e: LeafletEvent) {
+  $dm.value.currentData.unsetReferences();
+  // navigate back to welcome page on data viewer
+  router.push({
+    name: "Welcome",
+  });
+  routingManager.hideRoute();
+}
+
+/**
  * Sets the currently selected vehicle in the data manager to the clicked vehicle.
  *
  * @param event the layer event of the clicked marker
@@ -74,14 +91,13 @@ function setupMarkers(map: L.Map) {
 function vehicleMarkerClicked(event: LeafletEvent) {
   const marker = event.propagatedFrom as VehicleMarker;
   const vehicle = marker.vehicle;
-  console.log(
-    "Clicked on marker of vehicle " +
-      vehicle.id +
-      " at position " +
-      marker.getLatLng()
-  );
   $dm.value.updateByVehicle(vehicle);
   routingManager.showRoute(vehicle.id);
+
+  // navigate to Default Data View
+  router.push({
+    name: "Default",
+  });
 }
 </script>
 

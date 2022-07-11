@@ -1,6 +1,6 @@
 import type { DataField } from "../dataFields";
 import { DataType } from "../DataType";
-import { RiskColor } from "../riskManager/RiskColor";
+import { getRiskColor } from "../riskManager/RiskColor";
 import { RiskLevel } from "../riskManager/RiskLevel";
 import type { RiskManager } from "../riskManager/RiskManager";
 
@@ -45,7 +45,14 @@ export class DataModule {
       // Find specific value within DataType
       dataTypes.forEach((dataType) => {
         if (fieldName === dataType) {
-          this.displayedData[`data.${fieldName}`] = values[index];
+          //Wird als Methode ausgelagert
+          if (fieldName === "price") {
+            this.displayedData[`data.${fieldName}`] = values[index] + "€";
+          } else if (fieldName === "batteryLevel") {
+            this.displayedData[`data.${fieldName}`] = values[index] + "%";
+          } else {
+            this.displayedData[`data.${fieldName}`] = values[index];
+          }
         }
       });
     });
@@ -85,17 +92,9 @@ export class DataModule {
     const fieldNames = Object.keys(risks);
     for (const fieldName of fieldNames) {
       const riskLevel = risks[fieldName];
-      switch (riskLevel) {
-        case RiskLevel.Low:
-          risks[fieldName] = RiskColor.Green;
-          break;
-        case RiskLevel.Medium:
-          risks[fieldName] = RiskColor.Yellow;
-          break;
-        case RiskLevel.High:
-          risks[fieldName] = RiskColor.Red;
-          break;
-      }
+      risks[fieldName] = `btn btn-${getRiskColor(
+        RiskLevel[riskLevel as keyof typeof RiskLevel]
+      )}`;
     }
     return risks;
   }

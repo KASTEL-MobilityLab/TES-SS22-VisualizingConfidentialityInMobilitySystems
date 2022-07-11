@@ -3,8 +3,23 @@
  * particular Bootstrap keys for colors.
  */
 
+import { RiskLevel } from "./RiskLevel";
+
 export enum RiskColor {
-  Green = "btn btn-success",
-  Yellow = "btn btn-warning",
-  Red = "btn btn-danger",
+  Green = "success",
+  Yellow = "warning",
+  Red = "danger",
+}
+
+export function getRiskColor(riskLevel: RiskLevel): RiskColor {
+  switch (riskLevel) {
+    case RiskLevel.Low:
+      return RiskColor.Green;
+    case RiskLevel.Medium:
+      return RiskColor.Yellow;
+    case RiskLevel.High:
+      return RiskColor.Red;
+    default:
+      throw new Error("Unknown risk level");
+  }
 }

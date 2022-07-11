@@ -1,26 +1,44 @@
 {
   "app": {
-    "help": "Hilfe",
-    "confidentiality-visualizer": "Vertraulichkeits-Visualisierer",
-    "welcome": "Willkommen zu unserem @:app.confidentiality-visualizer",
-    "dataViewer": "Daten-Anzeiger",
-    "user": "Benutzer",
-    "company": "Unternehmen",
     "city": "Stadt",
+    "close": "Schließen",
+    "company": "Unternehmen",
+    "confidentiality-visualizer": "Vertraulichkeits-Visualisierer",
+    "dataViewer": "Daten-Anzeiger",
+    "help": "Hilfe",
     "month": "kein Monat | ein Monat | {count} Monate",
+    "source": "Quelle",
+    "user": "Benutzer",
+    "welcome": "Willkommen zu unserem @:app.confidentiality-visualizer",
     "year": "kein Jahr | ein Jahr | {count} Jahre",
-    "day": "kein Tag | ein Tag | {count} Tage"
+    "day": "kein Tag | ein Tag | {count} Tage",
+    "dataViews": {
+      "paymentDataView": "Zahlungsdaten",
+      "riderDataView": "Fahrerdaten",
+      "tripDataView": "Tripdaten",
+      "vehicleDataView": "Fahrzeugdaten"
+    }
   },
   "data": {
-    "riderData": "Fahrerdaten",
-    "vehicleData": "Fahrzeugdaten",
-    "tripData": "Trip-Daten",
-    "paymentData": "Bezahlungsdaten",
+    "address": "Adresse",
+    "birthday": "Geburtstag",
+    "vehicleType": "Typ",
     "forename": "Vorname",
     "surname": "Nachname",
     "email": "E-Mail",
     "phoneNumber": "Telefonnummer",
-    "birthday": "Geburtstag",
-    "address": "Adresse"
+    "status": "Status",
+    "batteryLevel": "Batteriestand",
+    "ownerName": "Eigentümer",
+    "startTime": "Startzeit",
+    "endTime": "Endzeit",
+    "averageSpeed": "Durchschnittsgeschwindigkeit",
+    "price": "Preis",
+    "paymentType": "Zahlungsart",
+    "cardNumber": "Kartennummer",
+    "ccv": "CCV",
+    "expiryDate": "Auslaufdatum",
+    "provider": "Anbieter",
+    "userName": "Nutzername"
   }
 }

@@ -1,5 +1,101 @@
 {
   "explanation": {
-    "durationStored": "The data will be stored for {duration}."
+    "title": "Risk Explanation for data type {dataType}",
+    "risk_of_rider_identification": "Risk of Rider Identification",
+    "why_is_this_not_visible_to_me": "Why is this data not visible to me as a {role}?",
+    "why_is_this_visible_to_me": "Why is this data visible to me as a {role}?",
+    "risk_level_explanation": "Risk Level Explanation",
+    "medium_risk_explanation": "This Data has medium risk because it is not possible to directly identify the rider without other information.",
+    "low_risk_explanation": "This Data has low risk because it is not possible to identify a rider with solely this data or in combination with of other data.",
+    "high_risk_explanation": "This Data has high risk because it has as a high @:explanation.risk_of_rider_identification. With this information it is possible to identify the rider.",
+    "gdpr": "General Data Protection Regulation",
+    "personal_information": "Personal Information",
+    "data_stored": "The data will be stored",
+    "data_stored_for_duration": "@:explanation.data_stored for {duration}.",
+    "retention_period": "Retention Period",
+    "until_user_deleted": "@:explanation.data_stored until the user is deleted.",
+    "stored_until_no_longer_necessary": "@:explanation.data_stored until it is no longer necessary for the maintainer to further keep the data. The @:explanation.retention_period can vary depending on the risk of the data.",
+    "data_is_visible": "It is not possible to identify a rider with this information and thus it is not @:explanation.personal_information according to the @:explanation.gdpr (GDPR). Therefore it is visible to you as a {role}.",
+    "data_is_not_visible": "According to the risk of the data, it is possible to identify a rider with this information. Therefore it qualifies as @:explanation.personal_information according to the @:explanation.gdpr (GDPR). As a {role} you are not allowed to see this data.",
+    "email": {
+      "isVisible": "@:explanation.data_is_visible",
+      "isNotVisible": "@:explanation.data_is_not_visible"
+    },
+    "phoneNumber": {
+      "isVisible": "@:explanation.data_is_visible",
+      "isNotVisible": "@:explanation.data_is_not_visible"
+    },
+    "surname": {
+      "isVisible": "@:explanation.data_is_visible",
+      "isNotVisible": "@:explanation.data_is_not_visible"
+    },
+    "forename": {
+      "isVisible": "@:explanation.data_is_visible",
+      "isNotVisible": "@:explanation.data_is_not_visible"
+    },
+    "address": {
+      "isVisible": "@:explanation.data_is_visible",
+      "isNotVisible": "@:explanation.data_is_not_visible"
+    },
+    "paymentData": {
+      "isVisible": "@:explanation.data_is_visible",
+      "isNotVisible": "@:explanation.data_is_not_visible"
+    },
+    "vehicleType": {
+      "isVisible": "@:explanation.data_is_visible",
+      "isNotVisible": "@:explanation.data_is_not_visible"
+    },
+    "status": {
+      "isVisible": "@:explanation.data_is_visible",
+      "isNotVisible": "@:explanation.data_is_not_visible"
+    },
+    "batteryLevel": {
+      "isVisible": "@:explanation.data_is_visible",
+      "isNotVisible": "@:explanation.data_is_not_visible"
+    },
+    "ownerName": {
+      "isVisible": "@:explanation.data_is_visible",
+      "isNotVisible": "@:explanation.data_is_not_visible"
+    },
+    "startTime": {
+      "isVisible": "@:explanation.data_is_visible",
+      "isNotVisible": "@:explanation.data_is_not_visible"
+    },
+    "endTime": {
+      "isVisible": "@:explanation.data_is_visible",
+      "isNotVisible": "@:explanation.data_is_not_visible"
+    },
+    "averageSpeed": {
+      "isVisible": "@:explanation.data_is_visible",
+      "isNotVisible": "@:explanation.data_is_not_visible"
+    },
+    "price": {
+      "isVisible": "@:explanation.data_is_visible",
+      "isNotVisible": "@:explanation.data_is_not_visible"
+    },
+    "paymentType": {
+      "isVisible": "@:explanation.data_is_visible",
+      "isNotVisible": "@:explanation.data_is_not_visible"
+    },
+    "cardNumber": {
+      "isVisible": "@:explanation.data_is_visible",
+      "isNotVisible": "@:explanation.data_is_not_visible"
+    },
+    "ccv": {
+      "isVisible": "@:explanation.data_is_visible",
+      "isNotVisible": "@:explanation.data_is_not_visible"
+    },
+    "expiryDate": {
+      "isVisible": "@:explanation.data_is_visible",
+      "isNotVisible": "@:explanation.data_is_not_visible"
+    },
+    "provider": {
+      "isVisible": "@:explanation.data_is_visible",
+      "isNotVisible": "@:explanation.data_is_not_visible"
+    },
+    "userName": {
+      "isVisible": "@:explanation.data_is_visible",
+      "isNotVisible": "@:explanation.data_is_not_visible"
+    }
   }
 }
