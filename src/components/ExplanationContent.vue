@@ -101,20 +101,20 @@ function getCurrentVisibilityExplanation(): Explanation | undefined {
 <template>
   <div class="container">
     <div class="row">
-      <div class="col">
+      <div class="col d-flex align-items-stretch">
         <ExplanationCard
           :title="visibilityExplanationTitle"
           :content="visibilityExplanation"
           :source="visibilityExplanationSource"
         />
       </div>
-      <div v-if="retentionPeriodString" class="col">
+      <div v-if="retentionPeriodString" class="col d-flex align-items-stretch">
         <ExplanationCard
           :title="$t(getTranslationKeyForExplanation('retention_period'))"
           :content="retentionPeriodString"
         />
       </div>
-      <div v-if="riskLevelExplanation" class="col">
+      <div v-if="riskLevelExplanation" class="col d-flex align-items-stretch">
         <ExplanationCard
           :title="$t(getTranslationKeyForExplanation('risk_level_explanation'))"
           :content="riskLevelExplanation"
