@@ -3,6 +3,7 @@ import L from "leaflet";
 import "leaflet-routing-machine";
 import { toLeafletLatLng } from "./latLngUtils";
 import type { VehicleMarker } from "./leafletExtension";
+import { RouteEndIcon } from "./markerUtils";
 
 /**
  * The Routing Manager takes care of displaying (showing and hiding) the routes on the map.
@@ -86,7 +87,9 @@ export class RoutingManager {
       return false;
     }
     // last waypoint is normal marker
-    return L.marker(w.latLng);
+    return L.marker(w.latLng, {
+      icon: RouteEndIcon,
+    });
   }
 
   moveIcon(

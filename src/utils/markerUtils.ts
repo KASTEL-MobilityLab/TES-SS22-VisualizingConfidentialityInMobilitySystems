@@ -66,6 +66,10 @@ export function createMarker(vehicle: Vehicle): VehicleMarker {
   return marker;
 }
 
+export const RouteEndIcon = L.divIcon({
+  html: "<i class='a-solid fa-bullseye fa-2x'></i>",
+});
+
 /**
  * Generates all markers for a given list of vehicles.
  *
