@@ -1,9 +1,8 @@
-import type { VehicleMarker } from "./leafletExtension";
-
 import type { Trip } from "@/backend/dataFields";
 import L from "leaflet";
 import "leaflet-routing-machine";
 import { toLeafletLatLng } from "./latLngUtils";
+import type { VehicleMarker } from "./leafletExtension";
 
 /**
  * The Routing Manager takes care of displaying (showing and hiding) the routes on the map.
@@ -12,6 +11,9 @@ export class RoutingManager {
   private readonly control: L.Routing.Control;
   private routes: Map<string, L.LatLng[]>;
   private readonly map: L.Map;
+  private static readonly LINE_STYLING = [
+    { color: "black", weight: 7, opacity: 0.8 },
+  ];
 
   /**
    * Construct a new Routing manager.
@@ -24,13 +26,21 @@ export class RoutingManager {
     const plan = new L.Routing.Plan([], {
       draggableWaypoints: false,
       addWaypoints: false,
+      createMarker: this.createOnlyEndMarker,
+      routeWhileDragging: false,
     });
     this.control = new L.Routing.Control({
-      fitSelectedRoutes: false,
+      fitSelectedRoutes: false, // no zooming to the route
+      addWaypoints: false, // disable adding waypoints by dragging
+      show: false, // hide (minimize) the itinerary (the css hides it completely)
       plan: plan,
+      lineOptions: {
+        styles: RoutingManager.LINE_STYLING,
+        extendToWaypoints: true,
+        missingRouteTolerance: 0,
+      },
     }).addTo(map);
     this.routes = this.createAllRoutes(trips);
-    this.control.hide();
   }
 
   /**
@@ -57,10 +67,11 @@ export class RoutingManager {
   showRoute(vehicleId: string) {
     const waypoints = this.routes.get(vehicleId);
     if (!waypoints) {
+      // vehicle is stationary, hide the possibly previously displayed route
+      this.hideRoute();
       return;
     }
     this.control.setWaypoints(waypoints);
-    this.control.hide();
   }
 
   /**
@@ -68,6 +79,14 @@ export class RoutingManager {
    */
   hideRoute() {
     this.control.setWaypoints([]);
+  }
+
+  private createOnlyEndMarker(i: number, w: L.Routing.Waypoint, n: number) {
+    if (i !== n - 1) {
+      return false;
+    }
+    // last waypoint is normal marker
+    return L.marker(w.latLng);
   }
 
   moveIcon(
