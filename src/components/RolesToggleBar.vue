@@ -19,7 +19,6 @@ const $dm = inject(dataManagerKey) as Ref<DataManager>;
       class="btn-check"
       name="btnradio"
       autocomplete="off"
-      checked
     />
     <label
       class="btn btn-outline-dark"
@@ -34,6 +33,7 @@ const $dm = inject(dataManagerKey) as Ref<DataManager>;
       class="btn-check"
       name="btnradio"
       autocomplete="off"
+      checked
     />
     <label
       class="btn btn-outline-dark"
