@@ -1,12 +1,7 @@
 <script setup lang="ts">
-import type { DataManager } from "@/backend/DataManager";
-import { dataManagerKey } from "@/keys";
-import { inject, type Ref } from "vue";
 import { RouterLink } from "vue-router";
 import LocaleChanger from "./LocaleChanger.vue";
-import UserDropdownVue from "./navBarComponents/UserDropdown.vue";
-import CompanyDropDownVue from "./navBarComponents/CompanyDropdown.vue";
-const $dm = inject(dataManagerKey) as Ref<DataManager>;
+import RolesToggleBar from "./RolesToggleBar.vue";
 </script>
 
 <template>
@@ -16,13 +11,7 @@ const $dm = inject(dataManagerKey) as Ref<DataManager>;
         ><i class="fa-solid fa-lock fa-fw"></i>
         {{ $t("app.confidentiality-visualizer") }}</RouterLink
       >
-      <ul class="navbar-nav">
-        <UserDropdownVue />
-        <li class="nav-item">
-          <span class="nav-link active">{{ $t("app.city") }}</span>
-        </li>
-        <CompanyDropDownVue />
-      </ul>
+      <RolesToggleBar />
       <div class="d-flex-inline">
         <span class="navbar-brand m-4 display-4">
           <LocaleChanger />
