@@ -105,7 +105,7 @@ function vehicleMarkerClicked(event: LeafletEvent) {
   <div id="leafletMap"></div>
 </template>
 
-<style scoped>
+<style>
 #leafletMap {
   height: 100vh;
   width: 100vw;
@@ -116,5 +116,8 @@ function vehicleMarkerClicked(event: LeafletEvent) {
 #fontAwesomeIcon {
   text-align: center;
   line-height: 20px;
+}
+.leaflet-control-container .leaflet-routing-container-hide {
+  display: none;
 }
 </style>
