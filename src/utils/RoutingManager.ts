@@ -6,13 +6,19 @@ import "leaflet-routing-machine";
 import { toLeafletLatLng } from "./latLngUtils";
 
 /**
- * The Routing Manager tak
+ * The Routing Manager takes care of displaying (showing and hiding) the routes on the map.
  */
 export class RoutingManager {
   private readonly control: L.Routing.Control;
   private routes: Map<string, L.LatLng[]>;
   private readonly map: L.Map;
 
+  /**
+   * Construct a new Routing manager.
+   *
+   * @param map the control is added to this map.
+   * @param trips a list of trips with defined routes.
+   */
   constructor(map: L.Map, trips: Trip[]) {
     this.map = map;
     const plan = new L.Routing.Plan([], {
@@ -44,7 +50,9 @@ export class RoutingManager {
   }
 
   /**
-   * Shows the route for the given vehicle Id
+   * Shows the route for the given vehicle Id.
+   *
+   * @param vehicleId the route of the vehicle with this id is displayed
    */
   showRoute(vehicleId: string) {
     const waypoints = this.routes.get(vehicleId);
