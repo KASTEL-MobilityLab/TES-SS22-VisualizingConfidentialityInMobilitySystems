@@ -3,20 +3,22 @@ import type { DataManager } from "@/backend/DataManager";
 import { dataManagerKey } from "@/keys";
 import type { VehicleMarker } from "@/utils/leafletExtension";
 import { generateAllVehicleMarkers } from "@/utils/markerUtils";
+import { RoutingManager } from "@/utils/RoutingManager";
 import L, { type LeafletEvent } from "leaflet";
 import { inject, onMounted, type Ref } from "vue";
 import { useRouter } from "vue-router";
 
 const $dm = inject(dataManagerKey) as Ref<DataManager>;
+let routingManager: RoutingManager;
 const router = useRouter();
 
 // setup the map and generate markers, when this component is mounted
 onMounted(() => {
   const map = setupMap();
-  map.on("click", emptySpotClicked);
   setupMarkers(map);
+  map.on("click", emptySpotClicked);
+  routingManager = new RoutingManager(map, $dm.value.trips);
 });
-
 /**
  * Setup the map with layers and bounds.
  */
@@ -78,6 +80,7 @@ function emptySpotClicked(e: LeafletEvent) {
   router.push({
     name: "Welcome",
   });
+  routingManager.hideRoute();
 }
 
 /**
@@ -89,6 +92,7 @@ function vehicleMarkerClicked(event: LeafletEvent) {
   const marker = event.propagatedFrom as VehicleMarker;
   const vehicle = marker.vehicle;
   $dm.value.updateByVehicle(vehicle);
+  routingManager.showRoute(vehicle.id);
 
   // navigate to Default Data View
   router.push({
@@ -108,6 +112,7 @@ function vehicleMarkerClicked(event: LeafletEvent) {
   z-index: 1;
   position: absolute;
 }
+
 #fontAwesomeIcon {
   text-align: center;
   line-height: 20px;
