@@ -30,11 +30,15 @@ export class RoutingManager {
       createMarker: this.createOnlyEndMarker,
       routeWhileDragging: false,
     });
+    const router = L.Routing.mapbox(import.meta.env.VITE_MAPBOX_API_KEY, {
+      profile: "mapbox/driving",
+    });
     this.control = new L.Routing.Control({
       fitSelectedRoutes: false, // no zooming to the route
       addWaypoints: false, // disable adding waypoints by dragging
       show: false, // hide (minimize) the itinerary (the css hides it completely)
       plan: plan,
+      router: router,
       lineOptions: {
         styles: RoutingManager.LINE_STYLING,
         extendToWaypoints: true,
@@ -42,6 +46,7 @@ export class RoutingManager {
       },
     }).addTo(map);
     this.routes = this.createAllRoutes(trips);
+    L.Routing.errorControl(this.control, {}).addTo(map);
   }
 
   /**
