@@ -12,6 +12,7 @@ export class RoutingManager {
   private readonly control: L.Routing.Control;
   private routes: Map<string, L.LatLng[]>;
   private readonly map: L.Map;
+  private actualRoutes: Map<string, L.LatLng[]>;
   private static readonly LINE_STYLING = [
     { color: "black", opacity: 1, weight: 10 },
     { color: "white", opacity: 0.8, weight: 6 },
@@ -47,6 +48,7 @@ export class RoutingManager {
         missingRouteTolerance: 0,
       },
     }).addTo(map);
+    this.actualRoutes = new Map();
     this.routes = this.createAllRoutes(trips);
     L.Routing.errorControl(this.control, {}).addTo(map);
   }
@@ -66,7 +68,6 @@ export class RoutingManager {
     }
     return routes;
   }
-
   /**
    * Shows the route for the given vehicle Id.
    *
@@ -97,6 +98,55 @@ export class RoutingManager {
     return L.marker(w.latLng, {
       icon: RouteEndIcon,
     });
+  }
+  /**
+   * Get the Route for the given start and end point and profile (driving or cycling).
+   * Request the Mapbox Directions API and caches the result.
+   *
+   * @param start the start of the route
+   * @param end the end of the route
+   * @param profile whether the route is for cycling or driving
+   * @returns a promise of an array of L.LatLng's
+   */
+  async getRoute(
+    start: L.LatLng,
+    end: L.LatLng,
+    profile: "cycling" | "driving" = "driving"
+  ): Promise<L.LatLng[]> {
+    // check if the request has already been made
+    const maybeRoute: L.LatLng[] | undefined = this.actualRoutes.get(
+      this.routeToStringKey([start, end], profile)
+    );
+    let route: L.LatLng[];
+    if (!maybeRoute) {
+      // request has not been made yet
+      const query = await fetch(
+        `https://api.mapbox.com/directions/v5/mapbox/${profile}/${start.lat},${
+          start.lng
+        };${end.lat},${end.lng}?steps=true&geometries=geojson&access_token=${
+          import.meta.env.VITE_MAPBOX_API_KEY
+        }`,
+        { method: "GET" }
+      );
+      const json = await query.json();
+      const data = json.routes[0];
+      route = data.geometry.coordinates;
+      // add the route to the actualRoutes map for caching (future requests)
+      this.actualRoutes.set(
+        this.routeToStringKey([start, end], profile),
+        route
+      );
+    } else {
+      route = maybeRoute;
+    }
+    return route;
+  }
+
+  // a helper function to create a key for the actualRoutes map
+  // because we cannot use the array `route` directly as a key
+  private routeToStringKey(route: L.LatLng[], profile: "cycling" | "driving") {
+    const key = route.map((latLng) => latLng.toString()).join(",");
+    return key + "," + profile;
   }
 
   moveIcon(
