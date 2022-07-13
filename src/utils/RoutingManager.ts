@@ -13,7 +13,9 @@ export class RoutingManager {
   private routes: Map<string, L.LatLng[]>;
   private readonly map: L.Map;
   private static readonly LINE_STYLING = [
-    { color: "black", weight: 7, opacity: 0.8 },
+    { color: "black", opacity: 1, weight: 10 },
+    { color: "white", opacity: 0.8, weight: 6 },
+    { color: "white", opacity: 1, weight: 2 },
   ];
 
   /**
