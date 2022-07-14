@@ -1,15 +1,12 @@
 name: Deploy
 
-on:
-  push:
-    branches:
-      - main
+on: [push, pull_request]
 
 permissions:
   contents: write
 
 env:
-  VITE_MAPBOX_API_KEY: { { secrets.VITE_MAPBOX_API_KEY } }
+  VITE_MAPBOX_API_KEY: ${{ secrets.VITE_MAPBOX_API_KEY }}
 
 jobs:
   deploy:
