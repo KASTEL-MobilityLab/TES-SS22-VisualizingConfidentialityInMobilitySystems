@@ -8,6 +8,9 @@ on:
 permissions:
   contents: write
 
+env:
+  VITE_MAPBOX_API_KEY: { { secrets.VITE_MAPBOX_API_KEY } }
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
