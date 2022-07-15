@@ -8,7 +8,12 @@ import { LatLng as LeafletLatLng } from "leaflet";
  * @returns a LeafletLatLng
  */
 export function toLeafletLatLng(latLng: CustomLatLng): LeafletLatLng {
+  console.log(latLng);
   return new LeafletLatLng(latLng.latitude, latLng.longitude);
+}
+
+export function toLeafletLatLngArray(array: CustomLatLng[]): LeafletLatLng[] {
+  return array.map(toLeafletLatLng) as LeafletLatLng[];
 }
 
 /**

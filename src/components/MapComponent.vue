@@ -15,7 +15,7 @@ const router = useRouter();
 // setup the map and generate markers, when this component is mounted
 onMounted(() => {
   const map = setupMap();
-  setupMarkers(map);
+  const markersLayer = setupMarkers(map);
   map.on("click", emptySpotClicked);
   routingManager = new RoutingManager(map, $dm.value.trips);
 });
@@ -66,6 +66,7 @@ function setupMarkers(map: L.Map) {
   markers.forEach((marker) => {
     marker.addTo(markersLayer);
   });
+  return markersLayer;
 }
 
 /**
