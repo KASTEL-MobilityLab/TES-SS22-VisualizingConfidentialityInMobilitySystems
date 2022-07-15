@@ -8,13 +8,11 @@ import {
   RouteEndIcon,
   RouteStartIcon,
 } from "@/utils/markerUtils";
-import { RoutingManager } from "@/utils/RoutingManager";
 import L, { type LeafletEvent } from "leaflet";
 import { inject, onMounted, watchEffect, type Ref } from "vue";
 import { useRouter } from "vue-router";
 
 const $dm = inject(dataManagerKey) as Ref<DataManager>;
-let routingManager: RoutingManager;
 const router = useRouter();
 let map: L.Map;
 const LINE_STYLING = {
@@ -36,7 +34,6 @@ onMounted(() => {
   map = setupMap();
   const markersLayer = setupMarkers(map);
   map.on("click", emptySpotClicked);
-  routingManager = new RoutingManager(map, $dm.value.trips);
 });
 
 /**
@@ -70,7 +67,9 @@ function updateRoute(waypoints: L.LatLng[]) {
   endMarker.setLatLng(waypoints[waypoints.length - 1]);
 }
 // update the polyline when current route changes
-watchEffect(async () => {
+watchEffect(onRouteUpdate);
+
+async function onRouteUpdate() {
   const route = $dm.value.currentData.getRoute();
   if (route) {
     // update polyline
@@ -81,7 +80,7 @@ watchEffect(async () => {
   } else {
     hideRoute();
   }
-});
+}
 /**
  * Setup the map with layers and bounds.
  */
@@ -144,7 +143,6 @@ function emptySpotClicked(e: LeafletEvent) {
   router.push({
     name: "Welcome",
   });
-  routingManager.hideRoute();
 }
 
 /**
