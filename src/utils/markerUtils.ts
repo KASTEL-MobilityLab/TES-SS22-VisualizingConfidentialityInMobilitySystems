@@ -25,6 +25,18 @@ const trainIcon = L.divIcon({
   className: fontAwesomeCSSName,
 });
 
+export const RouteEndIcon = L.divIcon({
+  html: "<i class='fa-solid fa-bullseye fa-2x'></i>",
+  iconAnchor: [10, 10],
+  className: fontAwesomeCSSName,
+});
+
+export const RouteStartIcon = L.divIcon({
+  html: "<i class='fa-solid fa-location-dot fa-2x'></i>",
+  iconAnchor: [10, 16],
+  className: fontAwesomeCSSName,
+});
+
 /**
  * A VehicleIcon has a vehicle type and a associated icon.n
  */
@@ -65,10 +77,6 @@ export function createMarker(vehicle: Vehicle): VehicleMarker {
   marker.vehicle = vehicle;
   return marker;
 }
-
-export const RouteEndIcon = L.divIcon({
-  html: "<i class='a-solid fa-bullseye fa-2x'></i>",
-});
 
 /**
  * Generates all markers for a given list of vehicles.
