@@ -6,7 +6,7 @@ import type { VehicleMarker } from "@/utils/leafletExtension";
 import { generateAllVehicleMarkers } from "@/utils/markerUtils";
 import { RouteDisplay } from "@/utils/RouteDisplay";
 import L, { type LeafletEvent } from "leaflet";
-import { inject, onMounted, watchEffect, type Ref } from "vue";
+import { inject, onMounted, watch, type Ref } from "vue";
 import { useRouter } from "vue-router";
 
 const $dm = inject(dataManagerKey) as Ref<DataManager>;
@@ -23,8 +23,7 @@ onMounted(() => {
 });
 
 // update the polyline when current route changes
-watchEffect(onRouteUpdate);
-
+watch(() => $dm.value.currentData.getRoute(), onRouteUpdate);
 /**
  * Called, when the current route changes.
  * Hides or shows the route, depending on whether the route is set.

@@ -1,6 +1,9 @@
 import L from "leaflet";
 import { RouteEndIcon, RouteStartIcon } from "./markerUtils";
 
+/**
+ * Displays a route on a map. Hide the route by calling `hideRoute`. You can show it again by passing the waypoints to `showRoute`.
+ */
 export class RouteDisplay {
   private polyline: L.Polyline;
   private startMarker: L.Marker;
@@ -13,8 +16,13 @@ export class RouteDisplay {
     weight: 7,
   };
 
+  /**
+   * Construct a new RouteDisplay.
+   *
+   * @param map the map on which the route is displayed.
+   */
   constructor(map: L.Map) {
-    // create the instances with at a location. The locations will
+    // create the instances at some location. The locations will
     // be updated when the user clicks on a vehicle.
     this.map = map;
     this.polyline = L.polyline([], RouteDisplay.LINE_STYLING);
@@ -33,9 +41,9 @@ export class RouteDisplay {
   }
 
   /**
-   * Shows the route.
+   * Show the route with the given waypoints
    *
-   * Note: Does not update the locations of the polyline and markers.
+   * @param waypoints the waypoints that are used to update the route.
    */
   showRoute(waypoints: L.LatLng[]) {
     this.updateLocations(waypoints);
