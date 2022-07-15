@@ -3,82 +3,41 @@ import type { DataManager } from "@/backend/DataManager";
 import { dataManagerKey } from "@/keys";
 import { toLeafletLatLngArray } from "@/utils/latLngUtils";
 import type { VehicleMarker } from "@/utils/leafletExtension";
-import {
-  generateAllVehicleMarkers,
-  RouteEndIcon,
-  RouteStartIcon,
-} from "@/utils/markerUtils";
+import { generateAllVehicleMarkers } from "@/utils/markerUtils";
+import { RouteDisplay } from "@/utils/RouteDisplay";
 import L, { type LeafletEvent } from "leaflet";
 import { inject, onMounted, watchEffect, type Ref } from "vue";
 import { useRouter } from "vue-router";
 
 const $dm = inject(dataManagerKey) as Ref<DataManager>;
 const router = useRouter();
+let routeDisplay: RouteDisplay;
 let map: L.Map;
-const LINE_STYLING = {
-  color: "#363636",
-  opacity: 1,
-  weight: 6,
-};
-
-// create the instances with at a location. The locations will
-// be updated when the user clicks on a vehicle.
-const polyline = L.polyline([], LINE_STYLING);
-const startMarker = L.marker(L.latLng(0, 0), { icon: RouteStartIcon });
-const endMarker = L.marker(L.latLng(0, 0), {
-  icon: RouteEndIcon,
-});
 
 // setup the map and generate markers, when this component is mounted
 onMounted(() => {
   map = setupMap();
   const markersLayer = setupMarkers(map);
   map.on("click", emptySpotClicked);
+  routeDisplay = new RouteDisplay(map);
 });
 
-/**
- * Hides the route.
- */
-function hideRoute() {
-  polyline.removeFrom(map);
-  startMarker.removeFrom(map);
-  endMarker.removeFrom(map);
-}
-
-/**
- * Shows the route.
- *
- * Note: Does not update the locations of the polyline and markers.
- */
-function showRoute() {
-  polyline.addTo(map);
-  startMarker.addTo(map);
-  endMarker.addTo(map);
-}
-
-/**
- * Updates the locations of the polyline and markers of the displayed route.
- *
- * @param waypoints the waypoints that are used to update the route.
- */
-function updateRoute(waypoints: L.LatLng[]) {
-  polyline.setLatLngs(waypoints);
-  startMarker.setLatLng(waypoints[0]);
-  endMarker.setLatLng(waypoints[waypoints.length - 1]);
-}
 // update the polyline when current route changes
 watchEffect(onRouteUpdate);
 
+/**
+ * Called, when the current route changes.
+ * Hides or shows the route, depending on whether the route is set.
+ */
 async function onRouteUpdate() {
   const route = $dm.value.currentData.getRoute();
   if (route) {
     // update polyline
     const customWaypoints = await $dm.value.getRouteWaypoints(route);
     const waypoints = toLeafletLatLngArray(customWaypoints);
-    updateRoute(waypoints);
-    showRoute();
+    routeDisplay.showRoute(waypoints);
   } else {
-    hideRoute();
+    routeDisplay.hideRoute();
   }
 }
 /**
@@ -154,7 +113,6 @@ function vehicleMarkerClicked(event: LeafletEvent) {
   const marker = event.propagatedFrom as VehicleMarker;
   const vehicle = marker.vehicle;
   $dm.value.updateByVehicle(vehicle);
-  //routingManager.showRoute(vehicle.id);
 
   // navigate to Default Data View
   router.push({
