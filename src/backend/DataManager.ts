@@ -267,6 +267,6 @@ export class DataManager {
    * @param route the route to fetch the waypoints for
    */
   async getRouteWaypoints(route: Route): Promise<LatLng[]> {
-    return fetchWaypoints(route);
+    return await fetchWaypoints(route);
   }
 }

@@ -1,6 +1,6 @@
 import { isNode } from "browser-or-node";
 import type { Route } from "../dataFields";
-import type { LatLng } from "./LatLng";
+import { LatLng } from "./LatLng";
 
 /**
  * Fetch the Route for the given Route instance and profile (driving or cycling) from the Mapbox Directions API.
@@ -40,16 +40,15 @@ async function fetchDirectionsAPI(
   profile: "cycling" | "driving" = "driving"
 ): Promise<LatLng[]> {
   const query = await fetch(
-    `https://api.mapbox.com/directions/v5/mapbox/${profile}/${start.latitude},${
+    `https://api.mapbox.com/directions/v5/mapbox/${profile}/${
       start.longitude
-    };${end.latitude},${
-      end.longitude
-    }?steps=true&geometries=geojson&access_token=${
-      import.meta.env.VITE_MAPBOX_API_KEY
-    }`,
+    },${start.latitude};${end.longitude},${
+      end.latitude
+    }?geometries=geojson&&access_token=${import.meta.env.VITE_MAPBOX_API_KEY}`,
     { method: "GET" }
   );
   const json = await query.json();
-  const data = json.routes[0];
-  return data.geometry.coordinates;
+  const waypoints = json.routes[0].geometry.coordinates;
+  // be careful: the API accepts and returns the waypoints in Longitude/Latitude order!
+  return waypoints.map(([lng, lat]: [number, number]) => new LatLng(lat, lng));
 }
