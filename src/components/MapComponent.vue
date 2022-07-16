@@ -64,10 +64,19 @@ function setupMap(): L.Map {
       maxZoom: 16,
     }
   );
+
+  const mapboxBasicDarker = L.tileLayer(
+    "https://api.mapbox.com/styles/v1/moritzm00/cl5nmjbva00eq14rzm7ssfss8/tiles/256/{z}/{x}/{y}@2x?access_token={accessToken}",
+    { accessToken: import.meta.env.VITE_MAPBOX_API_KEY }
+  );
+
   return L.map("leafletMap", {
     center: bounds.getCenter(),
-    zoom: 15,
-    layers: [stamenWaterColor, mapLabels],
+    zoom: 14.45,
+    minZoom: 13,
+    maxZoom: 16,
+    //layers: [stamenWaterColor, mapLabels],
+    layers: [mapboxBasicDarker],
     maxBounds: bounds,
     maxBoundsViscosity: 0.6,
   });
