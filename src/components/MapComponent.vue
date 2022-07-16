@@ -1,24 +1,44 @@
 <script setup lang="ts">
 import type { DataManager } from "@/backend/DataManager";
 import { dataManagerKey } from "@/keys";
+import { toLeafletLatLngArray } from "@/utils/latLngUtils";
 import type { VehicleMarker } from "@/utils/leafletExtension";
 import { generateAllVehicleMarkers } from "@/utils/markerUtils";
-import { RoutingManager } from "@/utils/RoutingManager";
+import { RouteDisplay } from "@/utils/RouteDisplay";
 import L, { type LeafletEvent } from "leaflet";
-import { inject, onMounted, type Ref } from "vue";
+import { inject, onMounted, watch, type Ref } from "vue";
 import { useRouter } from "vue-router";
 
 const $dm = inject(dataManagerKey) as Ref<DataManager>;
-let routingManager: RoutingManager;
 const router = useRouter();
+let routeDisplay: RouteDisplay;
+let map: L.Map;
 
 // setup the map and generate markers, when this component is mounted
 onMounted(() => {
-  const map = setupMap();
-  setupMarkers(map);
+  map = setupMap();
+  const markersLayer = setupMarkers(map);
   map.on("click", emptySpotClicked);
-  routingManager = new RoutingManager(map, $dm.value.trips);
+  routeDisplay = new RouteDisplay(map);
 });
+
+// update the polyline when current route changes
+watch(() => $dm.value.currentData.getRoute(), onRouteUpdate);
+/**
+ * Called, when the current route changes.
+ * Hides or shows the route, depending on whether the route is set.
+ */
+async function onRouteUpdate() {
+  const route = $dm.value.currentData.getRoute();
+  if (route) {
+    // update polyline
+    const customWaypoints = await $dm.value.getRouteWaypoints(route);
+    const waypoints = toLeafletLatLngArray(customWaypoints);
+    routeDisplay.showRoute(waypoints);
+  } else {
+    routeDisplay.hideRoute();
+  }
+}
 /**
  * Setup the map with layers and bounds.
  */
@@ -44,10 +64,19 @@ function setupMap(): L.Map {
       maxZoom: 16,
     }
   );
+
+  const mapboxBasicDarker = L.tileLayer(
+    "https://api.mapbox.com/styles/v1/moritzm00/cl5nmjbva00eq14rzm7ssfss8/tiles/256/{z}/{x}/{y}@2x?access_token={accessToken}",
+    { accessToken: import.meta.env.VITE_MAPBOX_API_KEY }
+  );
+
   return L.map("leafletMap", {
     center: bounds.getCenter(),
-    zoom: 15,
-    layers: [stamenWaterColor, mapLabels],
+    zoom: 14.45,
+    minZoom: 13,
+    maxZoom: 16,
+    //layers: [stamenWaterColor, mapLabels],
+    layers: [mapboxBasicDarker],
     maxBounds: bounds,
     maxBoundsViscosity: 0.6,
   });
@@ -66,6 +95,7 @@ function setupMarkers(map: L.Map) {
   markers.forEach((marker) => {
     marker.addTo(markersLayer);
   });
+  return markersLayer;
 }
 
 /**
@@ -80,7 +110,6 @@ function emptySpotClicked(e: LeafletEvent) {
   router.push({
     name: "Welcome",
   });
-  routingManager.hideRoute();
 }
 
 /**
@@ -92,7 +121,6 @@ function vehicleMarkerClicked(event: LeafletEvent) {
   const marker = event.propagatedFrom as VehicleMarker;
   const vehicle = marker.vehicle;
   $dm.value.updateByVehicle(vehicle);
-  routingManager.showRoute(vehicle.id);
 
   // navigate to Default Data View
   router.push({

@@ -11,6 +11,10 @@ export function toLeafletLatLng(latLng: CustomLatLng): LeafletLatLng {
   return new LeafletLatLng(latLng.latitude, latLng.longitude);
 }
 
+export function toLeafletLatLngArray(array: CustomLatLng[]): LeafletLatLng[] {
+  return array.map(toLeafletLatLng);
+}
+
 /**
  * Converts a LeafletLatLng to a CustomLatLng.
  *
