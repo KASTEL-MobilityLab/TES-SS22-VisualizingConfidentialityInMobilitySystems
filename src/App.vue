@@ -2,6 +2,7 @@
 import NavBar from "@/components/NavBar.vue";
 import ExplanationModal from "./components/ExplanationModal.vue";
 import MainComponent from "./components/MainComponent.vue";
+import RiskBar from "./components/RiskBar.vue";
 </script>
 
 <template>
@@ -15,6 +16,11 @@ import MainComponent from "./components/MainComponent.vue";
     <!-- The Modal must defined outside of the outer-wrap div because
     it the modal does not work if positioned inside a absolute parent-->
     <ExplanationModal />
+    <div class="position-relative">
+      <div class="position-absolute bottom-0 start-0">
+        <RiskBar />
+      </div>
+    </div>
   </main>
 </template>
 <style scoped>
