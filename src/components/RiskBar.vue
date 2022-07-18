@@ -5,6 +5,8 @@
     id="RiskBar"
     class="btn-group"
     role="group"
+    data-bs-toggle="modal"
+    data-bs-target="#riskBarExplanationModal"
     aria-label="RiskBar toggle button group"
   >
     <input id="LowRisk" class="btn-check" autocomplete="off" />

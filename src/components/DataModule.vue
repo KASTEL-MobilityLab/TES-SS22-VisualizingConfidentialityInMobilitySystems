@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import type { DataManager } from "@/backend/DataManager";
 import type { DataModule } from "@/backend/dataModules/DataModule";
-import type { DataType } from "@/backend/DataType";
 import { dataManagerKey } from "@/keys";
 import { inject, type Ref } from "vue";
 defineProps<{

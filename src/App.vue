@@ -3,6 +3,7 @@ import NavBar from "@/components/NavBar.vue";
 import ExplanationModal from "./components/ExplanationModal.vue";
 import MainComponent from "./components/MainComponent.vue";
 import RiskBar from "./components/RiskBar.vue";
+import RiskBarModal from "./components/RiskBarModal.vue";
 </script>
 
 <template>
@@ -19,6 +20,7 @@ import RiskBar from "./components/RiskBar.vue";
     <div class="position-relative">
       <div class="position-absolute bottom-0 start-0">
         <RiskBar />
+        <RiskBarModal />
       </div>
     </div>
   </main>
