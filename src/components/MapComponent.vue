@@ -148,7 +148,13 @@ function vehicleMarkerClicked(event: LeafletEvent) {
   text-align: center;
   line-height: 20px;
 }
-.leaflet-control-container .leaflet-routing-container-hide {
-  display: none;
+
+.route-polyline {
+  stroke: steelblue;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 7;
+  fill: none;
+  stroke-opacity: 1;
 }
 </style>
