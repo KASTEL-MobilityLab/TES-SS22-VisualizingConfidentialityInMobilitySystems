@@ -67,7 +67,10 @@ function setupMap(): L.Map {
 
   const mapboxBasicDarker = L.tileLayer(
     "https://api.mapbox.com/styles/v1/moritzm00/cl5nmjbva00eq14rzm7ssfss8/tiles/256/{z}/{x}/{y}@2x?access_token={accessToken}",
-    { accessToken: import.meta.env.VITE_MAPBOX_API_KEY }
+    {
+      accessToken: import.meta.env.VITE_MAPBOX_API_KEY,
+      attribution: `© <a href="https://www.mapbox.com/about/maps/">Mapbox</a> © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> <strong><a href="https://www.mapbox.com/map-feedback/" target="_blank">Improve this map</a></strong>`,
+    }
   );
 
   return L.map("leafletMap", {
