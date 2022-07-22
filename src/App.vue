@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import NavBar from "@/components/NavBar.vue";
 import ExplanationModal from "./components/ExplanationModal.vue";
+import HelpModal from "./components/HelpModal.vue";
 import MainComponent from "./components/MainComponent.vue";
 </script>
 
@@ -15,6 +16,8 @@ import MainComponent from "./components/MainComponent.vue";
     <!-- The Modal must defined outside of the outer-wrap div because
     it the modal does not work if positioned inside a absolute parent-->
     <ExplanationModal />
+
+    <HelpModal />
   </main>
 </template>
 <style scoped>
