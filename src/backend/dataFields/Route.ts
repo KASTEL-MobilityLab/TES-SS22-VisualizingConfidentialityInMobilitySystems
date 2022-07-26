@@ -1,6 +1,6 @@
 import { Expose, Type } from "class-transformer";
-import { DataField } from "./DataField";
 import { LatLng } from "../utils/LatLng";
+import { DataField } from "./DataField";
 
 /**
  * The Route class.
@@ -14,9 +14,14 @@ export class Route extends DataField {
   @Expose()
   readonly end: LatLng;
 
-  constructor(id: string, start: LatLng, end: LatLng) {
+  @Type(() => LatLng)
+  @Expose()
+  waypoints?: LatLng[];
+
+  constructor(id: string, start: LatLng, end: LatLng, waypoints?: LatLng[]) {
     super(id);
     this.start = start;
     this.end = end;
+    this.waypoints = waypoints;
   }
 }
