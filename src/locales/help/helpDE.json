@@ -1,0 +1,11 @@
+{
+  "help": {
+    "title": "Hilfe",
+    "about_the_app": "Über die App",
+    "about_the_app_text": "This is the goal of the app",
+    "how_it_works": "So funktioniert es",
+    "how_it_works_text": "This is how you use the app",
+    "what_infos_you_can_get": "Diese Infos kannst du ablesen",
+    "what_infos_you_can_get_text": "These are the infos you can get from the app"
+  }
+}
