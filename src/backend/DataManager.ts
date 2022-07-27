@@ -1,3 +1,4 @@
+import { AggregatedData } from "./AggreagtedData";
 import type {
   Company,
   DataField,
@@ -32,6 +33,7 @@ export class DataManager {
   riskManager: RiskManager;
   //The currently selected DataPackage
   currentData: DataPackage;
+  aggregatedData: AggregatedData;
 
   /**
    * Construct a new DataManager.
@@ -48,6 +50,7 @@ export class DataManager {
     this.vehicles = [];
     this.routes = [];
     this.currentData = new DataPackage();
+    this.aggregatedData = new AggregatedData();
   }
 
   /**
@@ -76,6 +79,7 @@ export class DataManager {
     this.riskManager.risks = risks;
     this.setAllReferences();
     this.trips.map((trip) => trip.setVehicleStartPosition());
+    this.aggregatedData.init(this.trips);
   }
 
   /**

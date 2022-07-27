@@ -1,6 +1,9 @@
 import type { Trip } from "./dataFields";
 
 export class AggregatedData {
+  public static readonly SECONDS_OF_ONE_MINUTE = 60;
+  public static readonly MILLISECONDS_OF_ONE_SECOND = 1000;
+
   numberOfActiveVehicles: number;
   numberOfUsers: number;
 
@@ -10,7 +13,9 @@ export class AggregatedData {
   averageDistance: number;
   averagePrice: number;
 
-  constructor(trips: Trip[]) {
+  userIds: string[] = [];
+
+  constructor() {
     this.numberOfActiveVehicles = 0;
     this.numberOfUsers = 0;
 
@@ -18,11 +23,9 @@ export class AggregatedData {
     this.averageDuration = 0;
     this.averageDistance = 0;
     this.averagePrice = 0;
-
-    this.init(trips);
   }
 
-  calculateNumberOfActiveVehiles(trips: Trip[]) {
+  private calculateNumberOfActiveVehiles(trips: Trip[]) {
     trips.forEach((trip) => {
       if (trip.vehicle?.status === "Active") {
         this.numberOfActiveVehicles++;
@@ -30,32 +33,41 @@ export class AggregatedData {
     });
   }
 
-  calculateNumberOfUsers(trips: Trip[]) {
-    let userIds: string[];
+  private calculateNumberOfUsers(trips: Trip[]) {
     trips.forEach((trip) => {
-      if (!(trip.userId in userIds)) {
-        userIds.push(trip.userId);
+      if (!(trip.userId in this.userIds)) {
+        this.userIds.push(trip.userId);
         this.numberOfUsers++;
       }
     });
   }
 
-  calculateAverageSpeed(trips: Trip[]) {
+  private calculateAverageSpeed(trips: Trip[]) {
     const sumSpeed = trips.reduce((sum, trip) => sum + trip.avgSpeed, 0);
     this.averageSpeed = sumSpeed / trips.length;
   }
 
-  calculateAverageDuration(trips: Trip[]) {
-    const sumDuration = trips.reduce(
-      (sum, trip) => sum + (trip.endTime.getTime() - trip.startTime.getTime()),
-      0
+  /**
+   * Calculates the average duration in minutes adjusted downward
+   */
+  private calculateAverageDuration(trips: Trip[]) {
+    const sumDuration =
+      trips.reduce(
+        (sum, trip) => sum + trip.endTime.getTime() - trip.startTime.getTime(),
+        0
+      ) / AggregatedData.MILLISECONDS_OF_ONE_SECOND;
+    this.averageDuration = sumDuration / trips.length;
+    this.averageDuration = Math.floor(
+      this.averageDuration / AggregatedData.SECONDS_OF_ONE_MINUTE
     );
-    this.averageSpeed = sumDuration / trips.length;
   }
 
-  calculateAveragePrice(trips: Trip[]) {
+  /**
+   * Calculates the average price in Euro adjusted downward
+   */
+  private calculateAveragePrice(trips: Trip[]) {
     const sumPrice = trips.reduce((sum, trip) => sum + trip.price, 0);
-    this.averageSpeed = sumPrice / trips.length;
+    this.averagePrice = Math.floor(sumPrice / trips.length);
   }
 
   /**
