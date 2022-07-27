@@ -14,7 +14,8 @@ import type { DataType } from "./DataType";
 import type { Risk } from "./riskManager/Risk";
 import { RiskManager } from "./riskManager/RiskManager";
 import { Role } from "./Role";
-
+import type { LatLng } from "./utils/LatLng";
+import { fetchWaypoints } from "./utils/Routing";
 export class DataManager {
   public static readonly SEPERATOR_SYMBOL_FOR_DATATYPE = ".";
   currentRole: Role;
@@ -262,5 +263,14 @@ export class DataManager {
     const dataType: DataType = this.getDataType(dataTypeKey);
     const risk: Risk = this.riskManager.findRisk(dataType);
     return risk.isVisible(this.currentRole);
+  }
+
+  /**
+   * Fetches the waypoints of the given route.
+   *
+   * @param route the route to fetch the waypoints for
+   */
+  async getRouteWaypoints(route: Route): Promise<LatLng[]> {
+    return await fetchWaypoints(route);
   }
 }
