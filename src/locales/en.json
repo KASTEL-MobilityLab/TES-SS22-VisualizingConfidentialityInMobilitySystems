@@ -17,6 +17,7 @@
       "tripDataView": "Trip Data",
       "vehicleDataView": "Vehicle Data"
     },
+    "aggregatedDataReasoning": "You are currently in the role of the city. Below you can see the aggregated data accessible to the city from the mobility context.",
     "welcome": {
       "title": "Welcome to our @:app.confidentiality-visualizer",
       "get_help": "Click on the Help button to get further information about our application.",
