@@ -27,7 +27,7 @@ export class AggregatedData {
 
   private calculateNumberOfActiveVehiles(trips: Trip[]) {
     trips.forEach((trip) => {
-      if (trip.vehicle?.status === "Active") {
+      if (trip.vehicle?.isActive()) {
         this.numberOfActiveVehicles++;
       }
     });
