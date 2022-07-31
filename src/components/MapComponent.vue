@@ -11,6 +11,7 @@ import { useRouter } from "vue-router";
 
 const $dm = inject(dataManagerKey) as Ref<DataManager>;
 const router = useRouter();
+const RELOAD_TIME = 450;
 let routeDisplay: RouteDisplay;
 let map: L.Map;
 
@@ -102,6 +103,23 @@ function setupMarkers(map: L.Map) {
 }
 
 /**
+ * Animates the marker of the currently selected marker.
+ */
+async function animateMarker(event: LeafletEvent) {
+  const marker = event.propagatedFrom as VehicleMarker;
+  const route = $dm.value.currentData.getRoute();
+  if (route) {
+    const customWaypoints = await $dm.value.getRouteWaypoints(route);
+    const waypoints = toLeafletLatLngArray(customWaypoints);
+    waypoints.forEach(function (coord, index) {
+      setTimeout(function () {
+        marker.setLatLng([coord.lat, coord.lng]);
+      }, RELOAD_TIME * index);
+    });
+  }
+}
+
+/**
  * When the user clicks on an empty spot on the map, this will be called.
  * It deselects the current data references and hides the route of the previously selected vehicle.
  *
@@ -116,14 +134,15 @@ function emptySpotClicked(e: LeafletEvent) {
 }
 
 /**
- * Sets the currently selected vehicle in the data manager to the clicked vehicle.
+ * Sets the currently selected vehicle in the data manager to the clicked vehicle and starts the animation of the marker.
  *
  * @param event the layer event of the clicked marker
  */
-function vehicleMarkerClicked(event: LeafletEvent) {
+async function vehicleMarkerClicked(event: LeafletEvent) {
   const marker = event.propagatedFrom as VehicleMarker;
   const vehicle = marker.vehicle;
   $dm.value.updateByVehicle(vehicle);
+  animateMarker(event);
 
   // navigate to Default Data View
   router.push({
