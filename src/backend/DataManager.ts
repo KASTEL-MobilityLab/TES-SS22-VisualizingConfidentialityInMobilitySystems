@@ -269,4 +269,11 @@ export class DataManager {
   async getRouteWaypoints(route: Route): Promise<LatLng[]> {
     return await fetchWaypoints(route);
   }
+
+  /**
+   * Finds the next trip of  a given trip in order to get a cyclic route.
+   */
+  findNextTrip(trip: Trip) {
+    throw new Error("Method not implemented.");
+  }
 }
