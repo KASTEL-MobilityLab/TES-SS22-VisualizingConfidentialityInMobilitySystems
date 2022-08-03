@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { MarkerManager } from "@/animation/MarkerManager.js";
 import type { DataManager } from "@/backend/DataManager";
 import { dataManagerKey } from "@/keys";
 import { toLeafletLatLngArray } from "@/utils/latLngUtils";
@@ -14,6 +15,7 @@ const router = useRouter();
 const RELOAD_TIME = 450;
 let routeDisplay: RouteDisplay;
 let map: L.Map;
+const markerManager: MarkerManager = new MarkerManager($dm.value.vehicles);
 
 // setup the map and generate markers, when this component is mounted
 onMounted(() => {
