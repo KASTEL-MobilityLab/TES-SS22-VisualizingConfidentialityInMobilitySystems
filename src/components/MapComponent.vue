@@ -144,13 +144,23 @@ async function vehicleMarkerClicked(event: LeafletEvent) {
   const marker = event.propagatedFrom as VehicleMarker;
   const vehicle = marker.vehicle;
   $dm.value.updateByVehicle(vehicle);
-  animateMarker(event);
+  //animateMarker(event);
+  $dm.value.startAnimation();
 
   // navigate to Default Data View
   router.push({
     name: "Default",
   });
 }
+
+watch(
+  () => $dm.value.vehicles,
+  (currentValue, oldValue) => {
+    for (const vehicle of currentValue) {
+      markerManager.updatePosition(vehicle.id, currentValue);
+    }
+  }
+);
 </script>
 
 <template>

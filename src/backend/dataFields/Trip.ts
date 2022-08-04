@@ -154,6 +154,7 @@ export class Trip extends DataField {
   }
 
   step() {
+    //Ab hier weiter machen
     this.vehicle?.move(this.route?.waypoints?.at(this.currentStep + 1));
     if (
       this.vehicle?.currentPosition ===
