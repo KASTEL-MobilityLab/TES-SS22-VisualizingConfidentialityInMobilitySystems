@@ -40,5 +40,14 @@
     "expiryDate": "Auslaufdatum",
     "provider": "Anbieter",
     "userName": "Nutzername"
+  },
+  "help": {
+    "title": "Hilfe",
+    "about_the_app": "Über die App",
+    "about_the_app_text": "Das ist das Ziel der App",
+    "how_it_works": "So funktioniert es",
+    "how_it_works_text": "So kannst du die app bedienen",
+    "what_infos_you_can_get": "Diese Infos kannst du ablesen",
+    "what_infos_you_can_get_text": "Diese Infos kannst du in der App ablesen"
   }
 }
