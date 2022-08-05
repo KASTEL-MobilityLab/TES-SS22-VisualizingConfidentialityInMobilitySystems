@@ -19,11 +19,15 @@ import HelpContent from "./HelpContent.vue";
         <div class="modal-body">
           <HelpContent />
         </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-          {{ $t("app.close") }}
-        </button>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+          >
+            {{ $t("app.close") }}
+          </button>
+        </div>
       </div>
     </div>
   </div>
