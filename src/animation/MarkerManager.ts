@@ -1,6 +1,7 @@
 import { createMarker } from "@/utils/markerUtils";
 import type { Vehicle } from "@/backend/dataFields";
 import type { VehicleMarker } from "@/utils/leafletExtension";
+import { toLeafletLatLng } from "@/utils/latLngUtils";
 
 export class MarkerManager {
   vehicleMarkerMap: Map<string, VehicleMarker>;
@@ -12,14 +13,13 @@ export class MarkerManager {
     }
   }
 
-  updatePosition(vehicleId: string, allVehicles: Vehicle[]) {
+  updatePosition(marker: L.Marker, vehicleId: string, allVehicles: Vehicle[]) {
     const vehicle = allVehicles.find((vehicle) => vehicle.id === vehicleId);
     const vehicleMarker = this.vehicleMarkerMap.get(vehicleId);
     if (vehicle?.currentPosition) {
-      vehicleMarker?.setLatLng([
-        vehicle.currentPosition.latitude,
-        vehicle.currentPosition?.longitude,
-      ]);
+      const leafletWaypoints = toLeafletLatLng(vehicle?.currentPosition);
+      //vehicleMarker?.setLatLng([leafletWaypoints.lat, leafletWaypoints.lng]);
+      marker.setLatLng([leafletWaypoints.lat, leafletWaypoints.lng]);
     }
   }
 }

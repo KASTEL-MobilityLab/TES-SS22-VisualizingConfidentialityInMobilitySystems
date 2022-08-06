@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { MarkerManager } from "@/animation/MarkerManager.js";
+import { MarkerManager } from "@/animation/MarkerManager";
 import type { DataManager } from "@/backend/DataManager";
 import { dataManagerKey } from "@/keys";
 import { toLeafletLatLngArray } from "@/utils/latLngUtils";
@@ -146,21 +146,28 @@ async function vehicleMarkerClicked(event: LeafletEvent) {
   $dm.value.updateByVehicle(vehicle);
   //animateMarker(event);
   $dm.value.startAnimation();
-
+  /*
+  watch($dm.value.vehicles, (currentValue, oldValue) => {
+    markerManager.updatePosition(marker, "V01", currentValue);
+  });
+  */
+  watch(
+    () => $dm.value.vehicles,
+    (currentValue) => {
+      markerManager.updatePosition(marker, "V01", currentValue);
+      /*
+      for (const vehicle of currentValue) {
+        markerManager.updatePosition(marker, vehicle.id, currentValue);
+      }
+      */
+    },
+    { deep: true }
+  );
   // navigate to Default Data View
   router.push({
     name: "Default",
   });
 }
-
-watch(
-  () => $dm.value.vehicles,
-  (currentValue, oldValue) => {
-    for (const vehicle of currentValue) {
-      markerManager.updatePosition(vehicle.id, currentValue);
-    }
-  }
-);
 </script>
 
 <template>

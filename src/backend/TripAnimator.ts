@@ -1,6 +1,7 @@
 import type { Trip } from "./dataFields/Trip";
 
 export class TripAnimator {
+  public static readonly RELOAD_TIME_IN_MILLISECONDS = "500";
   trips: Trip[];
   aniamtionSpeed: number;
   isRunning: boolean;
@@ -16,12 +17,31 @@ export class TripAnimator {
 
   public start() {
     this.isRunning = true;
+    /*
     for (const trip of this.trips) {
       if (!(trip.id in this.activeTrips)) {
         trip.step();
         this.activeTrips.push(trip.id);
       }
     }
+*/
+    //const trip = this.trips[0];
+    for (const trip of this.trips) {
+      if (!this.activeTrips.includes(trip.id)) {
+        this.activeTrips.push(trip.id);
+      }
+      setInterval(function () {
+        trip.step();
+      }, 1000);
+    }
+
+    /*
+    if (trip.route?.waypoints) {
+      for (const waypoint of trip.route.waypoints) {
+        console.log(waypoint);
+      }
+    }
+    */
   }
 
   public stop() {

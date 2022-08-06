@@ -155,12 +155,15 @@ export class Trip extends DataField {
 
   step() {
     //Ab hier weiter machen
-    this.vehicle?.move(this.route?.waypoints?.at(this.currentStep + 1));
-    if (
-      this.vehicle?.currentPosition ===
-      this.route?.waypoints?.at(this.currentStep + 1)
-    ) {
+    if (this.route?.waypoints) {
+      const nextWaypoint = this.route?.waypoints[this.currentStep + 1];
+      this.vehicle?.move(nextWaypoint);
       this.currentStep++;
+      /*
+      if (this.vehicle?.currentPosition === nextWaypoint) {
+        this.currentStep++;
+      }
+      */
     }
   }
 
