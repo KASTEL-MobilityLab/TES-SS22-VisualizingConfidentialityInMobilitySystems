@@ -9,10 +9,8 @@ export class MarkerManager {
 
   updatePosition(marker: L.Marker, vehicleId: string, allVehicles: Vehicle[]) {
     const vehicle = allVehicles.find((vehicle) => vehicle.id === vehicleId);
-    const vehicleMarker = this.vehicleMarkerMap.get(vehicleId);
     if (vehicle?.currentPosition) {
       const leafletWaypoints = toLeafletLatLng(vehicle?.currentPosition);
-      //vehicleMarker?.setLatLng([leafletWaypoints.lat, leafletWaypoints.lng]);
       marker.setLatLng([leafletWaypoints.lat, leafletWaypoints.lng]);
     }
   }
