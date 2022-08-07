@@ -35,6 +35,7 @@
     "status": "Status",
     "batteryLevel": "Battery",
     "ownerName": "Owner",
+    "currentPosition": "Current Position",
     "startTime": "Start Time",
     "endTime": "End Time",
     "averageSpeed": "Average speed",

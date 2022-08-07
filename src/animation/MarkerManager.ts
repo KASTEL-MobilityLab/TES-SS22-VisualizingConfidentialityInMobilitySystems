@@ -1,17 +1,11 @@
-import { createMarker } from "@/utils/markerUtils";
 import type { Vehicle } from "@/backend/dataFields";
 import type { VehicleMarker } from "@/utils/leafletExtension";
 import { toLeafletLatLng } from "@/utils/latLngUtils";
+import { generateAllVehicleMarkers } from "@/utils/markerUtils";
 
 export class MarkerManager {
-  vehicleMarkerMap: Map<string, VehicleMarker>;
-
-  constructor(allVehicles: Vehicle[]) {
-    this.vehicleMarkerMap = new Map<string, VehicleMarker>();
-    for (const vehicle of allVehicles) {
-      this.vehicleMarkerMap.set(vehicle.id, createMarker(vehicle));
-    }
-  }
+  allMarkers: VehicleMarker[] = [];
+  vehicleMarkerMap: Map<string, VehicleMarker> = new Map();
 
   updatePosition(marker: L.Marker, vehicleId: string, allVehicles: Vehicle[]) {
     const vehicle = allVehicles.find((vehicle) => vehicle.id === vehicleId);
@@ -20,6 +14,14 @@ export class MarkerManager {
       const leafletWaypoints = toLeafletLatLng(vehicle?.currentPosition);
       //vehicleMarker?.setLatLng([leafletWaypoints.lat, leafletWaypoints.lng]);
       marker.setLatLng([leafletWaypoints.lat, leafletWaypoints.lng]);
+    }
+  }
+
+  init(allVehicles: Vehicle[]) {
+    this.allMarkers = generateAllVehicleMarkers(allVehicles);
+    this.vehicleMarkerMap = new Map<string, VehicleMarker>();
+    for (let i = 0; i < this.allMarkers.length; i++) {
+      this.vehicleMarkerMap.set(allVehicles[i].id, this.allMarkers[i]);
     }
   }
 }

@@ -30,6 +30,7 @@
     "status": "Status",
     "batteryLevel": "Batteriestand",
     "ownerName": "Eigentümer",
+    "currentPosition": "Aktuelle Position",
     "startTime": "Startzeit",
     "endTime": "Endzeit",
     "averageSpeed": "Durchschnittsgeschwindigkeit",
