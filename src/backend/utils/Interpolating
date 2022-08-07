@@ -3,12 +3,26 @@ import { LatLng } from "./LatLng";
 // distance between each step in meter
 let stepSize = 10;
 
-export function interpolate(waypoints: LatLng[]): Promise<LatLng[]> {
+/**
+ * Interpolates a given array of waypoints by adding intermediate steps, so the
+ * distance between each waypoints is about even.
+ *
+ * @param waypoints Array of Waypoints.
+ * @returns An array of interpolated Waypoints.
+ */
+export function interpolate(waypoints: LatLng[]): LatLng[] {
+  if (waypoints.length < 2) {
+    return waypoints;
+  }
   let interpolatedWaypoints: LatLng[];
-  interpolatedWaypoints.add(waypoints[0]);
+  interpolatedWaypoints.push(waypoints[0]);
   for (let i = 0; i < waypoints.length - 1; i++) {
     let distance: number = distanceCalculate(waypoints[i], waypoints[i + 1]);
     let stepNumber = Math.round(distance / stepSize);
+    interpolatedWaypoints.concat(
+      calculateIntermediateSteps(waypoints[i], waypoints[i + 1], stepNumber)
+    );
+    interpolatedWaypoints.push(waypoints[i + 1]);
   }
   return interpolatedWaypoints;
 }
@@ -22,14 +36,12 @@ function calculateIntermediateSteps(
   for (let i = 1; i < stepNumber; i++) {
     let nextStep: LatLng;
     nextStep.longitude =
-      (firstWaypoint.longitude - secondWaypoint.longitude) /
-        (i * (stepNumber - 1)) +
+      (secondWaypoint.longitude - firstWaypoint.longitude) * (i / stepNumber) +
       firstWaypoint.longitude;
     nextStep.latitude =
-      (firstWaypoint.latitude - secondWaypoint.latitude) /
-        (i * (stepNumber - 1)) +
+      (secondWaypoint.latitude - firstWaypoint.latitude) * (i / stepNumber) +
       firstWaypoint.latitude;
-    intermediateSteps.add(nextStep);
+    intermediateSteps.push(nextStep);
   }
   return intermediateSteps;
 }
