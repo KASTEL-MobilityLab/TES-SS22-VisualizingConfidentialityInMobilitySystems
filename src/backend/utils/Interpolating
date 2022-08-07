@@ -13,6 +13,27 @@ export function interpolate(waypoints: LatLng[]): Promise<LatLng[]> {
   return interpolatedWaypoints;
 }
 
+function calculateIntermediateSteps(
+  firstWaypoint: LatLng,
+  secondWaypoint: LatLng,
+  stepNumber: number
+): LatLng[] {
+  let intermediateSteps: LatLng[];
+  for (let i = 1; i < stepNumber; i++) {
+    let nextStep: LatLng;
+    nextStep.longitude =
+      (firstWaypoint.longitude - secondWaypoint.longitude) /
+        (i * (stepNumber - 1)) +
+      firstWaypoint.longitude;
+    nextStep.latitude =
+      (firstWaypoint.latitude - secondWaypoint.latitude) /
+        (i * (stepNumber - 1)) +
+      firstWaypoint.latitude;
+    intermediateSteps.add(nextStep);
+  }
+  return intermediateSteps;
+}
+
 function distanceCalculate(
   firstWaypoint: LatLng,
   secondWaypoint: LatLng
