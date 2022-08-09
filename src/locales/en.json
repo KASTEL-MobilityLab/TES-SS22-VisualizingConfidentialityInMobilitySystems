@@ -17,6 +17,15 @@
       "tripDataView": "Trip Data",
       "vehicleDataView": "Vehicle Data"
     },
+    "aggregatedData": {
+      "numberOfActiveVehicles": "Number of active Vehicles",
+      "numberOfUsers": "Number of Users",
+      "averageSpeed": "Average Speed",
+      "averageDuration": "Average Duration",
+      "averageDistance": "Average Distance",
+      "averagePrice": "Average Price"
+    },
+    "aggregatedDataReasoning": "You are currently in the role of the city. Below you can see the aggregated data accessible to the city from the mobility context.",
     "welcome": {
       "title": "Welcome to our @:app.confidentiality-visualizer",
       "get_help": "Click on the Help button to get further information about our application.",
@@ -35,6 +44,7 @@
     "status": "Status",
     "batteryLevel": "Battery",
     "ownerName": "Owner",
+    "currentPosition": "Current Position",
     "startTime": "Start Time",
     "endTime": "End Time",
     "averageSpeed": "Average speed",

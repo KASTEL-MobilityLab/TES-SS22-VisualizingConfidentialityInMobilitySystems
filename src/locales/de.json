@@ -10,6 +10,7 @@
     "source": "Quelle",
     "user": "Benutzer",
     "welcome": "Willkommen zu unserem @:app.confidentiality-visualizer",
+    "aggregatedDataReasoning": "Sie befinden sich momentan in der Rolle der Stadt. Nachfolgend sehen Sie die der Stadt zugänglichen aggregierten Daten aus dem Mobilitätskontext.",
     "year": "kein Jahr | ein Jahr | {count} Jahre",
     "day": "kein Tag | ein Tag | {count} Tage",
     "dataViews": {
@@ -30,6 +31,7 @@
     "status": "Status",
     "batteryLevel": "Batteriestand",
     "ownerName": "Eigentümer",
+    "currentPosition": "Aktuelle Position",
     "startTime": "Startzeit",
     "endTime": "Endzeit",
     "averageSpeed": "Durchschnittsgeschwindigkeit",
