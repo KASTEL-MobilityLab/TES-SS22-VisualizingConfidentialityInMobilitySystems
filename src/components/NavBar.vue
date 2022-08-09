@@ -2,6 +2,7 @@
 import { RouterLink } from "vue-router";
 import LocaleChanger from "./LocaleChanger.vue";
 import RolesToggleBar from "./RolesToggleBar.vue";
+import StartButton from "./StartButton.vue";
 </script>
 
 <template>
@@ -11,6 +12,7 @@ import RolesToggleBar from "./RolesToggleBar.vue";
         ><i class="fa-solid fa-lock fa-fw"></i>
         {{ $t("app.confidentiality-visualizer") }}</RouterLink
       >
+      <StartButton />
       <RolesToggleBar />
       <div class="d-flex-inline">
         <span class="navbar-brand m-4 display-4">

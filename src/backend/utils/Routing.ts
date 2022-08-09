@@ -1,4 +1,4 @@
-import { isNode } from "browser-or-node";
+import { fetch } from "cross-fetch";
 import type { Route } from "../dataFields";
 import { LatLng } from "./LatLng";
 
@@ -13,9 +13,6 @@ export async function fetchWaypoints(
   route: Route,
   profile: "driving" | "cycling" = "driving"
 ): Promise<LatLng[]> {
-  if (isNode) {
-    throw new Error("Fetching from node environment currently not supported.");
-  }
   if (!route.waypoints) {
     // request the waypoints for this route and set them in the route instance
     const waypoints = await fetchDirectionsAPI(route.start, route.end, profile);

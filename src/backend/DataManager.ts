@@ -14,6 +14,7 @@ import type { DataType } from "./DataType";
 import type { Risk } from "./riskManager/Risk";
 import { RiskManager } from "./riskManager/RiskManager";
 import { Role } from "./Role";
+import { TripAnimator } from "./TripAnimator";
 import type { LatLng } from "./utils/LatLng";
 import { fetchWaypoints } from "./utils/Routing";
 export class DataManager {
@@ -32,6 +33,7 @@ export class DataManager {
 
   dataLoader: DataLoader;
   riskManager: RiskManager;
+  tripAnimator?: TripAnimator;
   //The currently selected DataPackage
   currentData: DataPackage;
   aggregatedData: AggregatedData;
@@ -80,6 +82,8 @@ export class DataManager {
     this.riskManager.risks = risks;
     this.setAllReferences();
     this.trips.map((trip) => trip.setVehicleStartPosition());
+    this.tripAnimator = new TripAnimator(this.trips, 10);
+    this.setRouteWaypoints();
     this.aggregatedData.init(this.trips);
   }
 
@@ -160,6 +164,15 @@ export class DataManager {
         trip.routeId,
         this.routes
       );
+    }
+  }
+
+  /**
+   * Sets the route waypoints of a trip.
+   */
+  private async setRouteWaypoints() {
+    for (const route of this.routes) {
+      route.waypoints = await this.getRouteWaypoints(route);
     }
   }
 
@@ -272,5 +285,24 @@ export class DataManager {
    */
   async getRouteWaypoints(route: Route): Promise<LatLng[]> {
     return await fetchWaypoints(route);
+  }
+
+  /**
+   * Finds the next trip of  a given trip in order to get a cyclic route.
+   */
+  findNextTrip(trip: Trip) {
+    throw new Error("Method not implemented.");
+  }
+
+  startAnimation() {
+    this.tripAnimator?.start();
+  }
+
+  stopAnimation() {
+    this.tripAnimator?.stop();
+  }
+
+  resetAnimation() {
+    this.tripAnimator?.reset();
   }
 }

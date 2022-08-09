@@ -48,6 +48,12 @@ export class Trip extends DataField {
   @Exclude()
   private _route?: Route;
 
+  @Exclude()
+  private _nextTrip: Trip | undefined;
+
+  @Exclude()
+  currentStep: number;
+
   constructor(
     id: string,
     routeId: string,
@@ -72,6 +78,7 @@ export class Trip extends DataField {
     this.avgSpeed = avgSpeed;
     this.startTime = startTime;
     this.endTime = endTime;
+    this.currentStep = 0;
     if (vehicle !== undefined) {
       this._vehicle = vehicle;
     }
@@ -144,5 +151,31 @@ export class Trip extends DataField {
     }
     this.checkForeignKeyReferences(route, this.routeId);
     this._route = route;
+  }
+
+  step() {
+    //Ab hier weiter machen
+    if (this.route?.waypoints) {
+      const nextWaypoint = this.route?.waypoints[this.currentStep + 1];
+      this.vehicle?.move(nextWaypoint);
+      this.currentStep++;
+      /*
+      if (this.vehicle?.currentPosition === nextWaypoint) {
+        this.currentStep++;
+      }
+      */
+    }
+  }
+
+  isFinished(): boolean {
+    return this.currentStep === this.route?.waypoints?.length;
+  }
+
+  resetStepCounter() {
+    this.currentStep = 0;
+  }
+
+  set nextTrip(nextTrip: Trip) {
+    this.nextTrip = nextTrip;
   }
 }

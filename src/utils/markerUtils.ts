@@ -9,17 +9,17 @@ const iconAnchor: L.PointExpression = [24, 24];
 // used for css styling, to center the icon
 const fontAwesomeCSSName = "fontAwesomeIconLeaflet";
 
-const bikeIcon = L.divIcon({
+export const bikeIcon = L.divIcon({
   html: "<i class='fa-solid fa-bicycle fa-3x'></i>",
   iconAnchor: iconAnchor,
   className: fontAwesomeCSSName,
 });
-const busIcon = L.divIcon({
+export const busIcon = L.divIcon({
   html: "<i class='fa-solid fa-bus fa-3x'></i>",
   iconAnchor: iconAnchor,
   className: fontAwesomeCSSName,
 });
-const trainIcon = L.divIcon({
+export const trainIcon = L.divIcon({
   html: "<i class='fa-solid fa-train-subway fa-3x'></i>",
   iconAnchor: iconAnchor,
   className: fontAwesomeCSSName,
@@ -38,7 +38,7 @@ export const RouteStartIcon = L.divIcon({
 });
 
 /**
- * A VehicleIcon has a vehicle type and a associated icon.n
+ * A VehicleIcon has a vehicle type and a associated icon.
  */
 interface VehicleIcon {
   type: VehicleType;
