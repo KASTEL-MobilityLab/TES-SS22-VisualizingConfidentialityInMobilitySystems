@@ -1,12 +1,15 @@
 <script setup lang="ts">
 import type { DataManager } from "@/backend/DataManager";
+import type { MarkerManager } from "@/animation/MarkerManager";
 import MapComponent from "@/components/MapComponent.vue";
-import { dataManagerKey } from "@/keys";
+import { dataManagerKey, markerManagerKey } from "@/keys";
 import { inject, type Ref } from "vue";
 import { RouterView } from "vue-router";
 
 const $dm = inject(dataManagerKey) as Ref<DataManager>;
+const $mm = inject(markerManagerKey) as Ref<MarkerManager>;
 await $dm.value.init();
+$mm.value.init($dm.value.vehicles);
 </script>
 <template>
   <MapComponent />

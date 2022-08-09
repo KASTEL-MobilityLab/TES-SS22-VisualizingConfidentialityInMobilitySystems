@@ -1,21 +1,22 @@
 <script setup lang="ts">
-import { MarkerManager } from "@/animation/MarkerManager.js";
+import type { MarkerManager } from "@/animation/MarkerManager";
 import type { DataManager } from "@/backend/DataManager";
 import { dataManagerKey } from "@/keys";
+import { markerManagerKey } from "@/keys";
 import { toLeafletLatLngArray } from "@/utils/latLngUtils";
 import type { VehicleMarker } from "@/utils/leafletExtension";
-import { generateAllVehicleMarkers } from "@/utils/markerUtils";
 import { RouteDisplay } from "@/utils/RouteDisplay";
 import L, { type LeafletEvent } from "leaflet";
 import { inject, onMounted, watch, type Ref } from "vue";
 import { useRouter } from "vue-router";
 
 const $dm = inject(dataManagerKey) as Ref<DataManager>;
+const $mm = inject(markerManagerKey) as Ref<MarkerManager>;
 const router = useRouter();
 const RELOAD_TIME = 450;
 let routeDisplay: RouteDisplay;
 let map: L.Map;
-const markerManager: MarkerManager = new MarkerManager($dm.value.vehicles);
+let allMarkers: VehicleMarker[] = [];
 
 // setup the map and generate markers, when this component is mounted
 onMounted(() => {
@@ -95,11 +96,10 @@ function setupMarkers(map: L.Map) {
   var markersLayer = L.featureGroup().addTo(map);
   // add this event listener to each marker in the feature group
   markersLayer.on("click", vehicleMarkerClicked);
-
-  const vehicles = $dm.value.vehicles;
-  const markers = generateAllVehicleMarkers(vehicles);
+  const markers = $mm.value.allMarkers;
   markers.forEach((marker) => {
     marker.addTo(markersLayer);
+    allMarkers.push(marker);
   });
   return markersLayer;
 }
@@ -144,23 +144,11 @@ async function vehicleMarkerClicked(event: LeafletEvent) {
   const marker = event.propagatedFrom as VehicleMarker;
   const vehicle = marker.vehicle;
   $dm.value.updateByVehicle(vehicle);
-  //animateMarker(event);
-  $dm.value.startAnimation();
-
   // navigate to Default Data View
   router.push({
     name: "Default",
   });
 }
-
-watch(
-  () => $dm.value.vehicles,
-  (currentValue, oldValue) => {
-    for (const vehicle of currentValue) {
-      markerManager.updatePosition(vehicle.id, currentValue);
-    }
-  }
-);
 </script>
 
 <template>

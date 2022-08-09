@@ -1,3 +1,4 @@
+import { AggregatedData } from "./AggreagtedData";
 import type {
   Company,
   DataField,
@@ -35,6 +36,7 @@ export class DataManager {
   tripAnimator?: TripAnimator;
   //The currently selected DataPackage
   currentData: DataPackage;
+  aggregatedData: AggregatedData;
 
   /**
    * Construct a new DataManager.
@@ -51,6 +53,7 @@ export class DataManager {
     this.vehicles = [];
     this.routes = [];
     this.currentData = new DataPackage();
+    this.aggregatedData = new AggregatedData();
   }
 
   /**
@@ -81,6 +84,7 @@ export class DataManager {
     this.trips.map((trip) => trip.setVehicleStartPosition());
     this.tripAnimator = new TripAnimator(this.trips, 10);
     this.setRouteWaypoints();
+    this.aggregatedData.init(this.trips);
   }
 
   /**

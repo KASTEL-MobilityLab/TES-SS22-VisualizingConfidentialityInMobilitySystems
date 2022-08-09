@@ -1,4 +1,5 @@
 import DataView from "@/views/DataView.vue";
+import AggregatedDataView from "@/views/dataViewer/AggregatedDataView.vue";
 import DefaultView from "@/views/dataViewer/DefaultView.vue";
 import PaymentDataView from "@/views/dataViewer/PaymentDataView.vue";
 import RiderDataView from "@/views/dataViewer/RiderDataView.vue";
@@ -21,6 +22,12 @@ const router = createRouter({
           path: "",
           name: "Welcome",
           component: WelcomeView,
+        },
+        {
+          // This is displayed, when no vehicle is selected on the map and the City role is selected.
+          path: "",
+          name: "AggregatedData",
+          component: AggregatedDataView,
         },
         {
           // Display Router Links to RiderDataView etc.
