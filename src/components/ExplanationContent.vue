@@ -7,7 +7,7 @@ import { getTranslationKeyForExplanation } from "@/utils/translationUtils";
 import { computed, type ComputedRef, type Ref } from "@vue/reactivity";
 import { inject } from "vue";
 import { useI18n } from "vue-i18n";
-import ExplanationCard from "./ExplanationCard.vue";
+import InfoCard from "./InfoCard.vue";
 
 const $dm = inject(dataManagerKey) as Ref<DataManager>;
 
@@ -102,20 +102,20 @@ function getCurrentVisibilityExplanation(): Explanation | undefined {
   <div class="container">
     <div class="row">
       <div class="col d-flex align-items-stretch">
-        <ExplanationCard
+        <InfoCard
           :title="visibilityExplanationTitle"
           :content="visibilityExplanation"
           :source="visibilityExplanationSource"
         />
       </div>
       <div v-if="retentionPeriodString" class="col d-flex align-items-stretch">
-        <ExplanationCard
+        <InfoCard
           :title="$t(getTranslationKeyForExplanation('retention_period'))"
           :content="retentionPeriodString"
         />
       </div>
       <div v-if="riskLevelExplanation" class="col d-flex align-items-stretch">
-        <ExplanationCard
+        <InfoCard
           :title="$t(getTranslationKeyForExplanation('risk_level_explanation'))"
           :content="riskLevelExplanation"
           :source="riskLevelExplanationSource"

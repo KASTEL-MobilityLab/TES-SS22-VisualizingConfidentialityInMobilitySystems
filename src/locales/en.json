@@ -55,5 +55,14 @@
     "expiryDate": "Expiry Date",
     "provider": "Provider",
     "userName": "Username"
+  },
+  "help": {
+    "title": "Help",
+    "about_the_app": "About the app",
+    "about_the_app_text": "This web-based demonstrator is used to help understand, what kind of data is selected, when using public vehicles like e-bikes and trains. It also shows, how critical those data are and who has access to them, by allowing to select different views from which the data can be seen.",
+    "how_it_works": "How it works",
+    "how_it_works_text": "To use the app, first you should press start to start the animation. Then you can click on different Icons to open the data viewer and see the data of the user of the selected vehicle from a chosen view. There are also explanations available, if xou click on the data type, and you can easily see, how critical the data ar, by looking at the color of the datatype.",
+    "what_infos_you_can_get": "What infos you can get",
+    "what_infos_you_can_get_text": "With this app, you can see, what types of data are selected when using public vehicles, to whom they are visible for what reason, how critical thea are and how long they are stored."
   }
 }
