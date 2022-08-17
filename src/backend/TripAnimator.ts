@@ -17,15 +17,6 @@ export class TripAnimator {
 
   public start() {
     this.isRunning = true;
-    /*
-    for (const trip of this.trips) {
-      if (!(trip.id in this.activeTrips)) {
-        trip.step();
-        this.activeTrips.push(trip.id);
-      }
-    }
-*/
-    //const trip = this.trips[0];
     for (const trip of this.trips) {
       if (!this.activeTrips.includes(trip.id)) {
         this.activeTrips.push(trip.id);
@@ -34,14 +25,6 @@ export class TripAnimator {
         trip.step();
       }, 1000);
     }
-
-    /*
-    if (trip.route?.waypoints) {
-      for (const waypoint of trip.route.waypoints) {
-        console.log(waypoint);
-      }
-    }
-    */
   }
 
   public stop() {
