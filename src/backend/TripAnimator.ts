@@ -3,14 +3,14 @@ import type { Trip } from "./dataFields/Trip";
 export class TripAnimator {
   public static readonly RELOAD_TIME_IN_MILLISECONDS = "500";
   trips: Trip[];
-  aniamtionSpeed: number;
+  animationSpeed: number;
   isRunning: boolean;
   //Stores all ids of trips that are currently animated
   activeTrips: string[];
 
-  constructor(trips: Trip[], aniamtionSpeed: number) {
+  constructor(trips: Trip[], animationSpeed: number) {
     this.trips = trips;
-    this.aniamtionSpeed = aniamtionSpeed;
+    this.animationSpeed = animationSpeed;
     this.isRunning = false;
     this.activeTrips = [];
   }
