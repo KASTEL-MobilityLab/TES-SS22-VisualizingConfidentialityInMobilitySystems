@@ -1,3 +1,4 @@
+import { isNode } from "browser-or-node";
 import { AggregatedData } from "./AggreagtedData";
 import type {
   Company,
@@ -171,6 +172,10 @@ export class DataManager {
    * Sets the route waypoints of a trip.
    */
   private async setRouteWaypoints() {
+    if (isNode) {
+      // don't fetch the routes in test mode.
+      return;
+    }
     for (const route of this.routes) {
       route.waypoints = await this.getRouteWaypoints(route);
     }
