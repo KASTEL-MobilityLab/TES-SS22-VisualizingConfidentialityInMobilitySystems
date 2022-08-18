@@ -51,8 +51,9 @@ async function onRouteUpdate() {
  * Setup the map with layers and bounds.
  */
 function setupMap(): L.Map {
-  const topLeft = new L.LatLng(49.036357, 8.334785);
-  const bottomRight = new L.LatLng(48.977558, 8.469264);
+  const topLeft = new L.LatLng(49.049, 8.281);
+  const bottomRight = new L.LatLng(48.954, 8.513);
+  const center = new L.LatLng(49.009, 8.4);
   const bounds = new L.LatLngBounds(topLeft, bottomRight);
 
   const stamenWaterColor = L.tileLayer(
@@ -82,7 +83,7 @@ function setupMap(): L.Map {
   );
 
   return L.map("leafletMap", {
-    center: bounds.getCenter(),
+    center: center,
     zoom: 14.45,
     minZoom: 13,
     maxZoom: 16,
