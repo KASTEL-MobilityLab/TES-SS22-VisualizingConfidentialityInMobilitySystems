@@ -31,5 +31,27 @@
     "price": 10,
     "startTime": "2022-05-22T17:50:19",
     "endTime": "2022-05-22T18:10:34"
+  },
+  {
+    "id": "T04",
+    "routeId": "R04",
+    "vehicleId": "V05",
+    "userId": "U04",
+    "paymentId": "P04",
+    "avgSpeed": 24,
+    "price": 2.8,
+    "startTime": "2022-05-22T12:55:49",
+    "endTime": "2022-05-22T12:25:30"
+  },
+  {
+    "id": "T05",
+    "routeId": "R05",
+    "vehicleId": "V06",
+    "userId": "U05",
+    "paymentId": "P05",
+    "avgSpeed": 24,
+    "price": 2.8,
+    "startTime": "2022-05-22T11:35:49",
+    "endTime": "2022-05-22T11:59:30"
   }
 ]
