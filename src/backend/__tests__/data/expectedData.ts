@@ -76,7 +76,8 @@ export const routes: Route[] = [
     [
       new LatLng(49.02054068485777, 8.379907608032228),
       new LatLng(49.01333822182982, 8.404026031494142),
-    ]
+    ],
+    "test"
   ),
 ];
 export const trips: Trip[] = [
