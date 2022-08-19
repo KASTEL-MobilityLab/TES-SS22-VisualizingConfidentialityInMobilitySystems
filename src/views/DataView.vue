@@ -1,11 +1,14 @@
 <script setup lang="ts">
+import { inject } from "vue";
 import { RouterView } from "vue-router";
+const dataViewerVisible = inject("dataViewerVisible");
 </script>
 
 <template>
   <!-- By using position-relative and overlay, we only overlay this container on top of the map, the 
   rest of the row is below it. Now we can still click on the map in this row -->
   <div
+    v-show="dataViewerVisible"
     id="data-viewer"
     class="container bg-light rounded top-buffer overflow-auto"
   >

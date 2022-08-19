@@ -9,6 +9,7 @@
     "month": "kein Monat | ein Monat | {count} Monate",
     "source": "Quelle",
     "user": "Benutzer",
+    "toggle-data-viewer": "@:app.dataViewer umschalten",
     "welcome": "Willkommen zu unserem @:app.confidentiality-visualizer",
     "aggregatedDataReasoning": "Sie befinden sich momentan in der Rolle der Stadt. Nachfolgend sehen Sie die der Stadt zugänglichen aggregierten Daten aus dem Mobilitätskontext.",
     "year": "kein Jahr | ein Jahr | {count} Jahre",

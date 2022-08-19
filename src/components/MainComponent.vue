@@ -17,7 +17,7 @@ $mm.value.init($dm.value.vehicles);
   <!-- d-flex is needed for the top-buffer in the container to work 
   offset puts the column to the right, but only large screens. Mid screens and smaller only have one column
   overflow-auto makes the container scrollable -->
-  <div class="d-flex col-lg-4 offset-lg-7 offset-md-0 overflow-auto">
+  <div class="d-flex col-lg-4 offset-lg-7 overflow-auto">
     <RouterView />
   </div>
 </template>

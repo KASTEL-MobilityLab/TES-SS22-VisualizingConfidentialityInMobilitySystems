@@ -9,7 +9,7 @@ function switchLocale() {
 </script>
 
 <template>
-  <button class="btn btn-light btn-lg" @click="switchLocale">
+  <button class="btn btn-light btn-md" @click="switchLocale">
     {{ $i18n.locale.toUpperCase() }}
     <i class="fa-solid fa-globe fa-fw"></i>
   </button>
