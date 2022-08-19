@@ -3,7 +3,9 @@ import { RouterView } from "vue-router";
 </script>
 
 <template>
-  <div class="container w-75 h-75 bg-light rounded">
+  <!-- By using position-relative and overlay, we only overlay this container on top of the map, the 
+  rest of the row is below it. Now we can still click on the map in this row -->
+  <div class="position-relative overlay container bg-light rounded top-buffer">
     <h1 class="text-center p-3 fw-bold">
       <i class="fa-solid fa-database fa-fw"></i> {{ $t("app.dataViewer") }}
     </h1>
@@ -13,3 +15,13 @@ import { RouterView } from "vue-router";
     </div>
   </div>
 </template>
+
+<style scoped>
+.overlay {
+  z-index: 2;
+}
+
+.top-buffer {
+  margin-top: 10rem;
+}
+</style>
