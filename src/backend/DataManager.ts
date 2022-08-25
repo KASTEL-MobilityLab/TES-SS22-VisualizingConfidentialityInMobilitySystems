@@ -1,5 +1,5 @@
 import { isNode } from "browser-or-node";
-import { AggregatedData } from "./AggreagtedData";
+import { AggregatedData } from "./AggregatedData";
 import type {
   Company,
   DataField,
