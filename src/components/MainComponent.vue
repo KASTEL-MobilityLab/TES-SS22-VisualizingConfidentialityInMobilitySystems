@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import type { DataManager } from "@/backend/DataManager";
 import type { MarkerManager } from "@/animation/MarkerManager";
+import type { DataManager } from "@/backend/DataManager";
 import MapComponent from "@/components/MapComponent.vue";
 import { dataManagerKey, markerManagerKey } from "@/keys";
 import { inject, type Ref } from "vue";
@@ -11,27 +11,13 @@ const $mm = inject(markerManagerKey) as Ref<MarkerManager>;
 await $dm.value.init();
 $mm.value.init($dm.value.vehicles);
 </script>
+
 <template>
   <MapComponent />
-  <div class="overlay">
-    <!-- Renders the view that matches the top level root: DataViewerView and HelpView
-        We need to find a way to show HelpView on the left side and not switch between Help and DataViewer-->
+  <!-- d-flex is needed for the top-buffer in the container to work 
+  offset puts the column to the right, but only large screens. Mid screens and smaller only have one column
+  overflow-auto makes the container scrollable -->
+  <div class="d-flex col-lg-4 offset-lg-7 overflow-auto">
     <RouterView />
   </div>
 </template>
-
-<style scoped>
-div.overlay {
-  /* This stretches these elements to the edges of
-    the closest element upwards in the DOM with a relative
-    positioning (in this case it's the .outer-wrap) */
-  position: absolute;
-  top: 15vh;
-  right: 0;
-  bottom: 0;
-  left: 65vw;
-  z-index: 2;
-  opacity: 0.95;
-  border-radius: 150px;
-}
-</style>
