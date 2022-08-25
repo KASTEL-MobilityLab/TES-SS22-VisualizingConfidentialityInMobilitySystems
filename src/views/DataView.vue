@@ -23,10 +23,6 @@ const dataViewerVisible = inject("dataViewerVisible");
 </template>
 
 <style scoped>
-.overlay {
-  z-index: 2;
-}
-
 .top-buffer {
   margin-top: 10rem;
 }
