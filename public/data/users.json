@@ -19,5 +19,19 @@
     "surname": "Mark",
     "phoneNumber": 4973217849,
     "email": "klaus.mark@gmail.com"
+  },
+  {
+    "id": "U04",
+    "forename": "Clemens",
+    "surname": "Klein",
+    "phoneNumber": 49124734849,
+    "email": "clemens.klein@gmail.com"
+  },
+  {
+    "id": "U05",
+    "forename": "Markus",
+    "surname": "Von Basten",
+    "phoneNumber": 49734217238,
+    "email": "markus.vonbasten@gmail.com"
   }
 ]

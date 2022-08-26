@@ -18,10 +18,20 @@ export class Route extends DataField {
   @Expose()
   waypoints?: LatLng[];
 
-  constructor(id: string, start: LatLng, end: LatLng, waypoints?: LatLng[]) {
+  @Expose()
+  description?: string;
+
+  constructor(
+    id: string,
+    start: LatLng,
+    end: LatLng,
+    waypoints?: LatLng[],
+    description?: string
+  ) {
     super(id);
     this.start = start;
     this.end = end;
     this.waypoints = waypoints;
+    this.description = description;
   }
 }

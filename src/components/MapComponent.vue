@@ -1,11 +1,13 @@
 <script setup lang="ts">
 import type { MarkerManager } from "@/animation/MarkerManager";
+import { Route } from "@/backend/dataFields";
 import type { DataManager } from "@/backend/DataManager";
-import { dataManagerKey } from "@/keys";
-import { markerManagerKey } from "@/keys";
-import { toLeafletLatLngArray } from "@/utils/latLngUtils";
+import type { LatLng as CustomLatLng } from "@/backend/utils/LatLng";
+import { dataManagerKey, markerManagerKey } from "@/keys";
+import { fromLeafletLatLng, toLeafletLatLngArray } from "@/utils/latLngUtils";
 import type { VehicleMarker } from "@/utils/leafletExtension";
 import { RouteDisplay } from "@/utils/RouteDisplay";
+import { instanceToPlain } from "class-transformer";
 import L, { type LeafletEvent } from "leaflet";
 import { inject, onMounted, watch, type Ref } from "vue";
 import { useRouter } from "vue-router";
@@ -17,6 +19,8 @@ const RELOAD_TIME = 450;
 let routeDisplay: RouteDisplay;
 let map: L.Map;
 let allMarkers: VehicleMarker[] = [];
+// used for adding new routes to the json file
+let clickedPositions: CustomLatLng[] = [];
 
 // setup the map and generate markers, when this component is mounted
 onMounted(() => {
@@ -47,8 +51,9 @@ async function onRouteUpdate() {
  * Setup the map with layers and bounds.
  */
 function setupMap(): L.Map {
-  const topLeft = new L.LatLng(49.036357, 8.334785);
-  const bottomRight = new L.LatLng(48.977558, 8.469264);
+  const topLeft = new L.LatLng(49.049, 8.281);
+  const bottomRight = new L.LatLng(48.954, 8.513);
+  const center = new L.LatLng(49.009, 8.4);
   const bounds = new L.LatLngBounds(topLeft, bottomRight);
 
   const stamenWaterColor = L.tileLayer(
@@ -78,7 +83,7 @@ function setupMap(): L.Map {
   );
 
   return L.map("leafletMap", {
-    center: bounds.getCenter(),
+    center: center,
     zoom: 14.45,
     minZoom: 13,
     maxZoom: 16,
@@ -105,23 +110,6 @@ function setupMarkers(map: L.Map) {
 }
 
 /**
- * Animates the marker of the currently selected marker.
- */
-async function animateMarker(event: LeafletEvent) {
-  const marker = event.propagatedFrom as VehicleMarker;
-  const route = $dm.value.currentData.getRoute();
-  if (route) {
-    const customWaypoints = await $dm.value.getRouteWaypoints(route);
-    const waypoints = toLeafletLatLngArray(customWaypoints);
-    waypoints.forEach(function (coord, index) {
-      setTimeout(function () {
-        marker.setLatLng([coord.lat, coord.lng]);
-      }, RELOAD_TIME * index);
-    });
-  }
-}
-
-/**
  * When the user clicks on an empty spot on the map, this will be called.
  * It deselects the current data references and hides the route of the previously selected vehicle.
  *
@@ -133,6 +121,21 @@ function emptySpotClicked(e: LeafletEvent) {
   router.push({
     name: "Welcome",
   });
+  if (import.meta.env.PROD) {
+    return;
+  }
+  // only print the routes in dev mode
+  const newPosition = fromLeafletLatLng((e as any).latlng);
+  clickedPositions.push(newPosition);
+  const len = clickedPositions.length;
+  if (len > 1) {
+    const start = clickedPositions[0];
+    const end = clickedPositions[len - 1];
+    const route = new Route("R0X", start, end, clickedPositions);
+    console.log(JSON.stringify(instanceToPlain(route)));
+  } else {
+    console.log(JSON.stringify(instanceToPlain(newPosition)));
+  }
 }
 
 /**
