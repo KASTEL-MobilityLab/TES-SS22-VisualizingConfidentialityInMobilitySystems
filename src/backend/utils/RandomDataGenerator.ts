@@ -1,4 +1,4 @@
-import { Company, Route, User } from "@/backend/dataFields";
+import { Company, DataField, Route, User } from "@/backend/dataFields";
 import { faker } from "@faker-js/faker";
 import { LatLng } from "./LatLng";
 
@@ -39,13 +39,31 @@ export class RandomDataGenerator {
    * @param startId the start id of the first user
    * @returns an array of randomly generated users
    */
-  generateUsers(count: number, startId: number) {
-    const users: User[] = [];
+  generateUsers(count: number, startId: number): User[] {
+    return this.generateMultiple(this.generateUser, count, startId, "U");
+  }
+
+  generateIndividualRoutes(count: number, startId: number): Route[] {
+    return this.generateMultiple(
+      this.generateIndividualRoute,
+      count,
+      startId,
+      "R"
+    );
+  }
+
+  private generateMultiple<T extends DataField>(
+    generator: (id: string) => T,
+    count: number,
+    startId: number,
+    idPrefix: string
+  ): T[] {
+    const data: T[] = [];
     for (let i = 0; i < count; i++) {
-      const id = `U${startId + i < 10 ? "0" : ""}${startId + i}`;
-      users.push(this.generateUser(id));
+      const id = `${idPrefix}${startId + i < 10 ? "0" : ""}${startId + i}`;
+      data.push(generator(id));
     }
-    return users;
+    return data;
   }
 
   /**
