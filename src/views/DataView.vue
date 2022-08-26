@@ -24,7 +24,7 @@ const dataViewerVisible = inject("dataViewerVisible");
 
 <style scoped>
 .top-buffer {
-  margin-top: 10rem;
+  margin-top: 20%;
 }
 
 #data-viewer {
