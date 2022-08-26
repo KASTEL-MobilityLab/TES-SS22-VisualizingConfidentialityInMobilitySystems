@@ -1,7 +1,7 @@
 import type { Trip } from "./dataFields/Trip";
 
 export class TripAnimator {
-  public static readonly RELOAD_TIME_IN_MILLISECONDS = "500";
+  public static readonly RELOAD_TIME_IN_MILLISECONDS = "25";
   trips: Trip[];
   animationSpeed: number;
   isRunning: boolean;
@@ -23,7 +23,7 @@ export class TripAnimator {
       }
       setInterval(function () {
         trip.step();
-      }, 1000);
+      }, 25);
     }
   }
 
