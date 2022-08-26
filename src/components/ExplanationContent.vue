@@ -100,21 +100,27 @@ function getCurrentVisibilityExplanation(): Explanation | undefined {
 
 <template>
   <div class="container">
-    <div class="row">
-      <div class="col d-flex align-items-stretch">
+    <div class="row row-cols-lg-3 row-cols-md-2 row-cols-1">
+      <div class="col d-flex align-items-stretch mb-4 flex-fill">
         <InfoCard
           :title="visibilityExplanationTitle"
           :content="visibilityExplanation"
           :source="visibilityExplanationSource"
         />
       </div>
-      <div v-if="retentionPeriodString" class="col d-flex align-items-stretch">
+      <div
+        v-if="retentionPeriodString"
+        class="col d-flex align-items-stretch mb-4 flex-fill"
+      >
         <InfoCard
           :title="$t(getTranslationKeyForExplanation('retention_period'))"
           :content="retentionPeriodString"
         />
       </div>
-      <div v-if="riskLevelExplanation" class="col d-flex align-items-stretch">
+      <div
+        v-if="riskLevelExplanation"
+        class="col d-flex align-items-stretch mb-4 flex-fill"
+      >
         <InfoCard
           :title="$t(getTranslationKeyForExplanation('risk_level_explanation'))"
           :content="riskLevelExplanation"

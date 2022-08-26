@@ -11,6 +11,7 @@
     "user": "User",
     "year": "no year | one year | {count} years",
     "source": "Source",
+    "toggle-data-viewer": "Toggle Data Viewer",
     "dataViews": {
       "paymentDataView": "Payment Data",
       "riderDataView": "Rider Data",
