@@ -1,7 +1,6 @@
 import { LatLng } from "./LatLng";
 
-//distance between each step in meter
-const stepSize = 10;
+const stepSizeInMeter = 0.2;
 
 /**
  * Interpolates a given array of waypoints by adding intermediate steps, so the
@@ -18,7 +17,7 @@ export function interpolate(waypoints: LatLng[]): LatLng[] {
   let interpolatedWaypoints: LatLng[] = [waypoints[0]];
   for (let i = 0; i < waypoints.length - 1; i++) {
     const distance: number = distanceCalculate(waypoints[i], waypoints[i + 1]);
-    const stepNumber = Math.round(distance / stepSize);
+    const stepNumber = Math.round(distance / stepSizeInMeter);
     interpolatedWaypoints = interpolatedWaypoints.concat(
       calculateIntermediateSteps(waypoints[i], waypoints[i + 1], stepNumber)
     );
