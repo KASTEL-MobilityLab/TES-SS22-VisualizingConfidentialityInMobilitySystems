@@ -1,9 +1,31 @@
-import { Company, DataField, Route, User } from "@/backend/dataFields";
+import {
+  Cash,
+  Company,
+  CreditCard,
+  DataField,
+  Payment,
+  Route,
+  User,
+  Vehicle,
+} from "@/backend/dataFields";
 import { faker } from "@faker-js/faker";
+import { PaymentType, VehicleType } from "../dataFields/types";
 import { LatLng } from "./LatLng";
 
 /**
- * Random data generator for Datafield classes.
+ * Returns a random element of the specified Enum.
+ *
+ * @param enumType The type of the enum to generate a random value for.
+ * @returns A random element of the specified Enum.
+ */
+export function randomEnumElement<T>(enumType: T): T[keyof T] {
+  const keys = Object.keys(enumType) as (keyof T)[];
+  const randomIndex = Math.floor(Math.random() * keys.length);
+  return enumType[keys[randomIndex]];
+}
+
+/**
+ * Random data generator for DataField classes.
  */
 export class RandomDataGenerator {
   static readonly DEFAULT_CENTER_LOCATION: [number, number] = [49.009, 8.4];
@@ -17,6 +39,23 @@ export class RandomDataGenerator {
   constructor(locale = RandomDataGenerator.DEFAULT_LOCALE) {
     faker.setLocale(locale);
   }
+
+  // helper function for generating multiple entities
+  private generateMultiple<T extends DataField>(
+    generator: (id: string) => T,
+    count: number,
+    startId: number,
+    idPrefix: string
+  ): T[] {
+    const data: T[] = [];
+    for (let i = 0; i < count; i++) {
+      const id = `${idPrefix}${startId + i < 10 ? "0" : ""}${startId + i}`;
+      data.push(generator(id));
+    }
+    return data;
+  }
+
+  // User data generation -------------------------------------------------------
 
   /**
    * Generates a random user.
@@ -33,7 +72,7 @@ export class RandomDataGenerator {
   }
 
   /**
-   * Generates n random users.
+   * Generates random users.
    *
    * @param count the number of users to generate
    * @param startId the start id of the first user
@@ -43,6 +82,55 @@ export class RandomDataGenerator {
     return this.generateMultiple(this.generateUser, count, startId, "U");
   }
 
+  // Payment data generation -----------------------------------------------------
+
+  /**
+   * Generates a random payment.
+   *
+   * @param id the id of the payment
+   * @returns a random payment
+   */
+  generatePayment(id: string): Payment {
+    const paymentType = randomEnumElement(PaymentType);
+    const tripId = id;
+    switch (paymentType) {
+      case PaymentType.Cash:
+        return new Cash(id, tripId);
+      case PaymentType.CreditCard:
+        return this.generateCreditCardPayment(id);
+      default:
+        throw new Error(`Unknown payment type: ${paymentType}`);
+    }
+  }
+
+  /**
+   * Generates random Payments.
+   *
+   * @param count the number of payments to generate
+   * @param startId the start id of the first payment
+   * @returns an array of randomly generated payments
+   */
+  generatePayments(count: number, startId: number): Payment[] {
+    return this.generateMultiple(this.generatePayment, count, startId, "P");
+  }
+
+  private generateCreditCardPayment(id: string): CreditCard {
+    const cardNumber = parseInt(faker.finance.creditCardNumber());
+    const ccv = parseInt(faker.finance.creditCardCVV());
+    const expiryDate = faker.date.future(10);
+    const provider = faker.finance.creditCardIssuer();
+    return new CreditCard(cardNumber, ccv, expiryDate, provider, id, id);
+  }
+
+  // Route data generation -------------------------------------------------------
+
+  /**
+   * Generates random individual routes.
+   *
+   * @param count the number of individual routes to generate
+   * @param startId the start id of the first individual route
+   * @returns an array of randomly generated individual routes
+   */
   generateIndividualRoutes(count: number, startId: number): Route[] {
     return this.generateMultiple(
       this.generateIndividualRoute,
@@ -50,20 +138,6 @@ export class RandomDataGenerator {
       startId,
       "R"
     );
-  }
-
-  private generateMultiple<T extends DataField>(
-    generator: (id: string) => T,
-    count: number,
-    startId: number,
-    idPrefix: string
-  ): T[] {
-    const data: T[] = [];
-    for (let i = 0; i < count; i++) {
-      const id = `${idPrefix}${startId + i < 10 ? "0" : ""}${startId + i}`;
-      data.push(generator(id));
-    }
-    return data;
   }
 
   /**
@@ -94,6 +168,8 @@ export class RandomDataGenerator {
       new LatLng(end[0], end[1])
     );
   }
+
+  // Company data generation -----------------------------------------------------
 
   /**
    * Generates a random company.
