@@ -44,6 +44,11 @@
     "provider": "Anbieter",
     "userName": "Nutzername"
   },
+  "risk": {
+    "low": "Niedrig",
+    "medium": "Mittel",
+    "high": "Hoch"
+  },
   "help": {
     "title": "Hilfe",
     "about_the_app": "Über die App",

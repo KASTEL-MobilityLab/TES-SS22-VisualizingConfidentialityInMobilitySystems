@@ -57,6 +57,11 @@
     "provider": "Provider",
     "userName": "Username"
   },
+  "risk": {
+    "low": "Low",
+    "medium": "Medium",
+    "high": "High"
+  },
   "help": {
     "title": "Help",
     "about_the_app": "About the app",
