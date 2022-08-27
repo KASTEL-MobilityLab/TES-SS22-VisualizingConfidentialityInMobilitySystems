@@ -4,11 +4,12 @@ import {
   CreditCard,
   DataField,
   Payment,
+  PayPal,
   Route,
   User,
 } from "@/backend/dataFields";
 import { faker } from "@faker-js/faker";
-import { PaymentType } from "../dataFields/types";
+import { PaymentType, VehicleType } from "../dataFields/types";
 import { LatLng } from "./LatLng";
 
 /**
@@ -22,6 +23,18 @@ export function randomEnumElement<T>(enumType: T): T[keyof T] {
   const randomIndex = Math.floor(Math.random() * keys.length);
   return enumType[keys[randomIndex]];
 }
+
+// /**
+//  * The Interface for a random data generator function.
+//  */
+// interface RandomGeneratorFunction<
+//   TArgs extends RandomGeneratorFunctionArguments,
+//   TReturn extends DataField
+// > {
+//   (...args: TArgs): TReturn;
+// }
+
+// type RandomGeneratorFunctionArguments = [string] | [string, ...unknown[]];
 
 /**
  * Random data generator for DataField classes.
@@ -94,6 +107,8 @@ export class RandomDataGenerator {
         return new Cash(id, tripId);
       case PaymentType.CreditCard:
         return RandomDataGenerator.generateCreditCardPayment(id, tripId);
+      case PaymentType.PayPal:
+        return RandomDataGenerator.generatePayPalPayment(id, tripId);
       default:
         throw new Error(`Unknown payment type: ${paymentType}`);
     }
@@ -115,12 +130,27 @@ export class RandomDataGenerator {
     );
   }
 
-  static generateCreditCardPayment(id: string, tripId: string): CreditCard {
-    const cardNumber = parseInt(faker.finance.creditCardNumber());
+  private static generateCreditCardPayment(
+    id: string,
+    tripId: string
+  ): CreditCard {
+    const provider = faker.finance.creditCardIssuer();
+    const cardNumber = parseInt(faker.finance.creditCardNumber(provider));
     const ccv = parseInt(faker.finance.creditCardCVV());
     const expiryDate = faker.date.future(10);
-    const provider = faker.finance.creditCardIssuer();
     return new CreditCard(cardNumber, ccv, expiryDate, provider, id, tripId);
+  }
+
+  private static generatePayPalPayment(
+    id: string,
+    tripId: string,
+    user?: User
+  ): PayPal {
+    // we can give this function a first and last name, but currently,
+    // we cannot link the payment to a user, maybe we generate those
+    // together later on.
+    const userName = faker.internet.userName(user?.forename, user?.surname);
+    return new PayPal(userName, id, tripId);
   }
 
   // Route data generation -------------------------------------------------------
@@ -196,34 +226,29 @@ export class RandomDataGenerator {
     );
   }
 
-  // Vehicle data generation --------------------------------------------------------
   /**
-   * Generates a random vehicle.
+   * Generates vehicles for a company.
    *
-   * @param id the id of the vehicle
+   * @param companyId the id of the company
+   * @param vehicleType the type of vehicle
+   * @param company the company the vehicle is registered to, optional. If not given, it will be generated randomly.
    * @returns a random vehicle
    */
-  // static generateVehicle(id: string): Vehicle {
-  //   const name = faker.name.firstName();
-  //   const type = randomEnumElement(VehicleType);
-  //   switch (type) {
-  //     case VehicleType.Bike:
-  //       return this.generate
-  //     case VehicleType.EScooter:
-  //       return;
-  //     case VehicleType.train:
-  //       return;
-  //     case VehicleType.bus:
-  //       return;
-  //     default:
-  //       throw new Error(`Unknown vehicle type: ${type}`);
-  // }
-
-  // private static generateBikeVehicle(id: string): Bike {
-  // }
-
-  // private static generateEScooterVehicle(id: string): EScooter {
-  // }
-
-  // private static generate
+  static generateCompanyVehicles(
+    companyId: string,
+    vehicleType: VehicleType,
+    vehicleStartId: number,
+    numVehicles: number,
+    company?: Company
+  ) {
+    if (!company) {
+      company = RandomDataGenerator.generateCompany(companyId);
+    }
+    switch (vehicleType) {
+      case VehicleType.EScooter:
+        throw new Error("EScooter is not implemented yet");
+      default:
+        throw new Error(`Unknown vehicle type: ${vehicleType}`);
+    }
+  }
 }
