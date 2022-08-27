@@ -8,15 +8,13 @@ import { instanceToPlain } from "class-transformer";
  * This is basically a wrapper for the RandomDataGenerator utility.
  */
 export class RandomDataPrinter {
-  private randomDataGenerator: RandomDataGenerator;
-
-  private clickedPositions: CustomLatLng[] = [];
+  private clickedPositions: CustomLatLng[];
 
   /**
    * Constructs a new RandomDataPrinter with the specified RandomDataGenerator.
    */
-  constructor(randomDataGenerator?: RandomDataGenerator) {
-    this.randomDataGenerator = randomDataGenerator || new RandomDataGenerator();
+  constructor() {
+    this.clickedPositions = [];
   }
 
   /**
@@ -33,8 +31,8 @@ export class RandomDataPrinter {
    * @param count The number of random users to generate.
    * @param startId the starting id for the first user.
    */
-  public printUsers(count: number, startId: number) {
-    const randomUsers = this.randomDataGenerator.generateUsers(count, startId);
+  printUsers(count: number, startId: number) {
+    const randomUsers = RandomDataGenerator.generateUsers(count, startId);
     this.print(randomUsers);
   }
 
@@ -43,7 +41,7 @@ export class RandomDataPrinter {
    *
    * @param waypoint The waypoint to add to the current route.
    */
-  public addWayPointToCurrentRoute(waypoint: CustomLatLng) {
+  addWayPointToCurrentRoute(waypoint: CustomLatLng) {
     this.clickedPositions.push(waypoint);
   }
 
@@ -53,11 +51,8 @@ export class RandomDataPrinter {
    * @param count The number of random companies to generate.
    * @param startId the starting id for the first company.
    */
-  public printCompanies(count: number, startId: number) {
-    const companies = this.randomDataGenerator.generateCompanies(
-      count,
-      startId
-    );
+  printCompanies(count: number, startId: number) {
+    const companies = RandomDataGenerator.generateCompanies(count, startId);
     this.print(companies);
   }
 
@@ -67,15 +62,15 @@ export class RandomDataPrinter {
    * @param count The number of random payments to generate.
    * @param startId the starting id for the first payment.
    */
-  public printPayments(count: number, startId: number) {
-    const payments = this.randomDataGenerator.generatePayments(count, startId);
+  printPayments(count: number, startId: number) {
+    const payments = RandomDataGenerator.generatePayments(count, startId);
     this.print(payments);
   }
 
   /**
    * Prints the current route to the console in a JSON-Ready format.
    */
-  public printCurrentRoute() {
+  printCurrentRoute() {
     const len = this.clickedPositions.length;
     if (len > 1) {
       const start = this.clickedPositions[0];
@@ -92,11 +87,8 @@ export class RandomDataPrinter {
    *
    * @param startId the Id of the individual route
    */
-  public printIndividualRoutes(count: number, startId: number) {
-    const routes = this.randomDataGenerator.generateIndividualRoutes(
-      count,
-      startId
-    );
+  printIndividualRoutes(count: number, startId: number) {
+    const routes = RandomDataGenerator.generateIndividualRoutes(count, startId);
     this.print(routes);
   }
 }

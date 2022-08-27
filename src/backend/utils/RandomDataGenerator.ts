@@ -6,10 +6,9 @@ import {
   Payment,
   Route,
   User,
-  Vehicle,
 } from "@/backend/dataFields";
 import { faker } from "@faker-js/faker";
-import { PaymentType, VehicleType } from "../dataFields/types";
+import { PaymentType } from "../dataFields/types";
 import { LatLng } from "./LatLng";
 
 /**
@@ -31,17 +30,12 @@ export class RandomDataGenerator {
   static readonly DEFAULT_CENTER_LOCATION: [number, number] = [49.009, 8.4];
   static readonly DEFAULT_LOCALE = "de";
 
-  /**
-   * Constructs a new Random Data Generator.
-   *
-   * @param locale The locale to use for the random data.
-   */
-  constructor(locale = RandomDataGenerator.DEFAULT_LOCALE) {
-    faker.setLocale(locale);
+  static {
+    faker.setLocale(RandomDataGenerator.DEFAULT_LOCALE);
   }
 
   // helper function for generating multiple entities
-  private generateMultiple<T extends DataField>(
+  private static generateMultiple<T extends DataField>(
     generator: (id: string) => T,
     count: number,
     startId: number,
@@ -50,7 +44,8 @@ export class RandomDataGenerator {
     const data: T[] = [];
     for (let i = 0; i < count; i++) {
       const id = `${idPrefix}${startId + i < 10 ? "0" : ""}${startId + i}`;
-      data.push(generator(id));
+      const entity: T = generator(id);
+      data.push(entity);
     }
     return data;
   }
@@ -63,7 +58,7 @@ export class RandomDataGenerator {
    * @param id the user Id in the form of U{number}
    * @returns a randomly generated user
    */
-  generateUser(id: string) {
+  static generateUser(id: string) {
     const forename = faker.name.firstName();
     const surname = faker.name.lastName();
     const email = faker.internet.email();
@@ -78,7 +73,7 @@ export class RandomDataGenerator {
    * @param startId the start id of the first user
    * @returns an array of randomly generated users
    */
-  generateUsers(count: number, startId: number): User[] {
+  static generateUsers(count: number, startId: number): User[] {
     return this.generateMultiple(this.generateUser, count, startId, "U");
   }
 
@@ -90,14 +85,15 @@ export class RandomDataGenerator {
    * @param id the id of the payment
    * @returns a random payment
    */
-  generatePayment(id: string): Payment {
+  static generatePayment(id: string): Payment {
     const paymentType = randomEnumElement(PaymentType);
-    const tripId = id;
+    // assume trip ID is the same as payment ID
+    const tripId = id.replace("P", "T");
     switch (paymentType) {
       case PaymentType.Cash:
         return new Cash(id, tripId);
       case PaymentType.CreditCard:
-        return this.generateCreditCardPayment(id);
+        return RandomDataGenerator.generateCreditCardPayment(id, tripId);
       default:
         throw new Error(`Unknown payment type: ${paymentType}`);
     }
@@ -110,16 +106,21 @@ export class RandomDataGenerator {
    * @param startId the start id of the first payment
    * @returns an array of randomly generated payments
    */
-  generatePayments(count: number, startId: number): Payment[] {
-    return this.generateMultiple(this.generatePayment, count, startId, "P");
+  static generatePayments(count: number, startId: number): Payment[] {
+    return RandomDataGenerator.generateMultiple(
+      RandomDataGenerator.generatePayment,
+      count,
+      startId,
+      "P"
+    );
   }
 
-  private generateCreditCardPayment(id: string): CreditCard {
+  static generateCreditCardPayment(id: string, tripId: string): CreditCard {
     const cardNumber = parseInt(faker.finance.creditCardNumber());
     const ccv = parseInt(faker.finance.creditCardCVV());
     const expiryDate = faker.date.future(10);
     const provider = faker.finance.creditCardIssuer();
-    return new CreditCard(cardNumber, ccv, expiryDate, provider, id, id);
+    return new CreditCard(cardNumber, ccv, expiryDate, provider, id, tripId);
   }
 
   // Route data generation -------------------------------------------------------
@@ -131,9 +132,9 @@ export class RandomDataGenerator {
    * @param startId the start id of the first individual route
    * @returns an array of randomly generated individual routes
    */
-  generateIndividualRoutes(count: number, startId: number): Route[] {
-    return this.generateMultiple(
-      this.generateIndividualRoute,
+  static generateIndividualRoutes(count: number, startId: number): Route[] {
+    return RandomDataGenerator.generateMultiple(
+      RandomDataGenerator.generateIndividualRoute,
       count,
       startId,
       "R"
@@ -148,7 +149,7 @@ export class RandomDataGenerator {
    * @param centerLocation the center location (start location of the route)
    * @returns a random individual route
    */
-  generateIndividualRoute(
+  static generateIndividualRoute(
     id: string,
     radius = 1000,
     centerLocation: [
@@ -174,8 +175,55 @@ export class RandomDataGenerator {
   /**
    * Generates a random company.
    */
-  generateCompany(id: string) {
+  static generateCompany(id: string) {
     const name = faker.company.name();
     return new Company(id, name);
   }
+
+  /**
+   * Generates random companies.
+   *
+   * @param count the number of companies to generate
+   * @param startId the start id of the first company
+   * @returns an array of randomly generated companies
+   */
+  static generateCompanies(count: number, startId: number): Company[] {
+    return RandomDataGenerator.generateMultiple(
+      RandomDataGenerator.generateCompany,
+      count,
+      startId,
+      "C"
+    );
+  }
+
+  // Vehicle data generation --------------------------------------------------------
+  /**
+   * Generates a random vehicle.
+   *
+   * @param id the id of the vehicle
+   * @returns a random vehicle
+   */
+  // static generateVehicle(id: string): Vehicle {
+  //   const name = faker.name.firstName();
+  //   const type = randomEnumElement(VehicleType);
+  //   switch (type) {
+  //     case VehicleType.Bike:
+  //       return this.generate
+  //     case VehicleType.EScooter:
+  //       return;
+  //     case VehicleType.train:
+  //       return;
+  //     case VehicleType.bus:
+  //       return;
+  //     default:
+  //       throw new Error(`Unknown vehicle type: ${type}`);
+  // }
+
+  // private static generateBikeVehicle(id: string): Bike {
+  // }
+
+  // private static generateEScooterVehicle(id: string): EScooter {
+  // }
+
+  // private static generate
 }
