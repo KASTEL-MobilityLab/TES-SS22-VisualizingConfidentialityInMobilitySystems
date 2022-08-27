@@ -48,6 +48,31 @@ export class RandomDataPrinter {
   }
 
   /**
+   * Prints a number of random companies to the console in a JSON-Ready format.
+   *
+   * @param count The number of random companies to generate.
+   * @param startId the starting id for the first company.
+   */
+  public printCompanies(count: number, startId: number) {
+    const companies = this.randomDataGenerator.generateCompanies(
+      count,
+      startId
+    );
+    this.print(companies);
+  }
+
+  /**
+   * Prints a number of random payments to the console in a JSON-Ready format.
+   *
+   * @param count The number of random payments to generate.
+   * @param startId the starting id for the first payment.
+   */
+  public printPayments(count: number, startId: number) {
+    const payments = this.randomDataGenerator.generatePayments(count, startId);
+    this.print(payments);
+  }
+
+  /**
    * Prints the current route to the console in a JSON-Ready format.
    */
   public printCurrentRoute() {
