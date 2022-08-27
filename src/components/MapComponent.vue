@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { MarkerManager } from "@/animation/MarkerManager";
+import { VehicleType } from "@/backend/dataFields/types";
 import type { DataManager } from "@/backend/DataManager";
 import { dataManagerKey, markerManagerKey } from "@/keys";
 import { fromLeafletLatLng, toLeafletLatLngArray } from "@/utils/latLngUtils";
@@ -110,8 +111,11 @@ function emptySpotClicked(e: LeafletEvent) {
     // uncomment the ones you want to print
 
     // randomDataPrinter.printUsers(10, 6);
-    randomDataPrinter.printCurrentRoute();
+    // randomDataPrinter.printCurrentRoute();
     // randomDataPrinter.printIndividualRoutes(10, 10);
+    // randomDataPrinter.printCompanies(10, 15);
+    // randomDataPrinter.printPayments(10, 6);
+    randomDataPrinter.printVehicles(3, 5, VehicleType.EScooter);
   }
 }
 

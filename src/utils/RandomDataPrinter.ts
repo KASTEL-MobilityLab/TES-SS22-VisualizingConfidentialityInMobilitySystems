@@ -1,4 +1,5 @@
 import { Route, type DataField } from "@/backend/dataFields";
+import type { VehicleType } from "@/backend/dataFields/types";
 import type { LatLng as CustomLatLng } from "@/backend/utils/LatLng";
 import { RandomDataGenerator } from "@/backend/utils/RandomDataGenerator";
 import { instanceToPlain } from "class-transformer";
@@ -90,5 +91,18 @@ export class RandomDataPrinter {
   printIndividualRoutes(count: number, startId: number) {
     const routes = RandomDataGenerator.generateIndividualRoutes(count, startId);
     this.print(routes);
+  }
+
+  printVehicles(
+    count: number,
+    vehicleStartId: number,
+    vehicleType: VehicleType
+  ) {
+    const vehicles = RandomDataGenerator.generateVehicles(
+      vehicleType,
+      vehicleStartId,
+      count
+    );
+    this.print(vehicles);
   }
 }

@@ -3,13 +3,14 @@ import {
   Company,
   CreditCard,
   DataField,
+  EScooter,
   Payment,
   PayPal,
   Route,
   User,
 } from "@/backend/dataFields";
 import { faker } from "@faker-js/faker";
-import { PaymentType, VehicleType } from "../dataFields/types";
+import { PaymentType, VehicleStatus, VehicleType } from "../dataFields/types";
 import { LatLng } from "./LatLng";
 
 /**
@@ -227,28 +228,45 @@ export class RandomDataGenerator {
   }
 
   /**
-   * Generates vehicles for a company.
+   * Generates vehicles for a company. The company Id must be set manually because it is read-only.
    *
-   * @param companyId the id of the company
    * @param vehicleType the type of vehicle
-   * @param company the company the vehicle is registered to, optional. If not given, it will be generated randomly.
    * @returns a random vehicle
    */
-  static generateCompanyVehicles(
-    companyId: string,
+  static generateVehicles(
     vehicleType: VehicleType,
     vehicleStartId: number,
-    numVehicles: number,
-    company?: Company
+    numVehicles: number
   ) {
-    if (!company) {
-      company = RandomDataGenerator.generateCompany(companyId);
-    }
     switch (vehicleType) {
       case VehicleType.EScooter:
-        throw new Error("EScooter is not implemented yet");
+        return RandomDataGenerator.generateMultiple(
+          this.generateEScooterVehicle,
+          numVehicles,
+          vehicleStartId,
+          "V"
+        );
+      case VehicleType.train:
+        throw new Error("not implemented");
+      case VehicleType.bus:
+        throw new Error("not implemented");
       default:
         throw new Error(`Unknown vehicle type: ${vehicleType}`);
     }
+  }
+
+  private static generateEScooterVehicle(id: string) {
+    const condition = Math.floor(Math.random() * 100);
+    const batteryCondition = Math.floor(Math.random() * 100);
+    const status = randomEnumElement(VehicleStatus);
+    const batteryLevel = Math.floor(Math.random() * 100);
+    return new EScooter(
+      id,
+      "to_be_replaced",
+      condition,
+      batteryCondition,
+      status,
+      batteryLevel
+    );
   }
 }
