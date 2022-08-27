@@ -1,5 +1,6 @@
 import { isNode } from "browser-or-node";
 import type { Route } from "../dataFields";
+import { interpolate } from "./Interpolating";
 import { LatLng } from "./LatLng";
 
 /**
@@ -20,9 +21,9 @@ export async function fetchWaypoints(
     // request the waypoints for this route and set them in the route instance
     const waypoints = await fetchDirectionsAPI(route.start, route.end, profile);
     route.waypoints = waypoints;
-    return waypoints;
+    return interpolate(waypoints);
   }
-  return route.waypoints;
+  return interpolate(route.waypoints);
 }
 
 /**
@@ -50,5 +51,7 @@ async function fetchDirectionsAPI(
   const json = await query.json();
   const waypoints = json.routes[0].geometry.coordinates;
   // be careful: the API accepts and returns the waypoints in Longitude/Latitude order!
-  return waypoints.map(([lng, lat]: [number, number]) => new LatLng(lat, lng));
+  return interpolate(
+    waypoints.map(([lng, lat]: [number, number]) => new LatLng(lat, lng))
+  );
 }

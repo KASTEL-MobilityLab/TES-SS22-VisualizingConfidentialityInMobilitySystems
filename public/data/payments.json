@@ -22,5 +22,16 @@
     "tripId": "T03",
     "type": "PayPal",
     "userName": "Tom_Fritz1824"
+  },
+  {
+    "id": "P04",
+    "tripId": "T04",
+    "type": "PayPal",
+    "userName": "cle-klein99"
+  },
+  {
+    "id": "P05",
+    "tripId": "T05",
+    "type": "Cash"
   }
 ]

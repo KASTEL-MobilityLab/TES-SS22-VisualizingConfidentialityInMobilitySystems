@@ -62,4 +62,14 @@ export abstract class Vehicle extends DataField {
   isActive(): boolean {
     return this.status === VehicleStatus.Active;
   }
+
+  /**
+   * Moves the vehicle to the given waypoint
+   * @param waypoint Waypoint to which the vehicle moves to
+   */
+  move(waypoint: LatLng | undefined) {
+    if (waypoint) {
+      this.currentPosition = waypoint;
+    }
+  }
 }

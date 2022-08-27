@@ -10,12 +10,6 @@ export class RouteDisplay {
   private endMarker: L.Marker;
   private map: L.Map;
 
-  private static readonly LINE_STYLING = {
-    color: "#698196",
-    opacity: 1,
-    weight: 7,
-  };
-
   /**
    * Construct a new RouteDisplay.
    *
@@ -25,7 +19,7 @@ export class RouteDisplay {
     // create the instances at some location. The locations will
     // be updated when the user clicks on a vehicle.
     this.map = map;
-    this.polyline = L.polyline([], RouteDisplay.LINE_STYLING);
+    this.polyline = L.polyline([], { className: "route-polyline" }).addTo(map);
     this.startMarker = L.marker(L.latLng(0, 0), { icon: RouteStartIcon });
     this.endMarker = L.marker(L.latLng(0, 0), {
       icon: RouteEndIcon,

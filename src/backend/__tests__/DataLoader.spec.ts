@@ -87,6 +87,12 @@ describe.concurrent("DataLoader", () => {
     compareDataFields(payments, expectedPayments);
   });
 
+  it("load all Routes", async () => {
+    const routes = await dl.loadAllRoutes();
+    const expectedRoutes = expectedData.routes;
+    compareDataFields(routes, expectedRoutes);
+  });
+
   it("load all risks", async () => {
     const risks = await dl.loadAllRisks();
     const expectedRisks = expectedData.risks;

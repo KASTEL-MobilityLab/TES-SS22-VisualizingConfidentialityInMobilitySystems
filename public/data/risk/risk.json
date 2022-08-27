@@ -262,5 +262,16 @@
         "translationKey": "low_risk_explanation"
       }
     }
+  },
+  {
+    "dataType": "VehicleCurrentPosition",
+    "riskLevel": "High",
+    "roleVisibility": ["Company"],
+    "explanation": {
+      "retentionPeriod": "stored_until_no_longer_necessary",
+      "riskLevelExplanation": {
+        "translationKey": "low_risk_explanation"
+      }
+    }
   }
 ]
