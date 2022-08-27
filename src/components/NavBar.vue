@@ -10,7 +10,7 @@ const dataViewerVisible = inject("dataViewerVisible");
 <template>
   <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
     <div
-      class="d-flex container-fluid justify-content-between align-items-center"
+      class="container-fluid bd-gutter flex-wrap flex-lg-nowrap justify-content-between align-items-center"
     >
       <div class="d-flex">
         <RouterLink to="/" class="navbar-brand display-4"
@@ -18,25 +18,26 @@ const dataViewerVisible = inject("dataViewerVisible");
           {{ $t("app.confidentiality-visualizer") }}</RouterLink
         >
         <StartButton />
-        <button
-          class="btn btn-light btn-md btn-outline-dark"
-          @click="dataViewerVisible = !dataViewerVisible"
-        >
-          {{ $t("app.toggle-data-viewer") }}
-        </button>
       </div>
 
       <div class="d-flex">
         <RolesToggleBar />
       </div>
 
-      <div class="d-flex">
-        <span class="navbar-brand display-4">
+      <div class="d-flex p-2">
+        <button
+          class="btn btn-light btn-lg"
+          @click="dataViewerVisible = !dataViewerVisible"
+        >
+          <span class="lead">{{ $t("app.toggle-data-viewer") }}</span>
+        </button>
+        <div class="vr"></div>
+        <span class="d-flex justify-content-center">
           <LocaleChanger />
         </span>
         <div class="vr"></div>
         <button
-          class="btn btn-light btn-sm"
+          class="btn btn-light btn-md"
           type="button"
           data-bs-target="#helpModal"
           data-bs-toggle="modal"
