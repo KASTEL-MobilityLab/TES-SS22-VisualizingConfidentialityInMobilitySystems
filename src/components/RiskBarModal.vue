@@ -1,4 +1,6 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import InfoCard from "./InfoCard.vue";
+</script>
 
 <template>
   <div id="riskBarExplanationModal" class="modal" tabindex="-1">
@@ -6,7 +8,7 @@
       <div class="modal-content">
         <div class="modal-header text-center">
           <h5 class="modal-title w-100">
-            {{ "Explanation of the Risk Assessment of the Data Types" }}
+            {{ $t("risk.title") }}
           </h5>
           <button
             type="button"
@@ -15,13 +17,28 @@
           ></button>
         </div>
         <div class="modal-body">
-          <div class="container-fluid">
-            <img
-              class="center-block img-responsive"
-              src="/data/graphics/RiskBarExplanation.png"
-              alt=""
-              style="max-height: 238px"
-            />
+          <div class="row row-cols-lg-3 row-cols-md-2 row-cols-1">
+            <div class="col d-flex align-items-stretch mb-4 flex-fill">
+              <InfoCard
+                :title="$t('risk.low')"
+                :subtitle="$t('risk.low_subtitle')"
+                :content="$t('risk.low_explanation')"
+              />
+            </div>
+            <div class="col d-flex align-items-stretch mb-4 flex-fill">
+              <InfoCard
+                :title="$t('risk.medium')"
+                :subtitle="$t('risk.medium_subtitle')"
+                :content="$t('risk.medium_explanation')"
+              />
+            </div>
+            <div class="col d-flex align-items-stretch mb-4 flex-fill">
+              <InfoCard
+                :title="$t('risk.high')"
+                :subtitle="$t('risk.high_subtitle')"
+                :content="$t('risk.high_explanation')"
+              />
+            </div>
           </div>
         </div>
         <div class="modal-footer">

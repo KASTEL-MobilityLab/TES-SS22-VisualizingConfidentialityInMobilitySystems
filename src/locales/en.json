@@ -1,74 +1,81 @@
 {
   "app": {
+    "aggregatedData": {
+      "averageDistance": "Average Distance",
+      "averageDuration": "Average Duration",
+      "averagePrice": "Average Price",
+      "averageSpeed": "Average Speed",
+      "numberOfActiveVehicles": "Number of active Vehicles",
+      "numberOfUsers": "Number of Users"
+    },
+    "aggregatedDataReasoning": "You are currently in the role of the city. Below you can see the aggregated data accessible to the city from the mobility context.",
     "city": "City",
     "close": "Close",
     "company": "Company",
     "confidentiality-visualizer": "Confidentiality Visualizer",
     "dataViewer": "Data Viewer",
-    "day": "no day | one day | {count} days",
-    "help": "Help",
-    "month": "no month | one month | {count} months",
-    "user": "User",
-    "year": "no year | one year | {count} years",
-    "source": "Source",
-    "toggle-data-viewer": "Toggle Data Viewer",
     "dataViews": {
       "paymentDataView": "Payment Data",
       "riderDataView": "Rider Data",
       "tripDataView": "Trip Data",
       "vehicleDataView": "Vehicle Data"
     },
-    "aggregatedData": {
-      "numberOfActiveVehicles": "Number of active Vehicles",
-      "numberOfUsers": "Number of Users",
-      "averageSpeed": "Average Speed",
-      "averageDuration": "Average Duration",
-      "averageDistance": "Average Distance",
-      "averagePrice": "Average Price"
-    },
-    "aggregatedDataReasoning": "You are currently in the role of the city. Below you can see the aggregated data accessible to the city from the mobility context.",
+    "day": "no day | one day | {count} days",
+    "help": "Help",
+    "month": "no month | one month | {count} months",
+    "source": "Source",
+    "toggle-data-viewer": "Toggle Data Viewer",
+    "user": "User",
     "welcome": {
-      "title": "Welcome to our @:app.confidentiality-visualizer",
+      "click_to_see_data": "Click on one of the vehicle icons on the map to see the collected data about the trip.",
       "get_help": "Click on the Help button to get further information about our application.",
       "getting_started": "To begin, choose a role first by selecting one of the icons in the navigation bar.",
-      "click_to_see_data": "Click on one of the vehicle icons on the map to see the collected data about the trip."
-    }
+      "title": "Welcome to our @:app.confidentiality-visualizer"
+    },
+    "year": "no year | one year | {count} years"
   },
   "data": {
     "address": "Address",
-    "email": "E-Mail",
-    "forename": "Forename",
-    "surname": "Surname",
-    "paymentData": "Payment Data",
-    "phoneNumber": "Phone Number",
-    "vehicleType": "Type",
-    "status": "Status",
-    "batteryLevel": "Battery",
-    "ownerName": "Owner",
-    "currentPosition": "Current Position",
-    "startTime": "Start Time",
-    "endTime": "End Time",
     "averageSpeed": "Average speed",
-    "price": "Price",
-    "paymentType": "Payment Method",
+    "batteryLevel": "Battery",
     "cardNumber": "Card Number",
     "ccv": "CCV",
+    "currentPosition": "Current Position",
+    "email": "E-Mail",
+    "endTime": "End Time",
     "expiryDate": "Expiry Date",
+    "forename": "Forename",
+    "ownerName": "Owner",
+    "paymentData": "Payment Data",
+    "paymentType": "Payment Method",
+    "phoneNumber": "Phone Number",
+    "price": "Price",
     "provider": "Provider",
-    "userName": "Username"
-  },
-  "risk": {
-    "low": "Low",
-    "medium": "Medium",
-    "high": "High"
+    "startTime": "Start Time",
+    "status": "Status",
+    "surname": "Surname",
+    "userName": "Username",
+    "vehicleType": "Type"
   },
   "help": {
-    "title": "Help",
     "about_the_app": "About the app",
     "about_the_app_text": "This web-based demonstrator is used to help understand, what kind of data is selected, when using public vehicles like e-bikes and trains. It also shows, how critical those data are and who has access to them, by allowing to select different views from which the data can be seen.",
     "how_it_works": "How it works",
     "how_it_works_text": "To use the app, first you should press start to start the animation. Then you can click on different Icons to open the data viewer and see the data of the user of the selected vehicle from a chosen view. There are also explanations available, if xou click on the data type, and you can easily see, how critical the data ar, by looking at the color of the datatype.",
+    "title": "Help",
     "what_infos_you_can_get": "What infos you can get",
     "what_infos_you_can_get_text": "With this app, you can see, what types of data are selected when using public vehicles, to whom they are visible for what reason, how critical thea are and how long they are stored."
+  },
+  "risk": {
+    "high": "High",
+    "medium": "Medium",
+    "low": "Low",
+    "low_explanation": "A low risk data type corresponds to data that is publicly available, like how many e-bikes are currently in Karlsruhe or the locations of inactive E-scooters. The data is not sensitive, i.e. it cannot be used to identify a rider or to harm other individuals.",
+    "medium_explanation": "A medium risk data type means that it qualifies as personal data according to european data protection law. Data like names, E-Mails and telephone numbers fall into this category. They can be used to directly or indirectly identify a rider. But in contrast to the high risk data, they do not contain highly sensitive information like credit card numbers.",
+    "high_explanation": "A high risk data type is personal data like medium risk data types, but they differ in the severity of possible consequences, if the data is stolen. It can be used to identify and harm individuals. Data types like credit card numbers with their respective CCVs can be used to financially harm other individuals.",
+    "low_subtitle": "What is a 'low' risk data type?",
+    "medium_subtitle": "What is a 'medium' risk data type?",
+    "high_subtitle": "What is a 'high' risk data type?",
+    "title": "Explanation of the Risk Levels of Data Types"
   }
 }
