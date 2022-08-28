@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import NavBar from "@/components/NavBar.vue";
 import { provide, ref } from "vue";
 import ExplanationModal from "./components/ExplanationModal.vue";
 import HelpModal from "./components/HelpModal.vue";
 import MainComponent from "./components/MainComponent.vue";
+import NavBar from "./components/NavBar.vue";
 
 import RiskBarModal from "./components/RiskBarModal.vue";
 
@@ -12,8 +12,10 @@ provide("dataViewerVisible", dataViewerVisible);
 </script>
 
 <template>
-  <main>
+  <header>
     <NavBar />
+  </header>
+  <main>
     <Suspense>
       <MainComponent />
     </Suspense>
