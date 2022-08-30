@@ -1,5 +1,5 @@
 import L from "leaflet";
-import { RouteEndIcon, RouteStartIcon } from "./markerUtils";
+import { ROUTE_END_ICON, ROUTE_START_ICON } from "./markerUtils";
 
 /**
  * Displays a route on a map. Hide the route by calling `hideRoute`. You can show it again by passing the waypoints to `showRoute`.
@@ -20,9 +20,9 @@ export class RouteDisplay {
     // be updated when the user clicks on a vehicle.
     this.map = map;
     this.polyline = L.polyline([], { className: "route-polyline" }).addTo(map);
-    this.startMarker = L.marker(L.latLng(0, 0), { icon: RouteStartIcon });
+    this.startMarker = L.marker(L.latLng(0, 0), { icon: ROUTE_START_ICON });
     this.endMarker = L.marker(L.latLng(0, 0), {
-      icon: RouteEndIcon,
+      icon: ROUTE_END_ICON,
     });
   }
   /**
