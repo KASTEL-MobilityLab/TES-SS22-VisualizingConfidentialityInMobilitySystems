@@ -1,6 +1,6 @@
 import { Expose } from "class-transformer";
 import type { Company } from "../Company";
-import { VehicleType, type VehicleStatus } from "../types";
+import { VehicleType, type LicensePlate, type VehicleStatus } from "../types";
 import { IndividualVehicle } from "./IndividualVehicle";
 
 /**
@@ -11,7 +11,7 @@ export class SharedCar extends IndividualVehicle {
   numPassengers: number;
 
   @Expose()
-  licensePlate: string;
+  licensePlate: LicensePlate;
 
   @Expose()
   color: string;
@@ -32,7 +32,7 @@ export class SharedCar extends IndividualVehicle {
     companyId: string,
     status: VehicleStatus,
     numPassengers: number,
-    licensePlate: string,
+    licensePlate: LicensePlate,
     color: string,
     company?: Company
   ) {

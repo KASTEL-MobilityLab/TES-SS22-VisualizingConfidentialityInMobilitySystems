@@ -1,6 +1,6 @@
 import { Expose } from "class-transformer";
 import type { Company } from "../Company";
-import { VehicleType, type VehicleStatus } from "../types";
+import { VehicleType, type LicensePlate, type VehicleStatus } from "../types";
 import { IndividualVehicle } from "./IndividualVehicle";
 
 /**
@@ -11,7 +11,7 @@ export class Taxi extends IndividualVehicle {
   numPassengers: number;
 
   @Expose()
-  licensePlate: string;
+  licensePlate: LicensePlate;
 
   /**
    * Creates a new Taxi.
@@ -28,7 +28,7 @@ export class Taxi extends IndividualVehicle {
     companyId: string,
     status: VehicleStatus,
     numPassengers: number,
-    licensePlate: string,
+    licensePlate: LicensePlate,
     company?: Company
   ) {
     super(id, companyId, VehicleType.Taxi, status, company);

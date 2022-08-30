@@ -19,8 +19,7 @@ export enum VehicleStatus {
   Inactive = "Inactive",
 }
 
-export type VehicleStatusString = keyof typeof VehicleStatus;
-
+export type LicensePlate = `${string}-${string}-${number}`;
 /**
  * PaymentType specifies with which type of payment the user paid.
  */
