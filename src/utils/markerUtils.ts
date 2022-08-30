@@ -14,6 +14,7 @@ const ICON_CLASS = "fontAwesomeIconLeaflet";
 
 /**
  * Creates a new Iconify icon as a Leaflet DivIcon.
+ * Uses the Iconify Web Component to fetch the icon from the Iconify API.
  *
  * @param iconIdentifier the identifier of the icon to use, e.g. ic:baseline-electric-escooter
  * @returns the new icon as L.DivIcon
@@ -51,6 +52,7 @@ export const BUS_ICON = createFAIcon("fa-bus");
 export const TRAIN_ICON = createFAIcon("fa-train-subway");
 export const E_SCOOTER_ICON = createIconifyIcon("ic:baseline-electric-scooter");
 export const TAXI_ICON = createFAIcon("fa-taxi");
+export const SHARED_CAR_ICON = createFAIcon("fa-car-side");
 
 // -------------------------------------------------------------------
 
