@@ -7,6 +7,7 @@ import type { VehicleMarker } from "./leafletExtension";
 const ICON_ANCHOR: L.PointExpression = [24, 24];
 const ICONIFY_ICON_WIDTH = 45;
 const ICONIFY_ICON_HEIGHT = 45;
+const FONT_AWESOME_SIZE = 3;
 
 // used for css styling, to center the icon
 const ICON_CLASS = "fontAwesomeIconLeaflet";
@@ -14,50 +15,49 @@ const ICON_CLASS = "fontAwesomeIconLeaflet";
 /**
  * Creates a new Iconify icon as a Leaflet DivIcon.
  *
- * @param iconName the name of the icon to use
+ * @param iconIdentifier the identifier of the icon to use, e.g. ic:baseline-electric-escooter
  * @returns the new icon as L.DivIcon
  */
-export function createIconifyIcon(iconName: string) {
+export function createIconifyIcon(iconIdentifier: string) {
   return L.divIcon({
-    html: `<iconify-icon icon=${iconName} width=${ICONIFY_ICON_WIDTH} height=${ICONIFY_ICON_HEIGHT}></iconify-icon>`,
+    html: `<iconify-icon icon=${iconIdentifier} width=${ICONIFY_ICON_WIDTH} height=${ICONIFY_ICON_HEIGHT}></iconify-icon>`,
     iconAnchor: ICON_ANCHOR,
     className: ICON_CLASS,
   });
 }
 
-// Vehicle Icons --------------------------------------------------------
-export const BIKE_ICON = L.divIcon({
-  html: "<i class='fa-solid fa-bicycle fa-3x'></i>",
-  iconAnchor: ICON_ANCHOR,
-  className: ICON_CLASS,
-});
+/**
+ * Create a new Leaflet Icon for a given font awesome identifier.
+ *
+ * @param iconIdentifier the identifier of the icon to use, e.g. fa-bus
+ * @param size the size of the icon, e.g. 3 for fa-3x (default)
+ * @returns the new icon as L.DivIcon
+ */
+export function createFAIcon(
+  iconIdentifier: string,
+  size: number = FONT_AWESOME_SIZE,
+  iconAnchor: L.PointExpression = ICON_ANCHOR
+) {
+  return L.divIcon({
+    html: `<i class='fa-solid ${iconIdentifier} fa-${size}x'></i>`,
+    iconAnchor: iconAnchor,
+    className: ICON_CLASS,
+  });
+}
 
-export const BUS_ICON = L.divIcon({
-  html: "<i class='fa-solid fa-bus fa-3x'></i>",
-  iconAnchor: ICON_ANCHOR,
-  className: ICON_CLASS,
-});
-export const TRAIN_ICON = L.divIcon({
-  html: "<i class='fa-solid fa-train-subway fa-3x'></i>",
-  iconAnchor: ICON_ANCHOR,
-  className: ICON_CLASS,
-});
+// Vehicle Icons --------------------------------------------------------
+export const BIKE_ICON = createFAIcon("fa-bicycle");
+export const BUS_ICON = createFAIcon("fa-bus");
+export const TRAIN_ICON = createFAIcon("fa-train-subway");
 export const E_SCOOTER_ICON = createIconifyIcon("ic:baseline-electric-scooter");
+export const TAXI_ICON = createFAIcon("fa-taxi");
 
 // -------------------------------------------------------------------
 
 // Miscellaneous Icons -----------------------------------------------
-export const ROUTE_END_ICON = L.divIcon({
-  html: "<i class='fa-solid fa-bullseye fa-2x'></i>",
-  iconAnchor: [10, 10],
-  className: ICON_CLASS,
-});
+export const ROUTE_END_ICON = createFAIcon("fa-bullseye", 2, [10, 10]);
 
-export const ROUTE_START_ICON = L.divIcon({
-  html: "<i class='fa-solid fa-location-dot fa-2x'></i>",
-  iconAnchor: [10, 16],
-  className: ICON_CLASS,
-});
+export const ROUTE_START_ICON = createFAIcon("fa-location-dot", 2, [10, 16]);
 
 // -------------------------------------------------------------------
 
@@ -73,9 +73,11 @@ interface VehicleIcon {
  * Defines all possible markers for each vehicle type.
  */
 export const VEHICLE_MARKERS: VehicleIcon[] = [
-  { type: VehicleType.EScooter, icon: E_SCOOTER_ICON }, // search escooter icon
+  { type: VehicleType.EScooter, icon: E_SCOOTER_ICON },
   { type: VehicleType.Bus, icon: BUS_ICON },
   { type: VehicleType.Train, icon: TRAIN_ICON },
+  { type: VehicleType.Bike, icon: BIKE_ICON },
+  { type: VehicleType.Taxi, icon: E_SCOOTER_ICON },
 ];
 
 /**
