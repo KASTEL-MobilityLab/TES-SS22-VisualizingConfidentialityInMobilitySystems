@@ -47,5 +47,33 @@
     "type": "Train",
     "companyId": "C03",
     "status": "Active"
+  },
+  {
+    "id": "V07",
+    "type": "Taxi",
+    "companyId": "C08",
+    "status": "Inactive",
+    "numPassengers": 3,
+    "licensePlate": "KA-KS-8632",
+    "currentPosition": { "lat": 49.00737367106271, "lng": 8.371586226451187 }
+  },
+  {
+    "id": "V08",
+    "type": "Shared Car",
+    "companyId": "C06",
+    "status": "Inactive",
+    "numPassengers": 5,
+    "licensePlate": "KA-XP-1263",
+    "color": "Black",
+    "currentPosition": { "lat": 48.98238744353108, "lng": 8.39065190148928 }
+  },
+  {
+    "id": "V09",
+    "type": "Bicycle",
+    "companyId": "C07",
+    "status": "Inactive",
+    "electric": false,
+    "electricLock": true,
+    "currentPosition": { "lat": 49.03551412596584, "lng": 8.351163697116377 }
   }
 ]

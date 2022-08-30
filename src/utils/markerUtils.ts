@@ -79,7 +79,8 @@ export const VEHICLE_MARKERS: VehicleIcon[] = [
   { type: VehicleType.Bus, icon: BUS_ICON },
   { type: VehicleType.Train, icon: TRAIN_ICON },
   { type: VehicleType.Bike, icon: BIKE_ICON },
-  { type: VehicleType.Taxi, icon: E_SCOOTER_ICON },
+  { type: VehicleType.Taxi, icon: TAXI_ICON },
+  { type: VehicleType.SharedCar, icon: SHARED_CAR_ICON },
 ];
 
 /**
