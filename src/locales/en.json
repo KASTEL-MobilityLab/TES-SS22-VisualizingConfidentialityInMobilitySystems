@@ -55,7 +55,12 @@
     "ccv": "CCV",
     "expiryDate": "Expiry Date",
     "provider": "Provider",
-    "userName": "Username"
+    "userName": "Username",
+    "color": "Color",
+    "numPassengers": "Number of Passengers",
+    "licensePlate": "License Plate",
+    "electric": "Electric",
+    "electricLock": "Electric Lock"
   },
   "help": {
     "title": "Help",

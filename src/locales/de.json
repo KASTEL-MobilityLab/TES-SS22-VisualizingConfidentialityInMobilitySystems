@@ -42,7 +42,12 @@
     "ccv": "CCV",
     "expiryDate": "Auslaufdatum",
     "provider": "Anbieter",
-    "userName": "Nutzername"
+    "userName": "Nutzername",
+    "color": "Farbe",
+    "numPassengers": "Anzahl Passagiere",
+    "licensePlate": "Nummernschild",
+    "electric": "Elektrisch",
+    "electricLock": "Elektrisches Schloss"
   },
   "help": {
     "title": "Hilfe",
