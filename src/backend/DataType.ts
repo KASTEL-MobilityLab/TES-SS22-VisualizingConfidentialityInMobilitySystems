@@ -13,6 +13,11 @@ export enum DataType {
   VehicleBatteryLevel = "batteryLevel",
   VehicleOwnerName = "ownerName",
   VehicleCurrentPosition = "currentPosition",
+  VehicleLicensePlate = "licensePlate",
+  VehicleElectric = "electric",
+  VehicleElectricLock = "electricLock",
+  VehicleColor = "color",
+  VehicleNumPassengers = "numPassengers",
   //Trip
   TripStartTime = "startTime",
   TripEndTime = "endTime",
