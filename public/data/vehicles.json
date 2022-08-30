@@ -32,8 +32,8 @@
   },
   {
     "id": "V04",
-    "type": "Train",
-    "companyId": "C03",
+    "type": "Shared Car",
+    "companyId": "C09",
     "status": "Active"
   },
   {
