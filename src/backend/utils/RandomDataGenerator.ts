@@ -246,9 +246,9 @@ export class RandomDataGenerator {
           vehicleStartId,
           "V"
         );
-      case VehicleType.train:
+      case VehicleType.Train:
         throw new Error("not implemented");
-      case VehicleType.bus:
+      case VehicleType.Bus:
         throw new Error("not implemented");
       default:
         throw new Error(`Unknown vehicle type: ${vehicleType}`);

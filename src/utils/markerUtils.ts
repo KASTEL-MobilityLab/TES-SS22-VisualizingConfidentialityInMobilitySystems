@@ -74,8 +74,8 @@ interface VehicleIcon {
  */
 export const VEHICLE_MARKERS: VehicleIcon[] = [
   { type: VehicleType.EScooter, icon: E_SCOOTER_ICON }, // search escooter icon
-  { type: VehicleType.bus, icon: BUS_ICON },
-  { type: VehicleType.train, icon: TRAIN_ICON },
+  { type: VehicleType.Bus, icon: BUS_ICON },
+  { type: VehicleType.Train, icon: TRAIN_ICON },
 ];
 
 /**

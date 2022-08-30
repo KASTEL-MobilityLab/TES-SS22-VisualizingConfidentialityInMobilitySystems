@@ -4,8 +4,8 @@
 export enum VehicleType {
   EScooter = "E-Scooter",
   Bike = "Bicycle",
-  train = "Train",
-  bus = "Bus",
+  Train = "Train",
+  Bus = "Bus",
 }
 
 /**

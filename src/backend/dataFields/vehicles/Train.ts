@@ -12,6 +12,6 @@ export class Train extends PublicVehicle {
     status: VehicleStatus,
     company?: Company
   ) {
-    super(id, companyId, VehicleType.train, status, company);
+    super(id, companyId, VehicleType.Train, status, company);
   }
 }

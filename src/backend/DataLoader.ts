@@ -175,7 +175,7 @@ export class DataLoader {
       Train,
       vehicleJson,
       this.classTransformerOptions
-    ).filter((vehicle) => vehicle.type === VehicleType.train);
+    ).filter((vehicle) => vehicle.type === VehicleType.Train);
 
     //Push all trains
     transformedVehicleData.push(...trains);
