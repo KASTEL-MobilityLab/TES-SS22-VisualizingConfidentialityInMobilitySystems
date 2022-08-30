@@ -4,37 +4,54 @@ import L from "leaflet";
 import { toLeafletLatLng } from "./latLngUtils";
 import type { VehicleMarker } from "./leafletExtension";
 
-const iconAnchor: L.PointExpression = [24, 24];
+const ICON_ANCHOR: L.PointExpression = [24, 24];
+const ICONIFY_ICON_WIDTH = 40;
+const ICONIFY_ICON_HEIGHT = 40;
 
 // used for css styling, to center the icon
-const fontAwesomeCSSName = "fontAwesomeIconLeaflet";
+const ICON_CLASS = "fontAwesomeIconLeaflet";
+
+/**
+ * Creates a new Iconify icon as a Leaflet DivIcon.
+ *
+ * @param iconName the name of the icon to use
+ * @returns the new icon as L.DivIcon
+ */
+export function createIconifyIcon(iconName: string) {
+  return L.divIcon({
+    html: `<iconify-icon icon=${iconName} width=${ICONIFY_ICON_WIDTH} height=${ICONIFY_ICON_HEIGHT}></iconify-icon>`,
+    iconAnchor: ICON_ANCHOR,
+    className: ICON_CLASS,
+  });
+}
 
 export const bikeIcon = L.divIcon({
   html: "<i class='fa-solid fa-bicycle fa-3x'></i>",
-  iconAnchor: iconAnchor,
-  className: fontAwesomeCSSName,
+  iconAnchor: ICON_ANCHOR,
+  className: ICON_CLASS,
 });
 export const busIcon = L.divIcon({
   html: "<i class='fa-solid fa-bus fa-3x'></i>",
-  iconAnchor: iconAnchor,
-  className: fontAwesomeCSSName,
+  iconAnchor: ICON_ANCHOR,
+  className: ICON_CLASS,
 });
 export const trainIcon = L.divIcon({
   html: "<i class='fa-solid fa-train-subway fa-3x'></i>",
-  iconAnchor: iconAnchor,
-  className: fontAwesomeCSSName,
+  iconAnchor: ICON_ANCHOR,
+  className: ICON_CLASS,
 });
+export const E_SCOOTER_ICON = createIconifyIcon("ic:baseline-electric-scooter");
 
 export const RouteEndIcon = L.divIcon({
   html: "<i class='fa-solid fa-bullseye fa-2x'></i>",
   iconAnchor: [10, 10],
-  className: fontAwesomeCSSName,
+  className: ICON_CLASS,
 });
 
 export const RouteStartIcon = L.divIcon({
   html: "<i class='fa-solid fa-location-dot fa-2x'></i>",
   iconAnchor: [10, 16],
-  className: fontAwesomeCSSName,
+  className: ICON_CLASS,
 });
 
 /**
@@ -49,7 +66,7 @@ interface VehicleIcon {
  * Defines all possible markers for each vehicle type.
  */
 export const VehicleMarkers: VehicleIcon[] = [
-  { type: VehicleType.EScooter, icon: bikeIcon }, // search escooter icon
+  { type: VehicleType.EScooter, icon: E_SCOOTER_ICON }, // search escooter icon
   { type: VehicleType.bus, icon: busIcon },
   { type: VehicleType.train, icon: trainIcon },
 ];
