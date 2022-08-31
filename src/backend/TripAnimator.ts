@@ -21,8 +21,8 @@ export class TripAnimator {
       if (!this.activeTrips.includes(trip.id)) {
         this.activeTrips.push(trip.id);
       }
-      setInterval(function () {
-        trip.step();
+      setInterval(() => {
+        trip.step(this.isRunning);
       }, 25);
     }
   }
@@ -35,6 +35,7 @@ export class TripAnimator {
     throw new Error("Method not implemented.");
   }
 
+  /*
   public nextStep() {
     if (this.isRunning) {
       for (const trip of this.trips) {
@@ -48,4 +49,5 @@ export class TripAnimator {
       }
     }
   }
+*/
 }

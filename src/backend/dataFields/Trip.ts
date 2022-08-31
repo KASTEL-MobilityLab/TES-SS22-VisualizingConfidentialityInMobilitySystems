@@ -153,9 +153,9 @@ export class Trip extends DataField {
     this._route = route;
   }
 
-  step() {
+  step(isRunning: boolean) {
     //Ab hier weiter machen
-    if (this.route?.waypoints) {
+    if (this.route?.waypoints && isRunning) {
       const nextWaypoint = this.route?.waypoints[this.currentStep + 1];
       this.vehicle?.move(nextWaypoint);
       this.currentStep++;
