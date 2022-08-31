@@ -23,6 +23,14 @@ function buttonStartAnimation() {
     { deep: true }
   );
 }
+
+function buttonPauseAnimation() {
+  $dm.value.stopAnimation();
+}
+
+function buttonResetAnimation() {
+  $dm.value.resetAnimation();
+}
 </script>
 <template>
   <div
@@ -36,6 +44,32 @@ function buttonStartAnimation() {
       @click="buttonStartAnimation()"
     >
       Start
+    </button>
+  </div>
+  <div
+    class="btn-group"
+    role="group"
+    aria-label="Basic radio toggle button group"
+  >
+    <button
+      type="button"
+      class="btn btn-outline-dark"
+      @click="buttonPauseAnimation()"
+    >
+      Pause
+    </button>
+  </div>
+  <div
+    class="btn-group"
+    role="group"
+    aria-label="Basic radio toggle button group"
+  >
+    <button
+      type="button"
+      class="btn btn-outline-dark"
+      @click="buttonResetAnimation()"
+    >
+      Reset
     </button>
   </div>
 </template>
