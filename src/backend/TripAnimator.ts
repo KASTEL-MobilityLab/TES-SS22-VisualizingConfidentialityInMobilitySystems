@@ -7,6 +7,7 @@ export class TripAnimator {
   isRunning: boolean;
   //Stores all ids of trips that are currently animated
   activeTrips: string[];
+  intervalID: unknown;
 
   constructor(trips: Trip[], animationSpeed: number) {
     this.trips = trips;
@@ -21,9 +22,13 @@ export class TripAnimator {
       if (!this.activeTrips.includes(trip.id)) {
         this.activeTrips.push(trip.id);
       }
-      setInterval(() => {
-        trip.step(this.isRunning);
-      }, 25);
+    }
+    if (!this.intervalID) {
+      for (const trip of this.trips) {
+        this.intervalID = setInterval(() => {
+          trip.step(this.isRunning);
+        }, 25);
+      }
     }
   }
 
@@ -32,7 +37,11 @@ export class TripAnimator {
   }
 
   public reset() {
-    throw new Error("Method not implemented.");
+    this.isRunning = false;
+    for (const trip of this.trips) {
+      trip.setVehicleStartPosition;
+      trip.resetStepCounter;
+    }
   }
 
   /*

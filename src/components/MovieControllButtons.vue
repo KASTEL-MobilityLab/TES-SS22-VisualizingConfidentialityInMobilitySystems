@@ -30,6 +30,17 @@ function buttonPauseAnimation() {
 
 function buttonResetAnimation() {
   $dm.value.resetAnimation();
+  watch(
+    () => $dm.value.vehicles,
+    (currentValue) => {
+      for (let i = 0; i < $dm.value.vehicles.length; i++) {
+        let values = Array.from($mm.value.vehicleMarkerMap.values());
+        let keys = Array.from($mm.value.vehicleMarkerMap.keys());
+        $mm.value.updatePosition(values[i], keys[i], currentValue);
+      }
+    },
+    { deep: true }
+  );
 }
 </script>
 <template>
