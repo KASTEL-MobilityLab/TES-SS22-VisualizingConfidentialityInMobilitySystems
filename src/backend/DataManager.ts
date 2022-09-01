@@ -86,6 +86,7 @@ export class DataManager {
     this.tripAnimator = new TripAnimator(this.trips, 10);
     this.setRouteWaypoints();
     this.aggregatedData.init(this.trips);
+    this.startAnimation();
   }
 
   /**
@@ -308,6 +309,7 @@ export class DataManager {
   }
 
   resetAnimation() {
+    this.init();
     this.tripAnimator?.reset();
   }
 }

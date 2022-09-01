@@ -30,7 +30,7 @@ function buttonPauseAnimation() {
 
 function buttonResetAnimation() {
   $dm.value.resetAnimation();
-  watch(
+  /* watch(
     () => $dm.value.vehicles,
     (currentValue) => {
       for (let i = 0; i < $dm.value.vehicles.length; i++) {
@@ -40,8 +40,10 @@ function buttonResetAnimation() {
       }
     },
     { deep: true }
-  );
+  );*/
 }
+
+buttonStartAnimation();
 </script>
 <template>
   <div

@@ -12,7 +12,7 @@ export class TripAnimator {
   constructor(trips: Trip[], animationSpeed: number) {
     this.trips = trips;
     this.animationSpeed = animationSpeed;
-    this.isRunning = false;
+    this.isRunning = true;
     this.activeTrips = [];
   }
 
