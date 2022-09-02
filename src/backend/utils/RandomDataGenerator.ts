@@ -19,23 +19,13 @@ import { LatLng } from "./LatLng";
  * @param enumType The type of the enum to generate a random value for.
  * @returns A random element of the specified Enum.
  */
-export function randomEnumElement<T>(enumType: T): T[keyof T] {
+export function randomEnumElement<T extends Record<string, unknown>>(
+  enumType: T
+): T[keyof T] {
   const keys = Object.keys(enumType) as (keyof T)[];
   const randomIndex = Math.floor(Math.random() * keys.length);
   return enumType[keys[randomIndex]];
 }
-
-// /**
-//  * The Interface for a random data generator function.
-//  */
-// interface RandomGeneratorFunction<
-//   TArgs extends RandomGeneratorFunctionArguments,
-//   TReturn extends DataField
-// > {
-//   (...args: TArgs): TReturn;
-// }
-
-// type RandomGeneratorFunctionArguments = [string] | [string, ...unknown[]];
 
 /**
  * Random data generator for DataField classes.
@@ -57,11 +47,15 @@ export class RandomDataGenerator {
   ): T[] {
     const data: T[] = [];
     for (let i = 0; i < count; i++) {
-      const id = `${idPrefix}${startId + i < 10 ? "0" : ""}${startId + i}`;
+      const id = RandomDataGenerator.getIdString(idPrefix, startId + i);
       const entity: T = generator(id);
       data.push(entity);
     }
     return data;
+  }
+
+  private static getIdString(idPrefix: string, id: number) {
+    return `${idPrefix}${id < 10 ? "0" : ""}${id}`;
   }
 
   // User data generation -------------------------------------------------------
@@ -75,7 +69,7 @@ export class RandomDataGenerator {
   static generateUser(id: string) {
     const forename = faker.name.firstName();
     const surname = faker.name.lastName();
-    const email = faker.internet.email();
+    const email = faker.internet.email(forename, surname);
     const phoneNumber = parseInt(faker.phone.number("49########"));
     return new User(id, forename, surname, phoneNumber, email);
   }
@@ -99,7 +93,7 @@ export class RandomDataGenerator {
    * @param id the id of the payment
    * @returns a random payment
    */
-  static generatePayment(id: string): Payment {
+  static generatePayment(id: string, user?: User): Payment {
     const paymentType = randomEnumElement(PaymentType);
     // assume trip ID is the same as payment ID
     const tripId = id.replace("P", "T");
@@ -109,20 +103,35 @@ export class RandomDataGenerator {
       case PaymentType.CreditCard:
         return RandomDataGenerator.generateCreditCardPayment(id, tripId);
       case PaymentType.PayPal:
-        return RandomDataGenerator.generatePayPalPayment(id, tripId);
+        return RandomDataGenerator.generatePayPalPayment(id, tripId, user);
       default:
         throw new Error(`Unknown payment type: ${paymentType}`);
     }
   }
 
   /**
-   * Generates random Payments.
+   * Generates random Payments and optionally users for these payments. These are connected because Payments like
+   * Paypal can generate the PayPal Username with the users real name. Otherwise, those usernames are completely random.
    *
    * @param count the number of payments to generate
    * @param startId the start id of the first payment
-   * @returns an array of randomly generated payments
+   * @param userStartId optional, if given generate users for the payments
+   * @returns an array of randomly generated payments (and possibly users for the payments)
    */
-  static generatePayments(count: number, startId: number): Payment[] {
+  static generatePayments(
+    count: number,
+    startId: number,
+    userStartId?: number
+  ): Payment[] | [Payment[], User[]] {
+    const payments = [];
+    if (userStartId) {
+      const users = this.generateUsers(count, userStartId);
+      for (const user of users) {
+        const paymentId = RandomDataGenerator.getIdString("P", startId++);
+        payments.push(this.generatePayment(paymentId, user));
+      }
+      return [payments, users];
+    }
     return RandomDataGenerator.generateMultiple(
       RandomDataGenerator.generatePayment,
       count,
@@ -147,9 +156,6 @@ export class RandomDataGenerator {
     tripId: string,
     user?: User
   ): PayPal {
-    // we can give this function a first and last name, but currently,
-    // we cannot link the payment to a user, maybe we generate those
-    // together later on.
     const userName = faker.internet.userName(user?.forename, user?.surname);
     return new PayPal(userName, id, tripId);
   }

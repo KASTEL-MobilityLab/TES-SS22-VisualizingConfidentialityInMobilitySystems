@@ -1,4 +1,4 @@
-import { Route, type DataField } from "@/backend/dataFields";
+import { Payment, Route, type DataField } from "@/backend/dataFields";
 import type { VehicleType } from "@/backend/dataFields/types";
 import type { LatLng as CustomLatLng } from "@/backend/utils/LatLng";
 import { RandomDataGenerator } from "@/backend/utils/RandomDataGenerator";
@@ -63,9 +63,21 @@ export class RandomDataPrinter {
    * @param count The number of random payments to generate.
    * @param startId the starting id for the first payment.
    */
-  printPayments(count: number, startId: number) {
-    const payments = RandomDataGenerator.generatePayments(count, startId);
-    this.print(payments);
+  printPayments(count: number, startId: number, paymentStartId: number) {
+    const result = RandomDataGenerator.generatePayments(
+      count,
+      startId,
+      paymentStartId
+    );
+    for (const obj of result) {
+      if (obj instanceof Array) {
+        // second case of generatePayments returnType
+        this.print(obj as DataField[]);
+      } else {
+        this.print(result as Payment[]);
+        break;
+      }
+    }
   }
 
   /**

@@ -110,10 +110,10 @@ function emptySpotClicked(e: LeafletEvent) {
     // uncomment the ones you want to print
 
     // randomDataPrinter.printUsers(10, 6);
-    randomDataPrinter.printCurrentRoute();
+    // randomDataPrinter.printCurrentRoute();
     // randomDataPrinter.printIndividualRoutes(10, 10);
     // randomDataPrinter.printCompanies(10, 15);
-    // randomDataPrinter.printPayments(10, 6);
+    randomDataPrinter.printPayments(10, 6, 6);
     // randomDataPrinter.printVehicles(3, 5, VehicleType.EScooter);
   }
 }
