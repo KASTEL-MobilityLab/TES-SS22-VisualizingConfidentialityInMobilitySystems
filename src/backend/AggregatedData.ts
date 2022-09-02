@@ -25,7 +25,7 @@ export class AggregatedData {
     this.averagePrice = 0;
   }
 
-  private calculateNumberOfActiveVehiles(trips: Trip[]) {
+  private calculateNumberOfActiveVehicles(trips: Trip[]) {
     trips.forEach((trip) => {
       if (trip.vehicle?.isActive()) {
         this.numberOfActiveVehicles++;
@@ -74,7 +74,7 @@ export class AggregatedData {
    * This method initializes the aggregated data by calculating all data.
    */
   init(trips: Trip[]) {
-    this.calculateNumberOfActiveVehiles(trips);
+    this.calculateNumberOfActiveVehicles(trips);
     this.calculateNumberOfUsers(trips);
     this.calculateAverageSpeed(trips);
     this.calculateAverageDuration(trips);
