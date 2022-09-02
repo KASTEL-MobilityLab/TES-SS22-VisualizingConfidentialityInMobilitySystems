@@ -111,7 +111,7 @@
   },
   {
     "dataType": "TripStartTime",
-    "riskLevel": "Low",
+    "riskLevel": "Medium",
     "roleVisibility": ["Company", "User"],
     "explanation": {
       "retentionPeriod": "stored_until_no_longer_necessary",
@@ -122,7 +122,7 @@
   },
   {
     "dataType": "TripEndTime",
-    "riskLevel": "Low",
+    "riskLevel": "Medium",
     "roleVisibility": ["Company", "User"],
     "explanation": {
       "retentionPeriod": "stored_until_no_longer_necessary",
