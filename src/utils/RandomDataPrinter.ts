@@ -63,7 +63,7 @@ export class RandomDataPrinter {
    * @param count The number of random payments to generate.
    * @param startId the starting id for the first payment.
    */
-  printPayments(count: number, startId: number, paymentStartId: number) {
+  printPayments(count: number, startId: number, paymentStartId?: number) {
     const result = RandomDataGenerator.generatePayments(
       count,
       startId,
