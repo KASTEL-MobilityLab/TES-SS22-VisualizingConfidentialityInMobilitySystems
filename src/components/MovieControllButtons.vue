@@ -47,6 +47,7 @@ buttonStartAnimation();
 </script>
 <template>
   <div
+    v-if="!$dm.getIsRunning()"
     class="btn-group"
     role="group"
     aria-label="Basic radio toggle button group"
@@ -60,6 +61,7 @@ buttonStartAnimation();
     </button>
   </div>
   <div
+    v-else
     class="btn-group"
     role="group"
     aria-label="Basic radio toggle button group"

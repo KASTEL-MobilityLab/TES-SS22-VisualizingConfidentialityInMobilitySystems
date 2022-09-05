@@ -284,6 +284,10 @@ export class DataManager {
     return risk.isVisible(this.currentRole);
   }
 
+  getIsRunning() {
+    return this.tripAnimator?.isRunning;
+  }
+
   /**
    * Fetches the waypoints of the given route.
    *
