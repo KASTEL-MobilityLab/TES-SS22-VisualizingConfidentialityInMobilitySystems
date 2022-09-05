@@ -84,7 +84,7 @@ buttonStartAnimation();
       class="btn btn-outline-dark"
       @click="buttonResetAnimation()"
     >
-      Reset
+      {{ $t("app.reset") }}
     </button>
   </div>
 </template>
