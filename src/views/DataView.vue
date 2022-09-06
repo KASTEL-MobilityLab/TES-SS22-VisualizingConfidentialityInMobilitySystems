@@ -10,7 +10,7 @@ const dataViewerVisible = inject("dataViewerVisible");
   <div
     v-show="dataViewerVisible"
     id="data-viewer"
-    class="container bg-light rounded top-buffer overflow-auto"
+    class="shadow bg-light rounded top-buffer overflow-auto"
   >
     <h1 class="text-center p-3 fw-bold">
       <i class="fa-solid fa-database fa-fw"></i> {{ $t("app.dataViewer") }}
@@ -24,7 +24,7 @@ const dataViewerVisible = inject("dataViewerVisible");
 
 <style scoped>
 .top-buffer {
-  margin-top: 10rem;
+  margin-top: 20%;
 }
 
 #data-viewer {
