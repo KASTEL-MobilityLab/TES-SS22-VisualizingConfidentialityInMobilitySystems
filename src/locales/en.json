@@ -18,6 +18,7 @@
       "tripDataView": "Trip Data",
       "vehicleDataView": "Vehicle Data"
     },
+    "reset": "Reset",
     "aggregatedData": {
       "numberOfActiveVehicles": "Number of active Vehicles",
       "numberOfUsers": "Number of Users",
