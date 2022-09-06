@@ -105,15 +105,22 @@ export class RandomDataPrinter {
     this.print(routes);
   }
 
+  /**
+   * Prints a number of random vehicles to the console in a JSON-Ready format.
+   *
+   * @param count the number of vehicles to generate
+   * @param vehicleStartId the starting id for the first vehicle
+   * @param vehicleType optional, the type of the vehicles to generate. If not specified, a random type is chosen.
+   */
   printVehicles(
     count: number,
     vehicleStartId: number,
-    vehicleType: VehicleType
+    vehicleType?: VehicleType
   ) {
     const vehicles = RandomDataGenerator.generateVehicles(
-      vehicleType,
       vehicleStartId,
-      count
+      count,
+      vehicleType
     );
     this.print(vehicles);
   }

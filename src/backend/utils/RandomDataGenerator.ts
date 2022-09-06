@@ -7,10 +7,20 @@ import {
   Payment,
   PayPal,
   Route,
+  Train,
   User,
+  Vehicle,
 } from "@/backend/dataFields";
 import { faker } from "@faker-js/faker";
-import { PaymentType, VehicleStatus, VehicleType } from "../dataFields/types";
+import {
+  PaymentType,
+  VehicleStatus,
+  VehicleType,
+  type LicensePlate,
+} from "../dataFields/types";
+import { Bicycle } from "../dataFields/vehicles/Bicycle";
+import { SharedCar } from "../dataFields/vehicles/SharedCar";
+import { Taxi } from "../dataFields/vehicles/Taxi";
 import { LatLng } from "./LatLng";
 
 /**
@@ -194,17 +204,28 @@ export class RandomDataGenerator {
       number
     ] = RandomDataGenerator.DEFAULT_CENTER_LOCATION
   ) {
-    const start = faker.address
+    const start = RandomDataGenerator.generateRandomLatLng(
+      centerLocation,
+      radius
+    );
+    const end = RandomDataGenerator.generateRandomLatLng(
+      [start.latitude, start.longitude],
+      radius
+    );
+    return new Route(id, start, end);
+  }
+
+  private static generateRandomLatLng(
+    centerLocation: [
+      number,
+      number
+    ] = RandomDataGenerator.DEFAULT_CENTER_LOCATION,
+    radius = 1000
+  ): LatLng {
+    const latLng = faker.address
       .nearbyGPSCoordinate(centerLocation, radius, true)
       .map(parseFloat) as [number, number];
-    const end = faker.address
-      .nearbyGPSCoordinate(start, radius, true)
-      .map(parseFloat) as [number, number];
-    return new Route(
-      id,
-      new LatLng(start[0], start[1]),
-      new LatLng(end[0], end[1])
-    );
+    return new LatLng(latLng[0], latLng[1]);
   }
 
   // Company data generation -----------------------------------------------------
@@ -236,37 +257,74 @@ export class RandomDataGenerator {
   /**
    * Generates vehicles for a company. The company Id must be set manually because it is read-only.
    *
-   * @param vehicleType the type of vehicle
+   * @param vehicleStartId the start id of the first vehicle
+   * @param count the number of vehicles to generate
+   * @param vehicleType the type of vehicle optionally. If not given, a random type is chosen
    * @returns a random vehicle
    */
   static generateVehicles(
-    vehicleType: VehicleType,
     vehicleStartId: number,
-    numVehicles: number
+    count: number,
+    vehicleType?: VehicleType
   ) {
+    let generator: (id: string) => Vehicle;
+    if (!vehicleType) {
+      vehicleType = randomEnumElement(VehicleType);
+    }
     switch (vehicleType) {
       case VehicleType.EScooter:
         return RandomDataGenerator.generateMultiple(
           this.generateEScooterVehicle,
-          numVehicles,
+          count,
           vehicleStartId,
           "V"
         );
       case VehicleType.Train:
-        throw new Error("not implemented");
+        generator = RandomDataGenerator.generateTrainVehicle;
+        break;
       case VehicleType.Bus:
-        throw new Error("not implemented");
+        //generator = RandomDataGenerator.generateBusVehicle;
+        //break;
+        throw new Error("Bus vehicles are not supported yet");
+      case VehicleType.Bike:
+        generator = RandomDataGenerator.generateBikeVehicle;
+        break;
+      case VehicleType.SharedCar:
+        generator = RandomDataGenerator.generateSharedCarVehicle;
+        break;
+      case VehicleType.Taxi:
+        generator = RandomDataGenerator.generateTaxiVehicle;
+        break;
       default:
         throw new Error(`Unknown vehicle type: ${vehicleType}`);
     }
+    return RandomDataGenerator.generateMultiple(
+      generator,
+      count,
+      vehicleStartId,
+      "V"
+    );
+  }
+
+  private static generateBaseVehicleAttributes(): [
+    VehicleStatus,
+    LatLng | undefined
+  ] {
+    const status = randomEnumElement(VehicleStatus);
+    let currentPosition;
+    if (status === VehicleStatus.Inactive) {
+      currentPosition = RandomDataGenerator.generateRandomLatLng();
+    }
+    return [status, currentPosition];
   }
 
   private static generateEScooterVehicle(id: string) {
-    const condition = Math.floor(Math.random() * 100);
-    const batteryCondition = Math.floor(Math.random() * 100);
-    const status = randomEnumElement(VehicleStatus);
-    const batteryLevel = Math.floor(Math.random() * 100);
-    return new EScooter(
+    const [status, currentPosition] =
+      RandomDataGenerator.generateBaseVehicleAttributes();
+    const condition = faker.datatype.number({ min: 0, max: 100 });
+    const batteryCondition = faker.datatype.number({ min: 0, max: 100 });
+    const batteryLevel = faker.datatype.number({ min: 0, max: 100 });
+    const escooter = new EScooter(
       id,
       "to_be_replaced",
       condition,
@@ -274,5 +332,72 @@ export class RandomDataGenerator {
       status,
       batteryLevel
     );
+    escooter.currentPosition = currentPosition;
+    return escooter;
+  }
+  private static generateTrainVehicle(id: string) {
+    const [status, currentPosition] =
+      RandomDataGenerator.generateBaseVehicleAttributes();
+    const train = new Train(id, "to_be_replaced", status);
+    train.currentPosition = currentPosition;
+    return train;
+  }
+  // private static generateBusVehicle(id: string) {
+  //   const [status, currentPosition] =
+  //     RandomDataGenerator.generateBaseVehicleAttributes();
+  //   //const bus = new Bus(id, "to_be_replaced", status);
+  //   throw new Error("Bus class not implemented");
+  // }
+  private static generateBikeVehicle(id: string) {
+    const [status, currentPosition] =
+      RandomDataGenerator.generateBaseVehicleAttributes();
+    const electric = faker.datatype.boolean();
+    const electricLock = faker.datatype.boolean();
+    const bike = new Bicycle(
+      id,
+      "to_be_replaced",
+      status,
+      electric,
+      electricLock
+    );
+    bike.currentPosition = currentPosition;
+    return bike;
+  }
+  private static generateRandomLicensePlate(): LicensePlate {
+    const number = faker.random.numeric(4);
+    const alphas = faker.random.alpha({ count: 2, casing: "upper" });
+    return `KA-${alphas}-${number}` as LicensePlate;
+  }
+  private static generateSharedCarVehicle(id: string) {
+    const [status, currentPosition] =
+      RandomDataGenerator.generateBaseVehicleAttributes();
+    const numPassengers = faker.datatype.number({ min: 2, max: 7 });
+    const licensePlate = RandomDataGenerator.generateRandomLicensePlate();
+    const color = faker.color.human();
+    const sharedCar = new SharedCar(
+      id,
+      "to_be_replaced",
+      status,
+      numPassengers,
+      licensePlate,
+      color
+    );
+    sharedCar.currentPosition = currentPosition;
+    return sharedCar;
+  }
+  private static generateTaxiVehicle(id: string) {
+    const [status, currentPosition] =
+      RandomDataGenerator.generateBaseVehicleAttributes();
+    const numPassengers = faker.datatype.number({ min: 2, max: 7 });
+    const licensePlate = RandomDataGenerator.generateRandomLicensePlate();
+    const taxi = new Taxi(
+      id,
+      "to_be_replaced",
+      status,
+      numPassengers,
+      licensePlate
+    );
+    taxi.currentPosition = currentPosition;
+    return taxi;
   }
 }
