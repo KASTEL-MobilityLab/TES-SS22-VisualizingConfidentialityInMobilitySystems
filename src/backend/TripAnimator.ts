@@ -27,7 +27,7 @@ export class TripAnimator {
       for (const trip of this.trips) {
         this.intervalID = setInterval(() => {
           trip.step(this.isRunning);
-        }, 25);
+        }, this.animationSpeed);
       }
     }
   }
@@ -43,20 +43,4 @@ export class TripAnimator {
       trip.resetStepCounter();
     }
   }
-
-  /*
-  public nextStep() {
-    if (this.isRunning) {
-      for (const trip of this.trips) {
-        if (trip.id in this.activeTrips) {
-          trip.step();
-          if (trip.isFinished()) {
-            trip.resetStepCounter();
-            trip.nextTrip.step();
-          }
-        }
-      }
-    }
-  }
-*/
 }

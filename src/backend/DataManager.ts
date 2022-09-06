@@ -297,13 +297,6 @@ export class DataManager {
     return await fetchWaypoints(route);
   }
 
-  /**
-   * Finds the next trip of  a given trip in order to get a cyclic route.
-   */
-  findNextTrip(trip: Trip) {
-    throw new Error("Method not implemented.");
-  }
-
   startAnimation() {
     this.tripAnimator?.start();
   }
@@ -313,7 +306,7 @@ export class DataManager {
   }
 
   resetAnimation() {
-    this.init();
     this.tripAnimator?.reset();
+    this.startAnimation();
   }
 }
