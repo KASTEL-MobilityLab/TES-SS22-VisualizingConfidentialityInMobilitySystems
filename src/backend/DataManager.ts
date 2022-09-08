@@ -83,7 +83,7 @@ export class DataManager {
     this.riskManager.risks = risks;
     this.setAllReferences();
     this.trips.map((trip) => trip.setVehicleStartPosition());
-    this.tripAnimator = new TripAnimator(this.trips, 10);
+    this.tripAnimator = new TripAnimator(this.trips, 15);
     this.setRouteWaypoints();
     this.aggregatedData.init(this.trips);
     this.startAnimation();
@@ -297,14 +297,23 @@ export class DataManager {
     return await fetchWaypoints(route);
   }
 
+  /**
+   * Starts the animation of the vehicles.
+   */
   startAnimation() {
     this.tripAnimator?.start();
   }
 
+  /**
+   * Pauses the animation of the vehicles.
+   */
   stopAnimation() {
     this.tripAnimator?.stop();
   }
 
+  /**
+   * Resets the animation by moving the vehicles back to the starting positions.
+   */
   resetAnimation() {
     this.tripAnimator?.reset();
     this.startAnimation();

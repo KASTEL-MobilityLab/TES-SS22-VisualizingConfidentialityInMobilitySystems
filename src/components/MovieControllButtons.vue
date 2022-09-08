@@ -19,14 +19,23 @@ watch(
   { deep: true }
 );
 
+/**
+ * Starts the animation of the vehicles.
+ */
 function buttonStartAnimation() {
   $dm.value.startAnimation();
 }
 
+/**
+ * Pauses the animation of the vehicles.
+ */
 function buttonPauseAnimation() {
   $dm.value.stopAnimation();
 }
 
+/**
+ * Resets the animation by moving the vehicles back to the starting positions.
+ */
 function buttonResetAnimation() {
   $dm.value.resetAnimation();
 }

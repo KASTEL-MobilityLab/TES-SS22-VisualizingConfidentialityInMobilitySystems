@@ -16,6 +16,9 @@ export class TripAnimator {
     this.activeTrips = [];
   }
 
+  /**
+   * Starts the animation of the vehicles.
+   */
   public start() {
     this.isRunning = true;
     for (const trip of this.trips) {
@@ -32,10 +35,16 @@ export class TripAnimator {
     }
   }
 
+  /**
+   * Pauses the animation of the vehicles.
+   */
   public stop() {
     this.isRunning = false;
   }
 
+  /**
+   * Resets the animation by moving the vehicles back to the starting positions.
+   */
   public reset() {
     this.isRunning = false;
     for (const trip of this.trips) {
