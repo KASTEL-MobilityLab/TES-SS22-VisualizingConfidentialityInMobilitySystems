@@ -13,5 +13,30 @@
     "type": "Train",
     "companyId": "C02",
     "status": "Inactive"
+  },
+  {
+    "id": "V03",
+    "type": "Taxi",
+    "companyId": "C02",
+    "status": "Inactive",
+    "numPassengers": 3,
+    "licensePlate": "KA-KS-8632"
+  },
+  {
+    "id": "V04",
+    "type": "Shared Car",
+    "companyId": "C02",
+    "status": "Inactive",
+    "numPassengers": 5,
+    "licensePlate": "KA-XP-1263",
+    "color": "Black"
+  },
+  {
+    "id": "V05",
+    "type": "Bicycle",
+    "companyId": "C02",
+    "status": "Inactive",
+    "electric": false,
+    "electricLock": true
   }
 ]

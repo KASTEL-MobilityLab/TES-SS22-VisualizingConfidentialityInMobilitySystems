@@ -20,6 +20,7 @@
     "bootstrap": "^5.2.0",
     "browser-or-node": "^2.0.0",
     "class-transformer": "^0.5.1",
+    "iconify-icon": "^1.0.0-beta.3",
     "leaflet": "^1.8.0",
     "reflect-metadata": "^0.1.13",
     "vue": "^3.2.38",
@@ -27,6 +28,7 @@
     "vue-router": "^4.1.5"
   },
   "devDependencies": {
+    "@faker-js/faker": "^7.4.0",
     "@commitlint/cli": "^17.1.2",
     "@commitlint/config-conventional": "^17.1.0",
     "@intlify/vite-plugin-vue-i18n": "^6.0.1",
