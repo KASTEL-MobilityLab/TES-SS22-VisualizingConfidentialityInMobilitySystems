@@ -56,5 +56,29 @@
     "ccv": 911,
     "expiryDate": "2032-03-26T15:15:26.263Z",
     "provider": "maestro"
+  },
+  {
+    "id": "P09",
+    "type": "PayPal",
+    "tripId": "T09",
+    "userName": "Jessica.Kutzner88"
+  },
+  {
+    "id": "P10",
+    "type": "PayPal",
+    "tripId": "T10",
+    "userName": "Nela_Daum"
+  },
+  {
+    "id": "P11",
+    "type": "PayPal",
+    "tripId": "T11",
+    "userName": "Phoebe50"
+  },
+  {
+    "id": "P12",
+    "type": "PayPal",
+    "tripId": "T12",
+    "userName": "Dylan_Göckeritz"
   }
 ]

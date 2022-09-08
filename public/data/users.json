@@ -54,5 +54,33 @@
     "surname": "Weiler",
     "phoneNumber": 4918137971,
     "email": "Noah.Weiler@yahoo.com"
+  },
+  {
+    "id": "U09",
+    "forename": "Jessica",
+    "surname": "Kutzner",
+    "phoneNumber": 4978918229,
+    "email": "Jessica.Kutzner@yahoo.com"
+  },
+  {
+    "id": "U10",
+    "forename": "Nela",
+    "surname": "Daum",
+    "phoneNumber": 4936498065,
+    "email": "Nela_Daum44@gmail.com"
+  },
+  {
+    "id": "U11",
+    "forename": "Phoebe",
+    "surname": "Freimann",
+    "phoneNumber": 4965949287,
+    "email": "Phoebe_Freimann@hotmail.com"
+  },
+  {
+    "id": "U12",
+    "forename": "Dylan",
+    "surname": "Göckeritz",
+    "phoneNumber": 4939534336,
+    "email": "Dylan.Gckeritz@yahoo.com"
   }
 ]

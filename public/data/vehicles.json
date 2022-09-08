@@ -93,5 +93,37 @@
     "electric": false,
     "electricLock": true,
     "currentPosition": { "lat": 49.003364208436075, "lng": 8.41458320617676 }
+  },
+  {
+    "id": "V12",
+    "type": "Shared Car",
+    "companyId": "C09",
+    "status": "Active"
+  },
+  {
+    "id": "V13",
+    "type": "E-Scooter",
+    "companyId": "C11",
+    "condition": 71,
+    "batteryCondition": 80,
+    "status": "Active",
+    "batteryLevel": 79
+  },
+  {
+    "id": "V14",
+    "type": "E-Scooter",
+    "companyId": "C02",
+    "condition": 87,
+    "batteryCondition": 84,
+    "status": "Active",
+    "batteryLevel": 60
+  },
+  {
+    "id": "V15",
+    "type": "Bicycle",
+    "companyId": "C01",
+    "status": "Active",
+    "electric": false,
+    "electricLock": false
   }
 ]
