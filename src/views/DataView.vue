@@ -28,7 +28,8 @@ const dataViewerVisible = inject("dataViewerVisible");
 }
 
 #data-viewer {
-  height: 75vh;
+  height: 70vh;
+  width: 100vw;
   z-index: 2;
   position: relative;
 }
