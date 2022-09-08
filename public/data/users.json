@@ -33,5 +33,26 @@
     "surname": "Von Basten",
     "phoneNumber": 49734217238,
     "email": "markus.vonbasten@gmail.com"
+  },
+  {
+    "id": "U06",
+    "forename": "Cara",
+    "surname": "Linke",
+    "phoneNumber": 4945975732,
+    "email": "Cara61@gmail.com"
+  },
+  {
+    "id": "U07",
+    "forename": "Joris",
+    "surname": "Kinzy",
+    "phoneNumber": 4977244909,
+    "email": "Joris6@hotmail.com"
+  },
+  {
+    "id": "U08",
+    "forename": "Noah",
+    "surname": "Weiler",
+    "phoneNumber": 4918137971,
+    "email": "Noah.Weiler@yahoo.com"
   }
 ]

@@ -113,8 +113,8 @@ function emptySpotClicked(e: LeafletEvent) {
     // randomDataPrinter.printCurrentRoute();
     // randomDataPrinter.printIndividualRoutes(10, 10);
     // randomDataPrinter.printCompanies(10, 15);
-    randomDataPrinter.printPayments(10, 6, 6);
-    // randomDataPrinter.printVehicles(3, 5);
+    // randomDataPrinter.printPayments(10, 6, 6);
+    // randomDataPrinter.printVehicles(10, 10);
   }
 }
 
