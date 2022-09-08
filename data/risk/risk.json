@@ -266,7 +266,62 @@
   {
     "dataType": "VehicleCurrentPosition",
     "riskLevel": "High",
+    "roleVisibility": ["Company", "User"],
+    "explanation": {
+      "retentionPeriod": "stored_until_no_longer_necessary",
+      "riskLevelExplanation": {
+        "translationKey": "high_risk_explanation"
+      }
+    }
+  },
+  {
+    "dataType": "VehicleLicensePlate",
+    "riskLevel": "Medium",
     "roleVisibility": ["Company"],
+    "explanation": {
+      "retentionPeriod": "stored_until_no_longer_necessary",
+      "riskLevelExplanation": {
+        "translationKey": "medium_risk_explanation"
+      }
+    }
+  },
+  {
+    "dataType": "VehicleElectric",
+    "riskLevel": "Low",
+    "roleVisibility": ["Company", "User", "City"],
+    "explanation": {
+      "retentionPeriod": "stored_until_no_longer_necessary",
+      "riskLevelExplanation": {
+        "translationKey": "low_risk_explanation"
+      }
+    }
+  },
+  {
+    "dataType": "VehicleElectricLock",
+    "riskLevel": "Low",
+    "roleVisibility": ["Company", "User", "City"],
+    "explanation": {
+      "retentionPeriod": "stored_until_no_longer_necessary",
+      "riskLevelExplanation": {
+        "translationKey": "low_risk_explanation"
+      }
+    }
+  },
+  {
+    "dataType": "VehicleNumPassengers",
+    "riskLevel": "Low",
+    "roleVisibility": ["Company", "User", "City"],
+    "explanation": {
+      "retentionPeriod": "stored_until_no_longer_necessary",
+      "riskLevelExplanation": {
+        "translationKey": "low_risk_explanation"
+      }
+    }
+  },
+  {
+    "dataType": "VehicleColor",
+    "riskLevel": "Low",
+    "roleVisibility": ["Company", "User", "City"],
     "explanation": {
       "retentionPeriod": "stored_until_no_longer_necessary",
       "riskLevelExplanation": {

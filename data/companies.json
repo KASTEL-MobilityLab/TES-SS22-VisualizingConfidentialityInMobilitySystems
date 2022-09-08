@@ -10,5 +10,46 @@
   {
     "id": "C03",
     "name": "KVV"
+  },
+
+  {
+    "id": "C04",
+    "name": "Röse UG"
+  },
+  {
+    "id": "C05",
+    "name": "Reinhardt OHG"
+  },
+  {
+    "id": "C06",
+    "name": "Ludolf Gruppe"
+  },
+  {
+    "id": "C07",
+    "name": "Hooss - Kröckert"
+  },
+  {
+    "id": "C08",
+    "name": "Lakomy Gruppe"
+  },
+  {
+    "id": "C09",
+    "name": "Felke, Pingpank and Maak"
+  },
+  {
+    "id": "C10",
+    "name": "Onnen, Hommel and Farber"
+  },
+  {
+    "id": "C11",
+    "name": "Kleeberg, Klopsch and Zeyen"
+  },
+  {
+    "id": "C12",
+    "name": "Caspers - Pfeiffer"
+  },
+  {
+    "id": "C13",
+    "name": "Matula, Banse and Siemon"
   }
 ]
