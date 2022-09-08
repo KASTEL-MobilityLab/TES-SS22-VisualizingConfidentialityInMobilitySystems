@@ -82,8 +82,8 @@
     "vehicleId": "V11",
     "userId": "U08",
     "paymentId": "P08",
-    "avgSpeed": 24,
-    "price": 1,
+    "avgSpeed": 42,
+    "price": 14,
     "startTime": "2022-05-22T11:35:49",
     "endTime": "2022-05-22T11:59:30"
   },

@@ -81,24 +81,26 @@
     "companyId": "C09",
     "type": "Taxi",
     "status": "Active",
-    "currentPosition": { "lat": 48.99204537731004, "lng": 8.441448211669924 },
     "numPassengers": 1,
     "licensePlate": "KA-CC-1797"
   },
   {
     "id": "V11",
-    "type": "Bicycle",
+    "type": "Shared Car",
     "companyId": "C10",
     "status": "Active",
-    "electric": false,
-    "electricLock": true,
-    "currentPosition": { "lat": 49.003364208436075, "lng": 8.41458320617676 }
+    "numPassengers": 3,
+    "licensePlate": "KA-OH-236",
+    "color": "Black"
   },
   {
     "id": "V12",
     "type": "Shared Car",
     "companyId": "C09",
-    "status": "Active"
+    "status": "Active",
+    "numPassengers": 2,
+    "licensePlate": "KA-FP-937",
+    "color": "Black"
   },
   {
     "id": "V13",
