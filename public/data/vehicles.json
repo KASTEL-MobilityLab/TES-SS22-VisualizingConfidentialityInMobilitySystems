@@ -34,7 +34,10 @@
     "id": "V04",
     "type": "Shared Car",
     "companyId": "C09",
-    "status": "Active"
+    "status": "Active",
+    "numPassengers": 6,
+    "licensePlate": "KA-XO-921",
+    "color": "Blue"
   },
   {
     "id": "V05",

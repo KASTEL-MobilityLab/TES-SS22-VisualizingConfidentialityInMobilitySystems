@@ -41,7 +41,7 @@
     "surname": "Surname",
     "paymentData": "Payment Data",
     "phoneNumber": "Phone Number",
-    "vehicleType": "Type",
+    "type": "Type",
     "status": "Status",
     "batteryLevel": "Battery",
     "ownerName": "Owner",
@@ -60,7 +60,8 @@
     "numPassengers": "Number of Passengers",
     "licensePlate": "License Plate",
     "electric": "Electric",
-    "electricLock": "Electric Lock"
+    "electricLock": "Electric Lock",
+    "batteryCondition": "Battery Condition"
   },
   "help": {
     "title": "Help",
