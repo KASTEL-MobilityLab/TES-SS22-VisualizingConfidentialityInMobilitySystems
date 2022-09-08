@@ -51,6 +51,18 @@
     "electricLock": "Elektrisches Schloss",
     "batteryCondition": "Batteriezustand"
   },
+  "risk": {
+    "low": "Niedrig",
+    "medium": "Mittel",
+    "high": "Hoch",
+    "low_explanation": "Ein Datentyp mit geringem Risiko entspricht Daten, die öffentlich zugänglich sind, wie z. B. die Anzahl der E-Bikes in Karlsruhe oder die Standorte inaktiver E-Scooter. Die Daten sind nicht sensibel, d.h. sie können nicht zur Identifizierung eines Fahrers oder zum Schaden anderer Personen verwendet werden.",
+    "medium_explanation": "Ein Datentyp mit mittlerem Risiko bedeutet, dass es sich um personenbezogene Daten im Sinne des europäischen Datenschutzrechts handelt. Daten wie Namen, E-Mails und Telefonnummern fallen in diese Kategorie. Sie können zur direkten oder indirekten Identifizierung eines Fahrers verwendet werden. Im Gegensatz zu den Daten mit hohem Risiko enthalten sie jedoch keine hochsensiblen Informationen wie Kreditkartennummern.",
+    "high_explanation": "Bei einem Datentyp mit hohem Risiko handelt es sich um personenbezogene Daten wie bei Datentypen mit mittlerem Risiko, aber sie unterscheiden sich durch die Schwere der möglichen Folgen, wenn die Daten gestohlen werden. Sie können verwendet werden, um Personen zu identifizieren und zu schädigen. Datentypen wie Kreditkartennummern mit ihren jeweiligen CCVs können zum Beispiel verwendet werden, um anderen Personen finanziell zu schaden.",
+    "low_subtitle": "Was ist ein Datentyp mit 'geringem' Risiko?",
+    "medium_subtitle": "Was ist ein Datentyp mit 'mittlerem' Risiko?",
+    "high_subtitle": "Was ist ein Datentyp mit 'hohem' Risiko?",
+    "title": "Erläuterung der Risikostufen von Datentypen"
+  },
   "help": {
     "title": "Hilfe",
     "about_the_app": "Über die App",

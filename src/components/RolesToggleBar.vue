@@ -8,27 +8,17 @@ import { inject, type Ref } from "vue";
 const $dm = inject(dataManagerKey) as Ref<DataManager>;
 </script>
 <template>
-  <div
-    class="btn-group"
-    role="group"
-    aria-label="Basic radio toggle button group"
-  >
-    <input
-      id="btnradio1"
-      type="radio"
-      class="btn-check"
-      name="btnradio"
-      autocomplete="off"
-    />
+  <div class="btn-group" role="group">
+    <input id="UserRole" type="radio" class="btn-check" name="btnradio" />
     <label
       class="btn btn-outline-dark"
-      for="btnradio1"
+      for="UserRole"
       @click="$dm.changeRole('User')"
-      >User</label
+      ><i class="fa-solid fa-user fa-fw"></i> {{ $t("app.user") }}</label
     >
 
     <input
-      id="btnradio2"
+      id="CityRole"
       type="radio"
       class="btn-check"
       name="btnradio"
@@ -37,23 +27,17 @@ const $dm = inject(dataManagerKey) as Ref<DataManager>;
     />
     <label
       class="btn btn-outline-dark"
-      for="btnradio2"
+      for="CityRole"
       @click="$dm.changeRole('City')"
-      >City</label
+      ><i class="fa-solid fa-city fa-fw"></i> {{ $t("app.city") }}</label
     >
 
-    <input
-      id="btnradio3"
-      type="radio"
-      class="btn-check"
-      name="btnradio"
-      autocomplete="off"
-    />
+    <input id="CompanyRole" type="radio" class="btn-check" name="btnradio" />
     <label
       class="btn btn-outline-dark"
-      for="btnradio3"
+      for="CompanyRole"
       @click="$dm.changeRole('Company')"
-      >Company</label
+      ><i class="fa-solid fa-building fa-fw"></i> {{ $t("app.company") }}</label
     >
   </div>
 </template>
