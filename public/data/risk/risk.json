@@ -170,7 +170,7 @@
     "riskLevel": "Medium",
     "roleVisibility": ["Company", "User"],
     "explanation": {
-      "retentionPeriod": 365,
+      "retentionPeriod": "stored_until_no_longer_necessary",
       "riskLevelExplanation": {
         "translationKey": "medium_risk_explanation",
         "source": "https://gdpr-info.eu/issues/personal-data/"
