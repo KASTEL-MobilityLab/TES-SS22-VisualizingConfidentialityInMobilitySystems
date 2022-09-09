@@ -55,3 +55,19 @@ async function fetchDirectionsAPI(
     waypoints.map(([lng, lat]: [number, number]) => new LatLng(lat, lng))
   );
 }
+
+export async function fetchGeocodingAPI(
+  currentPosition: LatLng
+): Promise<string> {
+  const query = await fetch(
+    `https://api.mapbox.com/geocoding/v5/mapbox.places/${
+      currentPosition.longitude
+    },${currentPosition.latitude}.json?access_token=${
+      import.meta.env.VITE_MAPBOX_API_KEY
+    }`,
+    { method: "GET" }
+  );
+  const json = await query.json();
+  const address = json.features[0].text;
+  return address;
+}
