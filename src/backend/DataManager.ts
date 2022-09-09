@@ -82,9 +82,9 @@ export class DataManager {
     ] = await this.dataLoader.loadAllData();
     this.riskManager.risks = risks;
     this.setAllReferences();
+    await this.setRouteWaypoints();
     this.trips.map((trip) => trip.setVehicleStartPosition());
     this.tripAnimator = new TripAnimator(this.trips, 15);
-    this.setRouteWaypoints();
     this.aggregatedData.init(this.trips);
     this.startAnimation();
   }
