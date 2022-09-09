@@ -62,7 +62,9 @@
     "batteryCondition": "Battery Condition",
     "startTime": "Start Time",
     "status": "Status",
-    "surname": "Surname"
+    "surname": "Surname",
+    "start": "Starting Point",
+    "End": "Destination"
   },
   "help": {
     "about_the_app": "About the app",

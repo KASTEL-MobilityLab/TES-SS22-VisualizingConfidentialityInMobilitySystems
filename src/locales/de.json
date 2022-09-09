@@ -50,7 +50,9 @@
     "licensePlate": "Nummernschild",
     "electric": "Elektrisch",
     "electricLock": "Elektrisches Schloss",
-    "batteryCondition": "Batteriezustand"
+    "batteryCondition": "Batteriezustand",
+    "start": "Startpunkt",
+    "End": "Reiseziel"
   },
   "risk": {
     "low": "Niedrig",

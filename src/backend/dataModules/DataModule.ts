@@ -54,9 +54,7 @@ export class DataModule {
           } else if (fieldName === "batteryLevel") {
             this.displayedData[`data.${fieldName}`] = values[index] + "%";
           } else if (fieldName === "currentPosition") {
-            this.displayedData[`data.${fieldName}`] = fetchGeocodingAPI(
-              values[index]
-            );
+            this.displayedData[`data.${fieldName}`] = values[index];
           } else {
             this.displayedData[`data.${fieldName}`] = values[index];
           }

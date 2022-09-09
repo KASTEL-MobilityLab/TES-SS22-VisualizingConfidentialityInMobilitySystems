@@ -1,4 +1,5 @@
 import { Exclude, Expose, Type } from "class-transformer";
+import { LatLng } from "../utils/LatLng";
 import "reflect-metadata";
 import { DataField } from "./DataField";
 import type { Payment } from "./Payment";
@@ -54,6 +55,12 @@ export class Trip extends DataField {
   @Exclude()
   currentStep: number;
 
+  @Exclude()
+  private startLocation?: LatLng;
+
+  @Exclude()
+  private endLocation?: LatLng;
+
   constructor(
     id: string,
     routeId: string,
@@ -90,6 +97,8 @@ export class Trip extends DataField {
     }
     if (route !== undefined) {
       this._route = route;
+      this.startLocation = route.start;
+      this.endLocation = route.end;
     }
   }
 
