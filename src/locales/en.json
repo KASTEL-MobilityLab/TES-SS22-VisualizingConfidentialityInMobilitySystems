@@ -20,6 +20,7 @@
       "tripDataView": "Trip Data",
       "vehicleDataView": "Vehicle Data"
     },
+    "reset": "Reset",
     "day": "no day | one day | {count} days",
     "help": "Help",
     "month": "no month | one month | {count} months",

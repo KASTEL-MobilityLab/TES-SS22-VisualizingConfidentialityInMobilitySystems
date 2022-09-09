@@ -19,7 +19,8 @@
       "riderDataView": "Fahrerdaten",
       "tripDataView": "Tripdaten",
       "vehicleDataView": "Fahrzeugdaten"
-    }
+    },
+    "reset": "Zurücksetzten"
   },
   "data": {
     "address": "Adresse",

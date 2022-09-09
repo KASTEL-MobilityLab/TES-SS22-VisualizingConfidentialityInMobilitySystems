@@ -1,6 +1,6 @@
 import { LatLng } from "./LatLng";
 
-const stepSizeInMeter = 0.2;
+const stepSizeInMeter = 0.5;
 
 /**
  * Interpolates a given array of waypoints by adding intermediate steps, so the
