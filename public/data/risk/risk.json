@@ -1,23 +1,25 @@
 [
   {
     "dataType": "PaymentType",
-    "riskLevel": "Low",
+    "riskLevel": "Medium",
     "roleVisibility": ["Company", "User"],
     "explanation": {
       "retentionPeriod": "stored_until_no_longer_necessary",
       "riskLevelExplanation": {
-        "translationKey": "low_risk_explanation"
+        "translationKey": "medium_risk_explanation",
+        "source": "https://gdpr-info.eu/issues/personal-data/"
       }
     }
   },
   {
     "dataType": "PaymentProvider",
-    "riskLevel": "Low",
+    "riskLevel": "Medium",
     "roleVisibility": ["Company", "User"],
     "explanation": {
       "retentionPeriod": "stored_until_no_longer_necessary",
       "riskLevelExplanation": {
-        "translationKey": "low_risk_explanation"
+        "translationKey": "medium_risk_explanation",
+        "source": "https://gdpr-info.eu/issues/personal-data/"
       }
     }
   },
@@ -28,7 +30,8 @@
     "explanation": {
       "retentionPeriod": "stored_until_no_longer_necessary",
       "riskLevelExplanation": {
-        "translationKey": "high_risk_explanation"
+        "translationKey": "high_risk_explanation",
+        "source": "https://gdpr-info.eu/issues/personal-data/"
       }
     }
   },
@@ -39,7 +42,8 @@
     "explanation": {
       "retentionPeriod": "stored_until_no_longer_necessary",
       "riskLevelExplanation": {
-        "translationKey": "high_risk_explanation"
+        "translationKey": "high_risk_explanation",
+        "source": "https://gdpr-info.eu/issues/personal-data/"
       }
     }
   },
@@ -50,7 +54,8 @@
     "explanation": {
       "retentionPeriod": "stored_until_no_longer_necessary",
       "riskLevelExplanation": {
-        "translationKey": "medium_risk_explanation"
+        "translationKey": "medium_risk_explanation",
+        "source": "https://gdpr-info.eu/issues/personal-data/"
       }
     }
   },
@@ -72,7 +77,8 @@
     "explanation": {
       "retentionPeriod": "stored_until_no_longer_necessary",
       "riskLevelExplanation": {
-        "translationKey": "medium_risk_explanation"
+        "translationKey": "medium_risk_explanation",
+        "source": "https://gdpr-info.eu/issues/personal-data/"
       }
     }
   },
@@ -83,7 +89,8 @@
     "explanation": {
       "retentionPeriod": "stored_until_no_longer_necessary",
       "riskLevelExplanation": {
-        "translationKey": "medium_risk_explanation"
+        "translationKey": "medium_risk_explanation",
+        "source": "https://gdpr-info.eu/issues/personal-data/"
       }
     }
   },
@@ -94,7 +101,8 @@
     "explanation": {
       "retentionPeriod": "stored_until_no_longer_necessary",
       "riskLevelExplanation": {
-        "translationKey": "low_risk_explanation"
+        "translationKey": "low_risk_explanation",
+        "source": "https://gdpr-info.eu/issues/personal-data/"
       }
     }
   },
@@ -111,7 +119,7 @@
   },
   {
     "dataType": "TripStartTime",
-    "riskLevel": "Medium",
+    "riskLevel": "Low",
     "roleVisibility": ["Company", "User"],
     "explanation": {
       "retentionPeriod": "stored_until_no_longer_necessary",
@@ -122,7 +130,7 @@
   },
   {
     "dataType": "TripEndTime",
-    "riskLevel": "Medium",
+    "riskLevel": "Low",
     "roleVisibility": ["Company", "User"],
     "explanation": {
       "retentionPeriod": "stored_until_no_longer_necessary",
@@ -139,9 +147,9 @@
       "retentionPeriod": "stored_until_no_longer_necessary",
       "riskLevelExplanation": {
         "translationKey": "low_risk_explanation",
-        "source": "https://dsgvo-gesetz.de/art-4-dsgvo/"
+        "source": "https://www.itgovernance.eu/blog/en/the-gdpr-what-exactly-is-personal-data"
       },
-      "visibilitySource": "https://dsgvo-gesetz.de/art-4-dsgvo/"
+      "visibilitySource": "https://www.itgovernance.eu/blog/en/the-gdpr-what-exactly-is-personal-data"
     }
   },
   {
@@ -152,9 +160,9 @@
       "retentionPeriod": "stored_until_no_longer_necessary",
       "riskLevelExplanation": {
         "translationKey": "low_risk_explanation",
-        "source": "https://dsgvo-gesetz.de/art-4-dsgvo/"
+        "source": "https://www.itgovernance.eu/blog/en/the-gdpr-what-exactly-is-personal-data"
       },
-      "visibilitySource": "https://dsgvo-gesetz.de/art-4-dsgvo/"
+      "visibilitySource": "https://www.itgovernance.eu/blog/en/the-gdpr-what-exactly-is-personal-data"
     }
   },
   {
@@ -165,7 +173,7 @@
       "retentionPeriod": 365,
       "riskLevelExplanation": {
         "translationKey": "medium_risk_explanation",
-        "source": "https://dsgvo-gesetz.de/art-4-dsgvo/"
+        "source": "https://gdpr-info.eu/issues/personal-data/"
       }
     }
   },
@@ -177,14 +185,20 @@
       "retentionPeriod": "stored_until_no_longer_necessary",
       "riskLevelExplanation": {
         "translationKey": "medium_risk_explanation",
-        "source": "https://dsgvo-gesetz.de/art-4-dsgvo/"
+        "source": "https://gdpr-info.eu/issues/personal-data/"
       }
     }
   },
   {
     "dataType": "VehicleId",
     "riskLevel": "Low",
-    "roleVisibility": ["Company", "User"]
+    "roleVisibility": ["Company", "User", "City"],
+    "explanation": {
+      "retentionPeriod": "stored_until_no_longer_necessary",
+      "riskLevelExplanation": {
+        "translationKey": "low_risk_explanation"
+      }
+    }
   },
   {
     "dataType": "VehicleType",
@@ -211,7 +225,7 @@
   {
     "dataType": "VehicleCondition",
     "riskLevel": "Low",
-    "roleVisibility": ["Company", "User"],
+    "roleVisibility": ["Company", "User", "City"],
     "explanation": {
       "retentionPeriod": "stored_until_no_longer_necessary",
       "riskLevelExplanation": {
@@ -222,7 +236,7 @@
   {
     "dataType": "VehicleBatteryCondition",
     "riskLevel": "Low",
-    "roleVisibility": ["Company", "User"],
+    "roleVisibility": ["Company", "User", "City"],
     "explanation": {
       "retentionPeriod": "stored_until_no_longer_necessary",
       "riskLevelExplanation": {
@@ -244,7 +258,7 @@
   {
     "dataType": "VehicleBatteryLevel",
     "riskLevel": "Low",
-    "roleVisibility": ["Company", "User"],
+    "roleVisibility": ["Company", "User", "City"],
     "explanation": {
       "retentionPeriod": "stored_until_no_longer_necessary",
       "riskLevelExplanation": {
@@ -255,7 +269,7 @@
   {
     "dataType": "VehicleOwnerName",
     "riskLevel": "Low",
-    "roleVisibility": ["Company", "User"],
+    "roleVisibility": ["Company", "User", "City"],
     "explanation": {
       "retentionPeriod": "stored_until_no_longer_necessary",
       "riskLevelExplanation": {
@@ -281,7 +295,8 @@
     "explanation": {
       "retentionPeriod": "stored_until_no_longer_necessary",
       "riskLevelExplanation": {
-        "translationKey": "medium_risk_explanation"
+        "translationKey": "medium_risk_explanation",
+        "source": "https://gdpr-info.eu/issues/personal-data/"
       }
     }
   },
