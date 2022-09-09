@@ -26,11 +26,11 @@
       "isNotVisible": "@:explanation.data_is_not_visible"
     },
     "surname": {
-      "isVisible": "@:explanation.data_is_visible",
+      "isVisible": "Ein Nachname ist gemäß @:explanation.gdpr (GDPR) nicht unbedingt eine @:explanation.personal_information, da es mehrere Personen mit demselben Namen geben kann. Daher ist er für Sie als {role} sichtbar. Wenn der Nachname jedoch z.B. mit einer Adresse kombiniert wird, ist der Nachname @:explanation.personal_information und wäre für Sie nicht sichtbar.",
       "isNotVisible": "@:explanation.data_is_not_visible"
     },
     "forename": {
-      "isVisible": "@:explanation.data_is_visible",
+      "isVisible": "Ein Vorname ist gemäß @:explanation.gdpr (GDPR) nicht unbedingt eine @:explanation.personal_information, da es mehrere Personen mit demselben Namen geben kann. Daher ist er für Sie als {role} sichtbar. Wenn der Vorname jedoch z.B. mit einer Adresse kombiniert wird, ist der Vorname @:explanation.personal_information und wäre für Sie nicht sichtbar.",
       "isNotVisible": "@:explanation.data_is_not_visible"
     },
     "address": {
