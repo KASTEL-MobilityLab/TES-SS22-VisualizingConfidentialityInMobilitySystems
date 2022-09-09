@@ -53,7 +53,7 @@ async function onRouteUpdate() {
 function setupMap(): L.Map {
   const topLeft = new L.LatLng(49.049, 8.281);
   const bottomRight = new L.LatLng(48.954, 8.513);
-  const center = new L.LatLng(49.009, 8.4);
+  const center = new L.LatLng(49.00810234643429, 8.423063278198226);
   const bounds = new L.LatLngBounds(topLeft, bottomRight);
 
   const stamenWaterColor = L.tileLayer(

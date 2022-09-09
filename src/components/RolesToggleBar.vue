@@ -14,7 +14,7 @@ const $dm = inject(dataManagerKey) as Ref<DataManager>;
     aria-label="Basic radio toggle button group"
   >
     <input
-      id="btnradio1"
+      id="UserRole"
       type="radio"
       class="btn-check"
       name="btnradio"
@@ -22,13 +22,13 @@ const $dm = inject(dataManagerKey) as Ref<DataManager>;
     />
     <label
       class="btn btn-outline-dark"
-      for="btnradio1"
+      for="UserRole"
       @click="$dm.changeRole('User')"
       >User</label
     >
 
     <input
-      id="btnradio2"
+      id="CityRole"
       type="radio"
       class="btn-check"
       name="btnradio"
@@ -37,13 +37,13 @@ const $dm = inject(dataManagerKey) as Ref<DataManager>;
     />
     <label
       class="btn btn-outline-dark"
-      for="btnradio2"
+      for="CityRole"
       @click="$dm.changeRole('City')"
       >City</label
     >
 
     <input
-      id="btnradio3"
+      id="CompanyRole"
       type="radio"
       class="btn-check"
       name="btnradio"
@@ -51,7 +51,7 @@ const $dm = inject(dataManagerKey) as Ref<DataManager>;
     />
     <label
       class="btn btn-outline-dark"
-      for="btnradio3"
+      for="CompanyRole"
       @click="$dm.changeRole('Company')"
       >Company</label
     >
