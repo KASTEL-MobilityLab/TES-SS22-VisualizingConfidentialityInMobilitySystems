@@ -11,6 +11,9 @@ import {
   Vehicle,
 } from "@/backend/dataFields";
 import { VehicleStatus } from "@/backend/dataFields/types";
+import { Bicycle } from "@/backend/dataFields/vehicles/Bicycle";
+import { SharedCar } from "@/backend/dataFields/vehicles/SharedCar";
+import { Taxi } from "@/backend/dataFields/vehicles/Taxi";
 import { DataType } from "@/backend/DataType";
 import { Risk } from "@/backend/riskManager/Risk";
 import { RiskLevel } from "@/backend/riskManager/RiskLevel";
@@ -133,4 +136,7 @@ export const risks: Risk[] = [
 export const vehicles: Vehicle[] = [
   new EScooter("V01", "C01", 84, 89, VehicleStatus.Active, 74),
   new Train("V02", "C02", VehicleStatus.Inactive),
+  new Taxi("V03", "C02", VehicleStatus.Inactive, 3, "KA-KS-8632"),
+  new SharedCar("V04", "C02", VehicleStatus.Inactive, 5, "KA-XP-1263", "Black"),
+  new Bicycle("V05", "C02", VehicleStatus.Inactive, false, true),
 ];

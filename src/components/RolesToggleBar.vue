@@ -8,23 +8,13 @@ import { inject, type Ref } from "vue";
 const $dm = inject(dataManagerKey) as Ref<DataManager>;
 </script>
 <template>
-  <div
-    class="btn-group"
-    role="group"
-    aria-label="Basic radio toggle button group"
-  >
-    <input
-      id="UserRole"
-      type="radio"
-      class="btn-check"
-      name="btnradio"
-      autocomplete="off"
-    />
+  <div class="btn-group" role="group">
+    <input id="UserRole" type="radio" class="btn-check" name="btnradio" />
     <label
       class="btn btn-outline-dark"
       for="UserRole"
       @click="$dm.changeRole('User')"
-      >User</label
+      ><i class="fa-solid fa-user fa-fw"></i> {{ $t("app.user") }}</label
     >
 
     <input
@@ -39,21 +29,15 @@ const $dm = inject(dataManagerKey) as Ref<DataManager>;
       class="btn btn-outline-dark"
       for="CityRole"
       @click="$dm.changeRole('City')"
-      >City</label
+      ><i class="fa-solid fa-city fa-fw"></i> {{ $t("app.city") }}</label
     >
 
-    <input
-      id="CompanyRole"
-      type="radio"
-      class="btn-check"
-      name="btnradio"
-      autocomplete="off"
-    />
+    <input id="CompanyRole" type="radio" class="btn-check" name="btnradio" />
     <label
       class="btn btn-outline-dark"
       for="CompanyRole"
       @click="$dm.changeRole('Company')"
-      >Company</label
+      ><i class="fa-solid fa-building fa-fw"></i> {{ $t("app.company") }}</label
     >
   </div>
 </template>

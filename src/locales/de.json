@@ -32,6 +32,7 @@
     "phoneNumber": "Telefonnummer",
     "status": "Status",
     "batteryLevel": "Batteriestand",
+    "type": "Typ",
     "ownerName": "Eigentümer",
     "currentPosition": "Aktuelle Position",
     "startTime": "Startzeit",
@@ -43,7 +44,13 @@
     "ccv": "CCV",
     "expiryDate": "Auslaufdatum",
     "provider": "Anbieter",
-    "userName": "Nutzername"
+    "userName": "Nutzername",
+    "color": "Farbe",
+    "numPassengers": "Anzahl Passagiere",
+    "licensePlate": "Nummernschild",
+    "electric": "Elektrisch",
+    "electricLock": "Elektrisches Schloss",
+    "batteryCondition": "Batteriezustand"
   },
   "risk": {
     "low": "Niedrig",

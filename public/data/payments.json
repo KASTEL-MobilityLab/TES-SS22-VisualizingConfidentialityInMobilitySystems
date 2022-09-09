@@ -33,5 +33,52 @@
     "id": "P05",
     "tripId": "T05",
     "type": "Cash"
+  },
+  {
+    "id": "P06",
+    "type": "Credit Card",
+    "tripId": "T06",
+    "cardNumber": 6379,
+    "ccv": 380,
+    "expiryDate": "2023-04-15T12:05:09.579Z",
+    "provider": "instapayment"
+  },
+  {
+    "id": "P07",
+    "type": "Cash",
+    "tripId": "T07"
+  },
+  {
+    "id": "P08",
+    "type": "Credit Card",
+    "tripId": "T08",
+    "cardNumber": 50381165971283804000,
+    "ccv": 911,
+    "expiryDate": "2032-03-26T15:15:26.263Z",
+    "provider": "maestro"
+  },
+  {
+    "id": "P09",
+    "type": "PayPal",
+    "tripId": "T09",
+    "userName": "Jessica.Kutzner88"
+  },
+  {
+    "id": "P10",
+    "type": "PayPal",
+    "tripId": "T10",
+    "userName": "Nela_Daum"
+  },
+  {
+    "id": "P11",
+    "type": "PayPal",
+    "tripId": "T11",
+    "userName": "Phoebe50"
+  },
+  {
+    "id": "P12",
+    "type": "PayPal",
+    "tripId": "T12",
+    "userName": "Dylan_Göckeritz"
   }
 ]
