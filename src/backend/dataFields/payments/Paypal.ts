@@ -10,6 +10,13 @@ export class PayPal extends NonCash {
   @Expose()
   readonly userName: string;
 
+  /**
+   * Creates a Paypal payment instance.
+   * @param userName the user name of the corresponding Paypal account
+   * @param id the unique identifier of the Paypal instance
+   * @param tripId the id of the trip in which this Paypal instance is used
+   * @param trip the Trip instance in which this Paypal instance is used
+   */
   constructor(userName: string, id: string, tripId: string, trip?: Trip) {
     super(PaymentType.PayPal, id, tripId, trip);
     this.userName = userName;
