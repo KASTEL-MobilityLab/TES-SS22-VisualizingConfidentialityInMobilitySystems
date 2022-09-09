@@ -132,6 +132,28 @@
     }
   },
   {
+    "dataType": "TripStartingPoint",
+    "riskLevel": "Medium",
+    "roleVisibility": ["Company", "User"],
+    "explanation": {
+      "retentionPeriod": "stored_until_no_longer_necessary",
+      "riskLevelExplanation": {
+        "translationKey": "low_risk_explanation"
+      }
+    }
+  },
+  {
+    "dataType": "TripDestination",
+    "riskLevel": "Medium",
+    "roleVisibility": ["Company", "User"],
+    "explanation": {
+      "retentionPeriod": "stored_until_no_longer_necessary",
+      "riskLevelExplanation": {
+        "translationKey": "low_risk_explanation"
+      }
+    }
+  },
+  {
     "dataType": "UserForename",
     "riskLevel": "Low",
     "roleVisibility": ["Company", "User"],

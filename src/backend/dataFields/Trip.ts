@@ -56,10 +56,10 @@ export class Trip extends DataField {
   currentStep: number;
 
   @Exclude()
-  private startLocation?: LatLng;
+  private startingPoint?: LatLng;
 
   @Exclude()
-  private endLocation?: LatLng;
+  private destination?: LatLng;
 
   constructor(
     id: string,
@@ -97,8 +97,6 @@ export class Trip extends DataField {
     }
     if (route !== undefined) {
       this._route = route;
-      this.startLocation = route.start;
-      this.endLocation = route.end;
     }
   }
 
@@ -112,6 +110,19 @@ export class Trip extends DataField {
       );
     }
     this._vehicle.currentPosition = this._route.start;
+    this.startingPoint = this._route.start;
+  }
+
+  /**
+   * Sets the last position of the vehicle to the end of this trip.
+   */
+  setVehicleEndPosition() {
+    if (!(this._vehicle && this._route)) {
+      throw Error(
+        "Vehicle and route must be set before setting end position of a vehicle."
+      );
+    }
+    this.destination = this._route.start;
   }
 
   get vehicle() {

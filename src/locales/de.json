@@ -51,8 +51,8 @@
     "electric": "Elektrisch",
     "electricLock": "Elektrisches Schloss",
     "batteryCondition": "Batteriezustand",
-    "start": "Startpunkt",
-    "End": "Reiseziel"
+    "startingPoint": "Startpunkt",
+    "destination": "Reiseziel"
   },
   "risk": {
     "low": "Niedrig",

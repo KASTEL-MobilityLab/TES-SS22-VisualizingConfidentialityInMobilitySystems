@@ -63,8 +63,8 @@
     "startTime": "Start Time",
     "status": "Status",
     "surname": "Surname",
-    "start": "Starting Point",
-    "End": "Destination"
+    "startingPoint": "Starting Point",
+    "destination": "Destination"
   },
   "help": {
     "about_the_app": "About the app",
