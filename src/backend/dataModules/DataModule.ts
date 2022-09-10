@@ -76,6 +76,10 @@ export class DataModule {
               minute: "numeric",
               hour12: true,
             });
+          } else if (fieldName === "startingPoint") {
+            this.displayedData[`data.${fieldName}`] = values[index];
+          } else if (fieldName === "destination") {
+            this.displayedData[`data.${fieldName}`] = values[index];
           } else {
             this.displayedData[`data.${fieldName}`] = values[index];
           }
