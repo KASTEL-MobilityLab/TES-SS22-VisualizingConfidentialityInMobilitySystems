@@ -21,9 +21,6 @@ import { fetchWaypoints } from "./utils/Routing";
 export class DataManager {
   public static readonly SEPERATOR_SYMBOL_FOR_DATATYPE = ".";
   currentRole: Role;
-  //Not worked on it yet.
-  roleUser?: User;
-  roleCompany?: Company;
 
   companies: Company[];
   payments: Payment[];
@@ -211,22 +208,6 @@ export class DataManager {
       throw Error(`Could not change role to ${role}`);
     }
     this.currentRole = <Role>role;
-  }
-
-  /**
-   * Under work. Not used yet. Change the current user.
-   * @param userId The user of the selected user.
-   */
-  changeUser(userId: string) {
-    this.roleUser = <User>this.getDataById(userId, this.users);
-  }
-
-  /**
-   * Undeer work. Not used yet. Change the current company.
-   * @param companyId The user of the selected company.
-   */
-  changeCompany(companyId: string) {
-    this.roleCompany = <Company>this.getDataById(companyId, this.companies);
   }
 
   // find a trip by its vehicle.
