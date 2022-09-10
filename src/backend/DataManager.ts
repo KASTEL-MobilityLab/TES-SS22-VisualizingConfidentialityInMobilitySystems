@@ -1,3 +1,4 @@
+import { DELIMITER } from "@/utils/translationUtils";
 import { isNode } from "browser-or-node";
 import { AggregatedData } from "./AggregatedData";
 import type {
@@ -19,7 +20,6 @@ import { TripAnimator } from "./TripAnimator";
 import type { LatLng } from "./utils/LatLng";
 import { fetchWaypoints } from "./utils/Routing";
 export class DataManager {
-  public static readonly SEPERATOR_SYMBOL_FOR_DATATYPE = ".";
   currentRole: Role;
 
   companies: Company[];
@@ -256,7 +256,7 @@ export class DataManager {
   }
 
   getDataType(key: string) {
-    return <DataType>key.split(DataManager.SEPERATOR_SYMBOL_FOR_DATATYPE)[1];
+    return <DataType>key.split(DELIMITER)[1];
   }
 
   getRoleVisibility(dataTypeKey: string): boolean {
