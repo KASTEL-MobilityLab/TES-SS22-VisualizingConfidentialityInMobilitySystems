@@ -19,13 +19,13 @@ export class SharedCar extends IndividualVehicle {
   /**
    * Creates a new Shared Car.
    *
-   * @param id The id of the vehicle.
-   * @param companyId the id of the company the vehicle belongs to.
-   * @param status the status of the vehicle (inactive or active).
-   * @param numPassengers the number of passengers the car can carry.
-   * @param licensePlate the license plate of the car.
-   * @param color the color of the car.
-   * @param company optionally, the actual company instance the vehicle belongs to.
+   * @param id The id of the shared car.
+   * @param companyId the id of the company the shared car belongs to.
+   * @param status the status of the shared car (inactive or active).
+   * @param numPassengers the number of passengers the shared car can carry.
+   * @param licensePlate the license plate of the shared car.
+   * @param color the color of the shared car.
+   * @param company optionally, the actual company instance the shared car belongs to.
    */
   constructor(
     id: string,

@@ -16,12 +16,12 @@ export class Bicycle extends IndividualVehicle {
   /**
    * Creates a new Bicycle.
    *
-   * @param id The id of the vehicle.
-   * @param companyId the id of the company the vehicle belongs to.
-   * @param status the status of the vehicle (inactive or active).
+   * @param id the id of the bicycle.
+   * @param companyId the id of the company the bicycle belongs to.
+   * @param status the status of the bicycle (inactive or active).
    * @param electric whether the bicycle is electric or not.
    * @param electricLock whether the bicycle has an electric lock or not.
-   * @param company optionally, the actual company instance the vehicle belongs to.
+   * @param company optionally, the actual company instance the bicycle belongs to.
    */
   constructor(
     id: string,

@@ -16,12 +16,12 @@ export class Taxi extends IndividualVehicle {
   /**
    * Creates a new Taxi.
    *
-   * @param id The id of the vehicle.
-   * @param companyId the id of the company the vehicle belongs to.
-   * @param status the status of the vehicle (inactive or active).
+   * @param id The id of the taxi.
+   * @param companyId the id of the company the taxi belongs to.
+   * @param status the status of the taxi (inactive or active).
    * @param numPassengers the number of passengers the taxi can carry.
    * @param licensePlate the license plate of the taxi.
-   * @param company optionally, the actual company instance the vehicle belongs to.
+   * @param company optionally, the actual company instance the taxi belongs to.
    */
   constructor(
     id: string,

@@ -9,10 +9,10 @@ export class Train extends PublicVehicle {
   /**
    * Creates a new train.
    *
-   * @param id The id of the vehicle.
-   * @param companyId the id of the company the vehicle belongs to.
-   * @param status the status of the vehicle (inactive or active).
-   * @param company optionally, the actual company instance the vehicle belongs to.
+   * @param id The id of the train.
+   * @param companyId the id of the company the train belongs to.
+   * @param status the status of the train (inactive or active).
+   * @param company optionally, the actual company instance the train belongs to.
    */
   constructor(
     id: string,
