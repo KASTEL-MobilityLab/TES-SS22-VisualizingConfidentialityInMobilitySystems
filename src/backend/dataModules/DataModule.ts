@@ -53,8 +53,13 @@ export class DataModule {
             this.displayedData[`data.${fieldName}`] = values[index] + "€";
           } else if (fieldName === "batteryLevel") {
             this.displayedData[`data.${fieldName}`] = values[index] + "%";
-          } else if (fieldName === "currentPosition") {
-            this.displayedData[`data.${fieldName}`] = values[index];
+          } else if (fieldName === "expiryDate") {
+            this.displayedData[`data.${fieldName}`] = values[
+              index
+            ].toLocaleDateString("default", {
+              month: "long",
+              year: "numeric",
+            });
           } else {
             this.displayedData[`data.${fieldName}`] = values[index];
           }
