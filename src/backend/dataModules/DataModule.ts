@@ -60,6 +60,22 @@ export class DataModule {
               month: "long",
               year: "numeric",
             });
+          } else if (fieldName === "startTime") {
+            this.displayedData[`data.${fieldName}`] = values[
+              index
+            ].toLocaleTimeString("en-US", {
+              hour: "numeric",
+              minute: "numeric",
+              hour12: true,
+            });
+          } else if (fieldName === "endTime") {
+            this.displayedData[`data.${fieldName}`] = values[
+              index
+            ].toLocaleTimeString("en-US", {
+              hour: "numeric",
+              minute: "numeric",
+              hour12: true,
+            });
           } else {
             this.displayedData[`data.${fieldName}`] = values[index];
           }
