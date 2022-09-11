@@ -7,9 +7,9 @@ import { PublicVehicle } from "./PublicVehicle";
  */
 export class Train extends PublicVehicle {
   /**
-   * Creates a new train.
+   * Creates a new Train.
    *
-   * @param id The id of the train.
+   * @param id the id of the train.
    * @param companyId the id of the company the train belongs to.
    * @param status the status of the train (inactive or active).
    * @param company optionally, the actual company instance the train belongs to.

@@ -1,5 +1,4 @@
-import { Exclude, Expose } from "class-transformer";
-import { Role } from "../Role";
+import { Expose } from "class-transformer";
 import { DataField } from "./DataField";
 
 /**
@@ -9,6 +8,11 @@ export class City extends DataField {
   @Expose()
   readonly name: string;
 
+  /**
+   * Creates a new City.
+   * @param id the id the city.
+   * @param name the namen of the city.
+   */
   constructor(id: string, name: string) {
     super(id);
     this.name = name;

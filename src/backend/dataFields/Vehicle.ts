@@ -10,12 +10,16 @@ import { VehicleStatus, type VehicleType } from "./types";
 export abstract class Vehicle extends DataField {
   @Expose()
   readonly companyId: string;
+
   @Expose()
   readonly type: VehicleType;
+
   @Expose()
   readonly status: VehicleStatus;
+
   @Exclude()
   private _company?: Company;
+
   //Possibly undefined name of the company that owns this vehicle.
   @Exclude()
   ownerName?: string;
@@ -24,6 +28,15 @@ export abstract class Vehicle extends DataField {
   @Expose()
   currentPosition?: LatLng;
 
+  /**
+   * Creates a new Vehicle.
+   * @param id the id of the vehicle.
+   * @param companyId the id of the company this vehicle belongs to.
+   * @param type the type of the vehicle.
+   * @param status the status of the vehicle.
+   * @param company the company this vehicle belongs to.
+   * @param currentPosition the current possition of the vehicle.
+   */
   constructor(
     id: string,
     companyId: string,
@@ -42,10 +55,16 @@ export abstract class Vehicle extends DataField {
     this.currentPosition = currentPosition;
   }
 
+  /**
+   * Gets the company of the vehicle.
+   */
   get company() {
     return this._company;
   }
 
+  /**
+   * Sets the company of the vehicle and checks for valid foreign key references.
+   */
   set company(company: Company | undefined) {
     if (!company) {
       throw new Error("Cannot set the company of this vehicle to undefined.");

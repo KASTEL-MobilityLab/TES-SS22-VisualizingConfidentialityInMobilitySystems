@@ -1,5 +1,4 @@
-import { Exclude, Expose } from "class-transformer";
-import { Role } from "../Role";
+import { Expose } from "class-transformer";
 import { DataField } from "./DataField";
 
 /**
@@ -9,6 +8,11 @@ export class Company extends DataField {
   @Expose()
   readonly name: string;
 
+  /**
+   * Creates a new Company.
+   * @param id the id of the company.
+   * @param name the name of the company.
+   */
   constructor(id: string, name: string) {
     super(id);
     this.name = name;

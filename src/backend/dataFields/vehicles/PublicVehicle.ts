@@ -9,7 +9,7 @@ export abstract class PublicVehicle extends Vehicle {
   /**
    * Constructor of the abstract class PublicVehicle.
    *
-   * @param id The id of the public vehicle.
+   * @param id the id of the public vehicle.
    * @param companyId the id of the company the public vehicle belongs to.
    * @param type the type of the public vehicle.
    * @param status the status of the public vehicle (inactive or active).

@@ -21,6 +21,14 @@ export class Route extends DataField {
   @Expose()
   description?: string;
 
+  /**
+   * Creates a new Route.
+   * @param id the id of the route.
+   * @param start the starting point of the route.
+   * @param end the ending point of the route.
+   * @param waypoints optionally, the waypoints that are passed through.
+   * @param description optionally, the description of the route.
+   */
   constructor(
     id: string,
     start: LatLng,

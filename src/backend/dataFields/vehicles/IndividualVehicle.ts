@@ -9,7 +9,7 @@ export abstract class IndividualVehicle extends Vehicle {
   /**
    * Constructs a IndividualVehicle.
    *
-   * @param id The id of the individual vehicle.
+   * @param id the id of the individual vehicle.
    * @param companyId the id of the company the individual vehicle belongs to.
    * @param type The type of the individual vehicle.
    * @param status the status of the individual vehicle (inactive or active).

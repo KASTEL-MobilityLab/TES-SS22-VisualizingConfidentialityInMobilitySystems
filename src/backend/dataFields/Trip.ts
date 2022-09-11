@@ -55,8 +55,8 @@ export class Trip extends DataField {
   currentStep: number;
 
   /**
-   *
-   * @param id The id of the trip.
+   * Creates a new Trip.
+   * @param id the id of the trip.
    * @param routeId the id of the route.
    * @param vehicleId the id of the vehicle.
    * @param userId the id of the user.
@@ -107,18 +107,6 @@ export class Trip extends DataField {
     if (!route) {
       this._route = route;
     }
-  }
-
-  /**
-   * Sets the current position of the vehicle to the start of this trip.
-   */
-  setVehicleStartPosition() {
-    if (!(this._vehicle && this._route)) {
-      throw Error(
-        "Vehicle and route must be set before setting start position of a vehicle."
-      );
-    }
-    this._vehicle.currentPosition = this._route.start;
   }
 
   /**
@@ -194,6 +182,13 @@ export class Trip extends DataField {
   }
 
   /**
+   * Sets the next trip of this trip.
+   */
+  set nextTrip(nextTrip: Trip) {
+    this.nextTrip = nextTrip;
+  }
+
+  /**
    * Moves the vehicle to the next waypoint and updates the current step.
    *
    * @param isRunning whether the trip is running or not.
@@ -228,9 +223,14 @@ export class Trip extends DataField {
   }
 
   /**
-   * Sets the next trip of this trip.
+   * Sets the current position of the vehicle to the start of this trip.
    */
-  set nextTrip(nextTrip: Trip) {
-    this.nextTrip = nextTrip;
+  setVehicleStartPosition() {
+    if (!(this._vehicle && this._route)) {
+      throw Error(
+        "Vehicle and route must be set before setting start position of a vehicle."
+      );
+    }
+    this._vehicle.currentPosition = this._route.start;
   }
 }

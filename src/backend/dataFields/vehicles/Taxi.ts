@@ -16,7 +16,7 @@ export class Taxi extends IndividualVehicle {
   /**
    * Creates a new Taxi.
    *
-   * @param id The id of the taxi.
+   * @param id the id of the taxi.
    * @param companyId the id of the company the taxi belongs to.
    * @param status the status of the taxi (inactive or active).
    * @param numPassengers the number of passengers the taxi can carry.

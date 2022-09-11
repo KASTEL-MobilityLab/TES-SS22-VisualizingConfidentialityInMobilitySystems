@@ -9,11 +9,20 @@ import { Exclude, Expose } from "class-transformer";
 export abstract class Payment extends DataField {
   @Expose({ name: "type" })
   readonly paymentType: PaymentType;
+
   @Expose()
   readonly tripId: string;
+
   @Exclude()
   private _trip?: Trip;
 
+  /**
+   * Creates a new Payment.
+   * @param paymentType the typ in which the payment is performed.
+   * @param id the id of the payment.
+   * @param tripId the id of the trip the payment belongs to.
+   * @param trip the trip the payment belongs to.
+   */
   constructor(
     paymentType: PaymentType,
     id: string,

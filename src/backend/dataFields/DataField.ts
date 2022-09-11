@@ -7,6 +7,10 @@ export abstract class DataField {
   @Expose()
   readonly id: string;
 
+  /**
+   * Constructs a DataField
+   * @param id the id of the DataField.
+   */
   constructor(id: string) {
     this.id = id;
   }

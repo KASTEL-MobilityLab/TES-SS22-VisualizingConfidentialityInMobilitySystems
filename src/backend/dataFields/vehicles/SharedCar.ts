@@ -19,7 +19,7 @@ export class SharedCar extends IndividualVehicle {
   /**
    * Creates a new Shared Car.
    *
-   * @param id The id of the shared car.
+   * @param id the id of the shared car.
    * @param companyId the id of the company the shared car belongs to.
    * @param status the status of the shared car (inactive or active).
    * @param numPassengers the number of passengers the shared car can carry.
