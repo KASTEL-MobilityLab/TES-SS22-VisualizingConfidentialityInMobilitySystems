@@ -9,6 +9,11 @@ import { generateAllVehicleMarkers } from "@/utils/markerUtils";
  * their position.
  */
 export class MarkerManager {
+  private static readonly START_COUNTER_OF_MARKER_AND_VEHUCLES = 0;
+  private static readonly BLANK_SYMBOL = " ";
+  private static readonly DESCRIPTION_OF_SELECTED_MARKER = "selected-marker";
+  private static readonly CLASS_NAME_POSITION_IN_ICON_OPTIONS = 0;
+  private static readonly SEPERATION_IN_ICON_OPTIONS = " ";
   allMarkers: VehicleMarker[] = [];
   vehicleMarkerMap: Map<string, VehicleMarker> = new Map();
   currentMarker?: VehicleMarker;
@@ -35,8 +40,15 @@ export class MarkerManager {
   init(allVehicles: Vehicle[]) {
     this.allMarkers = generateAllVehicleMarkers(allVehicles);
     this.vehicleMarkerMap = new Map<string, VehicleMarker>();
-    for (let i = 0; i < this.allMarkers.length; i++) {
-      this.vehicleMarkerMap.set(allVehicles[i].id, this.allMarkers[i]);
+    for (
+      let i = MarkerManager.START_COUNTER_OF_MARKER_AND_VEHUCLES;
+      i < this.allMarkers.length;
+      i++
+    ) {
+      this.vehicleMarkerMap.set(
+        allVehicles[MarkerManager.START_COUNTER_OF_MARKER_AND_VEHUCLES].id,
+        this.allMarkers[MarkerManager.START_COUNTER_OF_MARKER_AND_VEHUCLES]
+      );
     }
   }
 
@@ -50,7 +62,10 @@ export class MarkerManager {
 
     // add class 'selected-marker' to current marker
     const icon = marker.getIcon() as L.DivIcon;
-    icon.options.className = icon.options.className + " selected-marker";
+    icon.options.className =
+      icon.options.className +
+      MarkerManager.BLANK_SYMBOL +
+      MarkerManager.DESCRIPTION_OF_SELECTED_MARKER;
     this.currentMarker.setIcon(icon); // to update the icon class in DOM
   }
 
@@ -61,7 +76,9 @@ export class MarkerManager {
     const marker = this.currentMarker;
     if (marker) {
       const icon = marker.getIcon() as L.DivIcon;
-      icon.options.className = icon.options.className?.split(" ")[0];
+      icon.options.className = icon.options.className?.split(
+        MarkerManager.SEPERATION_IN_ICON_OPTIONS
+      )[MarkerManager.CLASS_NAME_POSITION_IN_ICON_OPTIONS];
       marker.setIcon(icon); // to update the icon class in DOM
     }
     this.currentMarker = undefined;
