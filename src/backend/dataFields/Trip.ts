@@ -6,6 +6,7 @@ import type { Payment } from "./Payment";
 import type { Route } from "./Route";
 import type { User } from "./User";
 import type { Vehicle } from "./Vehicle";
+import { fetchGeocodingAPI } from "../utils/Routing";
 
 /**
  * The Trip class. Connects User, Vehicle, Payment and Route together.
@@ -56,10 +57,10 @@ export class Trip extends DataField {
   currentStep: number;
 
   @Exclude()
-  private startingPoint?: LatLng;
+  private startingPoint?: string;
 
   @Exclude()
-  private destination?: LatLng;
+  private destination?: string;
 
   constructor(
     id: string,
@@ -101,7 +102,7 @@ export class Trip extends DataField {
   }
 
   /**
-   * Sets the current position of the vehicle to the start of this trip.
+   * Sets the current position of a vehicle to the start of its corresponding route
    */
   setVehicleStartPosition() {
     if (!(this._vehicle && this._route)) {
@@ -110,19 +111,23 @@ export class Trip extends DataField {
       );
     }
     this._vehicle.currentPosition = this._route.start;
-    this.startingPoint = this._route.start;
   }
 
   /**
-   * Sets the last position of the vehicle to the end of this trip.
+   * Sets the initial predfined positions of the vehicle and trip.
    */
-  setVehicleEndPosition() {
+  setInitialPositions() {
     if (!(this._vehicle && this._route)) {
       throw Error(
-        "Vehicle and route must be set before setting end position of a vehicle."
+        "Vehicle and route must be set before setting the starting point and destination of a trip."
       );
     }
-    this.destination = this._route.start;
+    fetchGeocodingAPI(this._route.start).then(
+      (value) => (this.startingPoint = value)
+    );
+    fetchGeocodingAPI(this._route.end).then(
+      (value) => (this.destination = value)
+    );
   }
 
   get vehicle() {

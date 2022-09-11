@@ -69,5 +69,5 @@ export async function fetchGeocodingAPI(
   );
   const json = await query.json();
   const address = json.features[0].text;
-  return address.data;
+  return address;
 }

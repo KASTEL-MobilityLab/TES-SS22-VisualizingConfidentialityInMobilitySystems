@@ -84,7 +84,7 @@ export class DataManager {
     this.setAllReferences();
     await this.setRouteWaypoints();
     this.trips.map((trip) => trip.setVehicleStartPosition());
-    this.trips.map((trip) => trip.setVehicleEndPosition());
+    this.trips.map((trip) => trip.setInitialPositions());
     this.tripAnimator = new TripAnimator(this.trips, 15);
     this.aggregatedData.init(this.trips);
     this.startAnimation();

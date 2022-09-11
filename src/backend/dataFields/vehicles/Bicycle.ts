@@ -1,6 +1,6 @@
 import { Expose } from "class-transformer";
 import type { Company } from "../Company";
-import { VehicleType, type VehicleStatus } from "../types";
+import { ElectricLockStatus, VehicleType, type VehicleStatus } from "../types";
 import { IndividualVehicle } from "./IndividualVehicle";
 
 /**
@@ -8,7 +8,7 @@ import { IndividualVehicle } from "./IndividualVehicle";
  */
 export class Bicycle extends IndividualVehicle {
   @Expose()
-  electricLock: boolean;
+  electricLock: ElectricLockStatus;
 
   @Expose()
   electric: boolean;
@@ -33,6 +33,10 @@ export class Bicycle extends IndividualVehicle {
   ) {
     super(id, companyId, VehicleType.Bike, status, company);
     this.electric = electric;
-    this.electricLock = electricLock;
+    if (electricLock) {
+      this.electricLock = ElectricLockStatus.Yes;
+    } else {
+      this.electricLock = ElectricLockStatus.No;
+    }
   }
 }

@@ -48,7 +48,7 @@ export class TripAnimator {
   public reset() {
     this.isRunning = false;
     for (const trip of this.trips) {
-      trip.setVehicleStartPosition();
+      trip.setInitialPositions();
       trip.resetStepCounter();
     }
   }
