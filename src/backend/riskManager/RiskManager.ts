@@ -5,12 +5,17 @@ import type { RiskExplanation } from "./RiskExplanation";
 import type { RiskLevel } from "./RiskLevel";
 
 /**
- * The riskManager class.
- * */
+ * The RiskManager class. The RiskManager manages all risks of the data types.
+ */
 export class RiskManager {
+  private static readonly STRING_TYPE_RISK = "string";
   risks?: Risk[];
   private currentRisk?: Risk;
 
+  /**
+   * Creates a new RiskManager
+   * @param risks all risks that are managed by the RiskManager
+   */
   constructor(risks?: Risk[]) {
     this.risks = risks;
   }
@@ -22,7 +27,7 @@ export class RiskManager {
    * and then tries to find the correct instance. If none is found or the
    * array is not initialized yet, it throws an error.
    *
-   * @param dataType the string of the DataType
+   * @param dataType the string of the DataType.
    */
   findRisk(dataType: DataType) {
     if (!this.risks) {
@@ -36,19 +41,19 @@ export class RiskManager {
   }
 
   /**
-   * Returns the risk of a dataType (low, medium or high)
-   * @param dataType the type of the specific data
-   * @returns low, medium or high
+   * Returns the risk of a dataType (low, medium or high).
+   * @param dataType the type of the specific data.
+   * @returns low, medium or high.
    * */
   getRiskLevel(dataType: DataType): RiskLevel {
     return this.findRisk(dataType).riskLevel;
   }
 
   /**
-   * Returns true if data is visible in the specified role and false otherwise
+   * Returns true if data is visible in the specified role and false otherwise.
    *
-   * @param dataType the type of the specific data
-   * @returns boolean with the visibility
+   * @param dataType the type of the specific data.
+   * @returns boolean with the visibility.
    */
   getVisibility(dataType: DataType, role: Role): boolean {
     const riskDef = this.findRisk(dataType);
@@ -58,8 +63,8 @@ export class RiskManager {
   /**
    * Returns a RiskExplanation with detailed information about a specific data type.
    *
-   * @param dataType the type of the specific data
-   * @returns a sting with detailed infos
+   * @param dataType the type of the specific data.
+   * @returns a sting with detailed infos.
    * */
   getRiskExplanation(dataType: DataType): RiskExplanation {
     const riskDef = this.findRisk(dataType);
@@ -70,9 +75,10 @@ export class RiskManager {
   /**
    * Updates the Risk, that is currently selected by the user.
    *
-   * @param risk the risk that is currently selected
+   * @param risk the risk that is currently selected.
    */
   setCurrentRisk(risk: string | Risk) {
+    //Rather the use of typeof with magic string instead of instanceof
     if (typeof risk === "string") {
       try {
         const dataType = <DataType>risk;
@@ -88,7 +94,7 @@ export class RiskManager {
   /**
    * Returns the currently selected Risk.
    *
-   * @returns the currently selected Risk
+   * @returns the currently selected Risk.
    */
   getCurrentRisk(): Risk | undefined {
     return this.currentRisk;

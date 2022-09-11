@@ -30,6 +30,13 @@ export class Risk {
   @Type(() => RiskExplanation)
   explanation: RiskExplanation;
 
+  /**
+   * Creates a new Risk.
+   * @param dataType the data type to which the risk belongs to.
+   * @param riskLevel the risk level of the data type.
+   * @param roleVisibility the role visiblity of the data type.
+   * @param explanation the explanation of the risk.
+   */
   constructor(
     dataType: DataType,
     riskLevel: RiskLevel,
