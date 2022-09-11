@@ -126,6 +126,10 @@ function emptySpotClicked(e: LeafletEvent) {
 async function vehicleMarkerClicked(event: LeafletEvent) {
   const marker = event.propagatedFrom as VehicleMarker;
   const vehicle = marker.vehicle;
+
+  $mm.value.deselectMarker();
+  $mm.value.highlightCurrentMarker(marker);
+
   $dm.value.updateByVehicle(vehicle);
   // navigate to Default Data View
   router.push({
@@ -158,5 +162,12 @@ async function vehicleMarkerClicked(event: LeafletEvent) {
   stroke-width: 7;
   fill: none;
   stroke-opacity: 1;
+}
+
+.vehicle-icon {
+  color: black;
+}
+.vehicle-icon.selected-marker {
+  color: rgb(189, 56, 56);
 }
 </style>

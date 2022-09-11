@@ -10,7 +10,7 @@ const ICONIFY_ICON_HEIGHT = 45;
 const FONT_AWESOME_SIZE = 3;
 
 // used for css styling, to center the icon
-const ICON_CLASS = "fontAwesomeIconLeaflet";
+const ICON_CLASS = "vehicle-icon";
 
 /**
  * Creates a new Iconify icon as a Leaflet DivIcon.

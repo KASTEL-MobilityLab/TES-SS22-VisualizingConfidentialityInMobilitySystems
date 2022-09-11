@@ -1,6 +1,6 @@
 import type { Vehicle } from "@/backend/dataFields";
-import type { VehicleMarker } from "@/utils/leafletExtension";
 import { toLeafletLatLng } from "@/utils/latLngUtils";
+import type { VehicleMarker } from "@/utils/leafletExtension";
 import { generateAllVehicleMarkers } from "@/utils/markerUtils";
 
 /**
@@ -11,6 +11,7 @@ import { generateAllVehicleMarkers } from "@/utils/markerUtils";
 export class MarkerManager {
   allMarkers: VehicleMarker[] = [];
   vehicleMarkerMap: Map<string, VehicleMarker> = new Map();
+  currentMarker?: VehicleMarker;
 
   /**
    * Updates the position of the marker to the current position of the
@@ -37,5 +38,32 @@ export class MarkerManager {
     for (let i = 0; i < this.allMarkers.length; i++) {
       this.vehicleMarkerMap.set(allVehicles[i].id, this.allMarkers[i]);
     }
+  }
+
+  /**
+   * Highlights the given marker by adding a class to the icon.
+   *
+   * @param marker the marker to highlight
+   */
+  highlightCurrentMarker(marker: VehicleMarker) {
+    this.currentMarker = marker;
+
+    // add class 'selected-marker' to current marker
+    const icon = marker.getIcon() as L.DivIcon;
+    icon.options.className = icon.options.className + " selected-marker";
+    this.currentMarker.setIcon(icon); // to update the icon class in DOM
+  }
+
+  /**
+   * Deselects the current marker and removes the highlight
+   */
+  deselectMarker() {
+    const marker = this.currentMarker;
+    if (marker) {
+      const icon = marker.getIcon() as L.DivIcon;
+      icon.options.className = icon.options.className?.split(" ")[0];
+      marker.setIcon(icon); // to update the icon class in DOM
+    }
+    this.currentMarker = undefined;
   }
 }
