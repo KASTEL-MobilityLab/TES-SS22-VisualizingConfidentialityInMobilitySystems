@@ -97,6 +97,7 @@ function setupMarkers(map: L.Map) {
  */
 function emptySpotClicked(e: LeafletEvent) {
   $dm.value.currentData.unsetReferences();
+  $mm.value.deselectMarker();
   // navigate back to welcome page on data viewer
   router.push({
     name: "Welcome",
