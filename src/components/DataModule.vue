@@ -24,15 +24,16 @@ function setCurrentRisk(key: string) {
     <template v-for="(value, key) in dataModule?.displayedData" :key="key">
       <div class="row m-2 p-2">
         <div class="col m-2 fw-bold">
-          <button
-            type="button"
-            :class="dataModule?.risks[key]"
-            data-bs-toggle="modal"
-            data-bs-target="#explanationModal"
-            @click="setCurrentRisk(key)"
-          >
-            {{ $t(key) }}
-          </button>
+          <div class="list-group">
+            <li
+              :class="dataModule?.risks[key]"
+              data-bs-toggle="modal"
+              data-bs-target="#explanationModal"
+              @click="setCurrentRisk(key)"
+            >
+              {{ $t(key) }}
+            </li>
+          </div>
         </div>
         <div v-if="$dm.getRoleVisibility(key)" class="col m-2">
           {{ value }}
