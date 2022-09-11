@@ -22,13 +22,11 @@ function setCurrentRisk(key: string) {
   <template v-if="dataModule !== undefined">
     <div class="d-flex justify-content-center align-items-center">
       <div>
-        <button class="btn btn-ligth" @click="$router.back()">
-          <i class="fa-solid fa-arrow-left"></i>
+        <button class="btn btn-light btn-md" @click="$router.back()">
+          <i class="fa-solid fa-arrow-left fa-2x"></i>
         </button>
       </div>
-      <div>
-        <h4 class="text-center m-2">{{ $t(dataFieldName) }}</h4>
-      </div>
+      <div class="fs-3 p-2 mb-1">{{ $t(dataFieldName) }}</div>
     </div>
     <template v-for="(value, key) in dataModule?.displayedData" :key="key">
       <div class="row m-2 p-2">
