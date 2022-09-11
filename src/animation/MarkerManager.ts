@@ -45,10 +45,7 @@ export class MarkerManager {
       i < this.allMarkers.length;
       i++
     ) {
-      this.vehicleMarkerMap.set(
-        allVehicles[MarkerManager.START_COUNTER_OF_MARKER_AND_VEHUCLES].id,
-        this.allMarkers[MarkerManager.START_COUNTER_OF_MARKER_AND_VEHUCLES]
-      );
+      this.vehicleMarkerMap.set(allVehicles[i].id, this.allMarkers[i]);
     }
   }
 
