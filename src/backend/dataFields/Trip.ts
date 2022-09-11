@@ -54,6 +54,22 @@ export class Trip extends DataField {
   @Exclude()
   currentStep: number;
 
+  /**
+   *
+   * @param id The id of the trip.
+   * @param routeId the id of the route.
+   * @param vehicleId the id of the vehicle.
+   * @param userId the id of the user.
+   * @param paymentId the id of the payment.
+   * @param price the price of the trip.
+   * @param avgSpeed the average speed of the trip.
+   * @param startTime the start time of the trip.
+   * @param endTime the end time of the trip.
+   * @param vehicle optionally, the vehicle of the trip.
+   * @param user optionally, the user of the trip.
+   * @param payment optionally, the payment of the trip.
+   * @param route optionally, the route of the trip.
+   */
   constructor(
     id: string,
     routeId: string,
@@ -105,10 +121,16 @@ export class Trip extends DataField {
     this._vehicle.currentPosition = this._route.start;
   }
 
+  /**
+   * Gets the vehicle of the trip.
+   */
   get vehicle() {
     return this._vehicle;
   }
 
+  /**
+   * Sets the vehicle of the trip and checks for valid foreign key references.
+   */
   set vehicle(vehicle: Vehicle | undefined) {
     if (!vehicle) {
       throw new Error("Cannot set the vehicle of this trip to undefined.");
@@ -117,10 +139,16 @@ export class Trip extends DataField {
     this._vehicle = vehicle;
   }
 
+  /**
+   * Gets the user of the trip.
+   */
   get user() {
     return this._user;
   }
 
+  /**
+   * Checks if the foreign key references are valid and sets the user.
+   */
   set user(user: User | undefined) {
     if (!user) {
       throw new Error("Cannot set the user of this trip to undefined.");
@@ -129,10 +157,16 @@ export class Trip extends DataField {
     this._user = user;
   }
 
+  /**
+   * Gets the payment of the trip.
+   */
   get payment() {
     return this._payment;
   }
 
+  /**
+   * Checks if the foreign key references are valid and sets the payment.
+   */
   set payment(payment: Payment | undefined) {
     if (!payment) {
       throw new Error("Cannot set the payment of this trip to undefined.");
@@ -141,10 +175,16 @@ export class Trip extends DataField {
     this._payment = payment;
   }
 
+  /**
+   * Get the route of the trip.
+   */
   get route() {
     return this._route;
   }
 
+  /**
+   * Checks if the foreign key references are valid and sets the route.
+   */
   set route(route: Route | undefined) {
     if (!route) {
       throw new Error("Cannot set the route of this trip to undefined.");
@@ -153,6 +193,11 @@ export class Trip extends DataField {
     this._route = route;
   }
 
+  /**
+   * Moves the vehicle to the next waypoint and updates the current step.
+   *
+   * @param isRunning whether the trip is running or not.
+   */
   step(isRunning = true) {
     //Ab hier weiter machen
     if (this.route?.waypoints && isRunning && !this.isFinished()) {
@@ -162,6 +207,11 @@ export class Trip extends DataField {
     }
   }
 
+  /**
+   * True if the trip is finished.
+   *
+   * @returns whether the trip is finished or not.
+   */
   isFinished(): boolean {
     if (!this.route?.waypoints) {
       throw new Error(
@@ -171,10 +221,16 @@ export class Trip extends DataField {
     return this.currentStep === this.route.waypoints.length - 1;
   }
 
+  /**
+   * Resets the step counter to 0.
+   */
   resetStepCounter() {
     this.currentStep = 0;
   }
 
+  /**
+   * Sets the next trip of this trip.
+   */
   set nextTrip(nextTrip: Trip) {
     this.nextTrip = nextTrip;
   }
