@@ -22,7 +22,7 @@ function setCurrentRisk(key: string) {
   <template v-if="dataModule !== undefined">
     <h4 class="text-center m-2">{{ $t(dataFieldName) }}</h4>
     <template v-for="(value, key) in dataModule?.displayedData" :key="key">
-      <div class="row m-2 p-2">
+      <div class="d-flex align-items-center row m-2 p-2">
         <div class="col m-2 fw-bold">
           <div class="list-group">
             <li
