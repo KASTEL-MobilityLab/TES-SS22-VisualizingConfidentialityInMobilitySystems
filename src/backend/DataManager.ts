@@ -66,7 +66,7 @@ export class DataManager {
   /**
    * This method initializes the data manager by asynchronously loading all data.
    */
-  async init() {
+  async init(autoStartAnimation = true) {
     let risks: Risk[];
     [
       this.users,
@@ -83,7 +83,9 @@ export class DataManager {
     this.trips.map((trip) => trip.setVehicleStartPosition());
     this.tripAnimator = new TripAnimator(this.trips, 15);
     this.aggregatedData.init(this.trips);
-    this.startAnimation();
+    if (autoStartAnimation) {
+      this.startAnimation();
+    }
   }
 
   /**

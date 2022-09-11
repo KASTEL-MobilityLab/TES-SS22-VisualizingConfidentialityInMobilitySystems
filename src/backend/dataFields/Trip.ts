@@ -79,16 +79,16 @@ export class Trip extends DataField {
     this.startTime = startTime;
     this.endTime = endTime;
     this.currentStep = 0;
-    if (vehicle !== undefined) {
+    if (!vehicle) {
       this._vehicle = vehicle;
     }
-    if (user !== undefined) {
+    if (!user) {
       this._user = user;
     }
-    if (payment !== undefined) {
+    if (!payment) {
       this._payment = payment;
     }
-    if (route !== undefined) {
+    if (!route) {
       this._route = route;
     }
   }
@@ -153,22 +153,22 @@ export class Trip extends DataField {
     this._route = route;
   }
 
-  step(isRunning: boolean) {
+  step(isRunning = true) {
     //Ab hier weiter machen
-    if (this.route?.waypoints && isRunning) {
+    if (this.route?.waypoints && isRunning && !this.isFinished()) {
       const nextWaypoint = this.route?.waypoints[this.currentStep + 1];
       this.vehicle?.move(nextWaypoint);
       this.currentStep++;
-      /*
-      if (this.vehicle?.currentPosition === nextWaypoint) {
-        this.currentStep++;
-      }
-      */
     }
   }
 
   isFinished(): boolean {
-    return this.currentStep === this.route?.waypoints?.length;
+    if (!this.route?.waypoints) {
+      throw new Error(
+        "Trip Progress is undefined. The Trip does not have a route."
+      );
+    }
+    return this.currentStep === this.route.waypoints.length - 1;
   }
 
   resetStepCounter() {
