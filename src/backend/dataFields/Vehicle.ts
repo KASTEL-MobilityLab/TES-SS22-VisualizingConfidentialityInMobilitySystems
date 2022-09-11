@@ -1,6 +1,5 @@
 import { Exclude, Expose, Type } from "class-transformer";
 import { LatLng } from "../utils/LatLng";
-import { fetchGeocodingAPI } from "../utils/Routing";
 import type { Company } from "./Company";
 import { DataField } from "./DataField";
 import { VehicleStatus, type VehicleType } from "./types";

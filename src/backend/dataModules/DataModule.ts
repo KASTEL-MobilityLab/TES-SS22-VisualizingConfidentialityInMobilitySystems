@@ -3,7 +3,6 @@ import { DataType } from "../DataType";
 import { getRiskColor } from "../riskManager/RiskColor";
 import { RiskLevel } from "../riskManager/RiskLevel";
 import type { RiskManager } from "../riskManager/RiskManager";
-import { fetchGeocodingAPI } from "../utils/Routing";
 
 /**
  * The DataModule class that stores all the data that is displayed in the DataViewer. Additionally, the risk of every data is stored
