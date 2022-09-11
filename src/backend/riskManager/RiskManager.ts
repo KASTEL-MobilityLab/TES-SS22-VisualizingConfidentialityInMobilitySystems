@@ -8,7 +8,6 @@ import type { RiskLevel } from "./RiskLevel";
  * The RiskManager class. The RiskManager manages all risks of the data types.
  */
 export class RiskManager {
-  private static readonly STRING_TYPE_RISK = "string";
   risks?: Risk[];
   private currentRisk?: Risk;
 

@@ -5,6 +5,7 @@ import { DataField } from "./DataField";
  * The User class.
  */
 export class User extends DataField {
+  private static readonly SEPERATOR_BETWEEN_FORENAME_AND_SURNAME = " ";
   @Expose()
   readonly forename: string;
 
@@ -44,6 +45,10 @@ export class User extends DataField {
    * @returns the full name of the user which is composed of the forename and the surname.
    */
   getFullName(): string {
-    return `${this.forename} ${this.surname}`;
+    return (
+      `${this.forename}` +
+      User.SEPERATOR_BETWEEN_FORENAME_AND_SURNAME +
+      `${this.surname}`
+    );
   }
 }

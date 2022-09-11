@@ -10,6 +10,8 @@ import type { Vehicle } from "./Vehicle";
  * The Trip class. Connects User, Vehicle, Payment and Route together.
  */
 export class Trip extends DataField {
+  private static readonly INITIAL_CURRENT_STEP = 0;
+  private static readonly REDUCER_FOR_CURRENT_STEP = 1;
   @Expose()
   readonly routeId: string;
 
@@ -212,14 +214,17 @@ export class Trip extends DataField {
         "Trip Progress is undefined. The Trip does not have a route."
       );
     }
-    return this.currentStep === this.route.waypoints.length - 1;
+    return (
+      this.currentStep ===
+      this.route.waypoints.length - Trip.REDUCER_FOR_CURRENT_STEP
+    );
   }
 
   /**
    * Resets the step counter to 0.
    */
   resetStepCounter() {
-    this.currentStep = 0;
+    this.currentStep = Trip.INITIAL_CURRENT_STEP;
   }
 
   /**
