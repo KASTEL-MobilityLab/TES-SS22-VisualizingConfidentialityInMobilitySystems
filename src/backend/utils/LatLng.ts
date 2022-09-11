@@ -20,4 +20,15 @@ export class LatLng {
     this.latitude = latitude;
     this.longitude = longitude;
   }
+
+  /**
+   * Returns the string representation of the LatLng.
+   *
+   * @returns the string representation of the LatLng with 5 decimal places
+   */
+  toString(): string {
+    return `${this.latitude.toFixed(5)} (Lat), ${this.longitude.toFixed(
+      5
+    )} (Lng)`;
+  }
 }
