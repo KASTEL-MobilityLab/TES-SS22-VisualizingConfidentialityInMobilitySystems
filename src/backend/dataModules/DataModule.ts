@@ -11,7 +11,12 @@ import type { RiskManager } from "../riskManager/RiskManager";
 export class DataModule {
   //A "_" as a prefic of a property of a DataField means that this property is not displayed in the frontend within the DataViewer.
   //Properties without a "_" as a prefix are displayed in the DataViewer.
-  public static readonly PREFIX_OF_NON_DISPLAYED_DATA = "_";
+  private static readonly PREFIX_OF_NON_DISPLAYED_DATA = "_";
+  private static readonly PREFIX_OF_DATA_TRANSLATIONS = "data";
+  private static readonly SEPERATION_SYMBOL_OF_TRANSLATIONS = ".";
+  private static readonly BUTTON_ABBREVIATION = "btn";
+  private static readonly BLANK_SPACE = " ";
+  private static readonly LINK_BETWEEN_BUTTON_ABBREVIATION = "-";
   //Stores the data that is shown to the user
   public displayedData: Record<string, string>;
   //Stores the risks of the shown data
@@ -21,8 +26,8 @@ export class DataModule {
 
   /**
    * Creates a DataModule.
-   * @param dataField The DataField to whom a DataModule shall be created.
-   * @param riskManager The RiskManager that is assigned within the DataManager to manage the risks of the particular DataFields.
+   * @param dataField the DataField to whom a DataModule shall be created.
+   * @param riskManager the RiskManager that is assigned within the DataManager to manage the risks of the particular DataFields.
    */
   constructor(dataField: DataField, riskManager: RiskManager) {
     this.displayedData = this.assignDataFieldToDisplayedData(dataField);
@@ -46,12 +51,24 @@ export class DataModule {
       dataTypes.forEach((dataType) => {
         if (fieldName === dataType) {
           //Wird als Methode ausgelagert
-          if (fieldName === "price") {
-            this.displayedData[`data.${fieldName}`] = values[index] + "€";
-          } else if (fieldName === "batteryLevel") {
-            this.displayedData[`data.${fieldName}`] = values[index] + "%";
+          if (fieldName === DataType.TripPrice) {
+            this.displayedData[
+              DataModule.PREFIX_OF_DATA_TRANSLATIONS +
+                DataModule.SEPERATION_SYMBOL_OF_TRANSLATIONS +
+                `${fieldName}`
+            ] = values[index] + "€";
+          } else if (fieldName === DataType.VehicleBatteryLevel) {
+            this.displayedData[
+              DataModule.PREFIX_OF_DATA_TRANSLATIONS +
+                DataModule.SEPERATION_SYMBOL_OF_TRANSLATIONS +
+                `${fieldName}`
+            ] = values[index] + "%";
           } else {
-            this.displayedData[`data.${fieldName}`] = values[index];
+            this.displayedData[
+              DataModule.PREFIX_OF_DATA_TRANSLATIONS +
+                DataModule.SEPERATION_SYMBOL_OF_TRANSLATIONS +
+                `${fieldName}`
+            ] = values[index];
           }
         }
       });
@@ -76,7 +93,11 @@ export class DataModule {
       //Find specific value within DataType
       dataTypes.forEach((dataType) => {
         if (fieldName === dataType) {
-          this.risks[`data.${fieldName}`] = riskManager.getRiskLevel(dataType);
+          this.risks[
+            DataModule.PREFIX_OF_DATA_TRANSLATIONS +
+              DataModule.SEPERATION_SYMBOL_OF_TRANSLATIONS +
+              `${fieldName}`
+          ] = riskManager.getRiskLevel(dataType);
         }
       });
     }
@@ -92,9 +113,12 @@ export class DataModule {
     const fieldNames = Object.keys(risks);
     for (const fieldName of fieldNames) {
       const riskLevel = risks[fieldName];
-      risks[fieldName] = `btn btn-${getRiskColor(
-        RiskLevel[riskLevel as keyof typeof RiskLevel]
-      )}`;
+      risks[fieldName] =
+        DataModule.BUTTON_ABBREVIATION +
+        DataModule.BLANK_SPACE +
+        DataModule.BUTTON_ABBREVIATION +
+        DataModule.LINK_BETWEEN_BUTTON_ABBREVIATION +
+        `${getRiskColor(RiskLevel[riskLevel as keyof typeof RiskLevel])}`;
     }
     return risks;
   }
