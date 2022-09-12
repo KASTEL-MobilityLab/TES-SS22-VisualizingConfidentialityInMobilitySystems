@@ -88,8 +88,11 @@
   },
   {
     "id": "P14",
-    "type": "PayPal",
+    "type": "Credit Card",
     "tripId": "T14",
-    "userName": "Nino74"
+    "cardNumber": 3571,
+    "ccv": 458,
+    "expiryDate": "2024-02-01T06:11:06.291Z",
+    "provider": "jcb"
   }
 ]
