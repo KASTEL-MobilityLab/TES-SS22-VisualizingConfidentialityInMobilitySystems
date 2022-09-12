@@ -1,13 +1,14 @@
 import "reflect-metadata";
 import { describe, expect, it } from "vitest";
 import type { DataField } from "../dataFields";
+import type { Id } from "../dataFields/types";
 import { DataManager } from "../DataManager";
 import { testDataLoaderParams } from "./DataLoader.spec";
 
 // References start with an underscore
 function compareReferences<T extends DataField>(
   actualReference: unknown,
-  referenceId: string,
+  referenceId: Id,
   allLoadedDataFields: T[]
 ) {
   const expectedReference = allLoadedDataFields.find(

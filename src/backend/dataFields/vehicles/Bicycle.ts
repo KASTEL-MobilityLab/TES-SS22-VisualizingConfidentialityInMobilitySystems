@@ -1,7 +1,12 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { Expose } from "class-transformer";
 import type { Company } from "../Company";
-import { VehicleType, type VehicleStatus } from "../types";
+import {
+  VehicleType,
+  type CompanyId,
+  type VehicleId,
+  type VehicleStatus,
+} from "../types";
 import { IndividualVehicle } from "./IndividualVehicle";
 
 /**
@@ -25,8 +30,8 @@ export class Bicycle extends IndividualVehicle {
    * @param company optionally, the actual company instance the bicycle belongs to.
    */
   constructor(
-    id: string,
-    companyId: string,
+    id: VehicleId,
+    companyId: CompanyId,
     status: VehicleStatus,
     electric: boolean,
     electricLock: boolean,

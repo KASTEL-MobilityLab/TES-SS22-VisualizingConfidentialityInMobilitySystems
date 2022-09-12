@@ -4,14 +4,19 @@ import "reflect-metadata";
 import { LatLng } from "../utils/LatLng";
 import type { Company } from "./Company";
 import { DataField } from "./DataField";
-import { VehicleStatus, type VehicleType } from "./types";
+import {
+  VehicleStatus,
+  type CompanyId,
+  type VehicleId,
+  type VehicleType,
+} from "./types";
 
 /**
  * The interface every vehicle must implement.
  */
 export abstract class Vehicle extends DataField {
   @Expose()
-  readonly companyId: string;
+  readonly companyId: CompanyId;
 
   @Expose()
   readonly type: VehicleType;
@@ -40,8 +45,8 @@ export abstract class Vehicle extends DataField {
    * @param currentPosition the current position of the vehicle.
    */
   constructor(
-    id: string,
-    companyId: string,
+    id: VehicleId,
+    companyId: CompanyId,
     type: VehicleType,
     status: VehicleStatus,
     company?: Company,

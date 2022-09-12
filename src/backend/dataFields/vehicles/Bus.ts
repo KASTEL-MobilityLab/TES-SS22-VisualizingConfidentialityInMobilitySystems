@@ -1,5 +1,10 @@
 import type { Company } from "../Company";
-import { VehicleStatus, VehicleType } from "../types";
+import {
+  VehicleStatus,
+  VehicleType,
+  type CompanyId,
+  type VehicleId,
+} from "../types";
 import { PublicVehicle } from "./PublicVehicle";
 
 /**
@@ -15,8 +20,8 @@ export class Bus extends PublicVehicle {
    * @param company optionally, the actual company instance the vehicle belongs to.
    */
   constructor(
-    id: string,
-    companyId: string,
+    id: VehicleId,
+    companyId: CompanyId,
     status: VehicleStatus,
     company?: Company
   ) {

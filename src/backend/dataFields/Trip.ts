@@ -4,6 +4,7 @@ import "reflect-metadata";
 import { DataField } from "./DataField";
 import type { Payment } from "./Payment";
 import type { Route } from "./Route";
+import type { PaymentId, RouteId, TripId, UserId, VehicleId } from "./types";
 import type { User } from "./User";
 import type { Vehicle } from "./Vehicle";
 
@@ -14,16 +15,16 @@ export class Trip extends DataField {
   private static readonly INITIAL_CURRENT_STEP = 0;
   private static readonly REDUCER_FOR_CURRENT_STEP = 1;
   @Expose()
-  readonly routeId: string;
+  readonly routeId: RouteId;
 
   @Expose()
-  readonly vehicleId: string;
+  readonly vehicleId: VehicleId;
 
   @Expose()
-  readonly userId: string;
+  readonly userId: UserId;
 
   @Expose()
-  readonly paymentId: string;
+  readonly paymentId: PaymentId;
 
   @Expose()
   readonly price: number;
@@ -74,11 +75,11 @@ export class Trip extends DataField {
    * @param route optionally, the route of the trip.
    */
   constructor(
-    id: string,
-    routeId: string,
-    vehicleId: string,
-    userId: string,
-    paymentId: string,
+    id: TripId,
+    routeId: RouteId,
+    vehicleId: VehicleId,
+    userId: UserId,
+    paymentId: PaymentId,
     price: number,
     avgSpeed: number,
     startTime: Date,

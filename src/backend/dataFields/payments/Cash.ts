@@ -1,6 +1,6 @@
 import { Payment } from "../Payment";
 import type { Trip } from "../Trip";
-import { PaymentType } from "../types";
+import { PaymentType, type PaymentId, type TripId } from "../types";
 
 /**
  * The Cash class.
@@ -12,7 +12,7 @@ export class Cash extends Payment {
    * @param tripId the id of the trip in which this Cash instance is used
    * @param trip the Trip instance in which this Cash instance is used
    */
-  constructor(id: string, tripId: string, trip?: Trip) {
+  constructor(id: PaymentId, tripId: TripId, trip?: Trip) {
     super(PaymentType.Cash, id, tripId, trip);
   }
 }
