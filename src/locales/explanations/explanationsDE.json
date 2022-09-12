@@ -33,25 +33,29 @@
       "isVisible": "Ein Vorname ist gemäß @:explanation.gdpr (DSGVO) nicht unbedingt eine @:explanation.personal_information, da es mehrere Personen mit demselben Namen geben kann. Daher ist er für Sie als {role} sichtbar. Wenn der Vorname jedoch z.B. mit einer Adresse kombiniert wird, ist der Vorname eine @:explanation.personal_information und wäre für Sie nicht sichtbar.",
       "isNotVisible": "Ein Vorname ist gemäß @:explanation.gdpr (DSGVO) nicht unbedingt eine @:explanation.personal_information, da es mehrere Personen mit demselben Namen geben kann. Daher ist er für Sie als {role} nicht sichtbar. Wenn der Vorname jedoch z.B. nicht mit einer Adresse kombiniert werden kann, stellt dies keine @:explanation.personal_information dar und wäre für Sie sichtbar."
     },
+    "address": {
+      "isVisible": "Eine Adresse ist gemäß @:explanation.gdpr (DSGVO) eine @:explanation.personal_information, da man eine Person durch die Adresse identifizieren kann. Dem Datentyp der Adresse wird ein hohes Risiko zugeordnet, da diese schwere Folgen (z.B. Einbruch) im Falle eines Datendiebstahls mit sich ziehen. Da diese @:explanation.personal_information eine großes Risiko mit sich bringt, ist diese @:explanation.personal_information nur für einen kleinen Adressatenkreis, zu denen die von Ihnen ausgewählte {role} Rolle gehört, sichtbar.",
+      "isNotVisible": "Eine Adresse ist gemäß @:explanation.gdpr (DSGVO) eine @:explanation.personal_information, da man eine Person durch die Adresse identifizieren kann. Dem Datentyp der Adresse wird ein hohes Risiko zugeordnet, da diese schwere Folgen (z.B. Einbruch) im Falle eines Datendiebstahls mit sich ziehen. Da diese @:explanation.personal_information eine großes Risiko mit sich bringt, ist diese @:explanation.personal_information nur für einen kleinen Adressatenkreis, zu denen die von Ihnen ausgewählte {role} Rolle nicht gehört, sichtbar."
+    },
     "paymentData": {
-      "isVisible": "@:explanation.data_is_visible",
-      "isNotVisible": "@:explanation.data_is_not_visible"
+      "isVisible": "Zahlungsdaten sind gemäß @:explanation.gdpr (DSGVO) personenbezogene Informationen, da man eine Person durch die Zahlungsdaten, welche unter anderen den Namen beinahlten, identifizieren kann. Dem Datentyp der Zahlungsdaten wird ein hohes Risiko zugeordnet, da diese schwere Folgen (z.B. fiananzieller Missbrauch) im Falle eines Datendiebstahls mit sich ziehen. Da diese personenbezogenen Informationen ein großes Risiko mit sich bringen, sind diese personenbezogenen Informationen nur für einen kleinen Adressatenkreis, zu denen die von Ihnen ausgewählte {role} Rolle gehört, sichtbar.",
+      "isNotVisible": "Zahlungsdaten sind gemäß @:explanation.gdpr (DSGVO) personenbezogene Informationen, da man eine Person durch die Zahlungsdaten, welche unter anderen den Namen beinahlten, identifizieren kann. Dem Datentyp der Zahlungsdaten wird ein hohes Risiko zugeordnet, da diese schwere Folgen (z.B. fiananzieller Missbrauch) im Falle eines Datendiebstahls mit sich ziehen. Da diese personenbezogenen Informationen ein großes Risiko mit sich bringen, sind diese personenbezogenen Informationen nur für einen kleinen Adressatenkreis, zu denen die von Ihnen ausgewählte nicht {role} Rolle gehört, sichtbar."
     },
     "vehicleType": {
-      "isVisible": "@:explanation.data_is_visible",
-      "isNotVisible": "@:explanation.data_is_not_visible"
+      "isVisible": "Ein Fahrzeugtyp ist gemäß @:explanation.gdpr (DSGVO) nicht unbedingt eine @:explanation.personal_information, da der Typ eines Fortbewegungsmittels keinen Aufschluss über den Nutzer gibt. Der Typ des Fortbewegungsmittels ist insbesondere für die Verwaltung als auch für die Anmietung dieser von Interesse. Daher ist er für Sie als {role} sichtbar.",
+      "isNotVisible": "Ein Fahrzeugtyp ist gemäß @:explanation.gdpr (DSGVO) nicht unbedingt eine @:explanation.personal_information, da der Typ eines Fortbewegungsmittels keinen Aufschluss über den Nutzer gibt. Der Typ des Fortbewegungsmittels ist insbesondere für die Verwaltung als auch für die Anmietung dieser von Interesse. Daher ist er für Sie aufgrund mangelnde Zugriffssrechte als {role} nicht sichtbar."
     },
     "status": {
-      "isVisible": "@:explanation.data_is_visible",
-      "isNotVisible": "@:explanation.data_is_not_visible"
+      "isVisible": "Ein Fahrzeugstatus ist gemäß @:explanation.gdpr (DSGVO) eine @:explanation.personal_information, da man eine Person durch den Fahrzeugstatus mit weiteren Informatiuonen wie z.B. Zahlungsdaten identifizeren kann. Denn durch den den Fahrzeugstatus in Kombination mit Zahlugnsdaten lässt sich der jeweilige Nutzer identifizienre. Aus diesem Grund ist die der Fahrzeugstatus für Sie als {role} sichtbar.",
+      "isNotVisible": "Ein Fahrzeugstatus ist gemäß @:explanation.gdpr (DSGVO) eine @:explanation.personal_information, da man eine Person durch den Fahrzeugstatus mit weiteren Informatiuonen wie z.B. Zahlungsdaten identifizeren kann. Denn durch den den Fahrzeugstatus in Kombination mit Zahlugnsdaten lässt sich der jeweilige Nutzer identifizienre. Aus diesem Grund ist die der Fahrzeugstatus für Sie als {role} nicht sichtbar."
     },
     "batteryLevel": {
-      "isVisible": "@:explanation.data_is_visible",
-      "isNotVisible": "@:explanation.data_is_not_visible"
+      "isVisible": "Der Batteriestand eines Fahrzeugs ist gemäß @:explanation.gdpr (DSGVO) keine @:explanation.personal_informationm, da diese keinen Aufschluss über den Nutzer gibt und öffentlich im Rahmn der Verwaltung und Nutzung des Fahrzeugs einsehbar ist. Daher ist der Batteriestand für Sie in der Rolle der {role} einsehbar.",
+      "isNotVisible": "Der Batteriestand eines Fahrzeugs ist gemäß @:explanation.gdpr (DSGVO) keine @:explanation.personal_informationm, da diese keinen Aufschluss über den Nutzer gibt und öffentlich im Rahmen der Verwaltung und Nutzung des Fahrzeugs einsehbar ist. Daher ist der Batteriestand für Sie in der Rolle der {role} nicht einsehbar."
     },
     "ownerName": {
-      "isVisible": "@:explanation.data_is_visible",
-      "isNotVisible": "@:explanation.data_is_not_visible"
+      "isVisible": "Der Name des Eigentümers eines Fahrzeugs ist gemäß @:explanation.gdpr (DSGVO) keine @:explanation.personal_informationm, da diese keinen Aufschluss über den Nutzer gibt und öffentlich im Rahmen der Verwaltung und Nutzung des Fahrzeugs einsehbar ist. Daher ist der Name des Eigentümer des Fahrzeugs für Sie in der Rolle der {role} einsehbar.",
+      "isNotVisible": "Der Name des Eigentümers eines Fahrzeugs ist gemäß @:explanation.gdpr (DSGVO) keine @:explanation.personal_informationm, da diese keinen Aufschluss über den Nutzer gibt und öffentlich im Rahmen der Verwaltung und Nutzung des Fahrzeugs einsehbar ist. Daher ist der Name des Eigentümer des Fahrzeugs für Sie in der Rolle der {role} nicht einsehbar."
     },
     "startTime": {
       "isVisible": "@:explanation.data_is_visible",
