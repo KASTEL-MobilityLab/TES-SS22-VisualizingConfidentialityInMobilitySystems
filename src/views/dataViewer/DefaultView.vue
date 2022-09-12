@@ -22,13 +22,9 @@ const isActiveCheck = computed(() => {
         <div v-if="isActiveCheck">
           <RouterLink to="rider" class="link-dark">
             <button
+              id="default-view-button"
               type="button"
               class="btn btn-dark btn-lg w-100"
-              style="
-                --bs-btn-padding-y: 1rem;
-                --bs-btn-padding-x: 2rem;
-                --bs-btn-font-size: 1.2rem;
-              "
             >
               <i class="fa-solid fa-id-card"></i>
               {{ $t("app.dataViews.riderDataView") }}
@@ -37,13 +33,9 @@ const isActiveCheck = computed(() => {
         </div>
         <div v-else>
           <button
+            id="default-view-button"
             type="button"
             class="btn btn-dark btn-lg w-100 disabled"
-            style="
-              --bs-btn-padding-y: 1rem;
-              --bs-btn-padding-x: 2rem;
-              --bs-btn-font-size: 1.2rem;
-            "
           >
             <i class="fa-solid fa-id-card"></i>
             {{ $t("app.dataViews.riderDataView") }}
@@ -54,13 +46,9 @@ const isActiveCheck = computed(() => {
         <div v-if="isActiveCheck">
           <RouterLink to="payment" class="link-dark">
             <button
+              id="default-view-button"
               type="button"
               class="btn btn-dark btn-lg w-100"
-              style="
-                --bs-btn-padding-y: 1rem;
-                --bs-btn-padding-x: 2rem;
-                --bs-btn-font-size: 1.2rem;
-              "
             >
               <i class="fa-solid fa-sack-dollar"></i>
               {{ $t("app.dataViews.paymentDataView") }}
@@ -69,13 +57,9 @@ const isActiveCheck = computed(() => {
         </div>
         <div v-else>
           <button
+            id="default-view-button"
             type="button"
             class="btn btn-dark btn-lg w-100 disabled"
-            style="
-              --bs-btn-padding-y: 1rem;
-              --bs-btn-padding-x: 2rem;
-              --bs-btn-font-size: 1.2rem;
-            "
           >
             <i class="fa-solid fa-sack-dollar"></i>
             {{ $t("app.dataViews.paymentDataView") }}
@@ -87,13 +71,9 @@ const isActiveCheck = computed(() => {
       <div class="col">
         <RouterLink to="vehicle" class="link-dark">
           <button
+            id="default-view-button"
             type="button"
             class="btn btn-dark btn-lg w-100"
-            style="
-              --bs-btn-padding-y: 1rem;
-              --bs-btn-padding-x: 2rem;
-              --bs-btn-font-size: 1.2rem;
-            "
           >
             <i class="fa-solid fa-car"></i>
             {{ $t("app.dataViews.vehicleDataView") }}
@@ -104,13 +84,9 @@ const isActiveCheck = computed(() => {
         <div v-if="isActiveCheck">
           <RouterLink to="trip" class="link-dark">
             <button
+              id="default-view-button"
               type="button"
               class="btn btn-dark btn-lg w-100"
-              style="
-                --bs-btn-padding-y: 1rem;
-                --bs-btn-padding-x: 2rem;
-                --bs-btn-font-size: 1.2rem;
-              "
             >
               <i class="fa-solid fa-road"></i>
               {{ $t("app.dataViews.tripDataView") }}
@@ -119,13 +95,9 @@ const isActiveCheck = computed(() => {
         </div>
         <div v-else>
           <button
+            id="default-view-button"
             type="button"
             class="btn btn-dark btn-lg w-100 disabled"
-            style="
-              --bs-btn-padding-y: 1rem;
-              --bs-btn-padding-x: 2rem;
-              --bs-btn-font-size: 1.2rem;
-            "
           >
             <i class="fa-solid fa-road"></i>
             {{ $t("app.dataViews.tripDataView") }}
@@ -135,3 +107,11 @@ const isActiveCheck = computed(() => {
     </div>
   </div>
 </template>
+
+<style scoped>
+#default-view-button {
+  --bs-btn-padding-y: 1rem;
+  --bs-btn-padding-x: 2rem;
+  --bs-btn-font-size: 1.2rem;
+}
+</style>
