@@ -18,24 +18,20 @@
     "data_is_visible": "Es ist nicht möglich, einen Fahrer mit dieser Information zu identifizieren und daher ist es keine @:explanation.personal_information gemäß der @:explanation.gdpr (DSGVO). Daher ist dies für Sie als {role} sichtbar.",
     "data_is_not_visible": "Je nach Risiko der Daten ist es möglich, einen Fahrer mit diesen Informationen zu identifizieren. Daher gilt es als @:explanation.personal_information gemäß der @:explanation.gdpr (DGSVO). Als {role} dürfen Sie diese Daten nicht sehen.",
     "email": {
-      "isVisible": "@:explanation.data_is_visible",
-      "isNotVisible": "@:explanation.data_is_not_visible"
+      "isVisible": "Eine E-Mail-Adresse ist gemäß @:explanation.gdpr (DSGVO) eine @:explanation.personal_information, da man eine Person durch den Nutzernamen innerhalb der E-Mail-Adresse identifizeren kann. Denn in den meisten Fällen wählen Nutzer einen Nutzernamen, welcher eine große Ähnlichkeit zum realen Namen der Nutzers besitzt. Aus diesem Grund ist die E-Mail-Adresse für Sie als {role} sichtbar.",
+      "isNotVisible": "Eine E-Mail-Adresse ist gemäß @:explanation.gdpr (DSGVO) eine @:explanation.personal_information, da man eine Person durch den Nutzernamen innerhalb der E-Mail-Adresse identifizeren kann. Denn in den meisten Fällen wählen Nutzer einen Nutzernamen, welcher eine große Ähnlichkeit zum realen Namen der Nutzers besitzt. Aus diesem Grund ist die E-Mail-Adresse für Sie als {role} nicht sichtbar."
     },
     "phoneNumber": {
-      "isVisible": "@:explanation.data_is_visible",
-      "isNotVisible": "@:explanation.data_is_not_visible"
+      "isVisible": "Eine Telefonnummer ist gemäß @:explanation.gdpr (DSGVO) eine @:explanation.personal_information, da man eine Person durch die Telefonnummer im Telefonbuch bzw. Internet oder durch einen Anruf identifizeren kann. Denn durch das Suchen der Telefonnummer im Telefonbuch bzw. im Internet lassen sich in Referenzen (z.B. Vorname, Nachname, Adresse, Wohnort) ausfindig machen, mit welchen man die Person identifizeren kann. Aus diesem Grund ist die Telefonnummer für Sie als {role} sichtbar.",
+      "isNotVisible": "Eine Telefonnummer ist gemäß @:explanation.gdpr (DSGVO) eine @:explanation.personal_information, da man eine Person durch die Telefonnummer im Telefonbuch bzw. Internet oder durch einen Anruf identifizeren kann. Denn durch das Suchen der Telefonnummer im Telefonbuch bzw. im Internet lassen sich in Referenzen (z.B. Vorname, Nachname, Adresse, Wohnort) ausfindig machen, mit welchen man die Person identifizeren kann. Aus diesem Grund ist die Telefonnummer für Sie als {role} nicht sichtbar."
     },
     "surname": {
-      "isVisible": "Ein Nachname ist gemäß @:explanation.gdpr (GDPR) nicht unbedingt eine @:explanation.personal_information, da es mehrere Personen mit demselben Namen geben kann. Daher ist er für Sie als {role} sichtbar. Wenn der Nachname jedoch z.B. mit einer Adresse kombiniert wird, ist der Nachname @:explanation.personal_information und wäre für Sie nicht sichtbar.",
-      "isNotVisible": "@:explanation.data_is_not_visible"
+      "isVisible": "Ein Nachname ist gemäß @:explanation.gdpr (DSGVO) nicht unbedingt eine @:explanation.personal_information, da es mehrere Personen mit demselben Namen geben kann. Daher ist er für Sie als {role} sichtbar. Wenn der Nachname jedoch z.B. mit einer Adresse kombiniert wird, ist der Nachname eine @:explanation.personal_information und wäre für Sie nicht sichtbar.",
+      "isNotVisible": "Ein Nachname ist gemäß @:explanation.gdpr (DSGVO) nicht unbedingt eine @:explanation.personal_information, da es mehrere Personen mit demselben Namen geben kann. Daher ist er für Sie als {role} nicht sichtbar. Wenn der Nachname jedoch z.B. nicht mit einer Adresse kombiniert werden kann, stellt dies keine @:explanation.personal_information dar und wäre für Sie sichtbar."
     },
     "forename": {
-      "isVisible": "Ein Vorname ist gemäß @:explanation.gdpr (GDPR) nicht unbedingt eine @:explanation.personal_information, da es mehrere Personen mit demselben Namen geben kann. Daher ist er für Sie als {role} sichtbar. Wenn der Vorname jedoch z.B. mit einer Adresse kombiniert wird, ist der Vorname @:explanation.personal_information und wäre für Sie nicht sichtbar.",
-      "isNotVisible": "@:explanation.data_is_not_visible"
-    },
-    "address": {
-      "isVisible": "@:explanation.data_is_visible",
-      "isNotVisible": "@:explanation.data_is_not_visible"
+      "isVisible": "Ein Vorname ist gemäß @:explanation.gdpr (DSGVO) nicht unbedingt eine @:explanation.personal_information, da es mehrere Personen mit demselben Namen geben kann. Daher ist er für Sie als {role} sichtbar. Wenn der Vorname jedoch z.B. mit einer Adresse kombiniert wird, ist der Vorname eine @:explanation.personal_information und wäre für Sie nicht sichtbar.",
+      "isNotVisible": "Ein Vorname ist gemäß @:explanation.gdpr (DSGVO) nicht unbedingt eine @:explanation.personal_information, da es mehrere Personen mit demselben Namen geben kann. Daher ist er für Sie als {role} nicht sichtbar. Wenn der Vorname jedoch z.B. nicht mit einer Adresse kombiniert werden kann, stellt dies keine @:explanation.personal_information dar und wäre für Sie sichtbar."
     },
     "paymentData": {
       "isVisible": "@:explanation.data_is_visible",
