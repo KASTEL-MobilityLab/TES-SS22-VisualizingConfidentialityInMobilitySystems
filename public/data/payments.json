@@ -80,5 +80,16 @@
     "type": "PayPal",
     "tripId": "T12",
     "userName": "Dylan_Göckeritz"
+  },
+  {
+    "id": "P13",
+    "type": "Cash",
+    "tripId": "T13"
+  },
+  {
+    "id": "P14",
+    "type": "PayPal",
+    "tripId": "T14",
+    "userName": "Nino74"
   }
 ]
