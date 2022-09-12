@@ -13,7 +13,7 @@ export class DataModule {
   //Properties without a "_" as a prefix are displayed in the DataViewer.
   public static readonly PREFIX_OF_NON_DISPLAYED_DATA = "_";
   //Stores the data that is shown to the user
-  public displayedData: Record<string, string>;
+  public displayedData: Record<string, string | Promise<string>>;
   //Stores the risks of the shown data
   public risks: Record<string, string>;
   //The excludedProperties contain every property that are not displayed in the DataViewer.
@@ -34,9 +34,11 @@ export class DataModule {
   /**
    * Method that assignes the properties of a DataField to the displayedData of a DataModule.
    * @param dataField The DataField to whom a DataModule shall be created.
-   * @returns A Record<string, string> with the values of DataType as the keys and the property values of the dataField as values.
+   * @returns A Record<string, string | Promise<string>> with the values of DataType as the keys and the property values of the dataField as values.
    */
-  assignDataFieldToDisplayedData(dataField: DataField): Record<string, string> {
+  assignDataFieldToDisplayedData(
+    dataField: DataField
+  ): Record<string, string | Promise<string>> {
     const fieldNames = Object.keys(dataField);
     const values = Object.values(dataField);
     const dataTypes = Object.values(DataType);
@@ -50,6 +52,29 @@ export class DataModule {
             this.displayedData[`data.${fieldName}`] = values[index] + "€";
           } else if (fieldName === "batteryLevel") {
             this.displayedData[`data.${fieldName}`] = values[index] + "%";
+          } else if (fieldName === "expiryDate") {
+            this.displayedData[`data.${fieldName}`] = values[
+              index
+            ].toLocaleDateString("default", {
+              month: "long",
+              year: "numeric",
+            });
+          } else if (fieldName === "startTime") {
+            this.displayedData[`data.${fieldName}`] = values[
+              index
+            ].toLocaleTimeString("en-US", {
+              hour: "numeric",
+              minute: "numeric",
+              hour12: true,
+            });
+          } else if (fieldName === "endTime") {
+            this.displayedData[`data.${fieldName}`] = values[
+              index
+            ].toLocaleTimeString("en-US", {
+              hour: "numeric",
+              minute: "numeric",
+              hour12: true,
+            });
           } else {
             this.displayedData[`data.${fieldName}`] = values[index];
           }

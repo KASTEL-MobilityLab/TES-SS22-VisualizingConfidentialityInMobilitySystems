@@ -57,9 +57,9 @@ export const SHARED_CAR_ICON = createFAIcon("fa-car-side");
 // -------------------------------------------------------------------
 
 // Miscellaneous Icons -----------------------------------------------
-export const ROUTE_END_ICON = createFAIcon("fa-bullseye", 2, [10, 10]);
+export const ROUTE_START_ICON = createFAIcon("fa-bullseye", 2, [10, 16]);
 
-export const ROUTE_START_ICON = createFAIcon("fa-location-dot", 2, [10, 16]);
+export const ROUTE_END_ICON = createFAIcon("fa-location-dot", 2, [10, 10]);
 
 // -------------------------------------------------------------------
 

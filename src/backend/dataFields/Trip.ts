@@ -5,6 +5,8 @@ import type { Payment } from "./Payment";
 import type { Route } from "./Route";
 import type { User } from "./User";
 import type { Vehicle } from "./Vehicle";
+import { fetchGeocodingAPI } from "../utils/Routing";
+import { isNode } from "browser-or-node";
 
 /**
  * The Trip class. Connects User, Vehicle, Payment and Route together.
@@ -54,6 +56,12 @@ export class Trip extends DataField {
   @Exclude()
   currentStep: number;
 
+  @Exclude()
+  private startingPoint?: string;
+
+  @Exclude()
+  private destination?: string;
+
   constructor(
     id: string,
     routeId: string,
@@ -94,7 +102,7 @@ export class Trip extends DataField {
   }
 
   /**
-   * Sets the current position of the vehicle to the start of this trip.
+   * Sets the current position of a vehicle to the start of its corresponding route
    */
   setVehicleStartPosition() {
     if (!(this._vehicle && this._route)) {
@@ -103,6 +111,26 @@ export class Trip extends DataField {
       );
     }
     this._vehicle.currentPosition = this._route.start;
+  }
+
+  /**
+   * Sets the initial predfined positions of the vehicle and trip.
+   */
+  async setInitialPositions() {
+    if (!(this._vehicle && this._route)) {
+      throw Error(
+        "Vehicle and route must be set before setting the starting point and destination of a trip."
+      );
+    }
+    //Enter if-statement only in browser
+    if (!isNode) {
+      await fetchGeocodingAPI(this._route.start).then((value) => {
+        this.startingPoint = value;
+      });
+      await fetchGeocodingAPI(this._route.end).then((value) => {
+        this.destination = value;
+      });
+    }
   }
 
   get vehicle() {
@@ -154,16 +182,10 @@ export class Trip extends DataField {
   }
 
   step(isRunning: boolean) {
-    //Ab hier weiter machen
     if (this.route?.waypoints && isRunning) {
       const nextWaypoint = this.route?.waypoints[this.currentStep + 1];
       this.vehicle?.move(nextWaypoint);
       this.currentStep++;
-      /*
-      if (this.vehicle?.currentPosition === nextWaypoint) {
-        this.currentStep++;
-      }
-      */
     }
   }
 
