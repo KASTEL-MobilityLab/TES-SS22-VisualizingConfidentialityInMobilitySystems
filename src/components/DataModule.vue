@@ -20,7 +20,14 @@ function setCurrentRisk(key: string) {
 
 <template>
   <template v-if="dataModule !== undefined">
-    <h4 class="text-center m-2">{{ $t(dataFieldName) }}</h4>
+    <div class="d-flex justify-content-center align-items-center">
+      <div>
+        <button class="btn btn-light btn-md" @click="$router.back()">
+          <i class="fa-solid fa-arrow-left fa-2x"></i>
+        </button>
+      </div>
+      <div class="fs-3 p-2 mb-1">{{ $t(dataFieldName) }}</div>
+    </div>
     <template v-for="(value, key) in dataModule?.displayedData" :key="key">
       <div class="d-flex align-items-center row m-2 p-2">
         <div class="col m-2 fw-bold">
