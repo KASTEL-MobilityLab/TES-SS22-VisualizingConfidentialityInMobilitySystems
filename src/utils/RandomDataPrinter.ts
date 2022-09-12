@@ -88,7 +88,7 @@ export class RandomDataPrinter {
     if (len > 1) {
       const start = this.clickedPositions[0];
       const end = this.clickedPositions[len - 1];
-      const route = new Route("R0X", start, end, this.clickedPositions);
+      const route = new Route("R00", start, end, this.clickedPositions);
       this.print([route]);
     } else if (len === 1) {
       console.log(JSON.stringify(instanceToPlain(this.clickedPositions[0])));

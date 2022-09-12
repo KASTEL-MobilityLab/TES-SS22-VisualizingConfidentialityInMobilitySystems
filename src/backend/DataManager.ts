@@ -1,4 +1,4 @@
-import { DELIMITER } from "@/utils/translationUtils";
+import { DELIMITER, type DataTypeKey } from "@/utils/translationUtils";
 import { isNode } from "browser-or-node";
 import { AggregatedData } from "./AggregatedData";
 import type {
@@ -264,16 +264,32 @@ export class DataManager {
     return this.riskManager.getCurrentVisibility(this.currentRole);
   }
 
-  getDataType(key: string) {
+  /**
+   * Returns the datatype with the given key.
+   *
+   * @param key the (translation) key of the data type
+   * @returns the actual DataType
+   */
+  getDataType(key: DataTypeKey): DataType {
     return <DataType>key.split(DELIMITER)[DataManager.DATATYPE_POSITION];
   }
 
-  getRoleVisibility(dataTypeKey: string): boolean {
+  /**
+   *
+   * @param dataTypeKey the key of the data type
+   * @returns
+   */
+  getRoleVisibility(dataTypeKey: DataTypeKey): boolean {
     const dataType: DataType = this.getDataType(dataTypeKey);
     const risk: Risk = this.riskManager.findRisk(dataType);
     return risk.isVisible(this.currentRole);
   }
 
+  /**
+   * True if the animation is currently running.
+   *
+   * @returns true if the animation is running.
+   */
   getIsRunning() {
     return this.tripAnimator?.isRunning;
   }

@@ -1,6 +1,7 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { Expose } from "class-transformer";
 import { DataField } from "./DataField";
+import type { Id } from "./types";
 
 /**
  * The User class.
@@ -28,7 +29,7 @@ export class User extends DataField {
    * @param email the email of the user.
    */
   constructor(
-    id: string,
+    id: Id,
     forename: string,
     surname: string,
     phoneNumber: number,

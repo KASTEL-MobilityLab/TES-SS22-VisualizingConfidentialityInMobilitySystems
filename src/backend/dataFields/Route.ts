@@ -2,6 +2,7 @@
 import { Expose, Type } from "class-transformer";
 import { LatLng } from "../utils/LatLng";
 import { DataField } from "./DataField";
+import type { RouteId } from "./types";
 
 /**
  * The Route class.
@@ -31,7 +32,7 @@ export class Route extends DataField {
    * @param description optionally, the description of the route.
    */
   constructor(
-    id: string,
+    id: RouteId,
     start: LatLng,
     end: LatLng,
     waypoints?: LatLng[],

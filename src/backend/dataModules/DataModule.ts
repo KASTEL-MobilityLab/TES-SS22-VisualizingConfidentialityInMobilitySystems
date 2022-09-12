@@ -9,11 +9,10 @@ import type { RiskManager } from "../riskManager/RiskManager";
  * and assigned to the specific data.
  */
 export class DataModule {
-  //A "_" as a prefic of a property of a DataField means that this property is not displayed in the frontend within the DataViewer.
+  //A "_" as a prefix of a property of a DataField means that this property is not displayed in the frontend within the DataViewer.
   //Properties without a "_" as a prefix are displayed in the DataViewer.
-  private static readonly PREFIX_OF_NON_DISPLAYED_DATA = "_";
   private static readonly PREFIX_OF_DATA_TRANSLATIONS = "data";
-  private static readonly SEPERATION_SYMBOL_OF_TRANSLATIONS = ".";
+  private static readonly SEPARATION_SYMBOL_OF_TRANSLATIONS = ".";
   private static readonly BUTTON_ABBREVIATION = "btn";
   private static readonly BLANK_SPACE = " ";
   private static readonly LINK_BETWEEN_BUTTON_ABBREVIATION = "-";
@@ -21,8 +20,6 @@ export class DataModule {
   public displayedData: Record<string, string>;
   //Stores the risks of the shown data
   public risks: Record<string, string>;
-  //The excludedProperties contain every property that are not displayed in the DataViewer.
-  private excludedProperties = ["id", "type"];
 
   /**
    * Creates a DataModule.
@@ -37,7 +34,7 @@ export class DataModule {
   }
 
   /**
-   * Method that assignes the properties of a DataField to the displayedData of a DataModule.
+   * Method that assigns the properties of a DataField to the displayedData of a DataModule.
    * @param dataField The DataField to whom a DataModule shall be created.
    * @returns A Record<string, string> with the values of DataType as the keys and the property values of the dataField as values.
    */
@@ -50,23 +47,22 @@ export class DataModule {
       // Find specific value within DataType
       dataTypes.forEach((dataType) => {
         if (fieldName === dataType) {
-          //Wird als Methode ausgelagert
           if (fieldName === DataType.TripPrice) {
             this.displayedData[
               DataModule.PREFIX_OF_DATA_TRANSLATIONS +
-                DataModule.SEPERATION_SYMBOL_OF_TRANSLATIONS +
+                DataModule.SEPARATION_SYMBOL_OF_TRANSLATIONS +
                 `${fieldName}`
             ] = values[index] + "€";
           } else if (fieldName === DataType.VehicleBatteryLevel) {
             this.displayedData[
               DataModule.PREFIX_OF_DATA_TRANSLATIONS +
-                DataModule.SEPERATION_SYMBOL_OF_TRANSLATIONS +
+                DataModule.SEPARATION_SYMBOL_OF_TRANSLATIONS +
                 `${fieldName}`
             ] = values[index] + "%";
           } else {
             this.displayedData[
               DataModule.PREFIX_OF_DATA_TRANSLATIONS +
-                DataModule.SEPERATION_SYMBOL_OF_TRANSLATIONS +
+                DataModule.SEPARATION_SYMBOL_OF_TRANSLATIONS +
                 `${fieldName}`
             ] = values[index];
           }
@@ -77,7 +73,7 @@ export class DataModule {
   }
 
   /**
-   * Method that assignes the risk properties values of a DataField to the displayedData of a DataModule.
+   * Method that assigns the risk properties values of a DataField to the displayedData of a DataModule.
    * @param dataField The DataField to whom a DataModule shall be created.
    * @returns A Record<string, string> with the values of DataType as the keys and the risks property values of the dataField as values.
    */
@@ -95,7 +91,7 @@ export class DataModule {
         if (fieldName === dataType) {
           this.risks[
             DataModule.PREFIX_OF_DATA_TRANSLATIONS +
-              DataModule.SEPERATION_SYMBOL_OF_TRANSLATIONS +
+              DataModule.SEPARATION_SYMBOL_OF_TRANSLATIONS +
               `${fieldName}`
           ] = riskManager.getRiskLevel(dataType);
         }

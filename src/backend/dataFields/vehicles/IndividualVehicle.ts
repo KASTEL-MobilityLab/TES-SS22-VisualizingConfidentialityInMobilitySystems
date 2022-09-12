@@ -1,5 +1,10 @@
 import type { Company } from "../Company";
-import type { VehicleStatus, VehicleType } from "../types";
+import type {
+  CompanyId,
+  VehicleId,
+  VehicleStatus,
+  VehicleType,
+} from "../types";
 import { Vehicle } from "../Vehicle";
 
 /**
@@ -16,8 +21,8 @@ export abstract class IndividualVehicle extends Vehicle {
    * @param company optionally, the actual company instance the individual vehicle belongs to.
    */
   constructor(
-    id: string,
-    companyId: string,
+    id: VehicleId,
+    companyId: CompanyId,
     type: VehicleType,
     status: VehicleStatus,
     company?: Company

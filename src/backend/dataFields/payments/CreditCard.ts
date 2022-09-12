@@ -1,7 +1,7 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { Expose, Type } from "class-transformer";
 import type { Trip } from "../Trip";
-import { PaymentType } from "../types";
+import { PaymentType, type PaymentId, type TripId } from "../types";
 import { NonCash } from "./NonCash";
 
 /**
@@ -37,8 +37,8 @@ export class CreditCard extends NonCash {
     ccv: number,
     expiryDate: Date,
     provider: string,
-    id: string,
-    tripId: string,
+    id: PaymentId,
+    tripId: TripId,
     trip?: Trip
   ) {
     super(PaymentType.CreditCard, id, tripId, trip);

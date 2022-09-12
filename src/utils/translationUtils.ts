@@ -4,6 +4,8 @@ export const DELIMITER = ".";
 export const APP_PREFIX = "app";
 export const DATA_TYPE_PREFIX = "data";
 export const EXPLANATION_PREFIX = "explanation";
+export type DataTypeKey =
+  `${typeof DATA_TYPE_PREFIX}${typeof DELIMITER}${DataType}`;
 
 function concatenatePrefixWithKeys(prefix: string, ...keys: string[]): string {
   return prefix + "." + keys.join(DELIMITER);

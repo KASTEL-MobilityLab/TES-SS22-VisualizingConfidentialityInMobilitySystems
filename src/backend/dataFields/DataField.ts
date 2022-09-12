@@ -1,18 +1,19 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { Expose } from "class-transformer";
+import type { Id } from "./types";
 
 /**
  * The top level interface that every data field (like Trip or Payment) has to implement.
  */
 export abstract class DataField {
   @Expose()
-  readonly id: string;
+  readonly id: Id;
 
   /**
    * Constructs a DataField
    * @param id the id of the DataField.
    */
-  constructor(id: string) {
+  constructor(id: Id) {
     this.id = id;
   }
 
@@ -21,7 +22,7 @@ export abstract class DataField {
    * @param storedDataField An implementation of a DataField (e.g. an User, a Trip, ...) that is stored within an other DataField
    * @param dataFieldId Id that is stored within a DataField and that is tested
    */
-  checkForeignKeyReferences(storedDataField: DataField, dataFieldId: string) {
+  checkForeignKeyReferences(storedDataField: DataField, dataFieldId: Id) {
     if (storedDataField.id !== dataFieldId) {
       throw Error(
         `Cannot set ${storedDataField.constructor.name} with ${storedDataField.constructor.name} Id ${storedDataField.id}:
