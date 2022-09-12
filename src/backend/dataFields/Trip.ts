@@ -1,5 +1,4 @@
 import { Exclude, Expose, Type } from "class-transformer";
-import { LatLng } from "../utils/LatLng";
 import "reflect-metadata";
 import { DataField } from "./DataField";
 import type { Payment } from "./Payment";
@@ -188,11 +187,6 @@ export class Trip extends DataField {
       const nextWaypoint = this.route?.waypoints[this.currentStep + 1];
       this.vehicle?.move(nextWaypoint);
       this.currentStep++;
-      /*
-      if (this.vehicle?.currentPosition === nextWaypoint) {
-        this.currentStep++;
-      }
-      */
     }
   }
 
