@@ -123,10 +123,20 @@ export class Trip extends DataField {
       );
     }
     await fetchGeocodingAPI(this._route.start).then(
-      (value) => (this.startingPoint = value)
+      (value) => {
+        this.startingPoint = value;
+      },
+      () => {
+        throw Error("The starting point of the route can't be fetched.");
+      }
     );
     await fetchGeocodingAPI(this._route.end).then(
-      (value) => (this.destination = value)
+      (value) => {
+        this.destination = value;
+      },
+      () => {
+        throw Error("The destination of the route can't be fetched.");
+      }
     );
   }
 
