@@ -65,7 +65,7 @@ function calculateIntermediateSteps(
 
 /**
  * Calculates the distance in meter between two waypoints to a specific
- * lineOfLongitudeDistanceInKMInKarlsruhe value (111,3 in Karlsruhe).
+ * lineOfLongitudeDistanceInKMInKarlsruhe value (73 in Karlsruhe).
  *
  * @param firstWaypoint The first Waypoint.
  * @param secondWaypoint The second Waypoint.
