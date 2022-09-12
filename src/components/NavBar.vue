@@ -3,7 +3,7 @@ import { inject } from "vue";
 import { RouterLink } from "vue-router";
 import LocaleChanger from "./LocaleChanger.vue";
 import RolesToggleBar from "./RolesToggleBar.vue";
-import StartButton from "./StartButton.vue";
+import StartButton from "./MovieControllButtons.vue";
 const dataViewerVisible = inject("dataViewerVisible");
 </script>
 

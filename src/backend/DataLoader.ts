@@ -6,6 +6,7 @@ import {
   PayPal,
   Route,
   Train,
+  Bus,
   Trip,
   User,
   Vehicle,
@@ -15,6 +16,9 @@ import { isNode } from "browser-or-node";
 import { plainToInstance, type ClassConstructor } from "class-transformer";
 import "reflect-metadata";
 import { PaymentType, VehicleType } from "./dataFields/types";
+import { Bicycle } from "./dataFields/vehicles/Bicycle";
+import { SharedCar } from "./dataFields/vehicles/SharedCar";
+import { Taxi } from "./dataFields/vehicles/Taxi";
 import { Risk } from "./riskManager/Risk";
 
 const DataPath = "data/";
@@ -121,6 +125,11 @@ export class DataLoader {
     this.paymentPath = paymentPath;
   }
 
+  /**
+   * Asynchronously loads all data from the specific json files and transforms the data.
+   *
+   * @returns an array of all loaded DataField Classes
+   */
   async loadAllData() {
     return await Promise.all([
       this.loadAllUsers(),
@@ -161,24 +170,37 @@ export class DataLoader {
     const transformedVehicleData: Vehicle[] = [];
 
     //Filter the e-scooters from all vehicles
-    const escooters = plainToInstance(
-      EScooter,
-      vehicleJson,
-      this.classTransformerOptions
-    ).filter((vehicle) => vehicle.type === VehicleType.EScooter);
-
-    //Push all e-scooters
-    transformedVehicleData.push(...escooters);
+    let escooters = await this.loadTransformedData(EScooter, vehicleJson);
+    escooters = escooters.filter(
+      (vehicle) => vehicle.type === VehicleType.EScooter
+    );
 
     //Filter the trains from all vehicles
-    const trains = plainToInstance(
-      Train,
-      vehicleJson,
-      this.classTransformerOptions
-    ).filter((vehicle) => vehicle.type === VehicleType.train);
+    let trains = await this.loadTransformedData(Train, vehicleJson);
+    trains = trains.filter((vehicle) => vehicle.type === VehicleType.Train);
 
-    //Push all trains
-    transformedVehicleData.push(...trains);
+    let busses = await this.loadTransformedData(Bus, vehicleJson);
+    busses = busses.filter((vehicle) => vehicle.type === VehicleType.Bus);
+
+    let taxis = await this.loadTransformedData(Taxi, vehicleJson);
+    taxis = taxis.filter((vehicle) => vehicle.type === VehicleType.Taxi);
+
+    let sharedCars = await this.loadTransformedData(SharedCar, vehicleJson);
+    sharedCars = sharedCars.filter(
+      (vehicle) => vehicle.type === VehicleType.SharedCar
+    );
+
+    let bikes = await this.loadTransformedData(Bicycle, vehicleJson);
+    bikes = bikes.filter((vehicle) => vehicle.type === VehicleType.Bike);
+
+    transformedVehicleData.push(
+      ...escooters,
+      ...trains,
+      ...busses,
+      ...taxis,
+      ...sharedCars,
+      ...bikes
+    );
 
     return transformedVehicleData;
   }

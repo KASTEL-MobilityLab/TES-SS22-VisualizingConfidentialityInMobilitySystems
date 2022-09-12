@@ -4,8 +4,10 @@
 export enum VehicleType {
   EScooter = "E-Scooter",
   Bike = "Bicycle",
-  train = "Train",
-  bus = "Bus",
+  Train = "Train",
+  Bus = "Bus",
+  Taxi = "Taxi",
+  SharedCar = "Shared Car",
 }
 
 /**
@@ -17,8 +19,7 @@ export enum VehicleStatus {
   Inactive = "Inactive",
 }
 
-export type VehicleStatusString = keyof typeof VehicleStatus;
-
+export type LicensePlate = `${string}-${string}-${number}`;
 /**
  * PaymentType specifies with which type of payment the user paid.
  */

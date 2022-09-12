@@ -82,10 +82,11 @@ export class DataManager {
     ] = await this.dataLoader.loadAllData();
     this.riskManager.risks = risks;
     this.setAllReferences();
+    await this.setRouteWaypoints();
     this.trips.map((trip) => trip.setVehicleStartPosition());
-    this.tripAnimator = new TripAnimator(this.trips, 10);
-    this.setRouteWaypoints();
+    this.tripAnimator = new TripAnimator(this.trips, 15);
     this.aggregatedData.init(this.trips);
+    this.startAnimation();
   }
 
   /**
@@ -176,9 +177,11 @@ export class DataManager {
       // don't fetch the routes in test mode.
       return;
     }
-    for (const route of this.routes) {
-      route.waypoints = await this.getRouteWaypoints(route);
-    }
+    Promise.all(
+      this.routes.map(
+        async (route) => (route.waypoints = await this.getRouteWaypoints(route))
+      )
+    );
   }
 
   /**
@@ -283,6 +286,10 @@ export class DataManager {
     return risk.isVisible(this.currentRole);
   }
 
+  getIsRunning() {
+    return this.tripAnimator?.isRunning;
+  }
+
   /**
    * Fetches the waypoints of the given route.
    *
@@ -293,21 +300,24 @@ export class DataManager {
   }
 
   /**
-   * Finds the next trip of  a given trip in order to get a cyclic route.
+   * Starts the animation of the vehicles.
    */
-  findNextTrip(trip: Trip) {
-    throw new Error("Method not implemented.");
-  }
-
   startAnimation() {
     this.tripAnimator?.start();
   }
 
+  /**
+   * Pauses the animation of the vehicles.
+   */
   stopAnimation() {
     this.tripAnimator?.stop();
   }
 
+  /**
+   * Resets the animation by moving the vehicles back to the starting positions.
+   */
   resetAnimation() {
     this.tripAnimator?.reset();
+    this.startAnimation();
   }
 }

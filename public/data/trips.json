@@ -53,5 +53,104 @@
     "price": 2.8,
     "startTime": "2022-05-22T11:35:49",
     "endTime": "2022-05-22T11:59:30"
+  },
+  {
+    "id": "T06",
+    "routeId": "R06",
+    "vehicleId": "V07",
+    "userId": "U06",
+    "paymentId": "P06",
+    "avgSpeed": 24,
+    "price": 25.11,
+    "startTime": "2022-05-22T11:35:49",
+    "endTime": "2022-05-22T11:59:30"
+  },
+  {
+    "id": "T07",
+    "routeId": "R07",
+    "vehicleId": "V10",
+    "userId": "U07",
+    "paymentId": "P07",
+    "avgSpeed": 27,
+    "price": 31.3,
+    "startTime": "2022-05-22T11:35:49",
+    "endTime": "2022-05-22T11:59:30"
+  },
+  {
+    "id": "T08",
+    "routeId": "R08",
+    "vehicleId": "V11",
+    "userId": "U08",
+    "paymentId": "P08",
+    "avgSpeed": 42,
+    "price": 14,
+    "startTime": "2022-05-22T11:35:49",
+    "endTime": "2022-05-22T11:59:30"
+  },
+  {
+    "id": "T09",
+    "routeId": "R09",
+    "vehicleId": "V12",
+    "userId": "U09",
+    "paymentId": "P09",
+    "avgSpeed": 35,
+    "price": 12,
+    "startTime": "2022-05-22T11:35:49",
+    "endTime": "2022-05-22T11:59:30"
+  },
+  {
+    "id": "T10",
+    "routeId": "R10",
+    "vehicleId": "V13",
+    "userId": "U10",
+    "paymentId": "P10",
+    "avgSpeed": 19,
+    "price": 2.4,
+    "startTime": "2022-05-22T11:35:49",
+    "endTime": "2022-05-22T11:59:30"
+  },
+  {
+    "id": "T11",
+    "routeId": "R11",
+    "vehicleId": "V14",
+    "userId": "U11",
+    "paymentId": "P11",
+    "avgSpeed": 18,
+    "price": 3.0,
+    "startTime": "2022-05-22T11:35:49",
+    "endTime": "2022-05-22T11:59:30"
+  },
+  {
+    "id": "T12",
+    "routeId": "R12",
+    "vehicleId": "V15",
+    "userId": "U12",
+    "paymentId": "P12",
+    "avgSpeed": 19,
+    "price": 1,
+    "startTime": "2022-05-22T11:35:49",
+    "endTime": "2022-05-22T11:59:30"
+  },
+  {
+    "id": "T13",
+    "routeId": "R13",
+    "vehicleId": "V16",
+    "userId": "U13",
+    "paymentId": "P13",
+    "avgSpeed": 32,
+    "price": 2.6,
+    "startTime": "2022-05-22T11:35:49",
+    "endTime": "2022-05-22T11:59:30"
+  },
+  {
+    "id": "T14",
+    "routeId": "R14",
+    "vehicleId": "V17",
+    "userId": "U14",
+    "paymentId": "P14",
+    "avgSpeed": 28,
+    "price": 3.2,
+    "startTime": "2022-05-22T11:35:49",
+    "endTime": "2022-05-22T11:59:30"
   }
 ]

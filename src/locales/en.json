@@ -20,6 +20,7 @@
       "tripDataView": "Trip Data",
       "vehicleDataView": "Vehicle Data"
     },
+    "reset": "Reset",
     "day": "no day | one day | {count} days",
     "help": "Help",
     "month": "no month | one month | {count} months",
@@ -36,6 +37,7 @@
   },
   "data": {
     "address": "Address",
+    "type": "Type",
     "averageSpeed": "Average speed",
     "batteryLevel": "Battery",
     "cardNumber": "Card Number",
@@ -51,11 +53,16 @@
     "phoneNumber": "Phone Number",
     "price": "Price",
     "provider": "Provider",
+    "userName": "Username",
+    "color": "Color",
+    "numPassengers": "Number of Passengers",
+    "licensePlate": "License Plate",
+    "electric": "Electric",
+    "electricLock": "Electric Lock",
+    "batteryCondition": "Battery Condition",
     "startTime": "Start Time",
     "status": "Status",
-    "surname": "Surname",
-    "userName": "Username",
-    "vehicleType": "Type"
+    "surname": "Surname"
   },
   "help": {
     "about_the_app": "About the app",

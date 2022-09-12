@@ -1,13 +1,11 @@
 <script setup lang="ts">
 import type { MarkerManager } from "@/animation/MarkerManager";
-import { Route } from "@/backend/dataFields";
 import type { DataManager } from "@/backend/DataManager";
-import type { LatLng as CustomLatLng } from "@/backend/utils/LatLng";
 import { dataManagerKey, markerManagerKey } from "@/keys";
 import { fromLeafletLatLng, toLeafletLatLngArray } from "@/utils/latLngUtils";
 import type { VehicleMarker } from "@/utils/leafletExtension";
+import { RandomDataPrinter } from "@/utils/RandomDataPrinter";
 import { RouteDisplay } from "@/utils/RouteDisplay";
-import { instanceToPlain } from "class-transformer";
 import L, { type LeafletEvent } from "leaflet";
 import { inject, onMounted, watch, type Ref } from "vue";
 import { useRouter } from "vue-router";
@@ -15,17 +13,18 @@ import { useRouter } from "vue-router";
 const $dm = inject(dataManagerKey) as Ref<DataManager>;
 const $mm = inject(markerManagerKey) as Ref<MarkerManager>;
 const router = useRouter();
-const RELOAD_TIME = 450;
 let routeDisplay: RouteDisplay;
 let map: L.Map;
 let allMarkers: VehicleMarker[] = [];
-// used for adding new routes to the json file
-let clickedPositions: CustomLatLng[] = [];
+
+// used to generate new data for the json files.
+// behavior is controlled in the emptySpotClicked function
+const randomDataPrinter = new RandomDataPrinter();
 
 // setup the map and generate markers, when this component is mounted
 onMounted(() => {
   map = setupMap();
-  const markersLayer = setupMarkers(map);
+  setupMarkers(map);
   map.on("click", emptySpotClicked);
   routeDisplay = new RouteDisplay(map);
 });
@@ -56,24 +55,6 @@ function setupMap(): L.Map {
   const center = new L.LatLng(49.00810234643429, 8.423063278198226);
   const bounds = new L.LatLngBounds(topLeft, bottomRight);
 
-  const stamenWaterColor = L.tileLayer(
-    "https://stamen-tiles.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.jpg",
-    {
-      attribution:
-        'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-      minZoom: 14,
-      maxZoom: 16,
-    }
-  );
-
-  const mapLabels = L.tileLayer(
-    "https://stamen-tiles.a.ssl.fastly.net/terrain-labels/{z}/{x}/{y}.png",
-    {
-      minZoom: 14,
-      maxZoom: 16,
-    }
-  );
-
   const mapboxBasicDarker = L.tileLayer(
     "https://api.mapbox.com/styles/v1/moritzm00/cl5nmjbva00eq14rzm7ssfss8/tiles/256/{z}/{x}/{y}@2x?access_token={accessToken}",
     {
@@ -87,7 +68,6 @@ function setupMap(): L.Map {
     zoom: 14.45,
     minZoom: 13,
     maxZoom: 16,
-    //layers: [stamenWaterColor, mapLabels],
     layers: [mapboxBasicDarker],
     maxBounds: bounds,
     maxBoundsViscosity: 0.6,
@@ -121,20 +101,20 @@ function emptySpotClicked(e: LeafletEvent) {
   router.push({
     name: "Welcome",
   });
-  if (import.meta.env.PROD) {
-    return;
-  }
-  // only print the routes in dev mode
-  const newPosition = fromLeafletLatLng((e as any).latlng);
-  clickedPositions.push(newPosition);
-  const len = clickedPositions.length;
-  if (len > 1) {
-    const start = clickedPositions[0];
-    const end = clickedPositions[len - 1];
-    const route = new Route("R0X", start, end, clickedPositions);
-    console.log(JSON.stringify(instanceToPlain(route)));
-  } else {
-    console.log(JSON.stringify(instanceToPlain(newPosition)));
+  // guard, don't print in production mode.
+  if (import.meta.env.DEV) {
+    // run data utility
+    const newPosition = fromLeafletLatLng((e as any).latlng);
+    randomDataPrinter.addWayPointToCurrentRoute(newPosition);
+
+    // uncomment the ones you want to print
+
+    // randomDataPrinter.printUsers(10, 6);
+    // randomDataPrinter.printCurrentRoute();
+    // randomDataPrinter.printIndividualRoutes(10, 10);
+    // randomDataPrinter.printCompanies(10, 15);
+    // randomDataPrinter.printPayments(10, 6, 6);
+    // randomDataPrinter.printVehicles(10, 10);
   }
 }
 
