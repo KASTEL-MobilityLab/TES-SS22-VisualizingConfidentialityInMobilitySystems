@@ -116,16 +116,16 @@ export class Trip extends DataField {
   /**
    * Sets the initial predfined positions of the vehicle and trip.
    */
-  setInitialPositions() {
+  async setInitialPositions() {
     if (!(this._vehicle && this._route)) {
       throw Error(
         "Vehicle and route must be set before setting the starting point and destination of a trip."
       );
     }
-    fetchGeocodingAPI(this._route.start).then(
+    await fetchGeocodingAPI(this._route.start).then(
       (value) => (this.startingPoint = value)
     );
-    fetchGeocodingAPI(this._route.end).then(
+    await fetchGeocodingAPI(this._route.end).then(
       (value) => (this.destination = value)
     );
   }
