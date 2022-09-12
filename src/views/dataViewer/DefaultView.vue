@@ -1,29 +1,29 @@
 <script setup lang="ts">
 import type { DataManager } from "@/backend/DataManager";
 import { dataManagerKey } from "@/keys";
-import { inject, type Ref } from "vue";
+import { computed, inject, type Ref } from "vue";
 import { RouterLink } from "vue-router";
 
 const $dm = inject(dataManagerKey) as Ref<DataManager>;
 
-function isActiveCheck(): boolean {
+const isActiveCheck = computed(() => {
   const vehicle = $dm.value.currentData.getVehicle();
   if (vehicle) {
     return vehicle.isActive();
   }
   return true;
-}
+});
 </script>
 
 <template>
   <div class="container">
     <div class="row m-5">
       <div class="col">
-        <div v-if="isActiveCheck()">
+        <div v-if="isActiveCheck">
           <RouterLink to="rider" class="link-dark">
             <button
               type="button"
-              class="btn btn-dark btn-lg"
+              class="btn btn-dark btn-lg w-100"
               style="
                 --bs-btn-padding-y: 1rem;
                 --bs-btn-padding-x: 2rem;
@@ -38,7 +38,7 @@ function isActiveCheck(): boolean {
         <div v-else>
           <button
             type="button"
-            class="btn btn-dark btn-lg disabled"
+            class="btn btn-dark btn-lg w-100 disabled"
             style="
               --bs-btn-padding-y: 1rem;
               --bs-btn-padding-x: 2rem;
@@ -51,11 +51,11 @@ function isActiveCheck(): boolean {
         </div>
       </div>
       <div class="col">
-        <div v-if="isActiveCheck()">
+        <div v-if="isActiveCheck">
           <RouterLink to="payment" class="link-dark">
             <button
               type="button"
-              class="btn btn-dark btn-lg"
+              class="btn btn-dark btn-lg w-100"
               style="
                 --bs-btn-padding-y: 1rem;
                 --bs-btn-padding-x: 2rem;
@@ -67,11 +67,10 @@ function isActiveCheck(): boolean {
             </button>
           </RouterLink>
         </div>
-
         <div v-else>
           <button
             type="button"
-            class="btn btn-dark btn-lg disabled"
+            class="btn btn-dark btn-lg w-100 disabled"
             style="
               --bs-btn-padding-y: 1rem;
               --bs-btn-padding-x: 2rem;
@@ -89,7 +88,7 @@ function isActiveCheck(): boolean {
         <RouterLink to="vehicle" class="link-dark">
           <button
             type="button"
-            class="btn btn-dark btn-lg"
+            class="btn btn-dark btn-lg w-100"
             style="
               --bs-btn-padding-y: 1rem;
               --bs-btn-padding-x: 2rem;
@@ -102,11 +101,11 @@ function isActiveCheck(): boolean {
         </RouterLink>
       </div>
       <div class="col">
-        <div v-if="isActiveCheck()">
+        <div v-if="isActiveCheck">
           <RouterLink to="trip" class="link-dark">
             <button
               type="button"
-              class="btn btn-dark btn-lg"
+              class="btn btn-dark btn-lg w-100"
               style="
                 --bs-btn-padding-y: 1rem;
                 --bs-btn-padding-x: 2rem;
@@ -121,7 +120,7 @@ function isActiveCheck(): boolean {
         <div v-else>
           <button
             type="button"
-            class="btn btn-dark btn-lg disabled"
+            class="btn btn-dark btn-lg w-100 disabled"
             style="
               --bs-btn-padding-y: 1rem;
               --bs-btn-padding-x: 2rem;
