@@ -111,7 +111,7 @@ const isActiveCheck = computed(() => {
 <style scoped>
 #default-view-button {
   --bs-btn-padding-y: 1rem;
-  --bs-btn-padding-x: 2rem;
+  --bs-btn-padding-x: 1.5rem;
   --bs-btn-font-size: 1.2rem;
 }
 </style>
