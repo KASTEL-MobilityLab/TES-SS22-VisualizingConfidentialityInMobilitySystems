@@ -1,8 +1,7 @@
 <script setup lang="ts">
 import type { DataManager } from "@/backend/DataManager";
-import { DataModule } from "@/backend/dataModules/DataModule";
 import { dataManagerKey } from "@/keys";
-import { inject, type Ref, type ComputedRef, computed } from "vue";
+import { inject, type Ref } from "vue";
 import { RouterLink } from "vue-router";
 
 const $dm = inject(dataManagerKey) as Ref<DataManager>;
@@ -68,6 +67,7 @@ function isActiveCheck(): boolean {
             </button>
           </RouterLink>
         </div>
+
         <div v-else>
           <button
             type="button"
