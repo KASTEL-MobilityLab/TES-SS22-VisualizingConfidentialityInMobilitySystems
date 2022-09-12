@@ -17,8 +17,8 @@ const isActiveCheck = computed(() => {
 
 <template>
   <div class="container">
-    <div class="row m-5">
-      <div class="col">
+    <div class="row row-cols-auto g-4 p-4">
+      <div class="col-6">
         <div v-if="isActiveCheck">
           <RouterLink to="rider" class="link-dark">
             <button
@@ -42,7 +42,7 @@ const isActiveCheck = computed(() => {
           </button>
         </div>
       </div>
-      <div class="col">
+      <div class="col-6">
         <div v-if="isActiveCheck">
           <RouterLink to="payment" class="link-dark">
             <button
@@ -66,9 +66,7 @@ const isActiveCheck = computed(() => {
           </button>
         </div>
       </div>
-    </div>
-    <div class="row m-5">
-      <div class="col">
+      <div class="col-6">
         <RouterLink to="vehicle" class="link-dark">
           <button
             id="default-view-button"
@@ -80,7 +78,7 @@ const isActiveCheck = computed(() => {
           </button>
         </RouterLink>
       </div>
-      <div class="col">
+      <div class="col-6">
         <div v-if="isActiveCheck">
           <RouterLink to="trip" class="link-dark">
             <button
