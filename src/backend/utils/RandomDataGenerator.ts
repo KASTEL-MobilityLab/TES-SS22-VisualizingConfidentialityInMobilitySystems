@@ -41,41 +41,43 @@ export function randomEnumElement<T extends Record<string, unknown>>(
  * Random data generator for DataField classes.
  */
 export class RandomDataGenerator {
-  static readonly DEFAULT_CENTER_LOCATION: [number, number] = [49.009, 8.4];
-  static readonly DEFAULT_LOCALE = "de";
-  static readonly START_COUNTER = 0;
-  static readonly MAX_LENGTH_OF_ID = 10;
-  static readonly START_COUNTER_OF_ID = "0";
-  static readonly EMPTY_ID = "";
-  static readonly FUTURE_TIME = 10;
-  static readonly PHONE_COUNTRY_CODE_GERMANY = "49########";
-  static readonly PREFIX_USER_ID = "U";
-  static readonly PREFIX_PAYMENT_ID = "P";
-  static readonly PREFIX_TRIP_ID = "T";
-  static readonly PREFIX_ROUTE_ID = "R";
-  static readonly PREFIX_COMPANY_ID = "C";
-  static readonly PREFIX_VEHICLE_ID = "V";
-  static readonly ROUTE_RADIUS = 1000;
-  static readonly LAT_POSITION = 0;
-  static readonly LNG_POSITION = 1;
-  static readonly MIN_VEHICLE_CONDITION = 0;
-  static readonly MAX_VEHICLE_CONDITION = 100;
-  static readonly MIN_VEHICLE_BATTERY_CONDITION = 0;
-  static readonly MAX_VEHICLE_BATTERY_CONDITION = 100;
-  static readonly MIN_VEHICLE_BATTERY_LEVEL = 0;
-  static readonly MAX_VEHICLE_BATTERY_LEVEL = 100;
-  static readonly DEFAULT_ESCOTTER_COMPANY_ID = "To be replaced";
-  static readonly DEFAULT_TRAIN_COMPANY_ID = "To be replaced";
-  static readonly DEFAULT_BICYCLE_COMPANY_ID = "To be replaced";
-  static readonly DEFAULT_SHARED_CAR_COMPANY_ID = "To be replaced";
-  static readonly DEFAULT_TAXI_COMPANY_ID = "To be replaced";
-  static readonly LENGTH_OF_RANDOM_LICENSE_PLATE_NUMBER = 4;
-  static readonly LENGTH_OF_RANDOM_LICENSE_PLATE_NAME = 2;
-  static readonly CASING_OF_LICENSE_PLATE = "upper";
-  static readonly CITY_OF_LICENSE_PLATE = "KA";
-  static readonly LICENSE_PLATE_SEPERATOR = "-";
-  static readonly MIN_NUMBER_OF_PASSENGERS_IN_CAR = 2;
-  static readonly MAX_NUMBER_OF_PASSENGERS_IN_CAR = 7;
+  private static readonly DEFAULT_CENTER_LOCATION: [number, number] = [
+    49.009, 8.4,
+  ];
+  private static readonly DEFAULT_LOCALE = "de";
+  private static readonly START_COUNTER = 0;
+  private static readonly MAX_LENGTH_OF_ID = 10;
+  private static readonly START_COUNTER_OF_ID = "0";
+  private static readonly EMPTY_ID = "";
+  private static readonly FUTURE_TIME = 10;
+  private static readonly PHONE_COUNTRY_CODE_GERMANY = "49########";
+  private static readonly PREFIX_USER_ID = "U";
+  private static readonly PREFIX_PAYMENT_ID = "P";
+  private static readonly PREFIX_TRIP_ID = "T";
+  private static readonly PREFIX_ROUTE_ID = "R";
+  private static readonly PREFIX_COMPANY_ID = "C";
+  private static readonly PREFIX_VEHICLE_ID = "V";
+  private static readonly ROUTE_RADIUS = 1000;
+  private static readonly LAT_POSITION = 0;
+  private static readonly LNG_POSITION = 1;
+  private static readonly MIN_VEHICLE_CONDITION = 0;
+  private static readonly MAX_VEHICLE_CONDITION = 100;
+  private static readonly MIN_VEHICLE_BATTERY_CONDITION = 0;
+  private static readonly MAX_VEHICLE_BATTERY_CONDITION = 100;
+  private static readonly MIN_VEHICLE_BATTERY_LEVEL = 0;
+  private static readonly MAX_VEHICLE_BATTERY_LEVEL = 100;
+  private static readonly DEFAULT_ESCOTTER_COMPANY_ID = "To be replaced";
+  private static readonly DEFAULT_TRAIN_COMPANY_ID = "To be replaced";
+  private static readonly DEFAULT_BICYCLE_COMPANY_ID = "To be replaced";
+  private static readonly DEFAULT_SHARED_CAR_COMPANY_ID = "To be replaced";
+  private static readonly DEFAULT_TAXI_COMPANY_ID = "To be replaced";
+  private static readonly LENGTH_OF_RANDOM_LICENSE_PLATE_NUMBER = 4;
+  private static readonly LENGTH_OF_RANDOM_LICENSE_PLATE_NAME = 2;
+  private static readonly CASING_OF_LICENSE_PLATE = "upper";
+  private static readonly CITY_OF_LICENSE_PLATE = "KA";
+  private static readonly LICENSE_PLATE_SEPERATOR = "-";
+  private static readonly MIN_NUMBER_OF_PASSENGERS_IN_CAR = 2;
+  private static readonly MAX_NUMBER_OF_PASSENGERS_IN_CAR = 7;
 
   static {
     faker.setLocale(RandomDataGenerator.DEFAULT_LOCALE);

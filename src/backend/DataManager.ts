@@ -20,6 +20,8 @@ import { TripAnimator } from "./TripAnimator";
 import type { LatLng } from "./utils/LatLng";
 import { fetchWaypoints } from "./utils/Routing";
 export class DataManager {
+  private static readonly ANIMATION_SPEED = 15;
+  private static readonly DATATYPE_POSITION = 1;
   currentRole: Role;
 
   companies: Company[];
@@ -81,7 +83,10 @@ export class DataManager {
     this.setAllReferences();
     await this.setRouteWaypoints();
     this.trips.map((trip) => trip.setVehicleStartPosition());
-    this.tripAnimator = new TripAnimator(this.trips, 15);
+    this.tripAnimator = new TripAnimator(
+      this.trips,
+      DataManager.ANIMATION_SPEED
+    );
     this.aggregatedData.init(this.trips);
     if (autoStartAnimation) {
       this.startAnimation();
@@ -258,7 +263,7 @@ export class DataManager {
   }
 
   getDataType(key: string) {
-    return <DataType>key.split(DELIMITER)[1];
+    return <DataType>key.split(DELIMITER)[DataManager.DATATYPE_POSITION];
   }
 
   getRoleVisibility(dataTypeKey: string): boolean {
