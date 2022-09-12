@@ -7,6 +7,7 @@ import type { Route } from "./Route";
 import type { User } from "./User";
 import type { Vehicle } from "./Vehicle";
 import { fetchGeocodingAPI } from "../utils/Routing";
+import { isNode } from "browser-or-node";
 
 /**
  * The Trip class. Connects User, Vehicle, Payment and Route together.
@@ -116,28 +117,30 @@ export class Trip extends DataField {
   /**
    * Sets the initial predfined positions of the vehicle and trip.
    */
-  async setInitialPositions() {
+  setInitialPositions() {
     if (!(this._vehicle && this._route)) {
       throw Error(
         "Vehicle and route must be set before setting the starting point and destination of a trip."
       );
     }
-    await fetchGeocodingAPI(this._route.start).then(
-      (value) => {
-        this.startingPoint = value;
-      },
-      () => {
-        throw Error("The starting point of the route can't be fetched.");
-      }
-    );
-    await fetchGeocodingAPI(this._route.end).then(
-      (value) => {
-        this.destination = value;
-      },
-      () => {
-        throw Error("The destination of the route can't be fetched.");
-      }
-    );
+    if (isNode) {
+      fetchGeocodingAPI(this._route.start).then(
+        (value) => {
+          this.startingPoint = value;
+        },
+        () => {
+          throw Error("The starting point of the route can't be fetched.");
+        }
+      );
+      fetchGeocodingAPI(this._route.end).then(
+        (value) => {
+          this.destination = value;
+        },
+        () => {
+          throw Error("The destination of the route can't be fetched.");
+        }
+      );
+    }
   }
 
   get vehicle() {
