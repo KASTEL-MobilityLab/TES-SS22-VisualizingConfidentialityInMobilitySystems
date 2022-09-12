@@ -58,32 +58,32 @@
       "isNotVisible": "Der Name des Eigentümers eines Fahrzeugs ist gemäß @:explanation.gdpr (DSGVO) keine @:explanation.personal_informationm, da diese keinen Aufschluss über den Nutzer gibt und öffentlich im Rahmen der Verwaltung und Nutzung des Fahrzeugs einsehbar ist. Daher ist der Name des Eigentümer des Fahrzeugs für Sie in der Rolle der {role} nicht einsehbar."
     },
     "startTime": {
-      "isVisible": "@:explanation.data_is_visible",
-      "isNotVisible": "@:explanation.data_is_not_visible"
+      "isVisible": "Der Startzeitpunkt eines Trips ist gemäß @:explanation.gdpr (DSGVO) keine persönliche Information, da er alleine keine Rückschlüsse auf eine Person zulässt. Aus diesem Grund ist der Startzeitpunkt für Sie als {role} sichtbar.",
+      "isNotVisible": "Der Startzeitpunkt eines Trips ist gemäß @:explanation.gdpr (DSGVO) keine persönliche Information, da er alleine keine Rückschlüsse auf eine Person zulässt. Allerdings lassen sich mit dieser information Rückschlüsse über das Verhalten von Personen schließen. Aus diesem Grund ist der Startzeitpunkt für Sie als {role} nicht sichtbar."
     },
     "endTime": {
-      "isVisible": "@:explanation.data_is_visible",
-      "isNotVisible": "@:explanation.data_is_not_visible"
+      "isVisible": "Der Endzeitpunkt eines Trips ist gemäß @:explanation.gdpr (DSGVO) keine persönliche Information, da er alleine keine Rückschlüsse auf eine Person zulässt. Aus diesem Grund ist der Endzeitpunkt für Sie als {role} sichtbar.",
+      "isNotVisible": "Der Endzeitpunkt eines Trips ist gemäß @:explanation.gdpr (DSGVO) keine persönliche Information, da er alleine keine Rückschlüsse auf eine Person zulässt. Allerdings lassen sich mit dieser information Rückschlüsse über das Verhalten von Personen schließen. Aus diesem Grund ist der Endzeitpunkt für Sie als {role} nicht sichtbar."
     },
     "averageSpeed": {
-      "isVisible": "@:explanation.data_is_visible",
+      "isVisible": "Die Durchschnittsgeschwindigkeit eines Trips ist gemäß @:explanation.gdpr (DSGVO) keine persönliche Information, da sie keine Rückschlüsse auf eine Person zulässt. Aus diesem Grund ist die Durchschnittsgeschwindigkeit für Sie als {role} sichtbar.",
       "isNotVisible": "@:explanation.data_is_not_visible"
     },
     "price": {
-      "isVisible": "@:explanation.data_is_visible",
-      "isNotVisible": "@:explanation.data_is_not_visible"
+      "isVisible": "Der Preis eines Trips ist gemäß @:explanation.gdpr (DSGVO) keine persönliche Information, da er keine Rückschlüsse auf eine Person zulässt. Aus diesem Grund ist der Preis für Sie als {role} sichtbar.",
+      "isNotVisible": "Der Preis eines Trips ist gemäß @:explanation.gdpr (DSGVO) keine persönliche Information, da er keine Rückschlüsse auf eine Person zulässt. Allerdings ist es trotzdem sinnvoll, das Daten bezüglich Zahlungen nur von den Parteien gesehen werden, die an der Zahlung beteiligt sind. Aus diesem Grund ist der Preis für Sie als {role} nicht sichtbar."
     },
     "paymentType": {
-      "isVisible": "@:explanation.data_is_visible",
-      "isNotVisible": "@:explanation.data_is_not_visible"
+      "isVisible": "Die Art einer Zahlung ist gemäß @:explanation.gdpr (DSGVO) keine persönliche Information, da es eine sehr große Anzahl an Personen gibt, die den selben Zahlungsmethode nutzten, und man somit mit dieser Information keine Rückschlüsse auf die Identität des Nutzer schließen kann. Aus diesem Grund ist die Zahlungsart für Sie als {role} sichtbar.",
+      "isNotVisible": "Die Art einer Zahlung ist gemäß @:explanation.gdpr (DSGVO) keine persönliche Information, da es eine sehr große Anzahl an Personen gibt, die den selben Zahlungsmethode nutzten, und man somit mit dieser Information keine Rückschlüsse auf die Identität des Nutzer schließen kann. Allerdings ist es trotzdem sinnvoll, das Daten bezüglich Zahlungen nur von den Parteien gesehen werden, die an der Zahlung beteiligt sind. Aus diesem Grund ist der Nutzername für Sie als {role} nicht sichtbar."
     },
     "cardNumber": {
-      "isVisible": "@:explanation.data_is_visible",
-      "isNotVisible": "@:explanation.data_is_not_visible"
+      "isVisible": "Die Kreditkartennummer ist gemäß @:explanation.gdpr (DSGVO) eine persönliche Information, da sie einzigartig ist und man somit eine Person theoretisch identifizieren kann. Außerdem kann man mit der Kreditkartennummer Zahlungen durchführen, weshalb das Risiko der Kreditkartennummer hoch ist und sie nur für den Nutzer der Karte sichtbar ist.",
+      "isNotVisible": "Die Kreditkartennummer ist gemäß @:explanation.gdpr (DSGVO) eine persönliche Information, da sie einzigartig ist und man somit eine Person theoretisch identifizieren kann. Außerdem kann man mit der Kreditkartennummer Zahlungen durchführen, weshalb das Risiko der Kreditkartennummer hoch ist und sie nur für den Nutzer der Karte sichtbar ist."
     },
     "ccv": {
-      "isVisible": "@:explanation.data_is_visible",
-      "isNotVisible": "@:explanation.data_is_not_visible"
+      "isVisible": "Die CCV einer Kreditkarte ist gemäß @:explanation.gdpr (DSGVO) keine persönliche Information, da es eine große Anzahl an Personen gibt, bei denen die CCV identisch ist, und man somit mit dieser Information keine Rückschlüsse auf die Identität des Nutzer schließen kann. Allerdings kann man mit der CCV in Kombination mit der Kreditkartennummer Zahlungen durchführen, weshalb das Risiko der CCV dennoch hoch ist und sie nur für den Nutzer der Karte sichtbar ist.",
+      "isNotVisible": "Die CCV einer Kreditkarte ist gemäß @:explanation.gdpr (DSGVO) keine persönliche Information, da es eine große Anzahl an Personen gibt, bei denen die CCV identisch ist, und man somit mit dieser Information keine Rückschlüsse auf die Identität des Nutzer schließen kann. Allerdings kann man mit der CCV in Kombination mit der Kreditkartennummer Zahlungen durchführen, weshalb das Risiko der CCV dennoch hoch ist und sie nur für den Nutzer der Karte sichtbar ist."
     },
     "expiryDate": {
       "isVisible": "Das Ablaufdatum einer Kreditkarte ist gemäß @:explanation.gdpr (DSGVO) keine persönliche Information, da es eine sehr große Anzahl an Personen gibt, bei denen das Ablaufdatum identisch ist, und man somit mit dieser Information keine Rückschlüsse auf die Identität des Nutzer schließen kann. Allerdings ist es trotzdem nicht ganz unkritisch, da man teilweise das Ablaufdatum in Kombination mit anderen Daten für online Zahlungen verwenden kann. Aus diesem Grund ist der Nutzername für Sie als {role} sichtbar.",
