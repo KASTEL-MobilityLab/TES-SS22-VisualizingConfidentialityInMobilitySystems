@@ -1,3 +1,4 @@
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { Expose } from "class-transformer";
 import { DataField } from "./DataField";
 
@@ -11,7 +12,7 @@ export class City extends DataField {
   /**
    * Creates a new City.
    * @param id the id the city.
-   * @param name the namen of the city.
+   * @param name the name of the city.
    */
   constructor(id: string, name: string) {
     super(id);

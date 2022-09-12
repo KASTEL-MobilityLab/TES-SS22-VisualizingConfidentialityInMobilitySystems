@@ -1,3 +1,4 @@
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { Expose, Type } from "class-transformer";
 import type { Trip } from "../Trip";
 import { PaymentType } from "../types";

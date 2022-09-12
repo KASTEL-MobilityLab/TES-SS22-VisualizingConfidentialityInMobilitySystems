@@ -1,5 +1,5 @@
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { Expose } from "class-transformer";
-import "reflect-metadata";
 import type { Company } from "../Company";
 import { VehicleStatus, VehicleType } from "../types";
 import { IndividualVehicle } from "./IndividualVehicle";

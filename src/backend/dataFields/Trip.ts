@@ -1,3 +1,4 @@
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { Exclude, Expose, Type } from "class-transformer";
 import "reflect-metadata";
 import { DataField } from "./DataField";

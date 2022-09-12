@@ -5,6 +5,7 @@ import {
   type RetentionPeriod,
   type VisibilityExplanation,
 } from "@/backend/riskManager/types";
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { Exclude, Expose } from "class-transformer";
 
 /**

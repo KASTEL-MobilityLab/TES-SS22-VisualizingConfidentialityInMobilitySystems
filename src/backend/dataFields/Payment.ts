@@ -1,6 +1,7 @@
 import { DataField } from "@/backend/dataFields/DataField";
 import { Trip } from "@/backend/dataFields/Trip";
 import { PaymentType } from "@/backend/dataFields/types";
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { Exclude, Expose } from "class-transformer";
 
 /**

@@ -105,6 +105,8 @@ function emptySpotClicked(e: LeafletEvent) {
   // guard, don't print in production mode.
   if (import.meta.env.DEV) {
     // run data utility
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const newPosition = fromLeafletLatLng((e as any).latlng);
     randomDataPrinter.addWayPointToCurrentRoute(newPosition);
 

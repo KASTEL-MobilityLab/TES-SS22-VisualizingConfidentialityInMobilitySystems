@@ -1,4 +1,6 @@
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { Exclude, Expose, Type } from "class-transformer";
+import "reflect-metadata";
 import { LatLng } from "../utils/LatLng";
 import type { Company } from "./Company";
 import { DataField } from "./DataField";
@@ -35,7 +37,7 @@ export abstract class Vehicle extends DataField {
    * @param type the type of the vehicle.
    * @param status the status of the vehicle.
    * @param company the company this vehicle belongs to.
-   * @param currentPosition the current possition of the vehicle.
+   * @param currentPosition the current position of the vehicle.
    */
   constructor(
     id: string,
