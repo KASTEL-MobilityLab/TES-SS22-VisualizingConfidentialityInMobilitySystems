@@ -123,6 +123,7 @@ export class Trip extends DataField {
         "Vehicle and route must be set before setting the starting point and destination of a trip."
       );
     }
+    //Enter if-statement only in browser
     if (!isNode) {
       await fetchGeocodingAPI(this._route.start).then((value) => {
         this.startingPoint = value;
