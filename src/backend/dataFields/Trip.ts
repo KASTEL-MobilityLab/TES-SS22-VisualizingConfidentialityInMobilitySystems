@@ -122,22 +122,16 @@ export class Trip extends DataField {
         "Vehicle and route must be set before setting the starting point and destination of a trip."
       );
     }
-    await fetchGeocodingAPI(this._route.start).then(
-      (value) => {
+    try {
+      await fetchGeocodingAPI(this._route.start).then((value) => {
         this.startingPoint = value;
-      },
-      () => {
-        throw Error("The starting point of the route can't be fetched.");
-      }
-    );
-    await fetchGeocodingAPI(this._route.end).then(
-      (value) => {
+      });
+      await fetchGeocodingAPI(this._route.end).then((value) => {
         this.destination = value;
-      },
-      () => {
-        throw Error("The destination of the route can't be fetched.");
-      }
-    );
+      });
+    } catch (error) {
+      throw Error("The initial positions of the route can't be fetched.");
+    }
   }
 
   get vehicle() {
