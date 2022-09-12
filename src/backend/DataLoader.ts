@@ -6,6 +6,7 @@ import {
   PayPal,
   Route,
   Train,
+  Bus,
   Trip,
   User,
   Vehicle,
@@ -178,6 +179,9 @@ export class DataLoader {
     let trains = await this.loadTransformedData(Train, vehicleJson);
     trains = trains.filter((vehicle) => vehicle.type === VehicleType.Train);
 
+    let busses = await this.loadTransformedData(Bus, vehicleJson);
+    busses = busses.filter((vehicle) => vehicle.type === VehicleType.Bus);
+
     let taxis = await this.loadTransformedData(Taxi, vehicleJson);
     taxis = taxis.filter((vehicle) => vehicle.type === VehicleType.Taxi);
 
@@ -192,6 +196,7 @@ export class DataLoader {
     transformedVehicleData.push(
       ...escooters,
       ...trains,
+      ...busses,
       ...taxis,
       ...sharedCars,
       ...bikes

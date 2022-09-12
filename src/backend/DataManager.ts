@@ -178,9 +178,11 @@ export class DataManager {
       // don't fetch the routes in test mode.
       return;
     }
-    for (const route of this.routes) {
-      route.waypoints = await this.getRouteWaypoints(route);
-    }
+    Promise.all(
+      this.routes.map(
+        async (route) => (route.waypoints = await this.getRouteWaypoints(route))
+      )
+    );
   }
 
   /**

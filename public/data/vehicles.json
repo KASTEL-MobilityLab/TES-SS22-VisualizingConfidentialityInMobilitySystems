@@ -130,5 +130,17 @@
     "status": "Active",
     "electric": false,
     "electricLock": false
+  },
+  {
+    "id": "V16",
+    "type": "Bus",
+    "companyId": "C11",
+    "status": "Active"
+  },
+  {
+    "id": "V17",
+    "type": "Bus",
+    "companyId": "C13",
+    "status": "Active"
   }
 ]
