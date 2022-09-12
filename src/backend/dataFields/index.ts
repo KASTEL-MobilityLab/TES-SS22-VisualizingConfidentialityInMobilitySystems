@@ -13,3 +13,4 @@ export * from "@/backend/dataFields/vehicles/EScooter";
 export * from "@/backend/dataFields/vehicles/IndividualVehicle";
 export * from "@/backend/dataFields/vehicles/PublicVehicle";
 export * from "@/backend/dataFields/vehicles/Train";
+export * from "@/backend/dataFields/vehicles/Bus";
