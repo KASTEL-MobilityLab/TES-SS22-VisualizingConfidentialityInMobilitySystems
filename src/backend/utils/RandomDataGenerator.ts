@@ -43,6 +43,39 @@ export function randomEnumElement<T extends Record<string, unknown>>(
 export class RandomDataGenerator {
   static readonly DEFAULT_CENTER_LOCATION: [number, number] = [49.009, 8.4];
   static readonly DEFAULT_LOCALE = "de";
+  static readonly START_COUNTER = 0;
+  static readonly MAX_LENGTH_OF_ID = 10;
+  static readonly START_COUNTER_OF_ID = "0";
+  static readonly EMPTY_ID = "";
+  static readonly FUTURE_TIME = 10;
+  static readonly PHONE_COUNTRY_CODE_GERMANY = "49########";
+  static readonly PREFIX_USER_ID = "U";
+  static readonly PREFIX_PAYMENT_ID = "P";
+  static readonly PREFIX_TRIP_ID = "T";
+  static readonly PREFIX_ROUTE_ID = "R";
+  static readonly PREFIX_COMPANY_ID = "C";
+  static readonly PREFIX_VEHICLE_ID = "V";
+  static readonly ROUTE_RADIUS = 1000;
+  static readonly LAT_POSITION = 0;
+  static readonly LNG_POSITION = 1;
+  static readonly MIN_VEHICLE_CONDITION = 0;
+  static readonly MAX_VEHICLE_CONDITION = 100;
+  static readonly MIN_VEHICLE_BATTERY_CONDITION = 0;
+  static readonly MAX_VEHICLE_BATTERY_CONDITION = 100;
+  static readonly MIN_VEHICLE_BATTERY_LEVEL = 0;
+  static readonly MAX_VEHICLE_BATTERY_LEVEL = 100;
+  static readonly DEFAULT_ESCOTTER_COMPANY_ID = "To be replaced";
+  static readonly DEFAULT_TRAIN_COMPANY_ID = "To be replaced";
+  static readonly DEFAULT_BICYCLE_COMPANY_ID = "To be replaced";
+  static readonly DEFAULT_SHARED_CAR_COMPANY_ID = "To be replaced";
+  static readonly DEFAULT_TAXI_COMPANY_ID = "To be replaced";
+  static readonly LENGTH_OF_RANDOM_LICENSE_PLATE_NUMBER = 4;
+  static readonly LENGTH_OF_RANDOM_LICENSE_PLATE_NAME = 2;
+  static readonly CASING_OF_LICENSE_PLATE = "upper";
+  static readonly CITY_OF_LICENSE_PLATE = "KA";
+  static readonly LICENSE_PLATE_SEPERATOR = "-";
+  static readonly MIN_NUMBER_OF_PASSENGERS_IN_CAR = 2;
+  static readonly MAX_NUMBER_OF_PASSENGERS_IN_CAR = 7;
 
   static {
     faker.setLocale(RandomDataGenerator.DEFAULT_LOCALE);
@@ -56,7 +89,7 @@ export class RandomDataGenerator {
     idPrefix: string
   ): T[] {
     const data: T[] = [];
-    for (let i = 0; i < count; i++) {
+    for (let i = RandomDataGenerator.START_COUNTER; i < count; i++) {
       const id = RandomDataGenerator.getIdString(idPrefix, startId + i);
       const entity: T = generator(id);
       data.push(entity);
@@ -65,7 +98,11 @@ export class RandomDataGenerator {
   }
 
   private static getIdString(idPrefix: string, id: number) {
-    return `${idPrefix}${id < 10 ? "0" : ""}${id}`;
+    return `${idPrefix}${
+      id < RandomDataGenerator.MAX_LENGTH_OF_ID
+        ? RandomDataGenerator.START_COUNTER_OF_ID
+        : RandomDataGenerator.EMPTY_ID
+    }${id}`;
   }
 
   // User data generation -------------------------------------------------------
@@ -80,7 +117,9 @@ export class RandomDataGenerator {
     const forename = faker.name.firstName();
     const surname = faker.name.lastName();
     const email = faker.internet.email(forename, surname);
-    const phoneNumber = parseInt(faker.phone.number("49########"));
+    const phoneNumber = parseInt(
+      faker.phone.number(RandomDataGenerator.PHONE_COUNTRY_CODE_GERMANY)
+    );
     return new User(id, forename, surname, phoneNumber, email);
   }
 
@@ -92,7 +131,12 @@ export class RandomDataGenerator {
    * @returns an array of randomly generated users
    */
   static generateUsers(count: number, startId: number): User[] {
-    return this.generateMultiple(this.generateUser, count, startId, "U");
+    return this.generateMultiple(
+      this.generateUser,
+      count,
+      startId,
+      RandomDataGenerator.PREFIX_USER_ID
+    );
   }
 
   // Payment data generation -----------------------------------------------------
@@ -106,7 +150,10 @@ export class RandomDataGenerator {
   static generatePayment(id: string, user?: User): Payment {
     const paymentType = randomEnumElement(PaymentType);
     // assume trip ID is the same as payment ID
-    const tripId = id.replace("P", "T");
+    const tripId = id.replace(
+      RandomDataGenerator.PREFIX_PAYMENT_ID,
+      RandomDataGenerator.PREFIX_TRIP_ID
+    );
     switch (paymentType) {
       case PaymentType.Cash:
         return new Cash(id, tripId);
@@ -137,7 +184,10 @@ export class RandomDataGenerator {
     if (userStartId) {
       const users = this.generateUsers(count, userStartId);
       for (const user of users) {
-        const paymentId = RandomDataGenerator.getIdString("P", startId++);
+        const paymentId = RandomDataGenerator.getIdString(
+          RandomDataGenerator.PREFIX_PAYMENT_ID,
+          startId++
+        );
         payments.push(this.generatePayment(paymentId, user));
       }
       return [payments, users];
@@ -146,7 +196,7 @@ export class RandomDataGenerator {
       RandomDataGenerator.generatePayment,
       count,
       startId,
-      "P"
+      RandomDataGenerator.PREFIX_PAYMENT_ID
     );
   }
 
@@ -157,7 +207,7 @@ export class RandomDataGenerator {
     const provider = faker.finance.creditCardIssuer();
     const cardNumber = parseInt(faker.finance.creditCardNumber(provider));
     const ccv = parseInt(faker.finance.creditCardCVV());
-    const expiryDate = faker.date.future(10);
+    const expiryDate = faker.date.future(RandomDataGenerator.FUTURE_TIME);
     return new CreditCard(cardNumber, ccv, expiryDate, provider, id, tripId);
   }
 
@@ -184,7 +234,7 @@ export class RandomDataGenerator {
       RandomDataGenerator.generateIndividualRoute,
       count,
       startId,
-      "R"
+      RandomDataGenerator.PREFIX_ROUTE_ID
     );
   }
 
@@ -198,7 +248,7 @@ export class RandomDataGenerator {
    */
   static generateIndividualRoute(
     id: string,
-    radius = 1000,
+    radius = RandomDataGenerator.ROUTE_RADIUS,
     centerLocation: [
       number,
       number
@@ -220,12 +270,15 @@ export class RandomDataGenerator {
       number,
       number
     ] = RandomDataGenerator.DEFAULT_CENTER_LOCATION,
-    radius = 1000
+    radius = RandomDataGenerator.ROUTE_RADIUS
   ): LatLng {
     const latLng = faker.address
       .nearbyGPSCoordinate(centerLocation, radius, true)
       .map(parseFloat) as [number, number];
-    return new LatLng(latLng[0], latLng[1]);
+    return new LatLng(
+      latLng[RandomDataGenerator.LAT_POSITION],
+      latLng[RandomDataGenerator.LNG_POSITION]
+    );
   }
 
   // Company data generation -----------------------------------------------------
@@ -250,7 +303,7 @@ export class RandomDataGenerator {
       RandomDataGenerator.generateCompany,
       count,
       startId,
-      "C"
+      RandomDataGenerator.PREFIX_COMPANY_ID
     );
   }
 
@@ -277,7 +330,7 @@ export class RandomDataGenerator {
           this.generateEScooterVehicle,
           count,
           vehicleStartId,
-          "V"
+          RandomDataGenerator.PREFIX_VEHICLE_ID
         );
       case VehicleType.Train:
         generator = RandomDataGenerator.generateTrainVehicle;
@@ -302,7 +355,7 @@ export class RandomDataGenerator {
       generator,
       count,
       vehicleStartId,
-      "V"
+      RandomDataGenerator.PREFIX_VEHICLE_ID
     );
   }
 
@@ -321,12 +374,21 @@ export class RandomDataGenerator {
   private static generateEScooterVehicle(id: string) {
     const [status, currentPosition] =
       RandomDataGenerator.generateBaseVehicleAttributes();
-    const condition = faker.datatype.number({ min: 0, max: 100 });
-    const batteryCondition = faker.datatype.number({ min: 0, max: 100 });
-    const batteryLevel = faker.datatype.number({ min: 0, max: 100 });
+    const condition = faker.datatype.number({
+      min: RandomDataGenerator.MIN_VEHICLE_CONDITION,
+      max: RandomDataGenerator.MAX_VEHICLE_CONDITION,
+    });
+    const batteryCondition = faker.datatype.number({
+      min: RandomDataGenerator.MIN_VEHICLE_BATTERY_CONDITION,
+      max: RandomDataGenerator.MAX_VEHICLE_BATTERY_CONDITION,
+    });
+    const batteryLevel = faker.datatype.number({
+      min: RandomDataGenerator.MIN_VEHICLE_BATTERY_LEVEL,
+      max: RandomDataGenerator.MAX_VEHICLE_BATTERY_LEVEL,
+    });
     const escooter = new EScooter(
       id,
-      "to_be_replaced",
+      RandomDataGenerator.DEFAULT_ESCOTTER_COMPANY_ID,
       condition,
       batteryCondition,
       status,
@@ -338,16 +400,15 @@ export class RandomDataGenerator {
   private static generateTrainVehicle(id: string) {
     const [status, currentPosition] =
       RandomDataGenerator.generateBaseVehicleAttributes();
-    const train = new Train(id, "to_be_replaced", status);
+    const train = new Train(
+      id,
+      RandomDataGenerator.DEFAULT_TRAIN_COMPANY_ID,
+      status
+    );
     train.currentPosition = currentPosition;
     return train;
   }
-  // private static generateBusVehicle(id: string) {
-  //   const [status, currentPosition] =
-  //     RandomDataGenerator.generateBaseVehicleAttributes();
-  //   //const bus = new Bus(id, "to_be_replaced", status);
-  //   throw new Error("Bus class not implemented");
-  // }
+
   private static generateBikeVehicle(id: string) {
     const [status, currentPosition] =
       RandomDataGenerator.generateBaseVehicleAttributes();
@@ -355,7 +416,7 @@ export class RandomDataGenerator {
     const electricLock = faker.datatype.boolean();
     const bike = new Bicycle(
       id,
-      "to_be_replaced",
+      RandomDataGenerator.DEFAULT_BICYCLE_COMPANY_ID,
       status,
       electric,
       electricLock
@@ -364,19 +425,31 @@ export class RandomDataGenerator {
     return bike;
   }
   private static generateRandomLicensePlate(): LicensePlate {
-    const number = faker.random.numeric(4);
-    const alphas = faker.random.alpha({ count: 2, casing: "upper" });
-    return `KA-${alphas}-${number}` as LicensePlate;
+    const number = faker.random.numeric(
+      RandomDataGenerator.LENGTH_OF_RANDOM_LICENSE_PLATE_NUMBER
+    );
+    const alphas = faker.random.alpha({
+      count: RandomDataGenerator.LENGTH_OF_RANDOM_LICENSE_PLATE_NAME,
+      casing: RandomDataGenerator.CASING_OF_LICENSE_PLATE,
+    });
+    return (RandomDataGenerator.CITY_OF_LICENSE_PLATE +
+      RandomDataGenerator.LICENSE_PLATE_SEPERATOR +
+      `${alphas}` +
+      RandomDataGenerator.LICENSE_PLATE_SEPERATOR +
+      `${number}`) as LicensePlate;
   }
   private static generateSharedCarVehicle(id: string) {
     const [status, currentPosition] =
       RandomDataGenerator.generateBaseVehicleAttributes();
-    const numPassengers = faker.datatype.number({ min: 2, max: 7 });
+    const numPassengers = faker.datatype.number({
+      min: RandomDataGenerator.MIN_NUMBER_OF_PASSENGERS_IN_CAR,
+      max: RandomDataGenerator.MAX_NUMBER_OF_PASSENGERS_IN_CAR,
+    });
     const licensePlate = RandomDataGenerator.generateRandomLicensePlate();
     const color = faker.color.human();
     const sharedCar = new SharedCar(
       id,
-      "to_be_replaced",
+      RandomDataGenerator.DEFAULT_SHARED_CAR_COMPANY_ID,
       status,
       numPassengers,
       licensePlate,
@@ -388,11 +461,14 @@ export class RandomDataGenerator {
   private static generateTaxiVehicle(id: string) {
     const [status, currentPosition] =
       RandomDataGenerator.generateBaseVehicleAttributes();
-    const numPassengers = faker.datatype.number({ min: 2, max: 7 });
+    const numPassengers = faker.datatype.number({
+      min: RandomDataGenerator.MIN_NUMBER_OF_PASSENGERS_IN_CAR,
+      max: RandomDataGenerator.MAX_NUMBER_OF_PASSENGERS_IN_CAR,
+    });
     const licensePlate = RandomDataGenerator.generateRandomLicensePlate();
     const taxi = new Taxi(
       id,
-      "to_be_replaced",
+      RandomDataGenerator.DEFAULT_TAXI_COMPANY_ID,
       status,
       numPassengers,
       licensePlate
