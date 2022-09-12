@@ -38,7 +38,7 @@ function setCurrentRisk(key: string) {
         <div v-if="$dm.getRoleVisibility(key)" class="col m-2">
           {{ value }}
         </div>
-        <div v-else id="blur" class="col m-2">{{ value }}</div>
+        <div v-else id="blur" class="col m-2">Censored</div>
       </div>
     </template>
   </template>
@@ -52,6 +52,6 @@ function setCurrentRisk(key: string) {
 #blur {
   font-size: 20px;
   color: transparent;
-  text-shadow: 0 0 8px #000;
+  text-shadow: 0 0 10px #000;
 }
 </style>
