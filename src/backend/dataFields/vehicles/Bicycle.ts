@@ -8,7 +8,7 @@ import { IndividualVehicle } from "./IndividualVehicle";
  */
 export class Bicycle extends IndividualVehicle {
   @Expose()
-  electricLock: ElectricLockStatus;
+  electricLock: boolean;
 
   @Expose()
   electric: boolean;
@@ -33,10 +33,6 @@ export class Bicycle extends IndividualVehicle {
   ) {
     super(id, companyId, VehicleType.Bike, status, company);
     this.electric = electric;
-    if (electricLock) {
-      this.electricLock = ElectricLockStatus.Yes;
-    } else {
-      this.electricLock = ElectricLockStatus.No;
-    }
+    this.electricLock = electricLock;
   }
 }
