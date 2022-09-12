@@ -86,16 +86,16 @@
       "isNotVisible": "@:explanation.data_is_not_visible"
     },
     "expiryDate": {
-      "isVisible": "@:explanation.data_is_visible",
-      "isNotVisible": "@:explanation.data_is_not_visible"
+      "isVisible": "Das Ablaufdatum einer Kreditkarte ist gemäß @:explanation.gdpr (DSGVO) keine persönliche Information, da es eine sehr große Anzahl an Personen gibt, bei denen das Ablaufdatum identisch ist, und man somit mit dieser Information keine Rückschlüsse auf die Identität des Nutzer schließen kann. Allerdings ist es trotzdem nicht ganz unkritisch, da man teilweise das Ablaufdatum in Kombination mit anderen Daten für online Zahlungen verwenden kann. Aus diesem Grund ist der Nutzername für Sie als {role} sichtbar.",
+      "isNotVisible": "Das Ablaufdatum einer Kreditkarte ist gemäß @:explanation.gdpr (DSGVO) keine persönliche Information, da es eine sehr große Anzahl an Personen gibt, bei denen das Ablaufdatum identisch ist, und man somit mit dieser Information keine Rückschlüsse auf die Identität des Nutzer schließen kann. Allerdings ist es trotzdem nicht ganz unkritisch, da man teilweise das Ablaufdatum in Kombination mit anderen Daten für online Zahlungen verwenden kann. Aus diesem Grund ist der Nutzername für Sie als {role} nicht sichtbar."
     },
     "provider": {
-      "isVisible": "@:explanation.data_is_visible",
-      "isNotVisible": "@:explanation.data_is_not_visible"
+      "isVisible": "Der Name des Kreditkartenanbieters ist gemäß @:explanation.gdpr (DSGVO) keine persönliche Information, da es eine sehr große Anzahl an Personen gibt, die den selben Anbieter nutzten, und man somit mit dieser Information keine Rückschlüsse auf die Identität des Nutzer schließen kann. Aus diesem Grund ist der Nutzername für Sie als {role} sichtbar.",
+      "isNotVisible": "Der Name des Kreditkartenanbieters ist gemäß @:explanation.gdpr (DSGVO) keine persönliche Information, da es eine sehr große Anzahl an Personen gibt, die den selben Anbieter nutzten, und man somit mit dieser Information keine Rückschlüsse auf die Identität des Nutzer schließen kann. Allerdings ist es trotzdem sinnvoll, das Daten bezüglich Zahlungen nur von den Parteien gesehen werden, die an der Zahlung beteiligt sind. Aus diesem Grund ist der Nutzername für Sie als {role} nicht sichtbar."
     },
     "userName": {
-      "isVisible": "@:explanation.data_is_visible",
-      "isNotVisible": "@:explanation.data_is_not_visible"
+      "isVisible": "Eine PayPal Nutzername ist gemäß @:explanation.gdpr (DSGVO) eine persönliche Information, da er einzigartig ist und man somit eine Person theoretisch identifizieren kann. In den meisten Fällen wählen Nutzer einen Nutzernamen, welcher eine große Ähnlichkeit zum realen Namen der Nutzers besitzt. Allerdings kann man sich den Nutzernamen frei auswählen, sodass eine Identifikation in der Praxis oft nicht so einfach ist. Außerdem ist es nicht so einfach möglich, mit dem Nutzernamen allein Schaden anzurichten. Aus diesem Grund ist der Nutzername für Sie als {role} sichtbar.",
+      "isNotVisible": "Eine PayPal Nutzername ist gemäß @:explanation.gdpr (DSGVO) eine persönliche Information, da er einzigartig ist und man somit eine Person theoretisch identifizieren kann. In den meisten Fällen wählen Nutzer einen Nutzernamen, welcher eine große Ähnlichkeit zum realen Namen der Nutzers besitzt. Allerdings kann man sich den Nutzernamen frei auswählen, sodass eine Identifikation in der Praxis oft nicht so einfach ist. Außerdem ist es nicht so einfach möglich, mit dem Nutzernamen allein Schaden anzurichten. Aus diesem Grund ist der Nutzername für Sie als {role} nicht sichtbar."
     }
   }
 }
