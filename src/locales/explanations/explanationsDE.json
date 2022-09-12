@@ -9,7 +9,7 @@
     "low_risk_explanation": "Diese Daten stellen ein geringes Risiko dar, da sie öffentlich zugänglich sind und Dritte sie nicht verwenden können, um den betroffenen Personen erheblichen Schaden zuzufügen.",
     "high_risk_explanation": "Diese Daten stellen ein hohes Risiko dar, da Datendiebstahl schwerwiegende Folgen haben kann. Ein möglicher Missbrauch dieser Daten kann dazu verwendet werden, Personen zu identifizieren und ihnen schweren Schaden zuzufügen.",
     "gdpr": "Datenschutz-Grundverordnung",
-    "personal_information": "persönliche Information",
+    "personal_information": "personenbezogene Information",
     "data_stored": "Die Daten werden gespeichert",
     "data_stored_for_duration": "@:explanation.data_stored für {duration}.",
     "retention_period": "Wie lange werden die Daten gespeichert?",
