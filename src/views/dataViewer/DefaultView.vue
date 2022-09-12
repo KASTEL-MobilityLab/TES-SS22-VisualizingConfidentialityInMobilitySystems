@@ -1,15 +1,45 @@
 <script setup lang="ts">
+import type { DataManager } from "@/backend/DataManager";
+import { DataModule } from "@/backend/dataModules/DataModule";
+import { dataManagerKey } from "@/keys";
+import { inject, type Ref, type ComputedRef, computed } from "vue";
 import { RouterLink } from "vue-router";
+
+const $dm = inject(dataManagerKey) as Ref<DataManager>;
+
+function isActiveCheck(): boolean {
+  const vehicle = $dm.value.currentData.getVehicle();
+  if (vehicle) {
+    return vehicle.isActive();
+  }
+  return true;
+}
 </script>
 
 <template>
   <div class="container">
     <div class="row m-5">
       <div class="col">
-        <RouterLink to="rider">
+        <div v-if="isActiveCheck()">
+          <RouterLink to="rider" class="link-dark">
+            <button
+              type="button"
+              class="btn btn-dark btn-lg"
+              style="
+                --bs-btn-padding-y: 1rem;
+                --bs-btn-padding-x: 2rem;
+                --bs-btn-font-size: 1.2rem;
+              "
+            >
+              <i class="fa-solid fa-id-card"></i>
+              {{ $t("app.dataViews.riderDataView") }}
+            </button>
+          </RouterLink>
+        </div>
+        <div v-else>
           <button
             type="button"
-            class="btn btn-dark btn-lg"
+            class="btn btn-dark btn-lg disabled"
             style="
               --bs-btn-padding-y: 1rem;
               --bs-btn-padding-x: 2rem;
@@ -19,13 +49,29 @@ import { RouterLink } from "vue-router";
             <i class="fa-solid fa-id-card"></i>
             {{ $t("app.dataViews.riderDataView") }}
           </button>
-        </RouterLink>
+        </div>
       </div>
       <div class="col">
-        <RouterLink to="payment" class="link-dark">
+        <div v-if="isActiveCheck()">
+          <RouterLink to="payment" class="link-dark">
+            <button
+              type="button"
+              class="btn btn-dark btn-lg"
+              style="
+                --bs-btn-padding-y: 1rem;
+                --bs-btn-padding-x: 2rem;
+                --bs-btn-font-size: 1.2rem;
+              "
+            >
+              <i class="fa-solid fa-sack-dollar"></i>
+              {{ $t("app.dataViews.paymentDataView") }}
+            </button>
+          </RouterLink>
+        </div>
+        <div v-else>
           <button
             type="button"
-            class="btn btn-dark btn-lg"
+            class="btn btn-dark btn-lg disabled"
             style="
               --bs-btn-padding-y: 1rem;
               --bs-btn-padding-x: 2rem;
@@ -35,7 +81,7 @@ import { RouterLink } from "vue-router";
             <i class="fa-solid fa-sack-dollar"></i>
             {{ $t("app.dataViews.paymentDataView") }}
           </button>
-        </RouterLink>
+        </div>
       </div>
     </div>
     <div class="row m-5">
@@ -56,10 +102,26 @@ import { RouterLink } from "vue-router";
         </RouterLink>
       </div>
       <div class="col">
-        <RouterLink to="trip" class="link-dark">
+        <div v-if="isActiveCheck()">
+          <RouterLink to="trip" class="link-dark">
+            <button
+              type="button"
+              class="btn btn-dark btn-lg"
+              style="
+                --bs-btn-padding-y: 1rem;
+                --bs-btn-padding-x: 2rem;
+                --bs-btn-font-size: 1.2rem;
+              "
+            >
+              <i class="fa-solid fa-road"></i>
+              {{ $t("app.dataViews.tripDataView") }}
+            </button>
+          </RouterLink>
+        </div>
+        <div v-else>
           <button
             type="button"
-            class="btn btn-dark btn-lg"
+            class="btn btn-dark btn-lg disabled"
             style="
               --bs-btn-padding-y: 1rem;
               --bs-btn-padding-x: 2rem;
@@ -69,7 +131,7 @@ import { RouterLink } from "vue-router";
             <i class="fa-solid fa-road"></i>
             {{ $t("app.dataViews.tripDataView") }}
           </button>
-        </RouterLink>
+        </div>
       </div>
     </div>
   </div>
