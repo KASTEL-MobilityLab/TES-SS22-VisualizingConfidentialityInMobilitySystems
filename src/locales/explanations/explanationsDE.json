@@ -1,8 +1,141 @@
 {
   "explanation": {
-    "title": "Risiko-Erklärung für Datentyp {dataType}",
-    "risk_of_rider_identification": "Risiko der Identifizierung des Fahrers",
-    "data_stored_for_duration": "Die Daten werden für {duration} gespeichert.",
-    "retentionPeriod": "Aufbewahrungszeitraum"
+    "title": "Risikoerläuterung für Datentyp {dataType}",
+    "risk_of_rider_identification": "Risiko der Identifizierung des Fahrers.",
+    "why_is_this_not_visible_to_me": "Warum sind diese Daten für mich nicht sichtbar als {role}?",
+    "why_is_this_visible_to_me": "Warum sind diese Daten für mich sichtbar als {role}?",
+    "risk_level_explanation": "Welches Risiko ist mit diesen Daten verbunden?",
+    "medium_risk_explanation": "Diese Daten stellen ein mittleres Risiko dar, da sie als personenbezogene Daten im Sinne des europäischen Datenschutzrechts gelten. Es handelt sich also um Daten, die sich auf eine identifizierte oder identifizierbare lebende Person beziehen und zur direkten oder indirekten Identifizierung eines Fahrers verwendet werden können.",
+    "low_risk_explanation": "Diese Daten stellen ein geringes Risiko dar, da sie öffentlich zugänglich sind und Dritte sie nicht verwenden können, um den betroffenen Personen erheblichen Schaden zuzufügen.",
+    "high_risk_explanation": "Diese Daten stellen ein hohes Risiko dar, da Datendiebstahl schwerwiegende Folgen haben kann. Ein möglicher Missbrauch dieser Daten kann dazu verwendet werden, Personen zu identifizieren und ihnen schweren Schaden zuzufügen.",
+    "gdpr": "Datenschutz-Grundverordnung",
+    "personal_information": "personenbezogene Information",
+    "data_stored": "Die Daten werden gespeichert",
+    "data_stored_for_duration": "@:explanation.data_stored für {duration}.",
+    "retention_period": "Wie lange werden die Daten gespeichert?",
+    "until_user_deleted": "@:explanation.data_stored bis der Nutzer gelöscht wird.",
+    "stored_until_no_longer_necessary": "@:explanation.data_stored bis es für den Verantwortlichen nicht mehr notwendig ist, die Daten weiter aufzubewahren. Die @:explanation.retention_period kann je nach dem Risiko der Daten variieren.",
+    "data_is_visible": "Es ist nicht möglich, einen Fahrer mit dieser Information zu identifizieren und daher ist es keine @:explanation.personal_information gemäß der @:explanation.gdpr (DSGVO). Daher ist dies für Sie als {role} sichtbar.",
+    "data_is_not_visible": "Je nach Risiko der Daten ist es möglich, einen Fahrer mit diesen Informationen zu identifizieren. Daher gilt es als @:explanation.personal_information gemäß der @:explanation.gdpr (DGSVO). Als {role} dürfen Sie diese Daten nicht sehen.",
+    "email": {
+      "isVisible": "Eine E-Mail-Adresse ist gemäß @:explanation.gdpr (DSGVO) eine @:explanation.personal_information, da man eine Person durch den Nutzernamen innerhalb der E-Mail-Adresse identifizeren kann. Denn in den meisten Fällen wählen Nutzer einen Nutzernamen, welcher eine große Ähnlichkeit zum realen Namen der Nutzers besitzt. Aus diesem Grund ist die E-Mail-Adresse für Sie als {role} sichtbar.",
+      "isNotVisible": "Eine E-Mail-Adresse ist gemäß @:explanation.gdpr (DSGVO) eine @:explanation.personal_information, da man eine Person durch den Nutzernamen innerhalb der E-Mail-Adresse identifizeren kann. Denn in den meisten Fällen wählen Nutzer einen Nutzernamen, welcher eine große Ähnlichkeit zum realen Namen der Nutzers besitzt. Aus diesem Grund ist die E-Mail-Adresse für Sie als {role} nicht sichtbar."
+    },
+    "phoneNumber": {
+      "isVisible": "Eine Telefonnummer ist gemäß @:explanation.gdpr (DSGVO) eine @:explanation.personal_information, da man eine Person durch die Telefonnummer im Telefonbuch bzw. Internet oder durch einen Anruf identifizeren kann. Denn durch das Suchen der Telefonnummer im Telefonbuch bzw. im Internet lassen sich in Referenzen (z.B. Vorname, Nachname, Adresse, Wohnort) ausfindig machen, mit welchen man die Person identifizeren kann. Aus diesem Grund ist die Telefonnummer für Sie als {role} sichtbar.",
+      "isNotVisible": "Eine Telefonnummer ist gemäß @:explanation.gdpr (DSGVO) eine @:explanation.personal_information, da man eine Person durch die Telefonnummer im Telefonbuch bzw. Internet oder durch einen Anruf identifizeren kann. Denn durch das Suchen der Telefonnummer im Telefonbuch bzw. im Internet lassen sich in Referenzen (z.B. Vorname, Nachname, Adresse, Wohnort) ausfindig machen, mit welchen man die Person identifizeren kann. Aus diesem Grund ist die Telefonnummer für Sie als {role} nicht sichtbar."
+    },
+    "surname": {
+      "isVisible": "Ein Nachname ist gemäß @:explanation.gdpr (DSGVO) nicht unbedingt eine @:explanation.personal_information, da es mehrere Personen mit demselben Namen geben kann. Daher ist er für Sie als {role} sichtbar. Wenn der Nachname jedoch z.B. mit einer Adresse kombiniert wird, ist der Nachname eine @:explanation.personal_information und wäre für Sie nicht sichtbar.",
+      "isNotVisible": "Ein Nachname ist gemäß @:explanation.gdpr (DSGVO) nicht unbedingt eine @:explanation.personal_information, da es mehrere Personen mit demselben Namen geben kann. Daher ist er für Sie als {role} nicht sichtbar. Wenn der Nachname jedoch z.B. nicht mit einer Adresse kombiniert werden kann, stellt dies keine @:explanation.personal_information dar und wäre für Sie sichtbar."
+    },
+    "forename": {
+      "isVisible": "Ein Vorname ist gemäß @:explanation.gdpr (DSGVO) nicht unbedingt eine @:explanation.personal_information, da es mehrere Personen mit demselben Namen geben kann. Daher ist er für Sie als {role} sichtbar. Wenn der Vorname jedoch z.B. mit einer Adresse kombiniert wird, ist der Vorname eine @:explanation.personal_information und wäre für Sie nicht sichtbar.",
+      "isNotVisible": "Ein Vorname ist gemäß @:explanation.gdpr (DSGVO) nicht unbedingt eine @:explanation.personal_information, da es mehrere Personen mit demselben Namen geben kann. Daher ist er für Sie als {role} nicht sichtbar. Wenn der Vorname jedoch z.B. nicht mit einer Adresse kombiniert werden kann, stellt dies keine @:explanation.personal_information dar und wäre für Sie sichtbar."
+    },
+    "address": {
+      "isVisible": "Eine Adresse ist gemäß @:explanation.gdpr (DSGVO) eine @:explanation.personal_information, da man eine Person durch die Adresse identifizieren kann. Dem Datentyp der Adresse wird ein hohes Risiko zugeordnet, da diese schwere Folgen (z.B. Einbruch) im Falle eines Datendiebstahls mit sich ziehen. Da diese @:explanation.personal_information eine großes Risiko mit sich bringt, ist diese @:explanation.personal_information nur für einen kleinen Adressatenkreis, zu denen die von Ihnen ausgewählte {role} Rolle gehört, sichtbar.",
+      "isNotVisible": "Eine Adresse ist gemäß @:explanation.gdpr (DSGVO) eine @:explanation.personal_information, da man eine Person durch die Adresse identifizieren kann. Dem Datentyp der Adresse wird ein hohes Risiko zugeordnet, da diese schwere Folgen (z.B. Einbruch) im Falle eines Datendiebstahls mit sich ziehen. Da diese @:explanation.personal_information eine großes Risiko mit sich bringt, ist diese @:explanation.personal_information nur für einen kleinen Adressatenkreis, zu denen die von Ihnen ausgewählte {role} Rolle nicht gehört, sichtbar."
+    },
+    "paymentData": {
+      "isVisible": "Zahlungsdaten sind gemäß @:explanation.gdpr (DSGVO) personenbezogene Informationen, da man eine Person durch die Zahlungsdaten, welche unter anderen den Namen beinahlten, identifizieren kann. Dem Datentyp der Zahlungsdaten wird ein hohes Risiko zugeordnet, da diese schwere Folgen (z.B. fiananzieller Missbrauch) im Falle eines Datendiebstahls mit sich ziehen. Da diese personenbezogenen Informationen ein großes Risiko mit sich bringen, sind diese personenbezogenen Informationen nur für einen kleinen Adressatenkreis, zu denen die von Ihnen ausgewählte {role} Rolle gehört, sichtbar.",
+      "isNotVisible": "Zahlungsdaten sind gemäß @:explanation.gdpr (DSGVO) personenbezogene Informationen, da man eine Person durch die Zahlungsdaten, welche unter anderen den Namen beinahlten, identifizieren kann. Dem Datentyp der Zahlungsdaten wird ein hohes Risiko zugeordnet, da diese schwere Folgen (z.B. fiananzieller Missbrauch) im Falle eines Datendiebstahls mit sich ziehen. Da diese personenbezogenen Informationen ein großes Risiko mit sich bringen, sind diese personenbezogenen Informationen nur für einen kleinen Adressatenkreis, zu denen die von Ihnen ausgewählte nicht {role} Rolle gehört, sichtbar."
+    },
+    "vehicleType": {
+      "isVisible": "Ein Fahrzeugtyp ist gemäß @:explanation.gdpr (DSGVO) nicht unbedingt eine @:explanation.personal_information, da der Typ eines Fortbewegungsmittels keinen Aufschluss über den Nutzer gibt. Der Typ des Fortbewegungsmittels ist insbesondere für die Verwaltung als auch für die Anmietung dieser von Interesse. Daher ist er für Sie als {role} sichtbar.",
+      "isNotVisible": "Ein Fahrzeugtyp ist gemäß @:explanation.gdpr (DSGVO) nicht unbedingt eine @:explanation.personal_information, da der Typ eines Fortbewegungsmittels keinen Aufschluss über den Nutzer gibt. Der Typ des Fortbewegungsmittels ist insbesondere für die Verwaltung als auch für die Anmietung dieser von Interesse. Daher ist er für Sie aufgrund mangelnde Zugriffssrechte als {role} nicht sichtbar."
+    },
+    "status": {
+      "isVisible": "Ein Fahrzeugstatus ist gemäß @:explanation.gdpr (DSGVO) eine @:explanation.personal_information, da man eine Person durch den Fahrzeugstatus mit weiteren Informatiuonen wie z.B. Zahlungsdaten identifizeren kann. Denn durch den den Fahrzeugstatus in Kombination mit Zahlugnsdaten lässt sich der jeweilige Nutzer identifizieren. Aus diesem Grund ist die der Fahrzeugstatus für Sie als {role} sichtbar.",
+      "isNotVisible": "Ein Fahrzeugstatus ist gemäß @:explanation.gdpr (DSGVO) eine @:explanation.personal_information, da man eine Person durch den Fahrzeugstatus mit weiteren Informatiuonen wie z.B. Zahlungsdaten identifizeren kann. Denn durch den den Fahrzeugstatus in Kombination mit Zahlugnsdaten lässt sich der jeweilige Nutzer identifizieren. Aus diesem Grund ist die der Fahrzeugstatus für Sie als {role} nicht sichtbar."
+    },
+    "batteryLevel": {
+      "isVisible": "Der Batteriestand eines Fahrzeugs ist gemäß @:explanation.gdpr (DSGVO) keine @:explanation.personal_informationm, da diese keinen Aufschluss über den Nutzer gibt und öffentlich im Rahmn der Verwaltung und Nutzung des Fahrzeugs einsehbar ist. Daher ist der Batteriestand für Sie in der Rolle der {role} einsehbar.",
+      "isNotVisible": "Der Batteriestand eines Fahrzeugs ist gemäß @:explanation.gdpr (DSGVO) keine @:explanation.personal_informationm, da diese keinen Aufschluss über den Nutzer gibt und öffentlich im Rahmen der Verwaltung und Nutzung des Fahrzeugs einsehbar ist. Daher ist der Batteriestand für Sie in der Rolle der {role} nicht einsehbar."
+    },
+    "ownerName": {
+      "isVisible": "Der Name des Eigentümers eines Fahrzeugs ist gemäß @:explanation.gdpr (DSGVO) keine @:explanation.personal_informationm, da diese keinen Aufschluss über den Nutzer gibt und öffentlich im Rahmen der Verwaltung und Nutzung des Fahrzeugs einsehbar ist. Daher ist der Name des Eigentümer des Fahrzeugs für Sie in der Rolle der {role} einsehbar.",
+      "isNotVisible": "Der Name des Eigentümers eines Fahrzeugs ist gemäß @:explanation.gdpr (DSGVO) keine @:explanation.personal_informationm, da diese keinen Aufschluss über den Nutzer gibt und öffentlich im Rahmen der Verwaltung und Nutzung des Fahrzeugs einsehbar ist. Daher ist der Name des Eigentümer des Fahrzeugs für Sie in der Rolle der {role} nicht einsehbar."
+    },
+    "startTime": {
+      "isVisible": "Der Startzeitpunkt eines Trips ist gemäß @:explanation.gdpr (DSGVO) keine persönliche Information, da er alleine keine Rückschlüsse auf eine Person zulässt. Aus diesem Grund ist der Startzeitpunkt für Sie als {role} sichtbar.",
+      "isNotVisible": "Der Startzeitpunkt eines Trips ist gemäß @:explanation.gdpr (DSGVO) keine persönliche Information, da er alleine keine Rückschlüsse auf eine Person zulässt. Allerdings lassen sich mit dieser information Rückschlüsse über das Verhalten von Personen schließen. Aus diesem Grund ist der Startzeitpunkt für Sie als {role} nicht sichtbar."
+    },
+    "endTime": {
+      "isVisible": "Der Endzeitpunkt eines Trips ist gemäß @:explanation.gdpr (DSGVO) keine persönliche Information, da er alleine keine Rückschlüsse auf eine Person zulässt. Aus diesem Grund ist der Endzeitpunkt für Sie als {role} sichtbar.",
+      "isNotVisible": "Der Endzeitpunkt eines Trips ist gemäß @:explanation.gdpr (DSGVO) keine persönliche Information, da er alleine keine Rückschlüsse auf eine Person zulässt. Allerdings lassen sich mit dieser information Rückschlüsse über das Verhalten von Personen schließen. Aus diesem Grund ist der Endzeitpunkt für Sie als {role} nicht sichtbar."
+    },
+    "averageSpeed": {
+      "isVisible": "Die Durchschnittsgeschwindigkeit eines Trips ist gemäß @:explanation.gdpr (DSGVO) keine persönliche Information, da sie keine Rückschlüsse auf eine Person zulässt. Aus diesem Grund ist die Durchschnittsgeschwindigkeit für Sie als {role} sichtbar.",
+      "isNotVisible": "@:explanation.data_is_not_visible"
+    },
+    "price": {
+      "isVisible": "Der Preis eines Trips ist gemäß @:explanation.gdpr (DSGVO) keine persönliche Information, da er keine Rückschlüsse auf eine Person zulässt. Aus diesem Grund ist der Preis für Sie als {role} sichtbar.",
+      "isNotVisible": "Der Preis eines Trips ist gemäß @:explanation.gdpr (DSGVO) keine persönliche Information, da er keine Rückschlüsse auf eine Person zulässt. Allerdings ist es trotzdem sinnvoll, das Daten bezüglich Zahlungen nur von den Parteien gesehen werden, die an der Zahlung beteiligt sind. Aus diesem Grund ist der Preis für Sie als {role} nicht sichtbar."
+    },
+    "paymentType": {
+      "isVisible": "Die Art einer Zahlung ist gemäß @:explanation.gdpr (DSGVO) keine persönliche Information, da es eine sehr große Anzahl an Personen gibt, die den selben Zahlungsmethode nutzten, und man somit mit dieser Information keine Rückschlüsse auf die Identität des Nutzer schließen kann. Aus diesem Grund ist die Zahlungsart für Sie als {role} sichtbar.",
+      "isNotVisible": "Die Art einer Zahlung ist gemäß @:explanation.gdpr (DSGVO) keine persönliche Information, da es eine sehr große Anzahl an Personen gibt, die den selben Zahlungsmethode nutzten, und man somit mit dieser Information keine Rückschlüsse auf die Identität des Nutzer schließen kann. Allerdings ist es trotzdem sinnvoll, das Daten bezüglich Zahlungen nur von den Parteien gesehen werden, die an der Zahlung beteiligt sind. Aus diesem Grund ist die Zahlungsart für Sie als {role} nicht sichtbar."
+    },
+    "cardNumber": {
+      "isVisible": "Die Kreditkartennummer ist gemäß @:explanation.gdpr (DSGVO) eine persönliche Information, da sie einzigartig ist und man somit eine Person theoretisch identifizieren kann. Außerdem kann man mit der Kreditkartennummer Zahlungen durchführen, weshalb das Risiko der Kreditkartennummer hoch ist und sie nur für den Nutzer der Karte sichtbar ist.",
+      "isNotVisible": "Die Kreditkartennummer ist gemäß @:explanation.gdpr (DSGVO) eine persönliche Information, da sie einzigartig ist und man somit eine Person theoretisch identifizieren kann. Außerdem kann man mit der Kreditkartennummer Zahlungen durchführen, weshalb das Risiko der Kreditkartennummer hoch ist und sie nur für den Nutzer der Karte sichtbar ist."
+    },
+    "ccv": {
+      "isVisible": "Die CCV einer Kreditkarte ist gemäß @:explanation.gdpr (DSGVO) keine persönliche Information, da es eine große Anzahl an Personen gibt, bei denen die CCV identisch ist, und man somit mit dieser Information keine Rückschlüsse auf die Identität des Nutzer schließen kann. Allerdings kann man mit der CCV in Kombination mit der Kreditkartennummer Zahlungen durchführen, weshalb das Risiko der CCV dennoch hoch ist und sie nur für den Nutzer der Karte sichtbar ist.",
+      "isNotVisible": "Die CCV einer Kreditkarte ist gemäß @:explanation.gdpr (DSGVO) keine persönliche Information, da es eine große Anzahl an Personen gibt, bei denen die CCV identisch ist, und man somit mit dieser Information keine Rückschlüsse auf die Identität des Nutzer schließen kann. Allerdings kann man mit der CCV in Kombination mit der Kreditkartennummer Zahlungen durchführen, weshalb das Risiko der CCV dennoch hoch ist und sie nur für den Nutzer der Karte sichtbar ist."
+    },
+    "expiryDate": {
+      "isVisible": "Das Ablaufdatum einer Kreditkarte ist gemäß @:explanation.gdpr (DSGVO) keine persönliche Information, da es eine sehr große Anzahl an Personen gibt, bei denen das Ablaufdatum identisch ist, und man somit mit dieser Information keine Rückschlüsse auf die Identität des Nutzer schließen kann. Allerdings ist es trotzdem nicht ganz unkritisch, da man teilweise das Ablaufdatum in Kombination mit anderen Daten für online Zahlungen verwenden kann. Aus diesem Grund ist das Ablaufdatum einer Kreditkarte für Sie als {role} sichtbar.",
+      "isNotVisible": "Das Ablaufdatum einer Kreditkarte ist gemäß @:explanation.gdpr (DSGVO) keine persönliche Information, da es eine sehr große Anzahl an Personen gibt, bei denen das Ablaufdatum identisch ist, und man somit mit dieser Information keine Rückschlüsse auf die Identität des Nutzer schließen kann. Allerdings ist es trotzdem nicht ganz unkritisch, da man teilweise das Ablaufdatum in Kombination mit anderen Daten für online Zahlungen verwenden kann. Aus diesem Grund ist das Ablaufdatum einer Kreditkarte für Sie als {role} nicht sichtbar."
+    },
+    "provider": {
+      "isVisible": "Der Name des Kreditkartenanbieters ist gemäß @:explanation.gdpr (DSGVO) keine persönliche Information, da es eine sehr große Anzahl an Personen gibt, die den selben Anbieter nutzten, und man somit mit dieser Information keine Rückschlüsse auf die Identität des Nutzer schließen kann. Aus diesem Grund ist der Name des Kreditkartenanbieters für Sie als {role} sichtbar.",
+      "isNotVisible": "Der Name des Kreditkartenanbieters ist gemäß @:explanation.gdpr (DSGVO) keine persönliche Information, da es eine sehr große Anzahl an Personen gibt, die den selben Anbieter nutzten, und man somit mit dieser Information keine Rückschlüsse auf die Identität des Nutzer schließen kann. Allerdings ist es trotzdem sinnvoll, das Daten bezüglich Zahlungen nur von den Parteien gesehen werden, die an der Zahlung beteiligt sind. Aus diesem Grund ist der Name des Kreditkartenanbieters für Sie als {role} nicht sichtbar."
+    },
+    "userName": {
+      "isVisible": "Eine PayPal Nutzername ist gemäß @:explanation.gdpr (DSGVO) eine persönliche Information, da er einzigartig ist und man somit eine Person theoretisch identifizieren kann. In den meisten Fällen wählen Nutzer einen Nutzernamen, welcher eine große Ähnlichkeit zum realen Namen der Nutzers besitzt. Allerdings kann man sich den Nutzernamen frei auswählen, sodass eine Identifikation in der Praxis oft nicht so einfach ist. Außerdem ist es nicht so einfach möglich, mit dem Nutzernamen allein Schaden anzurichten. Aus diesem Grund ist der Nutzername für Sie als {role} sichtbar.",
+      "isNotVisible": "Eine PayPal Nutzername ist gemäß @:explanation.gdpr (DSGVO) eine persönliche Information, da er einzigartig ist und man somit eine Person theoretisch identifizieren kann. In den meisten Fällen wählen Nutzer einen Nutzernamen, welcher eine große Ähnlichkeit zum realen Namen des Nutzers besitzt. Allerdings kann man sich den Nutzernamen frei auswählen, sodass eine Identifikation in der Praxis oft nicht so einfach ist. Außerdem ist es nicht so einfach möglich, mit dem Nutzernamen allein Schaden anzurichten. Aus diesem Grund ist der Nutzername für Sie als {role} nicht sichtbar."
+    },
+    "type": {
+      "isVisible": "@:explanation.data_is_visible",
+      "isNotVisible": "@:explanation.data_is_not_visible"
+    },
+    "currentPosition": {
+      "isVisible": "@:explanation.data_is_visible",
+      "isNotVisible": "@:explanation.data_is_not_visible"
+    },
+    "numPassengers": {
+      "isVisible": "@:explanation.data_is_visible",
+      "isNotVisible": "@:explanation.data_is_not_visible"
+    },
+    "color": {
+      "isVisible": "@:explanation.data_is_visible",
+      "isNotVisible": "@:explanation.data_is_not_visible"
+    },
+    "licensePlate": {
+      "isVisible": "@:explanation.data_is_visible",
+      "isNotVisible": "@:explanation.data_is_not_visible"
+    },
+    "startingPoint": {
+      "isVisible": "@:explanation.data_is_visible",
+      "isNotVisible": "@:explanation.data_is_not_visible"
+    },
+    "destination": {
+      "isVisible": "@:explanation.data_is_visible",
+      "isNotVisible": "@:explanation.data_is_not_visible"
+    },
+    "batteryCondition": {
+      "isVisible": "@:explanation.data_is_visible",
+      "isNotVisible": "@:explanation.data_is_not_visible"
+    },
+    "electricLock": {
+      "isVisible": "@:explanation.data_is_visible",
+      "isNotVisible": "@:explanation.data_is_not_visible"
+    },
+    "electric": {
+      "isVisible": "@:explanation.data_is_visible",
+      "isNotVisible": "@:explanation.data_is_not_visible"
+    }
   }
 }

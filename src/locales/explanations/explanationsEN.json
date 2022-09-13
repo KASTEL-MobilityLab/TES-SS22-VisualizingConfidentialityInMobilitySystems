@@ -1,18 +1,18 @@
 {
   "explanation": {
-    "title": "Risk Explanation for data type {dataType}",
-    "risk_of_rider_identification": "Risk of Rider Identification",
+    "title": "Risk Explanation for Data Type {dataType}",
+    "risk_of_rider_identification": "Risk of Rider Identification.",
     "why_is_this_not_visible_to_me": "Why is this data not visible to me as a {role}?",
     "why_is_this_visible_to_me": "Why is this data visible to me as a {role}?",
-    "risk_level_explanation": "Risk Level Explanation",
-    "medium_risk_explanation": "This Data has medium risk because it is not possible to directly identify the rider without other information.",
-    "low_risk_explanation": "This Data has low risk because it is not possible to identify a rider with solely this data or in combination with of other data.",
-    "high_risk_explanation": "This Data has high risk because it has as a high @:explanation.risk_of_rider_identification. With this information it is possible to identify the rider.",
+    "risk_level_explanation": "What risk is assigned to this data?",
+    "medium_risk_explanation": "This data poses a medium risk because it is considered personal data within the meaning of European data protection law. It is therefore data that relates to an identified or identifiable living person and can be used to directly or indirectly identify a driver.",
+    "low_risk_explanation": "This data poses a low risk because it is publicly available and third parties cannot use it to cause significant harm to data subjects.",
+    "high_risk_explanation": "This data poses a high risk, as data theft can have serious consequences. Potential misuse of this data can be used to identify people and cause them severe harm.",
     "gdpr": "General Data Protection Regulation",
     "personal_information": "Personal Information",
     "data_stored": "The data will be stored",
     "data_stored_for_duration": "@:explanation.data_stored for {duration}.",
-    "retention_period": "Retention Period",
+    "retention_period": "How long is the data stored?",
     "until_user_deleted": "@:explanation.data_stored until the user is deleted.",
     "stored_until_no_longer_necessary": "@:explanation.data_stored until it is no longer necessary for the maintainer to further keep the data. The @:explanation.retention_period can vary depending on the risk of the data.",
     "data_is_visible": "It is not possible to identify a rider with this information and thus it is not @:explanation.personal_information according to the @:explanation.gdpr (GDPR). Therefore it is visible to you as a {role}.",
@@ -26,11 +26,11 @@
       "isNotVisible": "@:explanation.data_is_not_visible"
     },
     "surname": {
-      "isVisible": "@:explanation.data_is_visible",
+      "isVisible": "A surname is not necessarily @:explanation.personal_information according to the @:explanation.gdpr (GDPR) because there may be multiple people with the same name. Therefore, it is visible to you as a {role}. However, if the surname is combined with an address for example, it is @:explanation.personal_information and would not be visible to you.",
       "isNotVisible": "@:explanation.data_is_not_visible"
     },
     "forename": {
-      "isVisible": "@:explanation.data_is_visible",
+      "isVisible": "A forename is not necessarily @:explanation.personal_information according to the @:explanation.gdpr (GDPR) because there may be multiple people with the same name. Therefore it is visible to you as a {role}. However, if the forename is combined with an address for example, the forename is @:explanation.personal_information and would not be visible to you.",
       "isNotVisible": "@:explanation.data_is_not_visible"
     },
     "address": {
@@ -58,42 +58,82 @@
       "isNotVisible": "@:explanation.data_is_not_visible"
     },
     "startTime": {
-      "isVisible": "@:explanation.data_is_visible",
-      "isNotVisible": "@:explanation.data_is_not_visible"
+      "isVisible": "According to @:explanation.gdpr (DSGVO), the start time of a trip is not personal information, as it alone does not allow any conclusions to be drawn about the identity of a person. For this reason, the start time is visible to you as {role}.",
+      "isNotVisible": "According to @:explanation.gdpr (DSGVO), the start time of a trip is not personal information, as it alone does not allow any conclusions to be drawn about the identity of a person. However, conclusions can be drawn about the behavior of people with this information. For this reason, the start time is not visible to you as {role}."
     },
     "endTime": {
-      "isVisible": "@:explanation.data_is_visible",
-      "isNotVisible": "@:explanation.data_is_not_visible"
+      "isVisible": "According to @:explanation.gdpr (DSGVO), the end time of a trip is not personal information, as it alone does not allow any conclusions to be drawn about the identity of a person. For this reason, the end time is visible to you as {role}.",
+      "isNotVisible": "According to @:explanation.gdpr (DSGVO), the end time of a trip is not personal information, as it alone does not allow any conclusions to be drawn about the identity of a person. However, conclusions can be drawn about the behavior of people with this information. For this reason, the end time is not visible to you as {role}."
     },
     "averageSpeed": {
-      "isVisible": "@:explanation.data_is_visible",
-      "isNotVisible": "@:explanation.data_is_not_visible"
+      "isVisible": "According to @:explanation.gdpr (GDPR), the average speed of a trip is not personal information because it does not allow any conclusions to be drawn about the identity of a person. For this reason, the average speed is visible to you as {role}.",
+      "isNotVisible": "According to @:explanation.gdpr (DSGVO), the average speed of a trip is not personal information, as it alone does not allow any conclusions to be drawn about the identity of a person. However, conclusions can be drawn about the behavior of people with this information. For this reason, the end time is not visible to you as {role}."
     },
     "price": {
-      "isVisible": "@:explanation.data_is_visible",
-      "isNotVisible": "@:explanation.data_is_not_visible"
+      "isVisible": "According to @:explanation.gdpr (DSGVO), the price of a trip is not personal information, as it does not allow any conclusions to be drawn about a person. For this reason the price is visible to you as {role}.",
+      "isNotVisible": "According to @:explanation.gdpr (DSGVO), the price of a trip is not personal information, as it does not allow any conclusions to be drawn about a person. However, it still makes sense that data related to payments is only seen by the parties involved in the payment. For this reason, the price is not visible to you as {role}."
     },
     "paymentType": {
-      "isVisible": "@:explanation.data_is_visible",
-      "isNotVisible": "@:explanation.data_is_not_visible"
+      "isVisible": "According to @:explanation.gdpr (DSGVO), the type of payment is not personal information, since there is a very large number of people who use the same payment method, and therefore no conclusions can be drawn about the identity of the user with this information. For this reason, the payment type is visible to you as {role}.",
+      "isNotVisible": "According to @:explanation.gdpr (DSGVO), the type of payment is not personal information, since there is a very large number of people who use the same payment method, and therefore no conclusions can be drawn about the identity of the user with this information. However, it still makes sense that data related to payments is only seen by the parties involved in the payment. For this reason, the payment type is not visible to you as {role}."
     },
     "cardNumber": {
-      "isVisible": "@:explanation.data_is_visible",
-      "isNotVisible": "@:explanation.data_is_not_visible"
+      "isVisible": "According to @:explanation.gdpr (GDPR), the credit card number is personal information because it is unique and can theoretically identify a person. Also, the credit card number can be used to make payments, so the risk of the credit card number is high and it is only visible to the card user.",
+      "isNotVisible": "According to @:explanation.gdpr (GDPR), the credit card number is personal information because it is unique and can theoretically identify a person. Also, the credit card number can be used to make payments, so the risk of the credit card number is high and it is only visible to the card user."
     },
     "ccv": {
-      "isVisible": "@:explanation.data_is_visible",
-      "isNotVisible": "@:explanation.data_is_not_visible"
+      "isVisible": "According to @:explanation.gdpr (GDPR), the CCV of a credit card is not personal information, as there are a large number of people for whom the CCV is identical, and therefore no conclusions can be drawn about the identity of the user with this information . However, you can make payments with the CCV in combination with the credit card number, so the risk of the CCV is still high and it is only visible to the user of the card.",
+      "isNotVisible": "According to @:explanation.gdpr (GDPR), the CCV of a credit card is not personal information, as there are a large number of people for whom the CCV is identical, and therefore no conclusions can be drawn about the identity of the user with this information . However, you can make payments with the CCV in combination with the credit card number, so the risk of the CCV is still high and it is only visible to the user of the card."
     },
     "expiryDate": {
-      "isVisible": "@:explanation.data_is_visible",
-      "isNotVisible": "@:explanation.data_is_not_visible"
+      "isVisible": "According to @:explanation.gdpr (DSGVO), the expiry date of a credit card is not personal information, since there is a very large number of people for whom the expiration date is identical, and therefore no conclusions can be drawn about the identity of the user with this information However, it is still not entirely uncritical, as you can sometimes use the expiration date in combination with other data for online payments.For this reason, the expiryDate is visible to you as {role}.",
+      "isNotVisible": "According to @:explanation.gdpr (DSGVO), the expiration date of a credit card is not personal information, since there is a very large number of people for whom the expiry date is identical, and it is therefore not possible to draw any conclusions about the identity of the user with this information . However, it is still not entirely uncritical, since the expiration date can sometimes be used in combination with other data for online payments. For this reason, the expiryDate is not visible to you as {role}."
     },
     "provider": {
+      "isVisible": "According to @:explanation.gdpr (DSGVO), the name of the credit card provider is not personal information, since there is a very large number of people who use the same provider, and therefore no conclusions can be drawn about the identity of the user with this information. For this reason, the name of the credit card provider is visible to you as {role}.",
+      "isNotVisible": "According to @:explanation.gdpr (DSGVO), the name of the credit card provider is not personal information, since there is a very large number of people who use the same provider, and therefore no conclusions can be drawn about the identity of the user with this information. However, it still makes sense that data related to payments is only seen by the parties involved in the payment. For this reason, the name of the credit card provider is not visible to you as {role}."
+    },
+    "userName": {
+      "isVisible": "According to @:explanation.gdpr (GDPR), a PayPal username is personal information because it is unique and can theoretically identify a person. In most cases, users choose a username that closely resembles the user's real name. However, you can freely choose the user name, so that identification is often not that easy in practice. In addition, it is not so easy to cause damage with the username alone. For this reason, the username is visible to you as {role}.",
+      "isNotVisible": "According to @:explanation.gdpr (GDPR), a PayPal username is personal information because it is unique and can theoretically identify a person. In most cases, users choose a username that closely resembles the user's real name. However, you can freely choose the user name, so that identification is often not that easy in practice. In addition, it is not so easy to cause damage with the username alone. For this reason, the username is not visible to you as {role}."
+    },
+    "type": {
       "isVisible": "@:explanation.data_is_visible",
       "isNotVisible": "@:explanation.data_is_not_visible"
     },
-    "userName": {
+    "currentPosition": {
+      "isVisible": "@:explanation.data_is_visible",
+      "isNotVisible": "@:explanation.data_is_not_visible"
+    },
+    "numPassengers": {
+      "isVisible": "@:explanation.data_is_visible",
+      "isNotVisible": "@:explanation.data_is_not_visible"
+    },
+    "color": {
+      "isVisible": "@:explanation.data_is_visible",
+      "isNotVisible": "@:explanation.data_is_not_visible"
+    },
+    "licensePlate": {
+      "isVisible": "@:explanation.data_is_visible",
+      "isNotVisible": "@:explanation.data_is_not_visible"
+    },
+    "startingPoint": {
+      "isVisible": "@:explanation.data_is_visible",
+      "isNotVisible": "@:explanation.data_is_not_visible"
+    },
+    "destination": {
+      "isVisible": "@:explanation.data_is_visible",
+      "isNotVisible": "@:explanation.data_is_not_visible"
+    },
+    "batteryCondition": {
+      "isVisible": "@:explanation.data_is_visible",
+      "isNotVisible": "@:explanation.data_is_not_visible"
+    },
+    "electricLock": {
+      "isVisible": "@:explanation.data_is_visible",
+      "isNotVisible": "@:explanation.data_is_not_visible"
+    },
+    "electric": {
       "isVisible": "@:explanation.data_is_visible",
       "isNotVisible": "@:explanation.data_is_not_visible"
     }

@@ -42,3 +42,11 @@ export type TripId = `${typeof TRIP_ID_PREFIX}${number}`;
 export type PaymentId = `${typeof PAYMENT_ID_PREFIX}${number}`;
 export type UserId = `${typeof USER_ID_PREFIX}${number}`;
 export type RouteId = `${typeof ROUTE_ID_PREFIX}${number}`;
+/**
+ * ElectricLockStatus specifies whether a given Vehicle has an eletric lock or not
+ * or not (inactive).
+ */
+export enum ElectricLockStatus {
+  Yes = "Yes",
+  No = "No",
+}

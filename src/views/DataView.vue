@@ -28,9 +28,10 @@ const dataViewerVisible = inject("dataViewerVisible");
 }
 
 #data-viewer {
-  height: 70vh;
   width: 100vw;
   z-index: 2;
   position: relative;
+  overflow-y: auto;
+  max-height: 558px;
 }
 </style>
