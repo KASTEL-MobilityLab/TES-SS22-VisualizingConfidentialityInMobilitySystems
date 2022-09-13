@@ -2,6 +2,9 @@
 import { useI18n } from "vue-i18n";
 const i18n = useI18n();
 
+/**
+ * Switches the locale from english to german and vice versa.
+ */
 function switchLocale() {
   const locale = i18n.locale.value === "en" ? "de" : "en";
   i18n.locale.value = locale;

@@ -2,14 +2,14 @@
 import type { DataManager } from "@/backend/DataManager";
 import type { Risk } from "@/backend/riskManager/Risk";
 import type { Explanation } from "@/backend/riskManager/types";
-import { dataManagerKey } from "@/keys";
+import { DATA_MANAGER_KEY } from "@/keys";
 import { getTranslationKeyForExplanation } from "@/utils/translationUtils";
 import { computed, type ComputedRef, type Ref } from "@vue/reactivity";
 import { inject } from "vue";
 import { useI18n } from "vue-i18n";
 import InfoCard from "./InfoCard.vue";
 
-const $dm = inject(dataManagerKey) as Ref<DataManager>;
+const $dm = inject(DATA_MANAGER_KEY) as Ref<DataManager>;
 
 // must use this if we want to use the translation function inside script setup
 const { t } = useI18n();

@@ -1,12 +1,14 @@
 import type { DataType } from "@/backend/DataType";
 
-export const Delimiter = ".";
-export const AppPrefix = "app";
-export const DataTypePrefix = "data";
-export const ExplanationPrefix = "explanation";
+export const DELIMITER = ".";
+export const APP_PREFIX = "app";
+export const DATA_TYPE_PREFIX = "data";
+export const EXPLANATION_PREFIX = "explanation";
+export type DataTypeKey =
+  `${typeof DATA_TYPE_PREFIX}${typeof DELIMITER}${DataType}`;
 
 function concatenatePrefixWithKeys(prefix: string, ...keys: string[]): string {
-  return prefix + "." + keys.join(Delimiter);
+  return prefix + "." + keys.join(DELIMITER);
 }
 
 export function getTranslationKeyForDataType(...keys: DataType[]): string {
@@ -14,12 +16,12 @@ export function getTranslationKeyForDataType(...keys: DataType[]): string {
     // workaround for now, as this case will not be displayed in the UI currently
     return "";
   }
-  return concatenatePrefixWithKeys(DataTypePrefix, ...keys);
+  return concatenatePrefixWithKeys(DATA_TYPE_PREFIX, ...keys);
 }
 
 export function getTranslationKeyForExplanation(...keys: string[]): string {
   if (!keys[0]) {
     return "";
   }
-  return concatenatePrefixWithKeys(ExplanationPrefix, ...keys);
+  return concatenatePrefixWithKeys(EXPLANATION_PREFIX, ...keys);
 }

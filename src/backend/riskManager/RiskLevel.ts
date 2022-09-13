@@ -1,5 +1,5 @@
 /**
- *  RiskLevel specifies how high the risk associated with a datatype is.
+ * RiskLevel specifies how high the risk associated with a datatype is.
  */
 export enum RiskLevel {
   Low = "Low",

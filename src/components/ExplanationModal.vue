@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import type { DataManager } from "@/backend/DataManager";
 import { getRiskColor } from "@/backend/riskManager/RiskColor";
-import { dataManagerKey } from "@/keys";
+import { DATA_MANAGER_KEY } from "@/keys";
 import { getTranslationKeyForDataType } from "@/utils/translationUtils";
 import { computed } from "@vue/reactivity";
 import { inject, type Ref } from "vue";
 import ExplanationContent from "./ExplanationContent.vue";
 
-const $dm = inject(dataManagerKey) as Ref<DataManager>;
+const $dm = inject(DATA_MANAGER_KEY) as Ref<DataManager>;
 
 const currentRisk = computed(() => $dm.value.getCurrentRisk());
 

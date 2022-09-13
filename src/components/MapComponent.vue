@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { MarkerManager } from "@/animation/MarkerManager";
 import type { DataManager } from "@/backend/DataManager";
-import { dataManagerKey, markerManagerKey } from "@/keys";
+import { DATA_MANAGER_KEY, MARKER_MANAGER_KEY } from "@/keys";
 import { fromLeafletLatLng, toLeafletLatLngArray } from "@/utils/latLngUtils";
 import type { VehicleMarker } from "@/utils/leafletExtension";
 import { RandomDataPrinter } from "@/utils/RandomDataPrinter";
@@ -10,8 +10,8 @@ import L, { type LeafletEvent } from "leaflet";
 import { inject, onMounted, watch, type Ref } from "vue";
 import { useRouter } from "vue-router";
 
-const $dm = inject(dataManagerKey) as Ref<DataManager>;
-const $mm = inject(markerManagerKey) as Ref<MarkerManager>;
+const $dm = inject(DATA_MANAGER_KEY) as Ref<DataManager>;
+const $mm = inject(MARKER_MANAGER_KEY) as Ref<MarkerManager>;
 const router = useRouter();
 let routeDisplay: RouteDisplay;
 let map: L.Map;
@@ -97,6 +97,7 @@ function setupMarkers(map: L.Map) {
  */
 function emptySpotClicked(e: LeafletEvent) {
   $dm.value.currentData.unsetReferences();
+  $mm.value.deselectMarker();
   // navigate back to welcome page on data viewer
   router.push({
     name: "Welcome",
@@ -104,6 +105,8 @@ function emptySpotClicked(e: LeafletEvent) {
   // guard, don't print in production mode.
   if (import.meta.env.DEV) {
     // run data utility
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const newPosition = fromLeafletLatLng((e as any).latlng);
     randomDataPrinter.addWayPointToCurrentRoute(newPosition);
 
@@ -126,6 +129,10 @@ function emptySpotClicked(e: LeafletEvent) {
 async function vehicleMarkerClicked(event: LeafletEvent) {
   const marker = event.propagatedFrom as VehicleMarker;
   const vehicle = marker.vehicle;
+
+  $mm.value.deselectMarker();
+  $mm.value.highlightCurrentMarker(marker);
+
   $dm.value.updateByVehicle(vehicle);
   // navigate to Default Data View
   router.push({
@@ -158,5 +165,12 @@ async function vehicleMarkerClicked(event: LeafletEvent) {
   stroke-width: 7;
   fill: none;
   stroke-opacity: 1;
+}
+
+.vehicle-icon {
+  color: black;
+}
+.vehicle-icon.selected-marker {
+  color: rgb(189, 56, 56);
 }
 </style>

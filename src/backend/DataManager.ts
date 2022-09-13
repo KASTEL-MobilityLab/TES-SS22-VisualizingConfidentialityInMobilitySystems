@@ -1,3 +1,4 @@
+import { DELIMITER, type DataTypeKey } from "@/utils/translationUtils";
 import { isNode } from "browser-or-node";
 import { AggregatedData } from "./AggregatedData";
 import type {
@@ -19,11 +20,9 @@ import { TripAnimator } from "./TripAnimator";
 import type { LatLng } from "./utils/LatLng";
 import { fetchWaypoints } from "./utils/Routing";
 export class DataManager {
-  public static readonly SEPERATOR_SYMBOL_FOR_DATATYPE = ".";
+  private static readonly ANIMATION_SPEED = 15;
+  private static readonly DATATYPE_POSITION = 1;
   currentRole: Role;
-  //Not worked on it yet.
-  roleUser?: User;
-  roleCompany?: Company;
 
   companies: Company[];
   payments: Payment[];
@@ -69,7 +68,7 @@ export class DataManager {
   /**
    * This method initializes the data manager by asynchronously loading all data.
    */
-  async init() {
+  async init(autoStartAnimation = true) {
     let risks: Risk[];
     [
       this.users,
@@ -83,11 +82,18 @@ export class DataManager {
     this.riskManager.risks = risks;
     this.setAllReferences();
     await this.setRouteWaypoints();
-    this.trips.map((trip) => trip.setVehicleStartPosition());
-    this.trips.map((trip) => trip.setInitialPositions());
-    this.tripAnimator = new TripAnimator(this.trips, 15);
+    this.trips.map((trip) => {
+      trip.setVehicleStartPosition();
+      trip.setGeocodedTripPositions();
+    });
+    this.tripAnimator = new TripAnimator(
+      this.trips,
+      DataManager.ANIMATION_SPEED
+    );
     this.aggregatedData.init(this.trips);
-    this.startAnimation();
+    if (autoStartAnimation) {
+      this.startAnimation();
+    }
   }
 
   /**
@@ -216,22 +222,6 @@ export class DataManager {
     this.currentRole = <Role>role;
   }
 
-  /**
-   * Under work. Not used yet. Change the current user.
-   * @param userId The user of the selected user.
-   */
-  changeUser(userId: string) {
-    this.roleUser = <User>this.getDataById(userId, this.users);
-  }
-
-  /**
-   * Undeer work. Not used yet. Change the current company.
-   * @param companyId The user of the selected company.
-   */
-  changeCompany(companyId: string) {
-    this.roleCompany = <Company>this.getDataById(companyId, this.companies);
-  }
-
   // find a trip by its vehicle.
   private getTripByVehicle(vehicle: Vehicle): Trip {
     const trip = this.trips.find((trip) => trip.vehicleId === vehicle.id);
@@ -277,16 +267,32 @@ export class DataManager {
     return this.riskManager.getCurrentVisibility(this.currentRole);
   }
 
-  getDataType(key: string) {
-    return <DataType>key.split(DataManager.SEPERATOR_SYMBOL_FOR_DATATYPE)[1];
+  /**
+   * Returns the datatype with the given key.
+   *
+   * @param key the (translation) key of the data type
+   * @returns the actual DataType
+   */
+  getDataType(key: DataTypeKey): DataType {
+    return <DataType>key.split(DELIMITER)[DataManager.DATATYPE_POSITION];
   }
 
-  getRoleVisibility(dataTypeKey: string): boolean {
+  /**
+   *
+   * @param dataTypeKey the key of the data type
+   * @returns
+   */
+  getRoleVisibility(dataTypeKey: DataTypeKey): boolean {
     const dataType: DataType = this.getDataType(dataTypeKey);
     const risk: Risk = this.riskManager.findRisk(dataType);
     return risk.isVisible(this.currentRole);
   }
 
+  /**
+   * True if the animation is currently running.
+   *
+   * @returns true if the animation is running.
+   */
   getIsRunning() {
     return this.tripAnimator?.isRunning;
   }

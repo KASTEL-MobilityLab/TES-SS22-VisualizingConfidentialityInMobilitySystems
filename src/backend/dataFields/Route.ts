@@ -1,6 +1,8 @@
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { Expose, Type } from "class-transformer";
 import { LatLng } from "../utils/LatLng";
 import { DataField } from "./DataField";
+import type { RouteId } from "./types";
 
 /**
  * The Route class.
@@ -21,8 +23,16 @@ export class Route extends DataField {
   @Expose()
   description?: string;
 
+  /**
+   * Creates a new Route.
+   * @param id the id of the route.
+   * @param start the starting point of the route.
+   * @param end the ending point of the route.
+   * @param waypoints optionally, the waypoints that are passed through.
+   * @param description optionally, the description of the route.
+   */
   constructor(
-    id: string,
+    id: RouteId,
     start: LatLng,
     end: LatLng,
     waypoints?: LatLng[],

@@ -3,6 +3,7 @@ import type { Trip } from "./dataFields";
 export class AggregatedData {
   public static readonly SECONDS_OF_ONE_MINUTE = 60;
   public static readonly MILLISECONDS_OF_ONE_SECOND = 1000;
+  private static readonly INITIAL_AGGREGATED_DATA = 0;
 
   numberOfActiveVehicles: number;
   numberOfUsers: number;
@@ -15,14 +16,17 @@ export class AggregatedData {
 
   userIds: string[] = [];
 
+  /**
+   * Sets the AggregatedData to the initial state and returns it.
+   */
   constructor() {
-    this.numberOfActiveVehicles = 0;
-    this.numberOfUsers = 0;
+    this.numberOfActiveVehicles = AggregatedData.INITIAL_AGGREGATED_DATA;
+    this.numberOfUsers = AggregatedData.INITIAL_AGGREGATED_DATA;
 
-    this.averageSpeed = 0;
-    this.averageDuration = 0;
-    this.averageDistance = 0;
-    this.averagePrice = 0;
+    this.averageSpeed = AggregatedData.INITIAL_AGGREGATED_DATA;
+    this.averageDuration = AggregatedData.INITIAL_AGGREGATED_DATA;
+    this.averageDistance = AggregatedData.INITIAL_AGGREGATED_DATA;
+    this.averagePrice = AggregatedData.INITIAL_AGGREGATED_DATA;
   }
 
   private calculateNumberOfActiveVehicles(trips: Trip[]) {
@@ -43,7 +47,10 @@ export class AggregatedData {
   }
 
   private calculateAverageSpeed(trips: Trip[]) {
-    const sumSpeed = trips.reduce((sum, trip) => sum + trip.avgSpeed, 0);
+    const sumSpeed = trips.reduce(
+      (sum, trip) => sum + trip.avgSpeed,
+      AggregatedData.INITIAL_AGGREGATED_DATA
+    );
     this.averageSpeed = sumSpeed / trips.length;
   }
 
@@ -54,7 +61,7 @@ export class AggregatedData {
     const sumDuration =
       trips.reduce(
         (sum, trip) => sum + trip.endTime.getTime() - trip.startTime.getTime(),
-        0
+        AggregatedData.INITIAL_AGGREGATED_DATA
       ) / AggregatedData.MILLISECONDS_OF_ONE_SECOND;
     this.averageDuration = sumDuration / trips.length;
     this.averageDuration = Math.floor(
@@ -66,7 +73,10 @@ export class AggregatedData {
    * Calculates the average price in Euro adjusted downward
    */
   private calculateAveragePrice(trips: Trip[]) {
-    const sumPrice = trips.reduce((sum, trip) => sum + trip.price, 0);
+    const sumPrice = trips.reduce(
+      (sum, trip) => sum + trip.price,
+      AggregatedData.INITIAL_AGGREGATED_DATA
+    );
     this.averagePrice = Math.floor(sumPrice / trips.length);
   }
 

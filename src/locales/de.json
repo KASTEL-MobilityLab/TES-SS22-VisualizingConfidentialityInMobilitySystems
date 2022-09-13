@@ -10,8 +10,15 @@
     "source": "Quelle",
     "user": "Benutzer",
     "toggle-data-viewer": "@:app.dataViewer umschalten",
-    "welcome": "Willkommen zu unserem @:app.confidentiality-visualizer",
     "aggregatedDataReasoning": "Sie befinden sich momentan in der Rolle der Stadt. Nachfolgend sehen Sie die der Stadt zugänglichen aggregierten Daten aus dem Mobilitätskontext.",
+    "aggregatedData": {
+      "averageDistance": "Durchschnittliche Distanz",
+      "averageDuration": "Durchschnittliche Dauer",
+      "averagePrice": "Durchschnittlicher Preis",
+      "averageSpeed": "Durchschnittsgeschwindigkeit",
+      "numberOfActiveVehicles": "Anzahl aktiver Fahrzeuge",
+      "numberOfUsers": "Anzahl Nutzer"
+    },
     "year": "kein Jahr | ein Jahr | {count} Jahre",
     "day": "kein Tag | ein Tag | {count} Tage",
     "dataViews": {
@@ -20,7 +27,13 @@
       "tripDataView": "Tripdaten",
       "vehicleDataView": "Fahrzeugdaten"
     },
-    "reset": "Zurücksetzten"
+    "reset": "Zurücksetzen",
+    "welcome": {
+      "click_to_see_data": "Klicken Sie auf eines der Fahrzeugsymbole auf der Karte, um die gesammelten Daten über die Fahrt anzuzeigen.",
+      "get_help": "Klicken Sie auf den Button 'Hilfe', um weitere Informationen über unsere Anwendung zu erhalten.",
+      "getting_started": "Wählen Sie zunächst eine Rolle aus, indem Sie auf eines der Symbole in der Navigationsleiste klicken.",
+      "title": "Willkommen zu unserem @:app.confidentiality-visualizer"
+    }
   },
   "data": {
     "address": "Adresse",
@@ -69,10 +82,10 @@
   "help": {
     "title": "Hilfe",
     "about_the_app": "Über die App",
-    "about_the_app_text": "Das ist das Ziel der App",
+    "about_the_app_text": "Durch ein wachsendes Angebot an öffentlichen Verkehrsmitteln und die zunehmende Digitalisierung steigt die Menge der gesammelten Daten im öffentlichen Nahverkehr immer weiter an. Daher ist das Ziel dieses Web-basierten Demonstrators, zu visualisieren, welche Daten genau in welcher Situation gesammelt werden. Außerdem soll er dabei helfen zu verstehen, wie groß jeweils das Risiko ist, welches mit diesen Daten einhergeht, wie lange die Daten gespeichert werden, und wer auf sie zugreifen kann. Um dieses Ziel zu erreichen, wird eine interaktive Karte der Stadt Karlsruhe genutzt, auf der man öffentliche Verkehrsmittle auf ihrem Weg durch die Stadt beobachten und diese anklicken kann, um mehr über die mit ihnen und ihren Trips verbundenen gesammelten Daten zu erfahren.",
     "how_it_works": "So funktioniert es",
-    "how_it_works_text": "So kannst du die app bedienen",
+    "how_it_works_text": "Sobald diese Anwendung gestartet wird, fangen die Icons auf der Karte an, sich auf ihren Routen zu bewegen. Sie repräsentieren jeweils verschiedenen öffentlich Fortbewegungsmittel, wie Busse oder E-Scooter. Durch Klicken auf ein Icon öffnet sich der Daten-Anzeiger, und es werden die Daten zum Trip des ausgewählten Icons angezeigt. Dort kann man wählen, ob man Daten bezüglich des Nutzers des Fahrzeuges, des Bezahlvorgangs, des Fahrzeuges oder seines aktuellen Trips anschauen will. Dann werden die jeweiligen gesammelten Daten und ihre zugehörigen Risiken angezeigt. Auf der Anzeige oben über der Karte kann man außerdem einstellen, aus welcher Sicht man die Daten betrachten will. Die Daten, die von der gewählten Sicht nicht einsehbar sind, werden verschwommen angezeigt. Um herauszufinden, nach welchen Kriterien die Risiken bestimmt werden, kann man auf das grün-gelb-rote Feld unten links klicken. Außerdem kann man oben links die Animation pausieren oder zurücksetzen.",
     "what_infos_you_can_get": "Diese Infos kannst du ablesen",
-    "what_infos_you_can_get_text": "Diese Infos kannst du in der App ablesen"
+    "what_infos_you_can_get_text": "Diese Anwendung erlaubt es, die verschiedenen Arten von Daten zu betrachten, die bei der Nutzung öffentlicher Fahrzeuge anfallen. Dafür werden die Daten in vier Kategorien eingeteilt: Fahrerdaten, Zahlungsdaten, Fahrzeugdaten und Tripdaten. Unter Fahrerdaten findet man alle Daten, die über den Nutzer des Fahrzeugs gesammelt werden, wie zB. dessen Name. Zahlungsdaten sind Daten bezüglich der Zahlung des Tickets für den Trip, wie zB. die Kreditkartennummer. Die Fahrzeugdaten beinhalten beispielsweise die aktuelle Position des Fahrzeugs. Die Tripdaten beinhalten Daten bezüglich des Trips selbst, wie zB. Start- und Endzeitpunkt. Zu allen Daten kann man prüfen, ob sie von drei verschiedenen Sichten aus verfügbar sind: Der Sicht des Nutzers des Fahrzeugs, der Sicht der Stadt und der Sicht des Unternehmens, dem das Fahrzeug gehört. Eine Farbskala zeigt außerdem an, ob das mit einem Datum verbundene Risiko niedrig, mittel oder hoch ist. Durch Klicken auf ein Datum erhält man detaillierte Infos darüber, warum das Datum einem Bestimmten Risiko zugeordnet ist, warum es von der gewählten Sicht verfügbar bzw. nicht verfügbar ist, und wie lange es gespeichert wird."
   }
 }

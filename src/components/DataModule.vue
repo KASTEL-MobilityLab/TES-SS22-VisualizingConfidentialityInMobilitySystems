@@ -1,15 +1,16 @@
 <script setup lang="ts">
 import type { DataManager } from "@/backend/DataManager";
 import type { DataModule } from "@/backend/dataModules/DataModule";
-import { dataManagerKey } from "@/keys";
+import { DATA_MANAGER_KEY } from "@/keys";
+import type { DataTypeKey } from "@/utils/translationUtils";
 import { inject, type Ref } from "vue";
 defineProps<{
   dataModule?: DataModule;
   dataFieldName: string;
 }>();
-const $dm = inject(dataManagerKey) as Ref<DataManager>;
+const $dm = inject(DATA_MANAGER_KEY) as Ref<DataManager>;
 
-function setCurrentRisk(key: string) {
+function setCurrentRisk(key: DataTypeKey) {
   const datatype: string = $dm.value.getDataType(key);
   $dm.value.setCurrentRisk(datatype);
 }
@@ -36,13 +37,13 @@ function setCurrentRisk(key: string) {
               :class="dataModule?.risks[key]"
               data-bs-toggle="modal"
               data-bs-target="#explanationModal"
-              @click="setCurrentRisk(key)"
+              @click="setCurrentRisk(key as DataTypeKey)"
             >
               {{ $t(key) }}
             </li>
           </div>
         </div>
-        <div v-if="$dm.getRoleVisibility(key)" class="col m-2">
+        <div v-if="$dm.getRoleVisibility(key as DataTypeKey)" class="col m-2">
           {{ value }}
         </div>
         <div v-else id="blur" class="col m-2">Censored</div>

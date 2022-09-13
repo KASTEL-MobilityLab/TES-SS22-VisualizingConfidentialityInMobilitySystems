@@ -1,12 +1,13 @@
 <script setup lang="ts">
 import type { MarkerManager } from "@/animation/MarkerManager";
 import type { DataManager } from "@/backend/DataManager";
-import { dataManagerKey, markerManagerKey } from "@/keys";
+import { DATA_MANAGER_KEY, MARKER_MANAGER_KEY } from "@/keys";
 import { inject, watch, type Ref } from "vue";
 
-const $dm = inject(dataManagerKey) as Ref<DataManager>;
-const $mm = inject(markerManagerKey) as Ref<MarkerManager>;
+const $dm = inject(DATA_MANAGER_KEY) as Ref<DataManager>;
+const $mm = inject(MARKER_MANAGER_KEY) as Ref<MarkerManager>;
 
+// updates the marker positions, when the vehicles change
 watch(
   () => $dm.value.vehicles,
   (currentValue) => {

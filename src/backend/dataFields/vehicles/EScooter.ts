@@ -1,7 +1,12 @@
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { Expose } from "class-transformer";
-import "reflect-metadata";
 import type { Company } from "../Company";
-import { VehicleStatus, VehicleType } from "../types";
+import {
+  VehicleStatus,
+  VehicleType,
+  type CompanyId,
+  type VehicleId,
+} from "../types";
 import { IndividualVehicle } from "./IndividualVehicle";
 
 /**
@@ -18,18 +23,19 @@ export class EScooter extends IndividualVehicle {
   readonly batteryLevel: string;
 
   /**
+   * Constructs a new E-Scooter.
    *
-   * @param id The id of the vehicle.
-   * @param companyId the id of the company the vehicle belongs to.
-   * @param status the status of the vehicle (inactive or active).
-   * @param condition the condition of the scooter between 0 and 100.
-   * @param batteryCondition the battery condition of the scooter between 0 and 100.
-   * @param batteryLevel the battery level of the scooter between 0 and 100.
-   * @param company optionally, the actual company instance the vehicle belongs to.
+   * @param id the id of the e-scooter.
+   * @param companyId the id of the company the e-scooter belongs to.
+   * @param status the status of the e-scooter (inactive or active).
+   * @param condition the condition of the e-scooter between 0 and 100.
+   * @param batteryCondition the battery condition of the e-scooter between 0 and 100.
+   * @param batteryLevel the battery level of the e-scooter between 0 and 100.
+   * @param company optionally, the actual company instance the e-scooter belongs to.
    */
   constructor(
-    id: string,
-    companyId: string,
+    id: VehicleId,
+    companyId: CompanyId,
     condition: number,
     batteryCondition: number,
     status: VehicleStatus,

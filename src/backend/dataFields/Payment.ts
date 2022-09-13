@@ -1,6 +1,11 @@
 import { DataField } from "@/backend/dataFields/DataField";
 import { Trip } from "@/backend/dataFields/Trip";
-import { PaymentType } from "@/backend/dataFields/types";
+import {
+  PaymentType,
+  type PaymentId,
+  type TripId,
+} from "@/backend/dataFields/types";
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { Exclude, Expose } from "class-transformer";
 
 /**
@@ -9,15 +14,24 @@ import { Exclude, Expose } from "class-transformer";
 export abstract class Payment extends DataField {
   @Expose({ name: "type" })
   readonly paymentType: PaymentType;
+
   @Expose()
-  readonly tripId: string;
+  readonly tripId: TripId;
+
   @Exclude()
   private _trip?: Trip;
 
+  /**
+   * Creates a new Payment.
+   * @param paymentType the typ in which the payment is performed.
+   * @param id the id of the payment.
+   * @param tripId the id of the trip the payment belongs to.
+   * @param trip the trip the payment belongs to.
+   */
   constructor(
     paymentType: PaymentType,
-    id: string,
-    tripId: string,
+    id: PaymentId,
+    tripId: TripId,
     trip?: Trip
   ) {
     super(id);

@@ -1,6 +1,7 @@
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { Expose, Type } from "class-transformer";
 import type { Trip } from "../Trip";
-import { PaymentType } from "../types";
+import { PaymentType, type PaymentId, type TripId } from "../types";
 import { NonCash } from "./NonCash";
 
 /**
@@ -8,26 +9,36 @@ import { NonCash } from "./NonCash";
  * and can be used as an offline or online payment.
  */
 export class CreditCard extends NonCash {
+  @Type(() => Date)
+  @Expose()
+  readonly expiryDate: Date;
+
   @Expose()
   readonly cardNumber: number;
 
   @Expose()
   readonly ccv: number;
 
-  @Type(() => Date)
-  @Expose()
-  readonly expiryDate: Date;
-
   @Expose()
   readonly provider: string;
 
+  /**
+   * Creates a CreditCard payment instance.
+   * @param cardNumber the card number of the credit card
+   * @param ccv the ccv of the credit card
+   * @param expiryDate the expiry date of the credit card
+   * @param provider the provider of the credit card
+   * @param id the unique identifier of the CreditCard instance
+   * @param tripId the id of the trip in which this CreditCard instance is used
+   * @param trip the Trip instance in which this CreditCard instance is used
+   */
   constructor(
     cardNumber: number,
     ccv: number,
     expiryDate: Date,
     provider: string,
-    id: string,
-    tripId: string,
+    id: PaymentId,
+    tripId: TripId,
     trip?: Trip
   ) {
     super(PaymentType.CreditCard, id, tripId, trip);

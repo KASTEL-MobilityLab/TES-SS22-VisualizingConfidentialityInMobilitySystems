@@ -1,21 +1,32 @@
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { Exclude, Expose, Type } from "class-transformer";
+import "reflect-metadata";
 import { LatLng } from "../utils/LatLng";
 import type { Company } from "./Company";
 import { DataField } from "./DataField";
-import { VehicleStatus, type VehicleType } from "./types";
+import {
+  VehicleStatus,
+  type CompanyId,
+  type VehicleId,
+  type VehicleType,
+} from "./types";
 
 /**
  * The interface every vehicle must implement.
  */
 export abstract class Vehicle extends DataField {
   @Expose()
-  readonly companyId: string;
+  readonly companyId: CompanyId;
+
   @Expose()
   readonly type: VehicleType;
+
   @Expose()
   readonly status: VehicleStatus;
+
   @Exclude()
   private _company?: Company;
+
   //Possibly undefined name of the company that owns this vehicle.
   @Exclude()
   ownerName?: string;
@@ -24,9 +35,18 @@ export abstract class Vehicle extends DataField {
   @Expose()
   currentPosition?: LatLng;
 
+  /**
+   * Creates a new Vehicle.
+   * @param id the id of the vehicle.
+   * @param companyId the id of the company this vehicle belongs to.
+   * @param type the type of the vehicle.
+   * @param status the status of the vehicle.
+   * @param company the company this vehicle belongs to.
+   * @param currentPosition the current position of the vehicle.
+   */
   constructor(
-    id: string,
-    companyId: string,
+    id: VehicleId,
+    companyId: CompanyId,
     type: VehicleType,
     status: VehicleStatus,
     company?: Company,
@@ -42,10 +62,16 @@ export abstract class Vehicle extends DataField {
     this.currentPosition = currentPosition;
   }
 
+  /**
+   * Gets the company of the vehicle.
+   */
   get company() {
     return this._company;
   }
 
+  /**
+   * Sets the company of the vehicle and checks for valid foreign key references.
+   */
   set company(company: Company | undefined) {
     if (!company) {
       throw new Error("Cannot set the company of this vehicle to undefined.");

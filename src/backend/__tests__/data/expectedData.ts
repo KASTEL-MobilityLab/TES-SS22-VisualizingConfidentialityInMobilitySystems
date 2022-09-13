@@ -28,12 +28,10 @@ import { explanations } from "./expectedExplanations";
  * It must match the order, in which the DataLoader pushes the elements to the data array.
  * Example: In payments, the order must be: all Cash, then all CreditCard, then all PayPal.
  */
-
 export const companies: Company[] = [
   new Company("C01", "Fire Runner"),
   new Company("C02", "Voi"),
 ];
-
 export const payments: Payment[] = [
   new CreditCard(
     5568404992412103,
@@ -64,8 +62,13 @@ export const users: User[] = [
 export const routes: Route[] = [
   new Route(
     "R01",
-    new LatLng(49.007578, 8.38937),
-    new LatLng(49.011074, 8.413184)
+    new LatLng(49.01519138090796, 8.37510108947754),
+    new LatLng(49.01051975365701, 8.387203216552736),
+    [
+      new LatLng(49.01519138090796, 8.37510108947754),
+      new LatLng(49.014797405174924, 8.387804031372072),
+      new LatLng(49.01051975365701, 8.387203216552736),
+    ]
   ),
   new Route(
     "R02",
