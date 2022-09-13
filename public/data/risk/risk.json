@@ -225,7 +225,7 @@
   {
     "dataType": "VehicleType",
     "riskLevel": "Low",
-    "roleVisibility": ["Company", "User"],
+    "roleVisibility": ["Company", "User", "City"],
     "explanation": {
       "retentionPeriod": "stored_until_no_longer_necessary",
       "riskLevelExplanation": {

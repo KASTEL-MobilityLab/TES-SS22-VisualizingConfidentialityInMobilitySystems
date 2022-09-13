@@ -15,7 +15,6 @@ import type { Vehicle } from "./Vehicle";
  */
 export class Trip extends DataField {
   private static readonly INITIAL_CURRENT_STEP = 0;
-  private static readonly REDUCER_FOR_CURRENT_STEP = 1;
   @Expose()
   readonly routeId: RouteId;
 
@@ -43,6 +42,12 @@ export class Trip extends DataField {
   readonly avgSpeed: number;
 
   @Exclude()
+  startingPoint?: string;
+
+  @Exclude()
+  destination?: string;
+
+  @Exclude()
   private _vehicle?: Vehicle;
 
   @Exclude()
@@ -59,12 +64,6 @@ export class Trip extends DataField {
 
   @Exclude()
   currentStep: number;
-
-  @Exclude()
-  private startingPoint?: string;
-
-  @Exclude()
-  private destination?: string;
 
   /**
    * Creates a new Trip.
@@ -223,10 +222,8 @@ export class Trip extends DataField {
         "Trip Progress is undefined. The Trip does not have a route."
       );
     }
-    return (
-      this.currentStep ===
-      this.route.waypoints.length - Trip.REDUCER_FOR_CURRENT_STEP
-    );
+    const lastStep = this.route.waypoints.length - 1;
+    return this.currentStep === lastStep;
   }
 
   /**
