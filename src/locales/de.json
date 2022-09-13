@@ -10,8 +10,15 @@
     "source": "Quelle",
     "user": "Benutzer",
     "toggle-data-viewer": "@:app.dataViewer umschalten",
-    "welcome": "Willkommen zu unserem @:app.confidentiality-visualizer",
     "aggregatedDataReasoning": "Sie befinden sich momentan in der Rolle der Stadt. Nachfolgend sehen Sie die der Stadt zugänglichen aggregierten Daten aus dem Mobilitätskontext.",
+    "aggregatedData": {
+      "averageDistance": "Durchschnittliche Distanz",
+      "averageDuration": "Durchschnittliche Dauer",
+      "averagePrice": "Durchschnittlicher Preis",
+      "averageSpeed": "Durchschnittsgeschwindigkeit",
+      "numberOfActiveVehicles": "Anzahl aktiver Fahrzeuge",
+      "numberOfUsers": "Anzahl Nutzer"
+    },
     "year": "kein Jahr | ein Jahr | {count} Jahre",
     "day": "kein Tag | ein Tag | {count} Tage",
     "dataViews": {
@@ -20,7 +27,13 @@
       "tripDataView": "Tripdaten",
       "vehicleDataView": "Fahrzeugdaten"
     },
-    "reset": "Zurücksetzen"
+    "reset": "Zurücksetzen",
+    "welcome": {
+      "click_to_see_data": "Klicken Sie auf eines der Fahrzeugsymbole auf der Karte, um die gesammelten Daten über die Fahrt anzuzeigen.",
+      "get_help": "Klicken Sie auf den Button 'Hilfe', um weitere Informationen über unsere Anwendung zu erhalten.",
+      "getting_started": "Wählen Sie zunächst eine Rolle aus, indem Sie auf eines der Symbole in der Navigationsleiste klicken.",
+      "title": "Willkommen zu unserem @:app.confidentiality-visualizer"
+    }
   },
   "data": {
     "address": "Adresse",
