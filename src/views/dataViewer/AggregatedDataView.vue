@@ -8,7 +8,7 @@ const $dm = inject(dataManagerKey) as Ref<DataManager>;
 </script>
 
 <template>
-  <div class="container text-center">
+  <div class="container text-center p-2">
     <h3>{{ $t("app.welcome.title") }}</h3>
 
     <nav class="flex-column lead">
