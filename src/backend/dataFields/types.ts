@@ -28,3 +28,12 @@ export enum PaymentType {
   CreditCard = "Credit Card",
   PayPal = "PayPal",
 }
+
+/**
+ * ElectricLockStatus specifies whether a given Vehicle has an eletric lock or not
+ * or not (inactive).
+ */
+export enum ElectricLockStatus {
+  Yes = "Yes",
+  No = "No",
+}

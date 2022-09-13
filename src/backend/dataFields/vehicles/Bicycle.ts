@@ -1,6 +1,6 @@
 import { Expose } from "class-transformer";
 import type { Company } from "../Company";
-import { VehicleType, type VehicleStatus } from "../types";
+import { ElectricLockStatus, VehicleType, type VehicleStatus } from "../types";
 import { IndividualVehicle } from "./IndividualVehicle";
 
 /**

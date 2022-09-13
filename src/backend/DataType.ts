@@ -24,6 +24,8 @@ export enum DataType {
   TripEndTime = "endTime",
   TripAverageSpeed = "averageSpeed",
   TripPrice = "price",
+  TripStartingPoint = "startingPoint",
+  TripDestination = "destination",
   //Payment
   PaymentType = "paymentType",
   PaymentCardNumber = "cardNumber",

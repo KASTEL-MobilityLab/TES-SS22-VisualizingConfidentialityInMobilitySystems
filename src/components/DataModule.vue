@@ -29,22 +29,23 @@ function setCurrentRisk(key: string) {
       <div class="fs-3 p-2 mb-1">{{ $t(dataFieldName) }}</div>
     </div>
     <template v-for="(value, key) in dataModule?.displayedData" :key="key">
-      <div class="row m-2 p-2">
+      <div class="d-flex align-items-center row m-2 p-2">
         <div class="col m-2 fw-bold">
-          <button
-            type="button"
-            :class="dataModule?.risks[key]"
-            data-bs-toggle="modal"
-            data-bs-target="#explanationModal"
-            @click="setCurrentRisk(key)"
-          >
-            {{ $t(key) }}
-          </button>
+          <div class="list-group">
+            <li
+              :class="dataModule?.risks[key]"
+              data-bs-toggle="modal"
+              data-bs-target="#explanationModal"
+              @click="setCurrentRisk(key)"
+            >
+              {{ $t(key) }}
+            </li>
+          </div>
         </div>
         <div v-if="$dm.getRoleVisibility(key)" class="col m-2">
           {{ value }}
         </div>
-        <div v-else id="blur" class="col m-2">{{ value }}</div>
+        <div v-else id="blur" class="col m-2">Censored</div>
       </div>
     </template>
   </template>
@@ -58,6 +59,6 @@ function setCurrentRisk(key: string) {
 #blur {
   font-size: 20px;
   color: transparent;
-  text-shadow: 0 0 8px #000;
+  text-shadow: 0 0 10px #000;
 }
 </style>
