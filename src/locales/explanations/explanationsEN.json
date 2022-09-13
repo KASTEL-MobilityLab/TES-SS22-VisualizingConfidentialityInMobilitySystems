@@ -18,44 +18,44 @@
     "data_is_visible": "It is not possible to identify a rider with this information and thus it is not @:explanation.personal_information according to the @:explanation.gdpr (GDPR). Therefore it is visible to you as a {role}.",
     "data_is_not_visible": "According to the risk of the data, it is possible to identify a rider with this information. Therefore it qualifies as @:explanation.personal_information according to the @:explanation.gdpr (GDPR). As a {role} you are not allowed to see this data.",
     "email": {
-      "isVisible": "@:explanation.data_is_visible",
-      "isNotVisible": "@:explanation.data_is_not_visible"
+      "isVisible": "An email address is according to @:explanation.gdpr (GDPR) a @:explanation.personal_information because a person can be identified by the username within the email address. This is because in most cases users choose a username that has a close resemblance to the user's real name. For this reason, the email address is visible to you as {role}.",
+      "isNotVisible": "An email address is according to @:explanation.gdpr (GDPR) a @:explanation.personal_information because a person can be identified by the username within the email address. This is because in most cases users choose a username that has a close resemblance to the user's real name. For this reason, the email address is not visible to you as {role}."
     },
     "phoneNumber": {
-      "isVisible": "@:explanation.data_is_visible",
-      "isNotVisible": "@:explanation.data_is_not_visible"
+      "isVisible": "According to @:explanation.gdpr (GDPR), a telephone number is @:explanation.personal_information, because a person can be identified by the telephone number in the telephone book or on the Internet or by a phone call. This is because by searching for the phone number in the phone book or on the Internet, references (e.g. first name, last name, address, place of residence) can be found, which can be used to identify the person. For this reason, the phone number is visible to you as {role}.",
+      "isNotVisible": "According to @:explanation.gdpr (GDPR), a telephone number is @:explanation.personal_information, because a person can be identified by the telephone number in the telephone book or on the Internet or by a phone call. This is because by searching for the phone number in the phone book or on the Internet, references (e.g. first name, last name, address, place of residence) can be found, which can be used to identify the person. For this reason, the phone number is not visible to you as {role}."
     },
     "surname": {
       "isVisible": "A surname is not necessarily @:explanation.personal_information according to the @:explanation.gdpr (GDPR) because there may be multiple people with the same name. Therefore, it is visible to you as a {role}. However, if the surname is combined with an address for example, it is @:explanation.personal_information and would not be visible to you.",
-      "isNotVisible": "@:explanation.data_is_not_visible"
+      "isNotVisible": "A surname is not necessarily @:explanation.personal_information according to @:explanation.gdpr (GDPR), because there can be multiple people with the same name. Therefore, it is not visible to you as {role}. However, if the last name cannot be combined with an address, for example, this does not constitute @:explanation.personal_information and would be visible to you."
     },
     "forename": {
       "isVisible": "A forename is not necessarily @:explanation.personal_information according to the @:explanation.gdpr (GDPR) because there may be multiple people with the same name. Therefore it is visible to you as a {role}. However, if the forename is combined with an address for example, the forename is @:explanation.personal_information and would not be visible to you.",
-      "isNotVisible": "@:explanation.data_is_not_visible"
+      "isNotVisible": "A first name is not necessarily @:explanation.personal_information according to @:explanation.gdpr (GDPR), because there can be multiple people with the same name. Therefore, it is not visible to you as {role}. However, if the first name cannot be combined with an address, for example, this does not constitute @:explanation.personal_information and would be visible to you."
     },
     "address": {
-      "isVisible": "@:explanation.data_is_visible",
-      "isNotVisible": "@:explanation.data_is_not_visible"
+      "isVisible": "According to @:explanation.gdpr (GDPR), an address is @:explanation.personal_information, since one can identify a person by the address. A high risk is assigned to the data type of the address, since they entail severe consequences (e.g. burglary) in case of data theft. Since this @:explanation.personal_information carries a high risk, this @:explanation.personal_information is only visible to a small set of addressees, which includes the {role} you have selected. role belongs.",
+      "isNotVisible": "According to @:explanation.gdpr (GDPR), an address is @:explanation.personal_information, because you can identify a person by the address. A high risk is assigned to the data type of the address, since they entail severe consequences (e.g. burglary) in case of data theft. Since this @:explanation.personal_information carries a high risk, this @:explanation.personal_information is only visible to a small set of addressees, which includes the {role} you have selected. role does not belong to, visible."
     },
     "paymentData": {
-      "isVisible": "@:explanation.data_is_visible",
-      "isNotVisible": "@:explanation.data_is_not_visible"
+      "isVisible": "According to @:explanation.gdpr (GDPR), payment data is personal information, since a person can be identified by the payment data, which includes, among other things, the name. The data type of payment data is assigned a high risk, as it entails severe consequences (e.g. financial abuse) in case of data theft. Because this personal information carries a high risk, this personal information is only visible to a small audience, which includes your selected {role} Role belongs.",
+      "isNotVisible": "According to @:explanation.gdpr (GDPR), payment data is personal information, since a person can be identified by the payment data, which includes, among other things, the name. The data type of payment data is assigned a high risk, as it entails severe consequences (e.g. financial abuse) in case of data theft. Because this personal information carries a high level of risk, this personal information is only visible to a small audience, which includes your selected non {role} Role belongs."
     },
     "vehicleType": {
-      "isVisible": "@:explanation.data_is_visible",
-      "isNotVisible": "@:explanation.data_is_not_visible"
+      "isVisible": "According to @:explanation.gdpr (GDPR), a vehicle type is not necessarily @:explanation.personal_information, since the type of a means of transport does not provide any information about the user. The type of the means of transport is of particular interest for the administration as well as for the rental of these. Therefore it is visible to you as {role}.",
+      "isNotVisible": "A vehicle type is not necessarily @:explanation.personal_information according to @:explanation.gdpr (GDPR), because the type of a means of transport does not give any information about the user. The type of the means of transport is of particular interest for the administration as well as for the rental of these. Therefore it is not visible to you as {role} due to lack of access rights."
     },
     "status": {
-      "isVisible": "@:explanation.data_is_visible",
-      "isNotVisible": "@:explanation.data_is_not_visible"
+      "isVisible": "According to @:explanation.gdpr (GDPR), a vehicle status is @:explanation.personal_information, because a person can be identified by the vehicle status with further information such as payment data. This is because the vehicle status in combination with payment data can be used to identify the respective user. For this reason the vehicle status is visible to you as {role}.",
+      "isNotVisible": "According to @:explanation.gdpr (GDPR), a vehicle status is @:explanation.personal_information, because a person can be identified by the vehicle status with further information such as payment data. This is because the vehicle status in combination with payment data can be used to identify the respective user. For this reason, the vehicle status is not visible to you as {role}."
     },
     "batteryLevel": {
-      "isVisible": "@:explanation.data_is_visible",
-      "isNotVisible": "@:explanation.data_is_not_visible"
+      "isVisible": "According to @:explanation.gdpr (GDPR), the battery level of a vehicle is not @:explanation.personal_informationm, as it does not provide information about the user and is publicly viewable in the context of the management and use of the vehicle. Therefore, the battery level is visible to you in the role of {role}.",
+      "isNotVisible": "According to @:explanation.gdpr (GDPR), the battery level of a vehicle is not @:explanation.personal_informationm, as it does not provide information about the user and is publicly viewable in the context of the management and use of the vehicle. Therefore, the battery level is not visible to you in the role of {role}."
     },
     "ownerName": {
-      "isVisible": "@:explanation.data_is_visible",
-      "isNotVisible": "@:explanation.data_is_not_visible"
+      "isVisible": "According to @:explanation.gdpr (GDPR), the name of the owner of a vehicle is not @:explanation.personal_informationm, as it does not provide information about the user and is publicly viewable in the context of the management and use of the vehicle. Therefore, the name of the owner of the vehicle is visible to you in the role of {role}.",
+      "isNotVisible": "The name of the owner of a vehicle is not @:explanation.gdpr (DSGVO) personal_informationm according to @:explanation.personal_informationm, as it does not provide information about the user and is publicly viewable in the context of the management and use of the vehicle. Therefore, the name of the owner of the vehicle is not visible to you in the role of {role}."
     },
     "startTime": {
       "isVisible": "According to @:explanation.gdpr (DSGVO), the start time of a trip is not personal information, as it alone does not allow any conclusions to be drawn about the identity of a person. For this reason, the start time is visible to you as {role}.",
