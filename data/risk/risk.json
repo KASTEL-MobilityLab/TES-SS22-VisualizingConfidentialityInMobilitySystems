@@ -1,24 +1,24 @@
 [
   {
     "dataType": "PaymentType",
-    "riskLevel": "Medium",
+    "riskLevel": "Low",
     "roleVisibility": ["Company", "User"],
     "explanation": {
       "retentionPeriod": "stored_until_no_longer_necessary",
       "riskLevelExplanation": {
-        "translationKey": "medium_risk_explanation",
+        "translationKey": "low_risk_explanation",
         "source": "https://gdpr-info.eu/issues/personal-data/"
       }
     }
   },
   {
     "dataType": "PaymentProvider",
-    "riskLevel": "Medium",
+    "riskLevel": "Low",
     "roleVisibility": ["Company", "User"],
     "explanation": {
       "retentionPeriod": "stored_until_no_longer_necessary",
       "riskLevelExplanation": {
-        "translationKey": "medium_risk_explanation",
+        "translationKey": "low_risk_explanation",
         "source": "https://gdpr-info.eu/issues/personal-data/"
       }
     }
@@ -61,12 +61,12 @@
   },
   {
     "dataType": "PaymentUsername",
-    "riskLevel": "Low",
+    "riskLevel": "Medium",
     "roleVisibility": ["Company", "User"],
     "explanation": {
       "retentionPeriod": "stored_until_no_longer_necessary",
       "riskLevelExplanation": {
-        "translationKey": "low_risk_explanation"
+        "translationKey": "medium_risk_explanation"
       }
     }
   },
