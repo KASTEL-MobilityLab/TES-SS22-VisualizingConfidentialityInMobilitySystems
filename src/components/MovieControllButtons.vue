@@ -7,6 +7,7 @@ import { inject, watch, type Ref } from "vue";
 const $dm = inject(dataManagerKey) as Ref<DataManager>;
 const $mm = inject(markerManagerKey) as Ref<MarkerManager>;
 
+// updates the marker positions, when the vehicles change
 watch(
   () => $dm.value.vehicles,
   (currentValue) => {

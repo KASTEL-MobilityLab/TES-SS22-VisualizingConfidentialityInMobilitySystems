@@ -16,6 +16,9 @@ export class AggregatedData {
 
   userIds: string[] = [];
 
+  /**
+   * Sets the AggregatedData to the initial state and returns it.
+   */
   constructor() {
     this.numberOfActiveVehicles = AggregatedData.INITIAL_AGGREGATED_DATA;
     this.numberOfUsers = AggregatedData.INITIAL_AGGREGATED_DATA;

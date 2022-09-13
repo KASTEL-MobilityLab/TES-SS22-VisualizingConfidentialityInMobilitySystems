@@ -15,7 +15,7 @@ export class LatLng {
    * Creates a new LatLng with the given latitude and longitude.
    *
    * @param latitude the latitude of the point.
-   * @param longitude the ongitude of the point.
+   * @param longitude the longitude of the point.
    */
   constructor(latitude: number, longitude: number) {
     this.latitude = latitude;
