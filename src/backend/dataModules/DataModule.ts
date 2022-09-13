@@ -47,49 +47,44 @@ export class DataModule {
     this.displayedData = {};
     fieldNames.forEach((fieldName, index) => {
       // Find specific value within DataType
+      const key =
+        DataModule.PREFIX_OF_DATA_TRANSLATIONS +
+        DataModule.SEPARATION_SYMBOL_OF_TRANSLATIONS +
+        `${fieldName}`;
       dataTypes.forEach((dataType) => {
         if (fieldName === dataType) {
-          const key =
-            DataModule.PREFIX_OF_DATA_TRANSLATIONS +
-            DataModule.SEPARATION_SYMBOL_OF_TRANSLATIONS +
-            `${fieldName}`;
           if (fieldName === DataType.TripPrice) {
             this.displayedData[key] = values[index] + "€";
           } else if (fieldName === DataType.VehicleBatteryLevel) {
-            this.displayedData[
-              DataModule.PREFIX_OF_DATA_TRANSLATIONS +
-                DataModule.SEPARATION_SYMBOL_OF_TRANSLATIONS +
-                `${fieldName}`
-            ] = values[index] + "%";
+            this.displayedData[key] = values[index] + "%";
           } else if (fieldName === "expiryDate") {
-            this.displayedData[`data.${fieldName}`] = values[
-              index
-            ].toLocaleDateString("default", {
-              month: "long",
-              year: "numeric",
-            });
+            this.displayedData[key] = values[index].toLocaleDateString(
+              "default",
+              {
+                month: "long",
+                year: "numeric",
+              }
+            );
           } else if (fieldName === "startTime") {
-            this.displayedData[`data.${fieldName}`] = values[
-              index
-            ].toLocaleTimeString("en-US", {
-              hour: "numeric",
-              minute: "numeric",
-              hour12: true,
-            });
+            this.displayedData[key] = values[index].toLocaleTimeString(
+              "en-US",
+              {
+                hour: "numeric",
+                minute: "numeric",
+                hour12: true,
+              }
+            );
           } else if (fieldName === "endTime") {
-            this.displayedData[`data.${fieldName}`] = values[
-              index
-            ].toLocaleTimeString("en-US", {
-              hour: "numeric",
-              minute: "numeric",
-              hour12: true,
-            });
+            this.displayedData[key] = values[index].toLocaleTimeString(
+              "en-US",
+              {
+                hour: "numeric",
+                minute: "numeric",
+                hour12: true,
+              }
+            );
           } else {
-            this.displayedData[
-              DataModule.PREFIX_OF_DATA_TRANSLATIONS +
-                DataModule.SEPARATION_SYMBOL_OF_TRANSLATIONS +
-                `${fieldName}`
-            ] = values[index];
+            this.displayedData[key] = values[index];
           }
         }
       });
