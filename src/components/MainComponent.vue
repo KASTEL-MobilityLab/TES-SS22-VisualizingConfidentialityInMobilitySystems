@@ -3,12 +3,12 @@ import type { MarkerManager } from "@/animation/MarkerManager";
 import type { DataManager } from "@/backend/DataManager";
 import MapComponent from "@/components/MapComponent.vue";
 import RiskBar from "@/components/RiskBar.vue";
-import { dataManagerKey, markerManagerKey } from "@/keys";
+import { DATA_MANAGER_KEY, MARKER_MANAGER_KEY } from "@/keys";
 import { inject, type Ref } from "vue";
 import { RouterView } from "vue-router";
 
-const $dm = inject(dataManagerKey) as Ref<DataManager>;
-const $mm = inject(markerManagerKey) as Ref<MarkerManager>;
+const $dm = inject(DATA_MANAGER_KEY) as Ref<DataManager>;
+const $mm = inject(MARKER_MANAGER_KEY) as Ref<MarkerManager>;
 await $dm.value.init();
 $mm.value.init($dm.value.vehicles);
 </script>

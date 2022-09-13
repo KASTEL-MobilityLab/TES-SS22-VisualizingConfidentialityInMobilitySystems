@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import type { DataManager } from "@/backend/DataManager";
-import { dataManagerKey } from "@/keys";
+import { DATA_MANAGER_KEY } from "@/keys";
 import { inject, type Ref } from "vue";
 
 // This component takes an instance of DataField and displays all its attributes
 // in the Data Viewer.
-const $dm = inject(dataManagerKey) as Ref<DataManager>;
+const $dm = inject(DATA_MANAGER_KEY) as Ref<DataManager>;
 </script>
 <template>
   <div class="btn-group" role="group">

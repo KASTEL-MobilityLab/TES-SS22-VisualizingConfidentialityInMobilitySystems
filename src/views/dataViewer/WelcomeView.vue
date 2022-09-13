@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import type { DataManager } from "@/backend/DataManager";
 import { Role } from "@/backend/Role";
-import { dataManagerKey } from "@/keys";
+import { DATA_MANAGER_KEY } from "@/keys";
 import { inject, type Ref } from "vue";
 import AggregatedDataView from "./AggregatedDataView.vue";
 
 const CITY_ROLE = Role.City;
-const $dm = inject(dataManagerKey) as Ref<DataManager>;
+const $dm = inject(DATA_MANAGER_KEY) as Ref<DataManager>;
 </script>
 
 <template>

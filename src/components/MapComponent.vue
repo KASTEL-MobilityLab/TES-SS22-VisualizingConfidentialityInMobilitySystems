@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { MarkerManager } from "@/animation/MarkerManager";
 import type { DataManager } from "@/backend/DataManager";
-import { dataManagerKey, markerManagerKey } from "@/keys";
+import { DATA_MANAGER_KEY, MARKER_MANAGER_KEY } from "@/keys";
 import { fromLeafletLatLng, toLeafletLatLngArray } from "@/utils/latLngUtils";
 import type { VehicleMarker } from "@/utils/leafletExtension";
 import { RandomDataPrinter } from "@/utils/RandomDataPrinter";
@@ -10,8 +10,8 @@ import L, { type LeafletEvent } from "leaflet";
 import { inject, onMounted, watch, type Ref } from "vue";
 import { useRouter } from "vue-router";
 
-const $dm = inject(dataManagerKey) as Ref<DataManager>;
-const $mm = inject(markerManagerKey) as Ref<MarkerManager>;
+const $dm = inject(DATA_MANAGER_KEY) as Ref<DataManager>;
+const $mm = inject(MARKER_MANAGER_KEY) as Ref<MarkerManager>;
 const router = useRouter();
 let routeDisplay: RouteDisplay;
 let map: L.Map;

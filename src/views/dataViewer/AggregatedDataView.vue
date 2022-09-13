@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import type { DataManager } from "@/backend/DataManager";
-import { dataManagerKey } from "@/keys";
+import { DATA_MANAGER_KEY } from "@/keys";
 import { inject, type Ref } from "vue";
 const TIME_METRIC = "Minutes";
 const PRICE_METRIC = "EUR";
-const $dm = inject(dataManagerKey) as Ref<DataManager>;
+const $dm = inject(DATA_MANAGER_KEY) as Ref<DataManager>;
 </script>
 
 <template>
