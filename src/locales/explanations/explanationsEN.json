@@ -96,6 +96,46 @@
     "userName": {
       "isVisible": "According to @:explanation.gdpr (GDPR), a PayPal username is personal information because it is unique and can theoretically identify a person. In most cases, users choose a username that closely resembles the user's real name. However, you can freely choose the user name, so that identification is often not that easy in practice. In addition, it is not so easy to cause damage with the username alone. For this reason, the username is visible to you as {role}.",
       "isNotVisible": "According to @:explanation.gdpr (GDPR), a PayPal username is personal information because it is unique and can theoretically identify a person. In most cases, users choose a username that closely resembles the user's real name. However, you can freely choose the user name, so that identification is often not that easy in practice. In addition, it is not so easy to cause damage with the username alone. For this reason, the username is not visible to you as {role}."
+    },
+    "type": {
+      "isVisible": "@:explanation.data_is_visible",
+      "isNotVisible": "@:explanation.data_is_not_visible"
+    },
+    "currentPosition": {
+      "isVisible": "@:explanation.data_is_visible",
+      "isNotVisible": "@:explanation.data_is_not_visible"
+    },
+    "numPassengers": {
+      "isVisible": "@:explanation.data_is_visible",
+      "isNotVisible": "@:explanation.data_is_not_visible"
+    },
+    "color": {
+      "isVisible": "@:explanation.data_is_visible",
+      "isNotVisible": "@:explanation.data_is_not_visible"
+    },
+    "licensePlate": {
+      "isVisible": "@:explanation.data_is_visible",
+      "isNotVisible": "@:explanation.data_is_not_visible"
+    },
+    "startingPoint": {
+      "isVisible": "@:explanation.data_is_visible",
+      "isNotVisible": "@:explanation.data_is_not_visible"
+    },
+    "destination": {
+      "isVisible": "@:explanation.data_is_visible",
+      "isNotVisible": "@:explanation.data_is_not_visible"
+    },
+    "batteryCondition": {
+      "isVisible": "@:explanation.data_is_visible",
+      "isNotVisible": "@:explanation.data_is_not_visible"
+    },
+    "electricLock": {
+      "isVisible": "@:explanation.data_is_visible",
+      "isNotVisible": "@:explanation.data_is_not_visible"
+    },
+    "electric": {
+      "isVisible": "@:explanation.data_is_visible",
+      "isNotVisible": "@:explanation.data_is_not_visible"
     }
   }
 }
