@@ -1,5 +1,5 @@
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { isNode } from "browser-or-node";
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { Exclude, Expose, Type } from "class-transformer";
 import "reflect-metadata";
 import { fetchGeocodingAPI } from "../utils/Routing";
@@ -251,20 +251,16 @@ export class Trip extends DataField {
   /**
    * Sets the initial predefined positions of the vehicle and trip.
    */
-  async setInitialPositions() {
+  async setGeocodedTripPositions() {
     if (!(this._vehicle && this._route)) {
       throw Error(
         "Vehicle and route must be set before setting the starting point and destination of a trip."
       );
     }
-    //Enter if-statement only in browser
+    // Enter if-statement only in browser
     if (!isNode) {
-      await fetchGeocodingAPI(this._route.start).then((value) => {
-        this.startingPoint = value;
-      });
-      await fetchGeocodingAPI(this._route.end).then((value) => {
-        this.destination = value;
-      });
+      this.startingPoint = await fetchGeocodingAPI(this._route.start);
+      this.destination = await fetchGeocodingAPI(this._route.end);
     }
   }
 }

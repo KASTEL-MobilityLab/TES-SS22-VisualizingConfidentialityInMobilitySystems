@@ -84,7 +84,7 @@ export class DataManager {
     await this.setRouteWaypoints();
     this.trips.map((trip) => {
       trip.setVehicleStartPosition();
-      trip.setInitialPositions();
+      trip.setGeocodedTripPositions();
     });
     this.tripAnimator = new TripAnimator(
       this.trips,
