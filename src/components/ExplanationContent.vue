@@ -113,7 +113,7 @@ function getCurrentVisibilityExplanation(): Explanation | undefined {
         class="col d-flex align-items-stretch mb-4 flex-fill"
       >
         <InfoCard
-          :title="$t(getTranslationKeyForExplanation('retention_period'))"
+          :title="$t(getTranslationKeyForExplanation('retention_period_title'))"
           :content="retentionPeriodString"
         />
       </div>
