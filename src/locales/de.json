@@ -7,7 +7,7 @@
     "dataViewer": "Daten-Anzeiger",
     "help": "Hilfe",
     "month": "kein Monat | ein Monat | {count} Monate",
-    "source": "Quelle",
+    "source": "Mehr lesen",
     "user": "Benutzer",
     "toggle-data-viewer": "@:app.dataViewer umschalten",
     "aggregatedDataReasoning": "Sie befinden sich momentan in der Rolle der Stadt. Nachfolgend sehen Sie die der Stadt zugänglichen aggregierten Daten aus dem Mobilitätskontext.",
