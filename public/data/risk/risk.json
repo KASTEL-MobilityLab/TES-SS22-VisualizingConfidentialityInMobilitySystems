@@ -313,7 +313,7 @@
   {
     "dataType": "VehicleLicensePlate",
     "riskLevel": "Medium",
-    "roleVisibility": ["Company"],
+    "roleVisibility": ["Company", "User"],
     "explanation": {
       "retentionPeriod": "stored_until_no_longer_necessary",
       "riskLevelExplanation": {
