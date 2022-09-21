@@ -8,6 +8,8 @@
 
 Willkommen zu unserem web-basierten Demonstrator zur Visualisierung vertraulicher Daten in Mobilitätssystemen.
 
+<img src="assets/Project-Overview.png" alt="Projekt Übersicht" width="600"/>
+
 ## Dokumentation
 
 Genauere Beschreibungen und Anleitungen zu unserem Projekt befinden sich im [Wiki](https://github.com/KASTEL-MobilityLab/TES-SS22-VisualizingConfidentialityInMobilitySystems/wiki)
