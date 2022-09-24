@@ -34,6 +34,8 @@ import { Bicycle } from "../dataFields/vehicles/Bicycle";
 import { SharedCar } from "../dataFields/vehicles/SharedCar";
 import { Taxi } from "../dataFields/vehicles/Taxi";
 import { LatLng } from "./LatLng";
+const DEFAULT_LOCALE = "de";
+faker.setLocale(DEFAULT_LOCALE);
 
 /**
  * Returns a random element of the specified Enum.
@@ -56,7 +58,6 @@ export class RandomDataGenerator {
   private static readonly DEFAULT_CENTER_LOCATION: [number, number] = [
     49.009, 8.4,
   ];
-  private static readonly DEFAULT_LOCALE = "de";
   private static readonly PREFIX_ZERO_THRESHOLD = 10;
   private static readonly START_COUNTER_OF_ID = "0";
   private static readonly EMPTY_ID = "";
@@ -79,10 +80,6 @@ export class RandomDataGenerator {
   private static readonly LICENSE_PLATE_SEPARATOR = "-";
   private static readonly MIN_NUMBER_OF_PASSENGERS_IN_CAR = 2;
   private static readonly MAX_NUMBER_OF_PASSENGERS_IN_CAR = 7;
-
-  static {
-    faker.setLocale(RandomDataGenerator.DEFAULT_LOCALE);
-  }
 
   // helper function for generating multiple entities
   private static generateMultiple<T extends DataField>(

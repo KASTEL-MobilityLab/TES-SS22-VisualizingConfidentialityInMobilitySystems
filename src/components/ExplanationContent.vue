@@ -3,7 +3,11 @@ import type { DataManager } from "@/backend/DataManager";
 import type { Risk } from "@/backend/riskManager/Risk";
 import type { Explanation } from "@/backend/riskManager/types";
 import { DATA_MANAGER_KEY } from "@/keys";
-import { getTranslationKeyForExplanation } from "@/utils/translationUtils";
+import {
+  APP_PREFIX,
+  concatenatePrefixWithKeys,
+  getTranslationKeyForExplanation,
+} from "@/utils/translationUtils";
 import { computed, type ComputedRef, type Ref } from "@vue/reactivity";
 import { inject } from "vue";
 import { useI18n } from "vue-i18n";
@@ -51,9 +55,12 @@ const visibilityExplanation: ComputedRef<string> = computed(() => {
   const explanation = getCurrentVisibilityExplanation();
   const dataType = $dm.value.getCurrentRisk()?.dataType;
   if (explanation && dataType) {
+    const translatedRole = t(
+      concatenatePrefixWithKeys(APP_PREFIX, $dm.value.currentRole.toLowerCase())
+    );
     return t(
       getTranslationKeyForExplanation(dataType, explanation.translationKey),
-      { role: $dm.value.currentRole }
+      { role: translatedRole }
     );
   } else {
     return "";
@@ -113,7 +120,7 @@ function getCurrentVisibilityExplanation(): Explanation | undefined {
         class="col d-flex align-items-stretch mb-4 flex-fill"
       >
         <InfoCard
-          :title="$t(getTranslationKeyForExplanation('retention_period'))"
+          :title="$t(getTranslationKeyForExplanation('retention_period_title'))"
           :content="retentionPeriodString"
         />
       </div>

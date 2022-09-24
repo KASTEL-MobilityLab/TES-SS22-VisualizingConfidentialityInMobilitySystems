@@ -24,7 +24,7 @@
     "day": "no day | one day | {count} days",
     "help": "Help",
     "month": "no month | one month | {count} months",
-    "source": "Source",
+    "source": "Read more",
     "toggle-data-viewer": "Toggle Data Viewer",
     "user": "User",
     "welcome": {

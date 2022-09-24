@@ -19,7 +19,9 @@ defineProps<{
       </p>
     </div>
     <div v-show="source" class="card-footer text-muted">
-      <a :href="source" class="link-secondary">{{ $t("app.source") }}</a>
+      <a :href="source" target="_blank" class="link-secondary">{{
+        $t("app.source")
+      }}</a>
     </div>
   </div>
 </template>
