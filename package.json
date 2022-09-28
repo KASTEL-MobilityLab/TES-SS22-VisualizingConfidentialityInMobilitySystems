@@ -21,7 +21,7 @@
     "browser-or-node": "^2.0.0",
     "class-transformer": "^0.5.1",
     "iconify-icon": "^1.0.0",
-    "leaflet": "^1.8.0",
+    "leaflet": "^1.9.1",
     "reflect-metadata": "^0.1.13",
     "vue": "^3.2.38",
     "vue-i18n": "^9.2.2",
