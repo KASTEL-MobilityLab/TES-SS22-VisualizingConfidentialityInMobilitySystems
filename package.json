@@ -17,7 +17,7 @@
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.2.1",
     "@popperjs/core": "^2.11.6",
-    "bootstrap": "^5.2.2",
+    "bootstrap": "^5.2.3",
     "browser-or-node": "^2.0.0",
     "class-transformer": "^0.5.1",
     "iconify-icon": "^1.0.1",
